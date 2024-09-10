@@ -1,0 +1,1467 @@
+10-Sep-2024 17:30:02.483 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+10-Sep-2024 17:30:02.483 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+10-Sep-2024 17:30:02.483 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+10-Sep-2024 17:30:02.483 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+10-Sep-2024 17:30:02.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+10-Sep-2024 17:30:02.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+10-Sep-2024 17:30:02.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             D:\Download\JAVA\jdk-21
+10-Sep-2024 17:30:02.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.4+8-LTS-274
+10-Sep-2024 17:30:02.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+10-Sep-2024 17:30:02.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:30:02.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:30:02.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28/conf/logging.properties
+10-Sep-2024 17:30:02.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Sep-2024 17:30:02.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+10-Sep-2024 17:30:02.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+10-Sep-2024 17:30:02.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+10-Sep-2024 17:30:02.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:30:02.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:30:02.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28/temp
+10-Sep-2024 17:30:02.487 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+10-Sep-2024 17:30:02.487 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+10-Sep-2024 17:30:03.026 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+10-Sep-2024 17:30:03.029 SEVERE [main] org.apache.catalina.core.JreMemoryLeakPreventionListener.lifecycleEvent Failed to trigger creation of the GC Daemon thread during Tomcat start to prevent possible memory leaks. This is expected on non-Sun JVMs.
+ java.lang.ClassNotFoundException: sun.misc.GC
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at org.apache.catalina.core.JreMemoryLeakPreventionListener.lifecycleEvent(JreMemoryLeakPreventionListener.java:307)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:95)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:90)
+	at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:402)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:99)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:30:03.132 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+10-Sep-2024 17:30:03.142 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["http-apr-8080"]
+ java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:30:03.142 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[HTTP/1.1-8080]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 10 more
+Caused by: java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 11 more
+
+10-Sep-2024 17:30:03.143 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+10-Sep-2024 17:30:03.145 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["ajp-apr-8009"]
+ java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:30:03.145 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[AJP/1.3-8009]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[AJP/1.3-8009]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 10 more
+Caused by: java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 11 more
+
+10-Sep-2024 17:30:03.146 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1026 ms
+10-Sep-2024 17:30:03.181 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+10-Sep-2024 17:30:03.181 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+10-Sep-2024 17:30:03.195 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\docs
+10-Sep-2024 17:30:03.285 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:30:03.464 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\docs has finished in 268 ms
+10-Sep-2024 17:30:03.465 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\examples
+10-Sep-2024 17:30:03.487 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:30:03.876 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\examples has finished in 411 ms
+10-Sep-2024 17:30:03.876 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\host-manager
+10-Sep-2024 17:30:03.886 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:30:03.919 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\host-manager has finished in 43 ms
+10-Sep-2024 17:30:03.919 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\manager
+10-Sep-2024 17:30:03.931 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:30:03.956 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\manager has finished in 37 ms
+10-Sep-2024 17:30:03.956 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\ROOT
+10-Sep-2024 17:30:03.967 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:30:03.984 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\ROOT has finished in 28 ms
+10-Sep-2024 17:30:03.989 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 844 ms
+10-Sep-2024 17:30:04.003 SEVERE [main] org.apache.catalina.core.StandardServer.await StandardServer.await: create[localhost:8005]: 
+ java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:565)
+	at java.base/sun.nio.ch.Net.bind(Net.java:554)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+	at org.apache.catalina.core.StandardServer.await(StandardServer.java:420)
+	at org.apache.catalina.startup.Catalina.await(Catalina.java:713)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:659)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+
+10-Sep-2024 17:30:04.004 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+10-Sep-2024 17:30:04.004 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+10-Sep-2024 17:30:04.004 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+10-Sep-2024 17:30:04.012 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [ROOT]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:30:04.015 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:30:04.022 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [examples]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:30:04.022 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/examples]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/examples]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/examples]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:30:04.025 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [host-manager]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:30:04.025 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/host-manager]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/host-manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/host-manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:30:04.028 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [manager]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:30:04.031 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/manager]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:30:04.034 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [docs]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:30:04.034 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/docs]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:30:04.035 SEVERE [main] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:501)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: A child container failed during stop
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:979)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+
+10-Sep-2024 17:30:04.036 SEVERE [main] org.apache.catalina.startup.Catalina.stop Catalina.stop
+ org.apache.catalina.LifecycleException: Failed to stop component [StandardServer[8005]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardService[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:501)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+Caused by: org.apache.catalina.LifecycleException: A child container failed during stop
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:979)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 10 more
+
+10-Sep-2024 17:31:31.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             D:\Download\JAVA\jdk-21
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.4+8-LTS-274
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:31:31.069 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:31:31.071 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28/conf/logging.properties
+10-Sep-2024 17:31:31.071 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Sep-2024 17:31:31.071 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+10-Sep-2024 17:31:31.071 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+10-Sep-2024 17:31:31.071 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+10-Sep-2024 17:31:31.072 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:31:31.072 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:31:31.072 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28/temp
+10-Sep-2024 17:31:31.072 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+10-Sep-2024 17:31:31.072 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+10-Sep-2024 17:31:31.546 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+10-Sep-2024 17:31:31.548 SEVERE [main] org.apache.catalina.core.JreMemoryLeakPreventionListener.lifecycleEvent Failed to trigger creation of the GC Daemon thread during Tomcat start to prevent possible memory leaks. This is expected on non-Sun JVMs.
+ java.lang.ClassNotFoundException: sun.misc.GC
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at org.apache.catalina.core.JreMemoryLeakPreventionListener.lifecycleEvent(JreMemoryLeakPreventionListener.java:307)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:95)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:90)
+	at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:402)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:99)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:31:31.652 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+10-Sep-2024 17:31:31.664 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["http-apr-8080"]
+ java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:31:31.665 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[HTTP/1.1-8080]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 10 more
+Caused by: java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 11 more
+
+10-Sep-2024 17:31:31.666 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+10-Sep-2024 17:31:31.666 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["ajp-apr-8009"]
+ java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:31:31.668 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[AJP/1.3-8009]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[AJP/1.3-8009]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 10 more
+Caused by: java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 11 more
+
+10-Sep-2024 17:31:31.669 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 924 ms
+10-Sep-2024 17:31:31.716 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+10-Sep-2024 17:31:31.716 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+10-Sep-2024 17:31:31.726 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\docs
+10-Sep-2024 17:31:31.826 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:31:31.963 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\docs has finished in 237 ms
+10-Sep-2024 17:31:31.963 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\examples
+10-Sep-2024 17:31:31.979 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:31:32.387 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\examples has finished in 424 ms
+10-Sep-2024 17:31:32.387 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\host-manager
+10-Sep-2024 17:31:32.394 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:31:32.416 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\host-manager has finished in 29 ms
+10-Sep-2024 17:31:32.419 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\manager
+10-Sep-2024 17:31:32.426 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:31:32.443 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\manager has finished in 24 ms
+10-Sep-2024 17:31:32.443 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\ROOT
+10-Sep-2024 17:31:32.454 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:31:32.466 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\ROOT has finished in 23 ms
+10-Sep-2024 17:31:32.470 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 797 ms
+10-Sep-2024 17:31:32.480 SEVERE [main] org.apache.catalina.core.StandardServer.await StandardServer.await: create[localhost:8005]: 
+ java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:565)
+	at java.base/sun.nio.ch.Net.bind(Net.java:554)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+	at org.apache.catalina.core.StandardServer.await(StandardServer.java:420)
+	at org.apache.catalina.startup.Catalina.await(Catalina.java:713)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:659)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+
+10-Sep-2024 17:31:32.480 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+10-Sep-2024 17:31:32.480 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+10-Sep-2024 17:31:32.480 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+10-Sep-2024 17:31:32.493 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [ROOT]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:31:32.496 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:31:32.496 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [examples]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:31:32.496 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/examples]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/examples]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/examples]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:31:32.505 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [host-manager]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:31:32.506 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/host-manager]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/host-manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/host-manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:31:32.509 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [manager]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:31:32.511 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/manager]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:31:32.513 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [docs]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:31:32.513 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/docs]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:31:32.515 SEVERE [main] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:501)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: A child container failed during stop
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:979)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+
+10-Sep-2024 17:31:32.515 SEVERE [main] org.apache.catalina.startup.Catalina.stop Catalina.stop
+ org.apache.catalina.LifecycleException: Failed to stop component [StandardServer[8005]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardService[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:501)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+Caused by: org.apache.catalina.LifecycleException: A child container failed during stop
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:979)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 10 more
+
+10-Sep-2024 17:32:31.806 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+10-Sep-2024 17:32:31.807 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+10-Sep-2024 17:32:31.807 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+10-Sep-2024 17:32:31.808 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+10-Sep-2024 17:32:31.808 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+10-Sep-2024 17:32:31.808 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+10-Sep-2024 17:32:31.808 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             D:\Download\JAVA\jdk-21
+10-Sep-2024 17:32:31.808 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.4+8-LTS-274
+10-Sep-2024 17:32:31.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+10-Sep-2024 17:32:31.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:32:31.809 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:32:31.811 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28/conf/logging.properties
+10-Sep-2024 17:32:31.811 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Sep-2024 17:32:31.811 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+10-Sep-2024 17:32:31.811 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+10-Sep-2024 17:32:31.812 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+10-Sep-2024 17:32:31.812 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:32:31.812 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28
+10-Sep-2024 17:32:31.812 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=d:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28/temp
+10-Sep-2024 17:32:31.812 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.1.33 using APR version 1.5.1.
+10-Sep-2024 17:32:31.813 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+10-Sep-2024 17:32:32.356 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.1m 19 Mar 2015)
+10-Sep-2024 17:32:32.359 SEVERE [main] org.apache.catalina.core.JreMemoryLeakPreventionListener.lifecycleEvent Failed to trigger creation of the GC Daemon thread during Tomcat start to prevent possible memory leaks. This is expected on non-Sun JVMs.
+ java.lang.ClassNotFoundException: sun.misc.GC
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at org.apache.catalina.core.JreMemoryLeakPreventionListener.lifecycleEvent(JreMemoryLeakPreventionListener.java:307)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:95)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:90)
+	at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:402)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:99)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:32:32.509 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-apr-8080"]
+10-Sep-2024 17:32:32.511 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["http-apr-8080"]
+ java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:32:32.519 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[HTTP/1.1-8080]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 10 more
+Caused by: java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 11 more
+
+10-Sep-2024 17:32:32.521 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-apr-8009"]
+10-Sep-2024 17:32:32.523 SEVERE [main] org.apache.coyote.AbstractProtocol.init Failed to initialize end point associated with ProtocolHandler ["ajp-apr-8009"]
+ java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+
+10-Sep-2024 17:32:32.523 SEVERE [main] org.apache.catalina.core.StandardService.initInternal Failed to initialize connector [Connector[AJP/1.3-8009]]
+ org.apache.catalina.LifecycleException: Failed to initialize component [Connector[AJP/1.3-8009]]
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:106)
+	at org.apache.catalina.core.StandardService.initInternal(StandardService.java:567)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:851)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:576)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:599)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:310)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:484)
+Caused by: org.apache.catalina.LifecycleException: Protocol handler initialization failed
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:962)
+	at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)
+	... 10 more
+Caused by: java.lang.Exception: Socket bind failed: [730013] An attempt was made to access a socket in a way forbidden by its access permissions.  
+	at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:471)
+	at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:742)
+	at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:457)
+	at org.apache.catalina.connector.Connector.initInternal(Connector.java:960)
+	... 11 more
+
+10-Sep-2024 17:32:32.524 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1042 ms
+10-Sep-2024 17:32:32.575 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+10-Sep-2024 17:32:32.575 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+10-Sep-2024 17:32:32.581 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\docs
+10-Sep-2024 17:32:32.686 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:32:32.821 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\docs has finished in 239 ms
+10-Sep-2024 17:32:32.821 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\examples
+10-Sep-2024 17:32:32.836 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:32:33.221 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\examples has finished in 400 ms
+10-Sep-2024 17:32:33.221 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\host-manager
+10-Sep-2024 17:32:33.231 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:32:33.255 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\host-manager has finished in 34 ms
+10-Sep-2024 17:32:33.255 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\manager
+10-Sep-2024 17:32:33.264 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:32:33.284 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\manager has finished in 28 ms
+10-Sep-2024 17:32:33.284 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\ROOT
+10-Sep-2024 17:32:33.296 INFO [localhost-startStop-1] org.apache.catalina.loader.WebappLoader.buildClassPath Unknown loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e class jdk.internal.loader.ClassLoaders$AppClassLoader
+10-Sep-2024 17:32:33.314 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\HK7\JAVA_NANGCAO\Java-advanced\apache-tomcat-8.0.28-windows-x64\apache-tomcat-8.0.28\webapps\ROOT has finished in 30 ms
+10-Sep-2024 17:32:33.316 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 791 ms
+10-Sep-2024 17:32:33.327 SEVERE [main] org.apache.catalina.core.StandardServer.await StandardServer.await: create[localhost:8005]: 
+ java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:565)
+	at java.base/sun.nio.ch.Net.bind(Net.java:554)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+	at org.apache.catalina.core.StandardServer.await(StandardServer.java:420)
+	at org.apache.catalina.startup.Catalina.await(Catalina.java:713)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:659)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+
+10-Sep-2024 17:32:33.328 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-apr-8080"]
+10-Sep-2024 17:32:33.328 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-apr-8009"]
+10-Sep-2024 17:32:33.328 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+10-Sep-2024 17:32:33.334 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [ROOT]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:32:33.335 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:32:33.342 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [examples]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:32:33.342 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/examples]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/examples]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/examples]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:32:33.345 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [host-manager]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:32:33.345 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/host-manager]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/host-manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/host-manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:32:33.347 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [manager]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:32:33.348 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/manager]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/manager]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:32:33.350 WARNING [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks Failed to check for ThreadLocal references for web application [docs]
+ java.lang.reflect.InaccessibleObjectException: Unable to make field java.lang.ThreadLocal$ThreadLocalMap java.lang.Thread.threadLocals accessible: module java.base does not "opens java.lang" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalsForLeaks(WebappClassLoaderBase.java:2042)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1577)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+10-Sep-2024 17:32:33.351 SEVERE [Catalina-startStop-1] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/docs]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [WebappLoader[/docs]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5443)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make field private final java.lang.ClassLoader sun.rmi.transport.Target.ccl accessible: module java.rmi does not "opens sun.rmi.transport" to unnamed module @1c4af82c
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.Field.setAccessible(Field.java:177)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesRmiTargets(WebappClassLoaderBase.java:2261)
+	at org.apache.catalina.loader.WebappClassLoaderBase.clearReferences(WebappClassLoaderBase.java:1580)
+	at org.apache.catalina.loader.WebappClassLoaderBase.stop(WebappClassLoaderBase.java:1523)
+	at org.apache.catalina.loader.WebappLoader.stopInternal(WebappLoader.java:447)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+
+10-Sep-2024 17:32:33.351 SEVERE [main] org.apache.catalina.core.ContainerBase.stopInternal A child container failed during stop
+ java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost]]
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:972)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:501)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina].StandardHost[localhost]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1424)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1413)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.apache.catalina.LifecycleException: A child container failed during stop
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:979)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+
+10-Sep-2024 17:32:33.352 SEVERE [main] org.apache.catalina.startup.Catalina.stop Catalina.stop
+ org.apache.catalina.LifecycleException: Failed to stop component [StandardServer[8005]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardService[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 6 more
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardEngine[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:501)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+Caused by: org.apache.catalina.LifecycleException: A child container failed during stop
+	at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:979)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 10 more
+
