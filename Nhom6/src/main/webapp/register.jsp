@@ -218,28 +218,27 @@ pageEncoding="UTF-8"%>
               <hr />
             </form>
           
-          <div class="row pt-2">
-            <p><a href="#">Bạn đã có tài khoản TaiLieu.VN? Đăng nhập</a></p>
-            <div class="col-md-4 border-end">
-              <p>Thưởng 50 ePoints khi đăng ký mới</p>
-              <p>Tặng 5 ePoints cho mỗi lượt chia sẻ Facebook</p>
-            </div>
-            <div class="col-md-4 border-end">
-              <p>Xem và Tải trên 1 Triệu Tài Liệu miễn phí</p>
-              <p>Kết nối với <a href="#">TaiLieu.VN</a></p>
-            </div>
-            <div class="col-md-4">
-              <p>
-                Kết bạn với <a href="#">TaiLieu.VN</a> trên
-                <a href="#">Facebook</a>
-              </p>
-              <p>Nhận link download miễn phí <strong>100</strong> tài liệu <strong>HOT</strong> mỗi ngày</p>
+            <div class="row pt-2">
+              <p><a href="#">Bạn đã có tài khoản TaiLieu.VN? Đăng nhập</a></p>
+              <div class="col-md-4 border-end">
+                <p>Thưởng 50 ePoints khi đăng ký mới</p>
+                <p>Tặng 5 ePoints cho mỗi lượt chia sẻ Facebook</p>
+              </div>
+              <div class="col-md-4 border-end">
+                <p>Xem và Tải trên 1 Triệu Tài Liệu miễn phí</p>
+                <p>Kết nối với <a href="#">TaiLieu.VN</a></p>
+              </div>
+              <div class="col-md-4">
+                <p>
+                  Kết bạn với <a href="#">TaiLieu.VN</a> trên
+                  <a href="#">Facebook</a>
+                </p>
+                <p>Nhận link download miễn phí <strong>100</strong> tài liệu <strong>HOT</strong> mỗi ngày</p>
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
