@@ -23,10 +23,6 @@ pageEncoding="UTF-8"%>
         text-decoration: none;
       }
 
-      /* .register-box {
-        width: 70%;
-      } */
-
       .login-facebook {
         background-color: #4267b2;
         color: white;
@@ -42,24 +38,27 @@ pageEncoding="UTF-8"%>
     <div class="container mt-5 w-75">
       <div class="register-box border">
         <div class="p-3 bg-primary text-white">
-          <h4 class>ĐĂNG KÝ</h4>
+          <h4>ĐĂNG KÝ</h4>
         </div>
 
-        <div class="row p-4">
+        <div class="row px-4 pt-4">
           <div class="col-md-6">
-            <ul>
+            <ul class="mb-1">
               <li>Đăng ký nhanh qua Facebook</li>
-              <li style="list-style-type: none">
+            </ul>
+
+            <ul class="list-unstyled ps-3">
+              <li>
                 <button class="btn login-facebook p-2 px-5 my-2">
                   <i class="bi bi-facebook"></i> Đăng nhập bằng Facebook
                 </button>
               </li>
+              <li>
+                <a href="#">Đăng ký mới bằng tài khoản TaiLieu.VN</a>
+              </li>
             </ul>
-
-            <p>
-              <a href="#">Đăng ký mới bằng tài khoản TaiLieu.VN</a>
-            </p>
           </div>
+
           <div class="col-md-6">
             <div class="border-dashed">
               <ul>
@@ -73,103 +72,159 @@ pageEncoding="UTF-8"%>
               </ul>
             </div>
           </div>
+          <ul class="list-unstyled ps-4">
+            <li>
+              Bạn cần kích hoạt tài khoản qua Email sau khi đăng ký để nhận ngay
+              50 ePoints thưởng từ TaiLieu.VN
+            </li>
+          </ul>
+        </div>
 
-          <form>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="username"
-                  placeholder="Nhập Username"
-                />
-              </div>
-              <div class="col-md-6 mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  placeholder="Nhập Họ và Tên"
-                />
-              </div>
-              <div class="col-md-6 mb-3">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  placeholder="Nhập mật khẩu"
-                />
-              </div>
-              <div class="col-md-6 mb-3">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="confirm-password"
-                  placeholder="Nhập lại mật khẩu"
-                />
-              </div>
-              <div class="col-md-6 mb-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  placeholder="Nhập địa chỉ Email"
-                />
-              </div>
-              <div class="col-md-6 mb-3">
-                <select class="form-select" id="gender">
-                  <option selected>Giới Tính</option>
-                  <option value="male">Nam</option>
-                  <option value="female">Nữ</option>
-                  <option value="other">Khác</option>
-                </select>
-              </div>
-              <div class="col-md-4 mb-3">
-                <select class="form-select" id="day">
-                  <option selected>Ngày sinh</option>
-                  <% for (int i = 1; i <= 31; i++) { %>
-                  <option value="<%= i %>"><%= i %></option>
-                  <% } %>
-                  <!-- Thêm các tùy chọn cho ngày -->
-                </select>
-              </div>
-              <div class="col-md-4 mb-3">
-                <select class="form-select" id="month">
-                  <option selected>Tháng sinh</option>
-                  <% for (int i = 1; i <= 12; i++) { %>
-                  <option value="<%= i %>"><%= i %></option>
-                  <% } %>
-                  <!-- Thêm các tùy chọn cho ngày -->
-                </select>
-              </div>
-              <div class="col-md-4 mb-3">
-                <select class="form-select" id="year">
-                  <option value="">Năm sinh</option>
-                  <% int currentYear =
-                  java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
-                  for (int i = currentYear - 100; i <= currentYear-10; i++) { %>
-                  <option value="<%= i %>"><%= i %></option>
-                  <% } %>
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
-                <select class="form-select" id="city">
-                  <option selected>Tỉnh/TP</option>
-                  <!-- Thêm các tùy chọn cho tỉnh/thành phố -->
-                </select>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Đăng ký</button>
-          </form>
+        <div class="container">
+          <div class="row px-4 pt-2">
+            <form>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    placeholder="Nhập Username"
+                  />
+                </div>
 
-          <hr />
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Nhập Họ và Tên"
+                  />
+                </div>
+              </div>
 
-          <div class="row">
-            <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Nhập mật khẩu"
+                  />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <div class="col-md-4">
+                    <select class="form-select" id="gender">
+                      <option selected>Giới Tính</option>
+                      <option value="male">Nam</option>
+                      <option value="female">Nữ</option>
+                      <option value="other">Khác</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="confirm-password"
+                    placeholder="Nhập lại mật khẩu"
+                  />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <select class="form-select" id="day">
+                        <option selected>Ngày sinh</option>
+                        <% for (int i = 1; i <= 31; i++) { %>
+                        <option value="<%= i %>"><%= i %></option>
+                        <% } %>
+                      </select>
+                    </div>
+
+                    <div class="col-md-4">
+                      <select class="form-select" id="month">
+                        <option selected>Tháng sinh</option>
+                        <% for (int i = 1; i <= 12; i++) { %>
+                        <option value="<%= i %>"><%= i %></option>
+                        <% } %>
+                      </select>
+                    </div>
+
+                    <div class="col-md-4">
+                      <select class="form-select" id="year">
+                        <option value="">Năm sinh</option>
+                        <% int currentYear =
+                        java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+                        for (int i = currentYear - 100; i <= currentYear - 10;
+                        i++) { %>
+                        <option value="<%= i %>"><%= i %></option>
+                        <% } %>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Nhập địa chỉ email"
+                  />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <div class="col-md-4">
+                    <select class="form-select" id="province">
+                      <option selected>Tỉnh/TP</option>
+                      <option value="Hue">Huế</option>
+                      <!-- Thêm các tỉnh/thành khác tại đây -->
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email-confirm"
+                    placeholder="Nhập lại địa chỉ email"
+                  />
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+                <input
+                  class="form-check-input ms-2"
+                  type="checkbox"
+                  id="terms"
+                  required
+                />
+                <label class="form-check-label ms-2" for="terms">
+                  Tôi đồng ý với các Chính Sách và Thỏa Thuận Sử Dụng của
+                  TaiLieu.VN
+                </label>
+              </div>
+              <hr />
+            </form>
+          
+          <div class="row pt-2">
+            <p><a href="#">Bạn đã có tài khoản TaiLieu.VN? Đăng nhập</a></p>
+            <div class="col-md-4 border-end">
               <p>Thưởng 50 ePoints khi đăng ký mới</p>
               <p>Tặng 5 ePoints cho mỗi lượt chia sẻ Facebook</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 border-end">
               <p>Xem và Tải trên 1 Triệu Tài Liệu miễn phí</p>
               <p>Kết nối với <a href="#">TaiLieu.VN</a></p>
             </div>
@@ -178,12 +233,10 @@ pageEncoding="UTF-8"%>
                 Kết bạn với <a href="#">TaiLieu.VN</a> trên
                 <a href="#">Facebook</a>
               </p>
-              <p>Nhận link download miễn phí 100 tài liệu HOT mỗi ngày</p>
+              <p>Nhận link download miễn phí <strong>100</strong> tài liệu <strong>HOT</strong> mỗi ngày</p>
             </div>
           </div>
         </div>
-
-        <!-- Form đăng ký -->
       </div>
     </div>
 
