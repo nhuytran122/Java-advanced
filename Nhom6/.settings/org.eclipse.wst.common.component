@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Nhom6">
+        
+    <wb-module deploy-name="A01_Introduce">
+                
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <property name="context-root" value="Nhom6"/>
-        <property name="java-output-path" value="/Nhom6/build/classes"/>
+                
+        <property name="java-output-path" value="/A01_Introduce/build/classes"/>
+        <property name="context-root" value="A01_Introduce"/>
+            
     </wb-module>
+    
 </project-modules>

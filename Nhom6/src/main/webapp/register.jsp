@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
   </head>
   <body>
     <div class="container mt-5 w-75">
-      <div class="register-box border">
+      <div class="border">
         <div class="p-3 bg-primary text-white">
           <h4>ĐĂNG KÝ</h4>
         </div>
@@ -217,7 +217,7 @@ pageEncoding="UTF-8"%>
               </div>
               <hr />
             </form>
-          
+
             <div class="row pt-2">
               <p><a href="#">Bạn đã có tài khoản TaiLieu.VN? Đăng nhập</a></p>
               <div class="col-md-4 border-end">
@@ -233,10 +233,14 @@ pageEncoding="UTF-8"%>
                   Kết bạn với <a href="#">TaiLieu.VN</a> trên
                   <a href="#">Facebook</a>
                 </p>
-                <p>Nhận link download miễn phí <strong>100</strong> tài liệu <strong>HOT</strong> mỗi ngày</p>
+                <p>
+                  Nhận link download miễn phí <strong>100</strong> tài liệu
+                  <strong>HOT</strong> mỗi ngày
+                </p>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
