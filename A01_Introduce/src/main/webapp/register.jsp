@@ -205,12 +205,12 @@ pageEncoding="UTF-8"%>
               <div class="d-flex align-items-center">
                 <button type="submit" class="btn btn-primary">Đăng ký</button>
                 <input
-                  class="form-check-input ms-2"
+                  class="form-check-input mx-2"
                   type="checkbox"
                   id="terms"
                   required
                 />
-                <label class="form-check-label ms-2" for="terms">
+                <label class="form-check-label" for="terms">
                   Tôi đồng ý với các Chính Sách và Thỏa Thuận Sử Dụng của
                   TaiLieu.VN
                 </label>
