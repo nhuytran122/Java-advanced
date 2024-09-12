@@ -36,6 +36,15 @@
     List<String> giaiSau = genListNum(3, 4);
     String giaiBay = genNum(3);
     String giaiTam = genNum(2);
+
+    String selectedDayParam = request.getParameter("day");
+    String selectedMonthParam = request.getParameter("month");
+    String selectedYearParam = request.getParameter("year");
+
+    int selectedDay = (selectedDayParam != null) ? Integer.parseInt(selectedDayParam) : currentDay;
+    int selectedMonth = (selectedMonthParam != null) ? Integer.parseInt(selectedMonthParam) : currentMonth;
+    int selectedYear = (selectedYearParam != null) ? Integer.parseInt(selectedYearParam) : currentYear;
+
 %>
 
 <!DOCTYPE html>
@@ -62,7 +71,7 @@
                             <label for="day" class="form-label">Chọn ngày:</label>
                             <select class="form-select" id="day" name="day">
                                 <% for (int i = 1; i <= 31; i++) { %>
-                                    <option value="<%= i %>" <%= i == currentDay ? "selected" : "" %>><%= i %></option>
+                                    <option value="<%= i %>" <%= i == selectedDay ? "selected" : "" %>><%= i %></option>
                                 <% } %>
                             </select>
                         </div>
@@ -71,7 +80,7 @@
                             <label for="month" class="form-label">Chọn tháng:</label>
                             <select class="form-select" id="month" name="month">
                                 <% for (int i = 1; i <= 12; i++) { %>
-                                    <option value="<%= i %>" <%= i == currentMonth ? "selected" : "" %>><%= i %></option>
+                                    <option value="<%= i %>" <%= i == selectedMonth ? "selected" : "" %>><%= i %></option>
                                 <% } %>
                             </select>
                         </div>
@@ -80,7 +89,7 @@
                             <label for="year" class="form-label">Chọn năm:</label>
                             <select class="form-select" id="year" name="year">
                                 <% for (int i = currentYear; i >= currentYear - 10; i--) { %>
-                                    <option value="<%= i %>" <%= i == currentYear ? "selected" : "" %>><%= i %></option>
+                                    <option value="<%= i %>" <%= i == selectedYear ? "selected" : "" %>><%= i %></option>
                                 <% } %>
                             </select>
                         </div>
@@ -89,8 +98,8 @@
                 </form>
             </div>
             
-            <h3>Kết quả Xổ số Thừa Thiên Huế <%= currentDay %>/<%= currentMonth %>/<%= currentYear %></h3>
-            <table class="table table-bordered text-center mt-3">
+            <h3>Kết quả Xổ số Thừa Thiên Huế <%= selectedDay %>/<%= selectedMonth %>/<%= selectedYear %></h3>
+            <table class="table table-bordered table-hover text-center mt-3">
                 <thead>
                     <tr class="table-dark">
                         <th scope="col">Giải</th>
