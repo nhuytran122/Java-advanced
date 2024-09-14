@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, java.util.List, java.util.Random" %>
+<%@ page import="java.util.Random" %>
 <%! 
     String genNum(int n) {
         Random random = new Random();
@@ -12,12 +12,12 @@
         return result.toString();
     }
 
-    List<String> genListNum(int cnt, int digits) {
-        List<String> list = new ArrayList<>();
+    String[] genArrayNum(int cnt, int digits) {
+        String[] arrPrize = new String[cnt];
         for (int i = 0; i < cnt; i++) {
-            list.add(genNum(digits));
+            arrPrize[i] = genNum(digits);
         }
-        return list;
+        return arrPrize;
     }
 %> 
 
@@ -30,10 +30,10 @@
     String giaiDacBiet = genNum(6);
     String giaiNhat = genNum(5);
     String giaiNhi = genNum(5);
-    List<String> giaiBa = genListNum(2, 5);
-    List<String> giaiTu = genListNum(7, 5);
+    String[] giaiBa = genArrayNum(2, 5);
+    String[] giaiTu = genArrayNum(7, 5);
     String giaiNam = genNum(4);
-    List<String> giaiSau = genListNum(3, 4);
+    String[] giaiSau = genArrayNum(3, 4);
     String giaiBay = genNum(3);
     String giaiTam = genNum(2);
 
@@ -44,7 +44,6 @@
     int selectedDay = (selectedDayParam != null) ? Integer.parseInt(selectedDayParam) : currentDay;
     int selectedMonth = (selectedMonthParam != null) ? Integer.parseInt(selectedMonthParam) : currentMonth;
     int selectedYear = (selectedYearParam != null) ? Integer.parseInt(selectedYearParam) : currentYear;
-
 %>
 
 <!DOCTYPE html>
@@ -123,8 +122,8 @@
                         <td>Giải ba</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <% for (int i = 0; i < giaiBa.size(); i++) { %>
-                                    <div class="px-5 <%= i < giaiBa.size() - 1 ? "border-end" : "" %>"><%= giaiBa.get(i) %></div>
+                                <% for (int i = 0; i < giaiBa.length; i++) { %>
+                                    <div class="px-5 <%= i < giaiBa.length - 1 ? "border-end" : "" %>"><%= giaiBa[i] %></div>
                                 <% } %>
                             </div>
                         </td>
@@ -134,13 +133,13 @@
                         <td>
                             <div class="d-flex justify-content-center">
                                 <% for (int i = 0; i < 4; i++) { %>
-                                    <div class="px-5 <%= i == 3 ? "" : "border-end" %>"><%= giaiTu.get(i) %></div>
+                                    <div class="px-5 <%= i == 3 ? "" : "border-end" %>"><%= giaiTu[i] %></div>
                                 <% } %>
                             </div>
 
                             <div class="d-flex justify-content-center mt-2">
-                                <% for (int i = 4; i < giaiTu.size(); i++) { %>
-                                    <div class="px-5 <%= i < giaiTu.size() - 1 ? "border-end" : "" %>"><%= giaiTu.get(i) %></div>
+                                <% for (int i = 4; i < giaiTu.length; i++) { %>
+                                    <div class="px-5 <%= i < giaiTu.length - 1 ? "border-end" : "" %>"><%= giaiTu[i] %></div>
                                 <% } %>
                             </div>
                         </td>
@@ -153,8 +152,8 @@
                         <td>Giải sáu</td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <% for (int i = 0; i < giaiSau.size(); i++) { %>
-                                    <div class="px-5 <%= i < giaiSau.size() - 1 ? "border-end" : "" %>"><%= giaiSau.get(i) %></div>
+                                <% for (int i = 0; i < giaiSau.length; i++) { %>
+                                    <div class="px-5 <%= i < giaiSau.length - 1 ? "border-end" : "" %>"><%= giaiSau[i] %></div>
                                 <% } %>
                             </div>
                         </td>
