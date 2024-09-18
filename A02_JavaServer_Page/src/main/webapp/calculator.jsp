@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%
-		int a = 0, b = 0, kq = 0;
+		float a = 0, b = 0, kq = 0;
 		String tmpa = request.getParameter("txta");
         String tmpb = request.getParameter("txtb");
         
@@ -16,10 +16,11 @@
         String btntru = request.getParameter("btntru");
         String btnnhan = request.getParameter("btnnhan");
         String btnchia = request.getParameter("btnchia");
-        
-        if(tmpa != null && tmpb != null){
-            a = Integer.parseInt(tmpa);
-            b = Integer.parseInt(tmpb);
+
+        boolean valuesPresent = (tmpa != null && !tmpa.isEmpty()) && (tmpb != null && !tmpb.isEmpty());
+        if(valuesPresent){
+            a = Float.parseFloat(tmpa);
+            b = Float.parseFloat(tmpb);
             
             if(btncong != null)
             	kq = a + b;
@@ -36,10 +37,12 @@
             		kq = a/b;
             }
         }
-        else
-        	out.println("Chưa nhập a, b");
+        else{
+			if(btncong != null || btntru != null || btnnhan != null || btnchia != null)
+				out.println("Chưa nhập a, b");
+		}	
 	%>
-	<form action="mt.jsp" method="post">
+	<form action="calculator.jsp" method="post">
 	    a = <input type="number" name = "txta" value = "<%= tmpa %>"> <br>
 	    b = <input type="number" name = "txtb" value = "<%= tmpb %>"> <br>
 	    kq = <input type="number" name = "txtkq" value = "<%= kq %>"> <br>
