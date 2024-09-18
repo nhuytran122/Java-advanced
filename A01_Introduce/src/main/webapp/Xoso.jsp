@@ -64,7 +64,7 @@
         <div class="container mt-3 w-50">
             <h3>Hôm nay, ngày <%= currentDay %>, tháng <%= currentMonth %>, năm <%= currentYear %></h3>
             <div class="py-3">
-                <form>
+                <form action="Xoso.jsp" method="post">
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="day" class="form-label">Chọn ngày:</label>
