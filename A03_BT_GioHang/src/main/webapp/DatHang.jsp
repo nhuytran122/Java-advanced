@@ -1,10 +1,11 @@
 <%@page import="Tam.CGioHang"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Insert title here</title>
+    <title>Mua hàng</title>
 </head>
 <body>
     <form method='post' action='DatHang.jsp'>
@@ -43,11 +44,17 @@
             CGioHang g = (CGioHang) session.getAttribute("gh");
             int sh = g.ds.size();
     %>
+    <form method="post" action="Xoa.jsp" style="text-align: right; margin-bottom: 10px;">
+		<button name="btn-delete-all" >
+			Xóa tất cả
+        </button>
+    </form>
             <table border='1' width='100%'>
                 <%
                     for (int i = 0; i < sh; i++) { 
                 %>
                     <tr>
+                        <td><input type="checkbox" name="checkboxItem" value="<%=i %>"></td>
                         <td>
                             <%= g.ds.get(i).getTenhang() %>
                         </td>
@@ -63,6 +70,13 @@
                         </td>
                         <td>
                             <%= g.ds.get(i).getThanhtien() %>
+                        </td>
+                        <td>
+                        	<form method="post" action="Xoa.jsp?index=<%= i %>">
+                            	<button name="btn-delete-only">
+                                Xóa
+                            	</button>
+                            </form>
                         </td>
                     </tr>
                 <%
