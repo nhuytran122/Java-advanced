@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap Example</title>
+    <title>Trang chủ</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link

@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
 
       <% } else { %>
       <li>
-        <a href="login.jsp"
+        <a href="login.jsp" 
           ><span class="glyphicon glyphicon-user"></span> Login</a
         >
       </li>
