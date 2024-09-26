@@ -49,6 +49,8 @@
 			Xóa tất cả
         </button>
     </form>
+    
+    <form method="post" action="Xoa.jsp">
             <table border='1' width='100%'>
                 <%
                     for (int i = 0; i < sh; i++) { 
@@ -82,7 +84,9 @@
                 <%
                     } 
                 %>
+                <button type="submit" name="btn-delete-selected">Xóa hàng đã chọn</button>
             </table>
+      </form>
             <div align='right'>Tong tien: <%= g.Tongtien() %></div>
     <%
         }
