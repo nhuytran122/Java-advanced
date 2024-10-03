@@ -1,95 +1,114 @@
-<%@page import="Tam.CGioHang"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page import="Tam.CGioHang" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="vi">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Mua hàng</title>
+    <meta charset="UTF-8">
+    <title>Giỏ Hàng</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <form method='post' action='DatHang.jsp'>
-        Ten hang: <input type='text' name='txtth'><br>
-        Gia: <input type='text' name='txtgia'><br>
-        So luong: <input type='text' name='txtsl'><br>
-        <input type='submit' name='un1' value='Dat Hang'>
-    </form>
-
-    <h2>Gio hang</h2>
-    <%
-        String th = request.getParameter("txtth");
-        String gia = request.getParameter("txtgia");
-        String sl = request.getParameter("txtsl");
+    <div class="container mt-5">
+        <h2 class="text-center">Giỏ Hàng</h2>
         
-        if (th != null && gia != null && sl != null) {
-            CGioHang g = new CGioHang();
+        <form method='post' action='DatHang.jsp' class="mb-4">
+            <div class="form-group">
+                <label for="txtth">Tên hàng:</label>
+                <input type='text' id="txtth" name='txtth' class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="txtgia">Giá:</label>
+                <input type='number' id="txtgia" name='txtgia' class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="txtsl">Số lượng:</label>
+                <input type='number' id="txtsl" name='txtsl' class="form-control" required>
+            </div>
+            <button type='submit' name='un1' class='btn btn-primary'>Đặt hàng</button>
+        </form>
+
+        <h3>Danh Sách Sản Phẩm</h3>
+        <%
+            String th = request.getParameter("txtth");
+            String gia = request.getParameter("txtgia");
+            String sl = request.getParameter("txtsl");
             
-            // Neu mua hang lan dau
-            if (session.getAttribute("gh") == null) {
-                session.setAttribute("gh", g); // Tao gio
+            if (th != null && gia != null && sl != null) {
+                CGioHang g = new CGioHang();
+                
+                // Nếu mua hàng lần đầu
+                if (session.getAttribute("gh") == null) {
+                    session.setAttribute("gh", g); // Tạo giỏ hàng
+                }
+                
+                // Gán session: gh vào biến g
+                g = (CGioHang) session.getAttribute("gh");
+                
+                // Thêm hàng vào biến g
+                g.Them(th, Integer.parseInt(gia), Integer.parseInt(sl));
+                
+                // Lưu biến vào session
+                session.setAttribute("gh", g);
             }
             
-            // Gian session: gh vao bien: g
-            g = (CGioHang) session.getAttribute("gh");
-            
-            // Them hang vao bien: g
-            g.Them(th, Integer.parseInt(gia), Integer.parseInt(sl));
-            
-            // Luu bien vao session
-            session.setAttribute("gh", g);
-        }
-
-        // Hien thi do trong session: gh
-        if (session.getAttribute("gh") != null) {
+            // Hiển thị nội dung trong session: gh
             CGioHang g = (CGioHang) session.getAttribute("gh");
-            int sh = g.ds.size();
-    %>
-    <form method="post" action="Xoa.jsp" style="text-align: right; margin-bottom: 10px;">
-		<button name="btn-delete-all" >
-			Xóa tất cả
-        </button>
-    </form>
-    
-    <form method="post" action="Xoa.jsp">
-            <table border='1' width='100%'>
-                <%
-                    for (int i = 0; i < sh; i++) { 
-                %>
-                    <tr>
-                        <td><input type="checkbox" name="checkboxItem" value="<%=i %>"></td>
-                        <td>
-                            <%= g.ds.get(i).getTenhang() %>
-                        </td>
-                        <td>
-                            <%= g.ds.get(i).getGia() %>
-                        </td>
-                        <td>
-                            <%= g.ds.get(i).getSoluong() %>
-                            <form method='post' action='Sua.jsp?th=<%= g.ds.get(i).getTenhang() %>'>
-                                <input type='text' name='txtsua'>
-                                <input type='submit' name='tt' value='Sua'>
-                            </form>
-                        </td>
-                        <td>
-                            <%= g.ds.get(i).getThanhtien() %>
-                        </td>
-                        <td>
-                        	<form method="post" action="Xoa.jsp?index=<%= i %>">
-                            	<button name="btn-delete-only">
-                                Xóa
-                            	</button>
-                            </form>
-                        </td>
-                    </tr>
-                <%
-                    } 
-                %>
-                <button type="submit" name="btn-delete-selected">Xóa hàng đã chọn</button>
-            </table>
-      </form>
-            <div align='right'>Tong tien: <%= g.Tongtien() %></div>
-    <%
-        }
-    %>
+            if (g != null) {
+                int sh = g.ds.size();
+        %>
+                <form method="post" action="CapNhat.jsp">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Tên Hàng</th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Số Lượng</th>
+                                <th scope="col">Thành Tiền</th>
+                                <th scope="col">Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (int i = 0; i < sh; i++) { %>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="selectedItems" value="<%= g.ds.get(i).getTenhang() %>">
+                                    </td>
+                                    <td><%= g.ds.get(i).getTenhang() %></td>
+                                    <td><%= g.ds.get(i).getGia() %></td>
+                                    <td>
+                                        <input type="number" name="newQuantity" value="<%= g.ds.get(i).getSoluong() %>" class="form-control" size="5">
+                                        <input type="hidden" name="tenHang" value="<%= g.ds.get(i).getTenhang() %>">
+                                    </td>
+                                    <td><%= g.ds.get(i).getThanhtien() %></td>
+                                    <td>
+                                        <button type="submit" name="action" value="update-<%= g.ds.get(i).getTenhang() %>" class="btn btn-warning btn-sm">Cập nhật</button>
+                                        <button type="submit" name="action" value="delete-<%= g.ds.get(i).getTenhang() %>" class="btn btn-danger btn-sm">Xóa</button>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+
+                    <div class="text-right">
+                        <strong>Tổng tiền: <%= g.Tongtien() %></strong>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" name="action" value="deleteSelected" class="btn btn-danger">Xóa đã chọn</button>
+                        <button type="submit" name="action" value="deleteAll" class="btn btn-danger">Xóa tất cả</button>
+                    </div>
+                </form>
+        <% 
+            } else { 
+        %>
+                <p>Giỏ hàng trống.</p>
+        <% 
+            } 
+        %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ public class CGioHang {
 	public List<Hang> ds = new ArrayList<Hang>();
 	public void Them(String th, int gia, int sl){
 		int n = ds.size();
-		for(int i=0; i<n; i++){
+		for(int i = 0; i<n; i++){
 			if(ds.get(i).getTenhang().toLowerCase().trim().equals(th.toLowerCase().trim())){
 				int slt = ds.get(i).getSoluong() + sl;
 				ds.get(i).setSoluong(slt);
@@ -37,6 +37,15 @@ public class CGioHang {
                 int g = h.getGia();
                 int tt = slMoi * g;
                 h.setThanhtien(tt);
+                break;
+            }
+        }
+    }
+    
+    public void Xoa(String tenHang) {
+        for (int i = 0; i < ds.size(); i++) {
+            if (ds.get(i).getTenhang().equals(tenHang)) {
+                ds.remove(i);
                 break;
             }
         }
