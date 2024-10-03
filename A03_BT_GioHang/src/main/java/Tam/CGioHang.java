@@ -29,4 +29,16 @@ public class CGioHang {
 		}
 		return s;
 	}
+	
+    public void CapNhatSoLuong(String th, int slMoi) {
+        for (Hang h : ds) {
+            if (h.getTenhang().toLowerCase().trim().equals(th.toLowerCase().trim())) {
+                h.setSoluong(slMoi);
+                int g = h.getGia();
+                int tt = slMoi * g;
+                h.setThanhtien(tt);
+                break;
+            }
+        }
+    }
 }

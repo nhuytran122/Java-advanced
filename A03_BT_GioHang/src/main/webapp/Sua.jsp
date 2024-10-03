@@ -15,9 +15,11 @@ charset=ISO-8859-1"
         CGioHang g = (CGioHang)session.getAttribute("gh"); 
         String th = request.getParameter("th"); 
         String sl = request.getParameter("txtsua");
-        g.Them(th, 111,Integer.parseInt(sl)); 
+        //g.Them(th, 111,Integer.parseInt(sl)); 
+        g.CapNhatSoLuong(th, Integer.parseInt(sl));
         session.setAttribute("gh", g);
-        response.sendRedirect("DatHang.jsp"); 
+        response.sendRedirect("DatHang.jsp");
+        
     %>
   </body>
 </html>
