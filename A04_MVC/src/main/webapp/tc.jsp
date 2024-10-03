@@ -42,9 +42,12 @@ pageEncoding="UTF-8"%>
                         sachbo sbo = new sachbo();
                         ArrayList<sach> ds = sbo.getSach();
                         String ml = request.getParameter("ml");
+                        String keySearch = request.getParameter("txtSearch");
                         if(ml != null){
                             ds = sbo.TimMa(ml);
                         }
+                        if(keySearch != null)
+                        	ds = sbo.Tim(keySearch);
                         int n = ds.size();
                         for(int i = 0; i < n; i++){
                             sach s = ds.get(i);
@@ -66,8 +69,13 @@ pageEncoding="UTF-8"%>
             <div class="col-sm-2">
                 <h5>Tìm kiếm</h5>
                 <hr>
-                <input type="text" name = "txtSearch" class="form-control" placeholder="Tìm kiếm sách...">
-                <button class="btn bg-primary-subtle mt-2">Tìm kiếm</button>
+                <form action="tc.jsp" method="post">
+                	<input type="text" name = "txtSearch" class="form-control" 
+                		placeholder="Tìm kiếm sách..." 
+                		value="<%= keySearch != null ? keySearch : "" %>"> 
+                	<button type="submit" class="btn bg-primary-subtle mt-2">Tìm kiếm</button>
+				</form>
+                
             </div>
         </div>
     </div>
