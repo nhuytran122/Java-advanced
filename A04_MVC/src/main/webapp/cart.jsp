@@ -72,14 +72,17 @@
 						            <td><%= s.getTensach() %></td>
 						            <td><%= s.getGia() %></td>
 						            <td>
-						                <input type="number" name="newQuantity_<%= i %>" value="<%= g.ds.get(i).getSoluong() %>" class="form-control" size="5">
-						                <input type="hidden" name="tenHang_<%= i %>" value="<%= s.getTensach() %>">
-						            </td>
-						            <td><%= g.ds.get(i).getThanhtien() %></td>
-						            <td>
-						                <button type="submit" name="action" value="update-<%= s.getTensach() %>" class="btn btn-warning btn-sm">Cập nhật</button>
-						                <button type="submit" name="action" value="delete-<%= s.getTensach() %>" class="btn btn-danger btn-sm">Xóa</button>
-						            </td>
+									    <input type="number" name="newQuantity_<%= s.getTensach() %>" 
+									    value="<%= g.ds.get(i).getSoluong() %>" class="form-control" size="5">
+									    <input type="hidden" name="tenHang" value="<%= s.getTensach() %>">
+									</td>
+									<td>
+									    <button type="submit" name="action" value="update-<%= s.getTensach() %>" 
+									    	class="btn btn-warning btn-sm">Cập nhật</button>
+									    <button type="submit" name="action" value="delete-<%= s.getTensach() %>" 
+									    	class="btn btn-danger btn-sm">Xóa</button>
+									</td>
+
 						        </tr>
 						    <% } %>
 						</tbody>
