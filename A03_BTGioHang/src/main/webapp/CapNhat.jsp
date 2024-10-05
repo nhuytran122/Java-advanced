@@ -9,8 +9,6 @@
 <body>
     <%
         CGioHang g = (CGioHang) session.getAttribute("gh");
-        String tenHang = request.getParameter("tenHang");
-        String newQuantityStr = request.getParameter("newQuantity");
         String action = request.getParameter("action");
 
         if (g != null) {
@@ -31,12 +29,17 @@
                 }
             }
         	
-            else if (tenHang != null && newQuantityStr != null) {
-                try {
-                    int newQuantity = Integer.parseInt(newQuantityStr);
-                    g.CapNhatSoLuong(tenHang, newQuantity);  
-                } catch (NumberFormatException e) {
-                    out.println("Số lượng không hợp lệ!");
+            else if (action.startsWith("update-")) {
+                String tenHang = action.substring(7);
+                String newQuantityStr = request.getParameter("newQuantity_" + tenHang); 
+
+                if (newQuantityStr != null) {
+                    try {
+                        int newQuantity = Integer.parseInt(newQuantityStr);
+                        g.CapNhatSoLuong(tenHang, newQuantity);
+                    } catch (NumberFormatException e) {
+                        out.println("Số lượng không hợp lệ!");
+                    }
                 }
             }
         }

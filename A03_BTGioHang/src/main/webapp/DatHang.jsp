@@ -77,7 +77,8 @@
                                     <td><%= g.ds.get(i).getTenhang() %></td>
                                     <td><%= g.ds.get(i).getGia() %></td>
                                     <td>
-                                        <input type="number" name="newQuantity" value="<%= g.ds.get(i).getSoluong() %>" class="form-control" size="5">
+                                        <input type="number" name="newQuantity_<%= g.ds.get(i).getTenhang() %>" 
+                                        	value="<%= g.ds.get(i).getSoluong() %>" class="form-control" size="5">
                                         <input type="hidden" name="tenHang" value="<%= g.ds.get(i).getTenhang() %>">
                                     </td>
                                     <td><%= g.ds.get(i).getThanhtien() %></td>
