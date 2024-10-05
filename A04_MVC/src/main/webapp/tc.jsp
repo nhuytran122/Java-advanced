@@ -36,44 +36,56 @@ pageEncoding="UTF-8"%>
             </div>
 
             <div class="col-sm-8">
-                <h5 class="mb-3">Sách</h5>
-                <div class="row">
-                    <% 
-                        sachbo sbo = new sachbo();
-                        ArrayList<sach> ds = sbo.getSach();
-                        String ml = request.getParameter("ml");
-                        String keySearch = request.getParameter("txtSearch");
-                        if(ml != null){
-                            ds = sbo.TimMa(ml);
-                        }
-                        if(keySearch != null)
-                        	ds = sbo.Tim(keySearch);
-                        int n = ds.size();
-                        for(int i = 0; i < n; i++){
-                            sach s = ds.get(i);
-                    %>
-                    <div class="col-sm-4 mb-4">
-                        <div class="card">
-                            <img src="<%= s.getAnh() %>" class="card-img-top" style="height: 264px;" alt="<%= s.getTensach() %>">
-                            <div class="card-body">
-                                <h5 class="card-title text-center"><%= s.getTensach() %></h5>
-                                <p class="card-text text-center">Giá bán: <%= s.getGia() %> đ</p>
-
-	                                <form action="<%= session.getAttribute("userId") != null ? "cart.jsp" : "login.jsp" %>" method="post">
-				                	<input type="hidden"  name = "bookId" value = "<%= s.getMasach() %>">
-				                	<div class="d-flex justify-content-center">
-									    <button type="submit" class="btn bg-info">
-									        <i class="bi bi-cart-plus me-2"></i>
-									        Thêm vào giỏ
-									    </button>
-									</div>
-								</form>
-                            </div>
-                        </div>
-                    </div>
-                    <% } %>
-                </div>
-            </div>
+			    <h5 class="mb-3">Sách</h5>
+			    <div class="row">
+			        <% 
+			            sachbo sbo = new sachbo();
+			            ArrayList<sach> ds = sbo.getSach();
+			            String ml = request.getParameter("ml");
+			            String keySearch = request.getParameter("txtSearch");
+			
+			            if(ml != null){
+			                ds = sbo.TimMa(ml);
+			            }
+			            if(keySearch != null){
+			                ds = sbo.Tim(keySearch);
+			            }
+			
+			            int n = ds.size();
+			            
+			            if (n == 0) {
+			        %>
+			                <p class="text-center text-danger">Không tìm thấy sản phẩm nào.</p>
+			        <% 
+			            } else { 
+			                for(int i = 0; i < n; i++){
+			                    sach s = ds.get(i);
+			        %>
+			            <div class="col-sm-4 mb-4">
+			                <div class="card">
+			                    <img src="<%= s.getAnh() %>" class="card-img-top" style="height: 264px;" alt="<%= s.getTensach() %>">
+			                    <div class="card-body">
+			                        <h5 class="card-title text-center"><%= s.getTensach() %></h5>
+			                        <p class="card-text text-center">Giá bán: <%= s.getGia() %> đ</p>
+			
+			                        <form action="<%= session.getAttribute("userId") != null ? "cart.jsp" : "login.jsp" %>" method="post">
+			                            <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
+			                            <div class="d-flex justify-content-center">
+			                                <button type="submit" class="btn bg-info">
+			                                    <i class="bi bi-cart-plus me-2"></i>
+			                                    Thêm vào giỏ
+			                                </button>
+			                            </div>
+			                        </form>
+			                    </div>
+			                </div>
+			            </div>
+			        <% 
+			                }
+			            } 
+			        %>
+			    </div>
+			</div>
 
             <div class="col-sm-2">
                 <h5>Tìm kiếm</h5>
