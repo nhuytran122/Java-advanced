@@ -32,4 +32,15 @@ public class sachbo {
 		}
 		return tam;
 	}
+	
+	public sach TimTheoId(String id){
+		ArrayList<sach> dstmp = sdao.getSach();
+		for(sach s : dstmp) {
+			if(s.getMasach().equals(id)) {
+				return s;
+			}
+		}
+		return null;
+	}
+	
 }

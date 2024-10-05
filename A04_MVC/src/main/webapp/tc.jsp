@@ -56,9 +56,18 @@ pageEncoding="UTF-8"%>
                         <div class="card">
                             <img src="<%= s.getAnh() %>" class="card-img-top" style="height: 264px;" alt="<%= s.getTensach() %>">
                             <div class="card-body">
-                                <h5 class="card-title"><%= s.getTensach() %></h5>
-                                <p class="card-text"><%= s.getGia() %> VND</p>
-                                <a href="#" class="btn bg-info"> <i class="bi bi-cart-plus"></i> Mua ngay</a>
+                                <h5 class="card-title text-center"><%= s.getTensach() %></h5>
+                                <p class="card-text text-center">Giá bán: <%= s.getGia() %> đ</p>
+
+	                                <form action="<%= session.getAttribute("userId") != null ? "cart.jsp" : "login.jsp" %>" method="post">
+				                	<input type="hidden"  name = "bookId" value = "<%= s.getMasach() %>">
+				                	<div class="d-flex justify-content-center">
+									    <button type="submit" class="btn bg-info">
+									        <i class="bi bi-cart-plus me-2"></i>
+									        Thêm vào giỏ
+									    </button>
+									</div>
+								</form>
                             </div>
                         </div>
                     </div>

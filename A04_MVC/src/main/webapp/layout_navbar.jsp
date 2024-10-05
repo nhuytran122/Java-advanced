@@ -29,15 +29,19 @@ pageEncoding="UTF-8"%>
       <ul class="navbar-nav ms-auto">
         <% if (session.getAttribute("userId") != null) { %>
         <li class="nav-item d-flex align-items-center">
+          <i class="bi bi-cart4" style="color: white; "></i>
+          <a class="nav-link" href="cart.jsp">Giỏ hàng</a>
+        </li>
+        <li class="nav-item d-flex align-items-center">
           <span class="nav-link">Xin chào, <%= session.getAttribute("userId") %></span>
         </li>
         <li class="nav-item d-flex align-items-center">
-          <i class="bi bi-box-arrow-right" style="color: white; margin-right: 5px; margin-left: 5px;"></i>
+          <i class="bi bi-box-arrow-right" style="color: white; margin-left: 5px;"></i>
           <a class="nav-link" href="logout.jsp">Đăng xuất</a>
         </li>
         <% } else { %>
         <li class="nav-item d-flex align-items-center">
-          <i class="bi bi-person-circle" style="color: white; margin-right: 5px;"></i>
+          <i class="bi bi-person-circle" style="color: white;"></i>
           <a class="nav-link" href="login.jsp">Đăng nhập</a>
         </li>
         <% } %>
