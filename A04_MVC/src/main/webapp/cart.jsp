@@ -53,12 +53,12 @@
                     <table class="table table-hover">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Tên Hàng</th>
-                                <th scope="col">Giá</th>
-                                <th scope="col">Số Lượng</th>
-                                <th scope="col">Thành Tiền</th>
-                                <th scope="col">Thao Tác</th>
+                                <th class="col-1">Chọn</th>
+                                <th class="col-3">Tên Hàng</th>
+                                <th class="col-2">Giá</th>
+                                <th class="col-2">Số Lượng</th>
+                                <th class="col-2">Thành Tiền</th>
+                                <th class="col-2">Thao Tác</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,11 +71,13 @@
 						            </td>
 						            <td><%= s.getTensach() %></td>
 						            <td><%= s.getGia() %></td>
+						            
 						            <td>
 									    <input type="number" name="newQuantity_<%= s.getTensach() %>" 
-									    value="<%= g.ds.get(i).getSoluong() %>" class="form-control" size="5">
+									    value="<%= g.ds.get(i).getSoluong() %>" class="form-control">
 									    <input type="hidden" name="tenHang" value="<%= s.getTensach() %>">
 									</td>
+									<td><%= g.ds.get(i).getThanhtien() %></td>
 									<td>
 									    <button type="submit" name="action" value="update-<%= s.getTensach() %>" 
 									    	class="btn btn-warning btn-sm">Cập nhật</button>
