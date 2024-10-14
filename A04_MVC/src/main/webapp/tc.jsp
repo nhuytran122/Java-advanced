@@ -1,8 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="sachmodal.sachbo"%>
 <%@page import="sachmodal.sach"%>
-<%@page import="loaimodal.loai"%>
-<%@page import="loaimodal.loaibo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,24 +15,11 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-    <%@ include file="layout_navbar.jsp" %>
+    <%@ include file="layout/layout_navbar.jsp" %>
     <div class="container mt-3">
         <div class="row">
-            <div class="col-sm-2">
-                <h5>Danh mục</h5>
-                <hr>
-                <div class="list-group">
-                    <% 
-                        loaibo lbo = new loaibo();
-                        for(loai l : lbo.getLoai()){
-                    %>
-                        <a href="tc.jsp?ml=<%=l.getMaloai()%>" class="list-group-item list-group-item-action mb-1">
-                            <%= l.getTenloai() %>
-                        </a>
-                    <% } %>
-                </div>
-            </div>
-
+            <%@ include file="layout/layout_danhmuc.jsp" %>
+            
             <div class="col-sm-8">
 			    <h5 class="mb-3">Sách</h5>
 			    <div class="row">
@@ -87,17 +72,7 @@ pageEncoding="UTF-8"%>
 			    </div>
 			</div>
 
-            <div class="col-sm-2">
-                <h5>Tìm kiếm</h5>
-                <hr>
-                <form action="tc.jsp" method="post">
-                	<input type="text" name = "txtSearch" class="form-control" 
-                		placeholder="Tìm kiếm sách..." 
-                		value="<%= keySearch != null ? keySearch : "" %>"> 
-                	<button type="submit" class="btn bg-primary-subtle mt-2">Tìm kiếm</button>
-				</form>
-                
-            </div>
+            <%@ include file="layout/layout_timkiem.jsp" %> <!-- Right side: Tìm kiếm -->
         </div>
     </div>
 </body>

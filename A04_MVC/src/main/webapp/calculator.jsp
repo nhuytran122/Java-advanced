@@ -47,7 +47,7 @@
 				out.println("Chưa nhập a, b");
 		}	
 	%>
-	<%@ include file="layout_navbar.jsp" %>
+	<%@ include file="layout/layout_navbar.jsp" %>
   
 	<form action="calculator.jsp" method="post">
 	    a = <input type="number" name = "txta" value = "<%= tmpa %>"> <br>
