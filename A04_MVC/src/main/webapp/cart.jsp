@@ -1,4 +1,4 @@
-<%@page import="cartmodal.CGioHang"%>
+<%@page import="cartmodal.GioHangBo"%>
 <%@page import="cartmodal.Hang"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="sachmodal.sachbo"%>
@@ -25,13 +25,13 @@
 			if(session.getAttribute("userId") == null){
 				response.sendRedirect("tc.jsp");
 			}
-			CGioHang g = (CGioHang) session.getAttribute("gh");
+			GioHangBo g = (GioHangBo) session.getAttribute("gh");
 		
 		    String masach = request.getParameter("bookId");
 		    
 		 	// Nếu mua hàng lần đầu
             if (g == null) {
-                g = new CGioHang();
+                g = new GioHangBo();
                 session.setAttribute("gh", g); 
             }
 	        
@@ -67,21 +67,21 @@
 						    %>
 						        <tr>
 						            <td>
-						                <input type="checkbox" name="selectedItems" value="<%= s.getTensach() %>">
+						                <input type="checkbox" name="selectedItems" value="<%= s.getMasach() %>">
 						            </td>
 						            <td><%= s.getTensach() %></td>
 						            <td><%= s.getGia() %></td>
 						            
 						            <td>
-									    <input type="number" name="newQuantity_<%= s.getTensach() %>" 
+									    <input type="number" name="newQuantity_<%= s.getMasach() %>" 
 									    value="<%= g.ds.get(i).getSoluong() %>" class="form-control">
-									    <input type="hidden" name="tenHang" value="<%= s.getTensach() %>">
+									    <input type="hidden" name="maSach" value="<%= s.getMasach() %>">
 									</td>
 									<td><%= g.ds.get(i).getThanhtien() %></td>
 									<td>
-									    <button type="submit" name="action" value="update-<%= s.getTensach() %>" 
+									    <button type="submit" name="action" value="update-<%= s.getMasach() %>" 
 									    	class="btn btn-warning btn-sm">Cập nhật</button>
-									    <button type="submit" name="action" value="delete-<%= s.getTensach() %>" 
+									    <button type="submit" name="action" value="delete-<%= s.getMasach() %>" 
 									    	class="btn btn-danger btn-sm">Xóa</button>
 									</td>
 

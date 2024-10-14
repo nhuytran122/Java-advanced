@@ -1,4 +1,4 @@
-<%@page import="cartmodal.CGioHang"%>
+<%@page import="cartmodal.GioHangBo"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,7 @@
 </head>
 <body>
     <%
-        CGioHang g = (CGioHang) session.getAttribute("gh");
+    	GioHangBo g = (GioHangBo) session.getAttribute("gh");
         String action = request.getParameter("action");
 
         if (g != null) {
@@ -24,17 +24,17 @@
                 }
             } 
             else if (action.startsWith("delete-")) {
-                String namePr = action.substring(7);
-                g.Xoa(namePr);
+                String masach = action.substring(7);
+                g.Xoa(masach);
             } 
             else if (action.startsWith("update-")) {
-                String tenHang = action.substring(7);
-                String newQuantityStr = request.getParameter("newQuantity_" + tenHang); 
+                String masach = action.substring(7);
+                String newQuantityStr = request.getParameter("newQuantity_" + masach); 
 
                 if (newQuantityStr != null) {
                     try {
                         int newQuantity = Integer.parseInt(newQuantityStr);
-                        g.CapNhatSoLuong(tenHang, newQuantity);
+                        g.CapNhatSoLuong(masach, newQuantity);
                     } catch (NumberFormatException e) {
                         out.println("Số lượng không hợp lệ!");
                     }
