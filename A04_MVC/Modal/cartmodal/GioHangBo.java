@@ -28,7 +28,7 @@ public class GioHangBo {
 	public long Tongtien(){
 		long s = 0;
 		for(Hang h : ds){
-			s += s + h.getThanhtien();
+			s += h.getThanhtien();
 		}
 		return s;
 	}

@@ -18,8 +18,8 @@
             else if (action.equals("deleteSelected")) {
                 String[] selectedItems = request.getParameterValues("selectedItems");
                 if (selectedItems != null) {
-                    for (String item : selectedItems) {
-                        g.Xoa(item);
+                    for (String masach : selectedItems) {
+                        g.Xoa(masach);
                     }
                 }
             } 
@@ -29,15 +29,11 @@
             } 
             else if (action.startsWith("update-")) {
                 String masach = action.substring(7);
-                String newQuantityStr = request.getParameter("newQuantity_" + masach); 
+                String newQuantityStr = request.getParameter("newQuantity-" + masach); 
 
                 if (newQuantityStr != null) {
-                    try {
-                        int newQuantity = Integer.parseInt(newQuantityStr);
-                        g.CapNhatSoLuong(masach, newQuantity);
-                    } catch (NumberFormatException e) {
-                        out.println("Số lượng không hợp lệ!");
-                    }
+	                int newQuantity = Integer.parseInt(newQuantityStr);
+	                g.CapNhatSoLuong(masach, newQuantity);
                 }
             }
         }
