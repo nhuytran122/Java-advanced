@@ -7,22 +7,12 @@ pageEncoding="UTF-8"%>
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">        
         <li class="nav-item">
-          <a class="nav-link" href="calculator.jsp">Máy tính</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Trang 1
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Trang 1-1</a></li>
-            <li><a class="dropdown-item" href="#">Trang 1-2</a></li>
-            <li><a class="dropdown-item" href="#">Trang 1-3</a></li>
-          </ul>
+          <a class="nav-link" href="xacnhan.jsp">Xác nhận đặt hàng</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Trang 2</a>
+          <a class="nav-link" href="lichsumuahang.jsp">Lịch sử mua hàng</a>
         </li>
       </ul>
       
@@ -30,7 +20,7 @@ pageEncoding="UTF-8"%>
         <% if (session.getAttribute("userId") != null) { %>
         <li class="nav-item d-flex align-items-center">
           <i class="bi bi-cart4" style="color: white; "></i>
-          <a class="nav-link" href="cart.jsp">Giỏ hàng</a>
+          <a class="nav-link" href="cart.jsp">Giỏ hàng(0)</a>
         </li>
         <li class="nav-item d-flex align-items-center">
           <span class="nav-link">Xin chào, <%= session.getAttribute("userId") %></span>
