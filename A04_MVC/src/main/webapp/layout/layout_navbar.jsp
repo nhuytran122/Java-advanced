@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
         <% if (session.getAttribute("userId") != null) { %>
         <li class="nav-item d-flex align-items-center">
           <i class="bi bi-cart4" style="color: white; "></i>
-          <a class="nav-link" href="cart.jsp">Giỏ hàng(0)</a>
+          <a class="nav-link" href="cart.jsp">Giỏ hàng (0)</a>
         </li>
         <li class="nav-item d-flex align-items-center">
           <span class="nav-link">Xin chào, <%= session.getAttribute("userId") %></span>
