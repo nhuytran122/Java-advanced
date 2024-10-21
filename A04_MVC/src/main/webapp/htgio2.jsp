@@ -80,10 +80,15 @@
                                     	  
                                     </td>
                                     <td><%= hang.getThanhtien() %></td>
-                                    <td>
-                                    	<button type="submit" name="butsuasl" value="<%=sachId%>" class="btn btn-link"> Sửa </button>  
-                                        <a href="xoasua.jsp?msxoa=<%=sachId %>">Xóa</a>      
-                                    </td>
+									<td>
+									    <button type="submit" name="butsuasl" value="<%=sachId%>" class="btn btn-warning btn-sm"> 
+									        <i class="bi bi-pencil"></i> Sửa 
+									    </button>  
+									    <a href="xoasua.jsp?msxoa=<%=sachId %>" class="btn btn-danger btn-sm">
+									        <i class="bi bi-trash"></i> Xóa
+									    </a>      
+									</td>
+
                                 </tr>
                             <% } %>
                         </tbody>

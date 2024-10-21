@@ -9,34 +9,29 @@
 <body>
     <%
     	GioHangBo g = (GioHangBo) session.getAttribute("gh");
-        String action = request.getParameter("action");
-
-        if (g != null) {
-            if (action.equals("deleteAll")) {
-                g.ds.clear();
-            } 
-            else if (action.equals("deleteSelected")) {
-                String[] selectedItems = request.getParameterValues("selectedItems");
-                if (selectedItems != null) {
-                    for (String masach : selectedItems) {
-                        g.Xoa(masach);
-                    }
-                }
-            } 
-            else if (action.startsWith("delete-")) {
-                String masach = action.substring(7);
-                g.Xoa(masach);
-            } 
-            else if (action.startsWith("update-")) {
-                String masach = action.substring(7);
-                String newQuantityStr = request.getParameter("newQuantity-" + masach); 
-
-                if (newQuantityStr != null) {
-	                int newQuantity = Integer.parseInt(newQuantityStr);
-	                g.CapNhatSoLuong(masach, newQuantity);
+		if(request.getParameter("deleteSelected") != null){
+            String[] selectedItems = request.getParameterValues("selectedItems");
+            if (selectedItems != null) {
+                for (String masach : selectedItems) {
+                    g.Xoa(masach);
                 }
             }
-        }
+		}
+		
+		if(request.getParameter("btnSuaSL") != null){
+			String mssua = request.getParameter("btnSuaSL");
+			String slsua = request.getParameter(mssua);
+			g.CapNhatSoLuong(mssua, Integer.parseInt(slsua));
+		}
+		
+		if(request.getParameter("msxoa") != null){
+			String msxoa = request.getParameter("msxoa");
+			g.Xoa(msxoa);
+		}
+		
+		if(request.getParameter("deleteAll") != null){
+			g.ds.clear();
+		}
 
         session.setAttribute("gh", g);
         response.sendRedirect("cart.jsp");

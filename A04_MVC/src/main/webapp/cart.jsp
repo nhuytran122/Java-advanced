@@ -76,13 +76,17 @@
                                     <td><%= s.getTensach() %></td>
                                     <td><%= s.getGia() %></td>
                                     <td>
-                                        <input type="number" name="newQuantity-<%= sachId %>" value="<%= hang.getSoluong() %>" class="form-control" />
+                                        <input type="number" name="<%= sachId %>" value="<%= hang.getSoluong() %>" class="form-control" />
                                     </td>
                                     <td><%= hang.getThanhtien() %></td>
                                     <td>
-                                        <button type="submit" name="action" value="update-<%= sachId %>" class="btn btn-warning btn-sm">Cập nhật</button>
-                                        <button type="submit" name="action" value="delete-<%= sachId %>" class="btn btn-danger btn-sm">Xóa</button>
-                                    </td>
+									    <button type="submit" name="btnSuaSL" value="<%=sachId%>" class="btn btn-warning btn-sm"> 
+									        <i class="bi bi-pencil"></i> Sửa 
+									    </button>  
+									    <a href="capnhat.jsp?msxoa=<%=sachId %>" class="btn btn-danger btn-sm">
+									        <i class="bi bi-trash"></i> Xóa
+									    </a>      
+									</td>
                                 </tr>
                             <% } %>
                         </tbody>
@@ -93,8 +97,8 @@
                     </div>
 
                     <div class="text-end mb-3">
-                        <button type="submit" name="action" value="deleteSelected" class="btn btn-danger me-2">Xóa đã chọn</button>
-                        <button type="submit" name="action" value="deleteAll" class="btn btn-danger">Xóa tất cả</button>
+                        <button type="submit" name="deleteSelected" value="Xoa" class="btn btn-danger me-2">Xóa đã chọn</button>
+                        <button type="submit" name="deleteAll" value="deleteAll" class="btn btn-danger">Xóa tất cả</button>
                     </div>
                 </form>
 
