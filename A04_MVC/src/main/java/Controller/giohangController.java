@@ -32,10 +32,7 @@ public class giohangController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Lay loai ve
-		loaibo lbo = new loaibo();
-		//chuyen dsLoai sang cart.jsp de hien thi
-		request.setAttribute("dsLoai", lbo.getLoai());
+		Chung.getDsLoai(request);
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("userId") == null)

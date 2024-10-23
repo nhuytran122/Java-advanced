@@ -36,10 +36,7 @@ public class sachController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		//Lay loai ve
-		loaibo lbo = new loaibo();
-		//chuyen dsLoai sang tc.jsp de hien thi
-		request.setAttribute("dsLoai", lbo.getLoai());
+		Chung.getDsLoai(request);
 		
 		sachbo sbo = new sachbo();
         ArrayList<sach> ds = sbo.getSach();
