@@ -24,33 +24,14 @@
             <div class="col-sm-8">
                 <h5>Giỏ hàng</h5>
                 <% 
-                    if(session.getAttribute("userId") == null)
-                        response.sendRedirect("tc.jsp");
+                    
                     GioHangBo g = (GioHangBo) session.getAttribute("gh");
-
-                    String masach = request.getParameter("bookId");
-
-                    // Nếu mua hàng lần đầu
-                    if (g == null) {
-                        g = new GioHangBo();
-                        session.setAttribute("gh", g);
-                    }
-
-                    // Thêm hàng vào biến g
-                    // Nếu có mã sách, thêm sách vào giỏ hàng 
-                    if (masach != null) {
-                        g.Them(masach, 1);
-                    }
-
-                    // Lưu giỏ hàng vào session
-                    session.setAttribute("gh", g);
-
                     int sh = g.ds.size();
 
                     if(sh > 0){
                 %>
 
-                <form method="post" action="capnhat.jsp">
+                <form method="post" action="updategioController">
                     <table class="table table-hover">
                         <thead class="thead-light">
                             <tr>
@@ -83,7 +64,7 @@
 									    <button type="submit" name="btnSuaSL" value="<%=sachId%>" class="btn btn-warning btn-sm"> 
 									        <i class="bi bi-pencil"></i> Sửa 
 									    </button>  
-									    <a href="capnhat.jsp?msxoa=<%=sachId %>" class="btn btn-danger btn-sm">
+									    <a href="updategioController?msxoa=<%=sachId %>" class="btn btn-danger btn-sm">
 									        <i class="bi bi-trash"></i> Xóa
 									    </a>      
 									</td>

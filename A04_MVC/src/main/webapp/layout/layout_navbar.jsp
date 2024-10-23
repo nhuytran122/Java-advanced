@@ -1,5 +1,14 @@
+<%@page import="cartmodal.GioHangBo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%
+    GioHangBo cart = (GioHangBo) session.getAttribute("gh");
+    int totalItems = 0;
+    int cntPrs = 0;
+    if (cart != null) {
+    	cntPrs = cart.ds.size();
+    }
+%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="sachController">Trang chủ</a>
@@ -20,7 +29,7 @@ pageEncoding="UTF-8"%>
         <% if (session.getAttribute("userId") != null) { %>
         <li class="nav-item d-flex align-items-center">
           <i class="bi bi-cart4" style="color: white; "></i>
-          <a class="nav-link" href="cart.jsp">Giỏ hàng (0)</a>
+          <a class="nav-link" href="giohangController">Giỏ hàng (<%= cntPrs %>)</a>
         </li>
         <li class="nav-item d-flex align-items-center">
           <span class="nav-link">Xin chào, <%= session.getAttribute("userId") %></span>

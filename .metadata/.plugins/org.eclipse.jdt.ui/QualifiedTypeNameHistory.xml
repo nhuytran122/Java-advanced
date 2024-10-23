@@ -5,4 +5,6 @@
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="sachmodal.sach"/>
+    <fullyQualifiedTypeName name="cartmodal.GioHangBo"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 </qualifiedTypeNameHistroy>
