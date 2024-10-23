@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%
-  String txtLoginId = request.getParameter("loginId");
-  String txtPassword = request.getParameter("password");
-  String btnLogin = request.getParameter("btn-login");
+  String txtLoginId = (String)request.getAttribute("loginId");
+  String txtPassword = (String)request.getAttribute("password");
+  String btnLogin = (String)request.getAttribute("btn-login");
+  boolean isInvalid = (boolean)request.getAttribute("isInvalid");
 
   // lay ve un va pass
   // kiem tra chay lan dau
@@ -11,20 +12,6 @@ pageEncoding="UTF-8"%>
     // tao ra 1 session de luu un 
     // mo tc.jsp
     
-  boolean isInvalid = false; 
-
-  if (btnLogin != null) {
-      if (txtLoginId != null && txtPassword != null) {
-          if (txtLoginId.equals("abc") && txtPassword.equals("123")) {
-        	  session.setAttribute("userId", txtLoginId);
-        	  session.setAttribute("userPass", txtPassword);
-        	  
-            response.sendRedirect("tc.jsp");
-          } else {
-              isInvalid = true;
-          }
-      }
-  }
 %>
 <!DOCTYPE html>
 <html>
@@ -65,7 +52,7 @@ pageEncoding="UTF-8"%>
 
         <div class="col-md-5 bg-white p-4 border border-2 border-info">
           <h3 class="mb-4 fg-color">GIẢNG VIÊN</h3>
-          <form action="login.jsp" method="post">
+          <form action="loginController" method="post">
             <div class="mb-3">
               <label class="form-label">Tên đăng nhập:</label>
               <input

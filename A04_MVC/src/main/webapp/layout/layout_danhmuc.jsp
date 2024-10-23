@@ -6,12 +6,14 @@ pageEncoding="UTF-8"%>
 <div class="col-sm-2">
     <h5>Danh mục</h5>
     <hr>
+    <%
+	ArrayList<loai> dsLoai = (ArrayList<loai>)request.getAttribute("dsLoai");
+	%>
     <div class="list-group">
         <% 
-            loaibo lbo = new loaibo();
-            for(loai l : lbo.getLoai()){
+            for(loai l : dsLoai){
         %>
-            <a href="tc.jsp?ml=<%=l.getMaloai()%>" class="list-group-item list-group-item-action mb-1">
+            <a href="sachController?ml=<%=l.getMaloai()%>" class="list-group-item list-group-item-action mb-1">
                 <%= l.getTenloai() %>
             </a>
         <% } %>

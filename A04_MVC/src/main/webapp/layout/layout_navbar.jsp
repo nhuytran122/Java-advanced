@@ -1,28 +1,18 @@
-<%@page import="cartmodal.GioHangBo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%
-    GioHangBo cart = (GioHangBo) session.getAttribute("gh");
-
-    int totalItems = 0;
-    int cntPrs = 0;
-    if (cart != null) {
-    	cntPrs = cart.ds.size();
-    }
-%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="tc.jsp">Trang chủ</a>
+    <a class="navbar-brand" href="sachController">Trang chủ</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">        
         <li class="nav-item">
-          <a class="nav-link" href="xacnhan.jsp">Xác nhận đặt hàng</a>
+          <a class="nav-link" href="xacnhanController">Xác nhận đặt hàng</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="lichsumuahang.jsp">Lịch sử mua hàng</a>
+          <a class="nav-link" href="lichsumuahangController">Lịch sử mua hàng</a>
         </li>
       </ul>
       
@@ -30,14 +20,14 @@ pageEncoding="UTF-8"%>
         <% if (session.getAttribute("userId") != null) { %>
         <li class="nav-item d-flex align-items-center">
           <i class="bi bi-cart4" style="color: white; "></i>
-          <a class="nav-link" href="cart.jsp">Giỏ hàng (<%= cntPrs %>)</a>
+          <a class="nav-link" href="cart.jsp">Giỏ hàng (0)</a>
         </li>
         <li class="nav-item d-flex align-items-center">
           <span class="nav-link">Xin chào, <%= session.getAttribute("userId") %></span>
         </li>
         <li class="nav-item d-flex align-items-center">
           <i class="bi bi-box-arrow-right" style="color: white; margin-left: 5px;"></i>
-          <a class="nav-link" href="logout.jsp">Đăng xuất</a>
+          <a class="nav-link" href="logoutController">Đăng xuất</a>
         </li>
         <% } else { %>
 	        <li class="nav-item d-flex align-items-center">
@@ -71,7 +61,7 @@ pageEncoding="UTF-8"%>
             </div>
 
             <div class="col-md-5 bg-white p-4 border border-2 border-info">
-              <form action="login.jsp" method="post">
+              <form action="loginController" method="post">
                 <div class="mb-3">
                   <label class="form-label">Tên đăng nhập:</label>
                   <input type="text" class="form-control" name="loginId" placeholder="Mã giảng viên/Email">
@@ -95,4 +85,3 @@ pageEncoding="UTF-8"%>
     </div>
   </div>
 </div>
-

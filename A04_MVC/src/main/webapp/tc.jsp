@@ -17,6 +17,11 @@ response.setCharacterEncoding("utf-8"); %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
+<%
+ArrayList<sach> ds = (ArrayList<sach>)request.getAttribute("ds"); 
+%>
+
+
     <%@ include file="layout/layout_navbar.jsp" %>
     <div class="container mt-3">
         <div class="row">
@@ -26,17 +31,6 @@ response.setCharacterEncoding("utf-8"); %>
 			    <h5 class="mb-3">Sách</h5>
 			    <div class="row">
 			        <% 
-			            sachbo sbo = new sachbo();
-			            ArrayList<sach> ds = sbo.getSach();
-			            String ml = request.getParameter("ml");
-			            String keySearch = request.getParameter("txtSearch");
-			
-			            if(ml != null){
-			                ds = sbo.TimMa(ml);
-			            }
-			            if(keySearch != null){
-			                ds = sbo.Tim(keySearch);
-			            }
 			
 			            int n = ds.size();
 			            
@@ -55,7 +49,7 @@ response.setCharacterEncoding("utf-8"); %>
 			                        <h5 class="card-title text-center"><%= s.getTensach() %></h5>
 			                        <p class="card-text text-center">Giá bán: <%= s.getGia() %> đ</p>
 			
-			                        <form action="<%= session.getAttribute("userId") != null ? "cart.jsp" : "login.jsp" %>" method="post">
+			                        <form action="<%= session.getAttribute("userId") != null ? "giohangController" : "loginController" %>" method="post">
 			                            <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
 			                            <div class="d-flex justify-content-center">
 			                                <button type="submit" class="btn bg-info">
@@ -74,7 +68,7 @@ response.setCharacterEncoding("utf-8"); %>
 			    </div>
 			</div>
 
-            <%@ include file="layout/layout_timkiem.jsp" %> <!-- Right side: Tìm kiếm -->
+            <%@ include file="layout/layout_timkiem.jsp" %>
         </div>
     </div>
 </body>

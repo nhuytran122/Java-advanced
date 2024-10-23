@@ -5,7 +5,7 @@
 <div class="col-sm-2">
     <h5>Tìm kiếm</h5>
     <hr>
-    <form action="tc.jsp" method="post">
+    <form action="sachController" method="post">
         <input type="text" name="txtSearch" class="form-control" 
                placeholder="Tìm kiếm sách..." 
                value="<%= request.getParameter("txtSearch") != null ? request.getParameter("txtSearch") : "" %>">
