@@ -29,16 +29,10 @@ public class loginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();  
-		String txtLoginId = request.getParameter("loginId");
-		  String txtPassword = request.getParameter("password");
+		  HttpSession session = request.getSession();  
+		  String txtLoginId = request.getParameter("txtLoginId");
+		  String txtPassword = request.getParameter("txtPassword");
 		  String btnLogin = request.getParameter("btn-login");
-
-		  // lay ve un va pass
-		  // kiem tra chay lan dau
-		  // neu un = abc va pass=123 thi:
-		    // tao ra 1 session de luu un 
-		    // mo tc.jsp
 		    
 		  boolean isInvalid = false; 
 
@@ -55,8 +49,8 @@ public class loginController extends HttpServlet {
 		          }
 		      }
 		  }
-		  request.setAttribute("txtLoginId", txtLoginId);
-		  request.setAttribute("txtPassword", txtPassword);
+		  request.setAttribute("loginId", txtLoginId);
+		  request.setAttribute("password", txtPassword);
 		  request.setAttribute("isInvalid", isInvalid);
 		  
 		  RequestDispatcher rd = request.getRequestDispatcher("login.jsp");

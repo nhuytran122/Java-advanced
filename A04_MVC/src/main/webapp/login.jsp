@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%
-  String txtLoginId = (String)request.getAttribute("loginId");
-  String txtPassword = (String)request.getAttribute("password");
-  String btnLogin = (String)request.getAttribute("btn-login");
+  String loginId = (String)request.getAttribute("loginId");
+  String password = (String)request.getAttribute("password");
   boolean isInvalid = (boolean)request.getAttribute("isInvalid");
 
   // lay ve un va pass
@@ -58,9 +57,9 @@ pageEncoding="UTF-8"%>
               <input
                 type="text"
                 class="form-control"
-                name="loginId"
+                name="txtLoginId"
                 placeholder="Mã giảng viên/Email"
-                value="<%= (txtLoginId != null) ? txtLoginId : "" %>"
+                value="<%= (loginId != null) ? loginId : "" %>"
               />
             </div>
             <div class="mb-3">
@@ -68,9 +67,9 @@ pageEncoding="UTF-8"%>
               <input
                 type="password"
                 class="form-control"
-                name="password"
+                name="txtPassword"
                 placeholder="Mật khẩu"
-                value="<%= (txtPassword != null) ? txtPassword : "" %>"
+                value="<%= (password != null) ? password : "" %>"
               />
             </div>
             <% if (isInvalid) { %>

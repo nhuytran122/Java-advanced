@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
         <% } else { %>
 	        <li class="nav-item d-flex align-items-center">
 	          <i class="bi bi-person-circle" style="color: white;"></i>
-	          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</a>
+	          <a class="nav-link" href="loginController">Đăng nhập</a>
 	        </li>
         <% } %>
       </ul>
@@ -49,6 +49,7 @@ pageEncoding="UTF-8"%>
   </div>
 </nav>
 
+<!--  
 <% 
   String isInvalid = request.getParameter("isInvalid"); 
 %>
@@ -93,4 +94,4 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
   </div>
-</div>
+</div>-->

@@ -1,29 +1,24 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import sachmodal.sach;
-import sachmodal.sachbo;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class sachController
+ * Servlet implementation class logoutController
  */
-@WebServlet("/sachController")
-public class sachController extends HttpServlet {
+@WebServlet("/logoutController")
+public class logoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public sachController() {
+    public logoutController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,25 +27,10 @@ public class sachController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		request.setAttribute("dsLoai", Chung.getDsLoai());
-		
-		sachbo sbo = new sachbo();
-        ArrayList<sach> ds = sbo.getSach();
-        String ml = request.getParameter("ml");
-        String keySearch = request.getParameter("txtSearch");
-
-        if(ml != null){
-            ds = sbo.TimMa(ml);
-        }
-        if(keySearch != null){
-            ds = sbo.Tim(keySearch);
-        }
-        request.setAttribute("ds", ds);
-        
-        RequestDispatcher rd = request.getRequestDispatcher("tc.jsp");
-        rd.forward(request, response);
+		HttpSession session = request.getSession();  
+		session.removeAttribute("userId");
+		session.removeAttribute("userPass");
+		response.sendRedirect("sachController");
 	}
 
 	/**

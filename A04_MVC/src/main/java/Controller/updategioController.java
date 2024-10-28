@@ -32,7 +32,7 @@ public class updategioController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Chung.getDsLoai(request);
+		request.setAttribute("dsLoai", Chung.getDsLoai());
 		
 		HttpSession session = request.getSession();
 		GioHangBo g = (GioHangBo) session.getAttribute("gh");

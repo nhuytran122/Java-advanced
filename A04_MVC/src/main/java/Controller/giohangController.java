@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import cartmodal.GioHangBo;
-import loaimodal.loaibo;
 
 /**
  * Servlet implementation class giohangController
@@ -32,7 +31,7 @@ public class giohangController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Chung.getDsLoai(request);
+		request.setAttribute("dsLoai", Chung.getDsLoai());
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("userId") == null)

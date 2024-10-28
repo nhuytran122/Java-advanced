@@ -2,15 +2,12 @@ package Controller;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
-
 import loaimodal.loai;
 import loaimodal.loaibo;
 
 public class Chung {
-	public static void getDsLoai(HttpServletRequest request) {
+	public static ArrayList<loai> getDsLoai() {
         loaibo lbo = new loaibo();
-        ArrayList<loai> dsLoai = lbo.getLoai();
-        request.setAttribute("dsLoai", dsLoai);
+        return lbo.getLoai();
     }
 }
