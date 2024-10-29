@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class sachbo {
 	sachdao sdao = new sachdao();
 	ArrayList<sach> ds;
-	public ArrayList<sach> getSach(){
+	public ArrayList<sach> getSach() throws Exception{
 		ds =  sdao.getSach();
 		return ds;
 	}
@@ -33,7 +33,7 @@ public class sachbo {
 		return tam;
 	}
 	
-	public sach TimTheoId(String id){
+	public sach TimTheoId(String id) throws Exception{
 		ArrayList<sach> dstmp = sdao.getSach();
 		for(sach s : dstmp) {
 			if(s.getMasach().equals(id)) {

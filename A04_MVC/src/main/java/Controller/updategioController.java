@@ -32,35 +32,39 @@ public class updategioController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("dsLoai", Chung.getDsLoai());
-		
-		HttpSession session = request.getSession();
-		GioHangBo g = (GioHangBo) session.getAttribute("gh");
-		if(request.getParameter("deleteSelected") != null){
-            String[] selectedItems = request.getParameterValues("selectedItems");
-            if (selectedItems != null) {
-                for (String masach : selectedItems) {
-                    g.Xoa(masach);
-                }
-            }
-		}
-		
-		if(request.getParameter("btnSuaSL") != null){
-			String mssua = request.getParameter("btnSuaSL");
-			String slsua = request.getParameter(mssua);
-			g.CapNhatSoLuong(mssua, Integer.parseInt(slsua));
-		}
-		
-		if(request.getParameter("msxoa") != null){
-			String msxoa = request.getParameter("msxoa");
-			g.Xoa(msxoa);
-		}
-		
-		if(request.getParameter("deleteAll") != null){
-			g.ds.clear();
-		}
-		session.setAttribute("gh", g);
-		response.sendRedirect("giohangController");
+		try {
+			request.setAttribute("dsLoai", Chung.getDsLoai());
+			
+			HttpSession session = request.getSession();
+			GioHangBo g = (GioHangBo) session.getAttribute("gh");
+			if(request.getParameter("deleteSelected") != null){
+	            String[] selectedItems = request.getParameterValues("selectedItems");
+	            if (selectedItems != null) {
+	                for (String masach : selectedItems) {
+	                    g.Xoa(masach);
+	                }
+	            }
+			}
+			
+			if(request.getParameter("btnSuaSL") != null){
+				String mssua = request.getParameter("btnSuaSL");
+				String slsua = request.getParameter(mssua);
+				g.CapNhatSoLuong(mssua, Integer.parseInt(slsua));
+			}
+			
+			if(request.getParameter("msxoa") != null){
+				String msxoa = request.getParameter("msxoa");
+				g.Xoa(msxoa);
+			}
+			
+			if(request.getParameter("deleteAll") != null){
+				g.ds.clear();
+			}
+			session.setAttribute("gh", g);
+			response.sendRedirect("giohangController");
+		} catch (Exception e) {
+			// TODO: handle exception
+		} 
 	}
 
 	/**

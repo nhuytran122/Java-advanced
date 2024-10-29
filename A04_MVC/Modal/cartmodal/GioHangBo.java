@@ -8,7 +8,7 @@ public class GioHangBo {
 //Tao ra 1 mang de luu Hang
 	public ArrayList<Hang> ds = new ArrayList<Hang>();
 	
-	public void Them(String id, int sl) {
+	public void Them(String id, int sl) throws Exception {
 	    sachbo sb = new sachbo();
 	    sach book = sb.TimTheoId(id);
 	    for (Hang h : ds) {

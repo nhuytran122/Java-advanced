@@ -32,25 +32,30 @@ public class sachController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		request.setAttribute("dsLoai", Chung.getDsLoai());
-		
-		sachbo sbo = new sachbo();
-        ArrayList<sach> ds = sbo.getSach();
-        String ml = request.getParameter("ml");
-        String keySearch = request.getParameter("txtSearch");
+		try {
+			request.setCharacterEncoding("utf-8");
+			response.setCharacterEncoding("utf-8");
+			request.setAttribute("dsLoai", Chung.getDsLoai());
+			
+			sachbo sbo = new sachbo();
+	        ArrayList<sach> ds = sbo.getSach();
+	        String ml = request.getParameter("ml");
+	        String keySearch = request.getParameter("txtSearch");
 
-        if(ml != null){
-            ds = sbo.TimMa(ml);
-        }
-        if(keySearch != null){
-            ds = sbo.Tim(keySearch);
-        }
-        request.setAttribute("ds", ds);
-        
-        RequestDispatcher rd = request.getRequestDispatcher("tc.jsp");
-        rd.forward(request, response);
+	        if(ml != null){
+	            ds = sbo.TimMa(ml);
+	        }
+	        if(keySearch != null){
+	            ds = sbo.Tim(keySearch);
+	        }
+	        request.setAttribute("ds", ds);
+	        
+	        RequestDispatcher rd = request.getRequestDispatcher("tc.jsp");
+	        rd.forward(request, response);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 	/**

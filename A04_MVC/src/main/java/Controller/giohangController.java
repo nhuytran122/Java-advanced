@@ -31,33 +31,38 @@ public class giohangController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("dsLoai", Chung.getDsLoai());
+		try {
+			request.setAttribute("dsLoai", Chung.getDsLoai());
+			
+			HttpSession session = request.getSession();
+			if(session.getAttribute("userId") == null)
+	            response.sendRedirect("loginController");
+			
+	        GioHangBo g = (GioHangBo) session.getAttribute("gh");
+
+	        String masach = request.getParameter("bookId");
+
+	        // Nếu mua hàng lần đầu
+	        if (g == null) {
+	            g = new GioHangBo();
+	            session.setAttribute("gh", g);
+	        }
+
+	        // Thêm hàng vào biến g
+	        // Nếu có mã sách, thêm sách vào giỏ hàng 
+	        if (masach != null) {
+	            g.Them(masach, 1);
+	        }
+
+	        // Lưu giỏ hàng vào session
+	        session.setAttribute("gh", g);
+	        
+	        RequestDispatcher rd = request.getRequestDispatcher("cart.jsp");
+		    rd.forward(request, response);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
-		HttpSession session = request.getSession();
-		if(session.getAttribute("userId") == null)
-            response.sendRedirect("loginController");
-		
-        GioHangBo g = (GioHangBo) session.getAttribute("gh");
-
-        String masach = request.getParameter("bookId");
-
-        // Nếu mua hàng lần đầu
-        if (g == null) {
-            g = new GioHangBo();
-            session.setAttribute("gh", g);
-        }
-
-        // Thêm hàng vào biến g
-        // Nếu có mã sách, thêm sách vào giỏ hàng 
-        if (masach != null) {
-            g.Them(masach, 1);
-        }
-
-        // Lưu giỏ hàng vào session
-        session.setAttribute("gh", g);
-        
-        RequestDispatcher rd = request.getRequestDispatcher("cart.jsp");
-	    rd.forward(request, response);
 	}
 
 	/**

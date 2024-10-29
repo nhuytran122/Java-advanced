@@ -1,18 +1,32 @@
 package sachmodal;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import ketnoimodal.KetNoi;
+
 public class sachdao {
-	public ArrayList<sach> getSach(){
-		ArrayList<sach> ds = new ArrayList<sach>(); 
-		//String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai
-		ds.add(new sach("s1", "CSDL1", "Le Nam", (long)0, (long)1000, "image_sach/b1.jpg", "cntt"));
-		ds.add(new sach("s2", "Java nâng cao", "Phan Nam", (long)0, (long)1000, "image_sach/b2.jpg", "cntt"));
-		ds.add(new sach("s3", "Vật Lý", "Le Nam", (long)0, (long)1000, "image_sach/b3.jpg", "ly"));
-		ds.add(new sach("s4", "Giải tích", "Le Nam", (long)0, (long)1000, "image_sach/b4.jpg", "ly"));
-		ds.add(new sach("s5", "Đại số", "Le Nam", (long)0, (long)1000, "image_sach/b5.jpg", "ly"));
-		ds.add(new sach("s6", "Chính trị", "Le Nam", (long)0, (long)1000, "image_sach/b6.jpg", "toan"));
-		ds.add(new sach("s7", "Chất rắn", "Le Nam", (long)0, (long)1000, "image_sach/b7.jpg", "toan"));
-		return ds;
+	
+	public ArrayList<sach> getSach() throws Exception{
+			ArrayList<sach> ds = new ArrayList<sach>();
+			KetNoi kn = new KetNoi();
+			kn.ketnoi();
+			String sql = "select * from sach";
+			PreparedStatement cmd = kn.cn.prepareStatement(sql);
+			ResultSet rs = cmd.executeQuery();
+			while(rs.next()) {
+				String masach = rs.getString("masach");
+				String tensach = rs.getString("tensach");
+				String tacgia = rs.getString("tacgia");
+				Long soluong = rs.getLong("soluong");
+				Long gia = rs.getLong("gia");
+				String maloai = rs.getString("maloai");
+				String anh = rs.getString("anh");
+				ds.add(new sach(masach, tensach, tacgia, soluong, gia, anh, maloai));
+			} 
+			rs.close();
+			kn.cn.close();
+			return ds;
 	}
 }
