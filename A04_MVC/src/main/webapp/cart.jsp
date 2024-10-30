@@ -80,6 +80,7 @@
                     <div class="text-end mb-3">
                         <button type="submit" name="deleteSelected" value="Xoa" class="btn btn-danger me-2">Xóa đã chọn</button>
                         <button type="submit" name="deleteAll" value="deleteAll" class="btn btn-danger">Xóa tất cả</button>
+                        <button type="submit" name="confirm" value="confirm" class="btn btn-success">Xác nhận đặt hàng</button>
                     </div>
                 </form>
 

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import khachhangmodal.khachhangbo;
+
 /**
  * Servlet implementation class loginController
  */
@@ -29,32 +31,33 @@ public class loginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  HttpSession session = request.getSession();  
-		  String txtLoginId = request.getParameter("txtLoginId");
-		  String txtPassword = request.getParameter("txtPassword");
-		  String btnLogin = request.getParameter("btn-login");
-		    
-		  boolean isInvalid = false; 
-
-		  if (btnLogin != null) {
-		      if (txtLoginId != null && txtPassword != null) {
-		          if (txtLoginId.equals("abc") && txtPassword.equals("123")) {
-		        	  session.setAttribute("userId", txtLoginId);
-		        	  session.setAttribute("userPass", txtPassword);
-		        	  
-		        	  response.sendRedirect("sachController");
-		        	  return;
-		          } else {
-		              isInvalid = true;
-		          }
-		      }
-		  }
-		  request.setAttribute("loginId", txtLoginId);
-		  request.setAttribute("password", txtPassword);
-		  request.setAttribute("isInvalid", isInvalid);
-		  
-		  RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-	      rd.forward(request, response);
+		try {
+			HttpSession session = request.getSession();  
+			String txtLoginId = request.getParameter("txtLoginId");
+			String txtPassword = request.getParameter("txtPassword");
+			String btnLogin = request.getParameter("btn-login");
+			   
+			khachhangbo khbo = new khachhangbo();
+			boolean isInvalid = false; 
+			  
+			if (btnLogin != null) {
+				if (khbo.checkLogin(txtLoginId, txtPassword) != null) {
+			    session.setAttribute("userId", txtLoginId);
+			    session.setAttribute("userPass", txtPassword);
+			    response.sendRedirect("sachController");
+			    return;
+				} else
+					isInvalid = true;
+			}
+			request.setAttribute("loginId", txtLoginId);
+			request.setAttribute("password", txtPassword);
+			request.setAttribute("isInvalid", isInvalid);
+			  
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		    rd.forward(request, response);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	/**
