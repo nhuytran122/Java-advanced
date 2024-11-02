@@ -13,57 +13,60 @@ import javax.servlet.http.HttpServletResponse;
 import sachmodal.sach;
 import sachmodal.sachbo;
 
-/**
- * Servlet implementation class sachController
- */
 @WebServlet("/sachController")
 public class sachController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public sachController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			request.setCharacterEncoding("utf-8");
-			response.setCharacterEncoding("utf-8");
-			request.setAttribute("dsLoai", Chung.getDsLoai());
-			
-			sachbo sbo = new sachbo();
-	        ArrayList<sach> ds = sbo.getSach();
-	        String ml = request.getParameter("ml");
-	        String keySearch = request.getParameter("txtSearch");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            request.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
+            request.setAttribute("dsLoai", Chung.getDsLoai());
 
-	        if(ml != null){
-	            ds = sbo.TimMa(ml);
-	        }
-	        if(keySearch != null){
-	            ds = sbo.Tim(keySearch);
-	        }
-	        request.setAttribute("ds", ds);
-	        
-	        RequestDispatcher rd = request.getRequestDispatcher("tc.jsp");
-	        rd.forward(request, response);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-	}
+            sachbo sbo = new sachbo();
+            int page = 1;
+            int pageSize = 9;
+            String searchValue = "";
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+            if (request.getParameter("page") != null) {
+                page = Integer.parseInt(request.getParameter("page"));
+            }
+
+            if (request.getParameter("txtSearch") != null) {
+                searchValue = request.getParameter("txtSearch");
+            }
+            else if(request.getParameter("ml") != null) {
+            	searchValue = request.getParameter("ml");
+            }
+
+            ArrayList<sach> ds;
+            ds = sbo.getListSach(page, pageSize, searchValue);
+
+            int rowCount = sbo.getRowCount(searchValue);
+            
+            int pageCount = rowCount / pageSize;
+            if (rowCount % pageSize > 0) {
+                pageCount += 1;
+            }
+
+            request.setAttribute("ds", ds);
+            request.setAttribute("pageCount", pageCount);
+            request.setAttribute("currentPage", page);
+            request.setAttribute("searchKeyword", searchValue); 
+
+            RequestDispatcher rd = request.getRequestDispatcher("tc.jsp");
+            rd.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

@@ -3,8 +3,8 @@
     <fullyQualifiedTypeName name="sachmodal.sachbo"/>
     <fullyQualifiedTypeName name="cartmodal.CartDao"/>
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="sachmodal.sach"/>
     <fullyQualifiedTypeName name="cartmodal.GioHangBo"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="sachmodal.sach"/>
 </qualifiedTypeNameHistroy>
