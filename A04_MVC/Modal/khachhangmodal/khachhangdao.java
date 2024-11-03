@@ -56,8 +56,4 @@ public class khachhangdao {
 	    kn.cn.close();
 	    return kh;
 	}
-
-
-
-
 }

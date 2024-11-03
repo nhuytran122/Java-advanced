@@ -35,7 +35,7 @@ public class sachdao {
         searchValue = "%" + searchValue + "%";
         KetNoi kn = new KetNoi();
         kn.ketnoi();
-        String sql = "SELECT * FROM ("
+        /*String sql = "SELECT * FROM ("
                 + "    SELECT *, ROW_NUMBER() OVER (ORDER BY tensach) AS RowNumber "
                 + "    FROM sach "
                 + "    WHERE tensach LIKE ?  OR tacgia LIKE ? OR maloai = ?"
@@ -50,7 +50,21 @@ public class sachdao {
         cmd.setInt(5, page);            
         cmd.setInt(6, pageSize);        
         cmd.setInt(7, page);            
-        cmd.setInt(8, pageSize);        
+        cmd.setInt(8, pageSize);  */
+        String sql = "SELECT * " +
+                "FROM sach " +
+                "WHERE tensach LIKE ? OR tacgia LIKE ? OR maloai = ? " +
+                "ORDER BY tensach " +
+                "OFFSET (? - 1) * ? ROWS " +
+                "FETCH NEXT ? ROWS ONLY";
+
+	   PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	   cmd.setString(1, searchValue);            
+	   cmd.setString(2, searchValue);           
+	   cmd.setString(3, searchValue.replace("%", "")); 
+	   cmd.setInt(4, page);                      
+	   cmd.setInt(5, pageSize);                  
+	   cmd.setInt(6, pageSize);                  
 
        	ResultSet rs = cmd.executeQuery();
         while (rs.next()) {

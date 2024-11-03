@@ -54,4 +54,13 @@ public class GioHangBo {
             }
         }
     }
+    
+    public Hang getHangByMaSach(String masach) {
+    	for(Hang h : ds) {
+    		if(h.getSach().getMasach().equals(masach)) {
+    			return h;
+    		}
+    	}
+    	return null;
+    }
 }
