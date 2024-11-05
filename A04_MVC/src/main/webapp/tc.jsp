@@ -2,8 +2,6 @@
 <%@page import="sachmodal.sachbo"%>
 <%@page import="sachmodal.sach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("utf-8");
-   response.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,14 +48,17 @@ String searchKeyword = request.getParameter("txtSearch");
                                     <p class="card-text text-center">Giá bán: <%= s.getGia() %> đ</p>
 
                                     <form action="<%= session.getAttribute("userId") != null ? "giohangController" : "loginController" %>" method="post">
-                                        <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
-                                        <div class="d-flex justify-content-center">
-                                            <button type="submit" class="btn bg-info">
-                                                <i class="bi bi-cart-plus me-2"></i>
-                                                Thêm vào giỏ
-                                            </button>
-                                        </div>
-                                    </form>
+								    <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
+								    <input type="hidden" name="ts" value="<%= s.getTensach() %>">
+								    <input type="hidden" name="gia" value="<%= s.getGia() %>">
+								    <div class="d-flex justify-content-center">
+								        <button type="submit" class="btn bg-info">
+								            <i class="bi bi-cart-plus me-2"></i>
+								            Thêm vào giỏ
+								        </button>
+								    </div>
+								</form>
+
                                 </div>
                             </div>
                         </div>

@@ -42,7 +42,7 @@ public class xacnhanController extends HttpServlet {
                 
                 long maHoaDon = hdbo.themHoaDon(kh.getMakh());
                 for (Hang hang : g.ds) {
-                    cthdbo.themCTHD(hang.getSach().getMasach(), hang.getSoluong(), maHoaDon);
+                    cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maHoaDon);
                 }
 
                 g.ds.clear();
@@ -71,7 +71,6 @@ public class xacnhanController extends HttpServlet {
             rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
         }
     }
 

@@ -32,48 +32,35 @@
                         Không có lịch sử mua hàng
                     </div>
                 <% } else { %>
-                    <table class="table table-hover">
+                    <table class="table table-hover table-borderless">
                         <thead class="thead-light">
                             <tr>
                                 <th>Mã Hóa Đơn</th>
                                 <th>Ngày Mua</th>
-                                <th>Chi Tiết Sản Phẩm</th>
+                                <th>Mã Sách</th>
+                                <th>Số Lượng Mua</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% for (int i = 0; i < dsHoaDon.size(); i++) { %>
+                            <% 
+                                for (int i = 0; i < dsHoaDon.size(); i++) { 
+                                    hoadon hoaDon = dsHoaDon.get(i);
+                                    String formattedDate = new java.text.SimpleDateFormat("dd/MM/yyyy").format(hoaDon.getNgayMua());
+                                    ArrayList<CTHD> dsCTHD = dsChiTietHoaDon.get(i);
+                                    
+                                    for (int j = 0; j < dsCTHD.size(); j++) { 
+                                        CTHD cthd = dsCTHD.get(j); 
+                            %>
                                 <tr>
-                                    <td><%= dsHoaDon.get(i).getMaHoaDon() %></td>
-                                    <td><%= dsHoaDon.get(i).getNgayMua() %></td>
-                                    <td>
-                                        <table class="table table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th>Tên Sách</th>
-                                                    <th>Số Lượng</th>
-                                                    <th>Giá</th>
-                                                    <th>Thành Tiền</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% 
-                                                    ArrayList<CTHD> dsCTHD = dsChiTietHoaDon.get(i);
-                                                    for (CTHD cthd : dsCTHD) { 
-                                                        Hang hang = new Hang(cthd.getTenSach(cthd.getMaSach()), cthd.getSoLuongMua());
-                                                        hang.setSach(cthd.getTenSach(cthd.getMaSach()));
-                                                %>
-                                                    <tr>
-                                                        <td><%= hang.getSach().getTensach() %></td>
-                                                        <td><%= cthd.getSoLuongMua() %></td>
-                                                        <td><%= hang.getSach().getGia() %> đ</td>
-                                                        <td><%= hang.getThanhtien() %> đ</td>
-                                                    </tr>
-                                                <% } %>
-                                            </tbody>
-                                        </table>
-                                    </td>
+                                    <td><%= j == 0 ? hoaDon.getMaHoaDon() : "" %></td>
+                                    <td><%= j == 0 ? formattedDate : "" %></td>
+                                    <td><%= cthd.getMaSach() %></td>
+                                    <td><%= cthd.getSoLuongMua() %></td>
                                 </tr>
-                            <% } %>
+                            <% 
+                                    } 
+                                } 
+                            %>
                         </tbody>
                     </table>
                 <% } %>

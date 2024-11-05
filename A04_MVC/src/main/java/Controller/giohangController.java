@@ -32,6 +32,8 @@ public class giohangController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			request.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
 			request.setAttribute("dsLoai", Chung.getDsLoai());
 			
 			HttpSession session = request.getSession();
@@ -41,6 +43,8 @@ public class giohangController extends HttpServlet {
 	        GioHangBo g = (GioHangBo) session.getAttribute("gh");
 
 	        String masach = request.getParameter("bookId");
+	        String tensach = request.getParameter("ts");
+	     	String gia = request.getParameter("gia");
 
 	        // Nếu mua hàng lần đầu
 	        if (g == null) {
@@ -51,7 +55,7 @@ public class giohangController extends HttpServlet {
 	        // Thêm hàng vào biến g
 	        // Nếu có mã sách, thêm sách vào giỏ hàng 
 	        if (masach != null) {
-	            g.Them(masach, 1);
+	            g.Them(masach, tensach, Long.parseLong(gia));
 	        }
 
 	        // Lưu giỏ hàng vào session

@@ -46,20 +46,19 @@
                         <tbody>
                             <% 
                                 for (int i = 0; i < sh; i++) {
-                                    Hang hang = g.ds.get(i);
-                                    sach s = hang.getSach();
-                                    String sachId = hang.getSach().getMasach();
+                                    Hang h = g.ds.get(i);
+                                    String sachId = h.getMasach();
                             %>
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="selectedItems" value="<%= sachId %>" />
                                     </td>
-                                    <td><%= s.getTensach() %></td>
-                                    <td><%= s.getGia() %></td>
+                                    <td><%= h.getTensach() %></td>
+                                    <td><%= h.getGia() %></td>
                                     <td>
-                                        <input type="number" name="<%= sachId %>" value="<%= hang.getSoluong() %>" class="form-control" />
+                                        <input type="number" name="<%= sachId %>" value="<%= h.getSoluong() %>" class="form-control" />
                                     </td>
-                                    <td><%= hang.getThanhtien() %></td>
+                                    <td><%= h.getThanhtien() %></td>
                                     <td>
 									    <button type="submit" name="btnSuaSL" value="<%=sachId%>" class="btn btn-warning btn-sm"> 
 									        <i class="bi bi-pencil"></i> Sửa 

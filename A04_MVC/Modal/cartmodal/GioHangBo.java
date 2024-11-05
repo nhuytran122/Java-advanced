@@ -8,22 +8,14 @@ public class GioHangBo {
 //Tao ra 1 mang de luu Hang
 	public ArrayList<Hang> ds = new ArrayList<Hang>();
 	
-	public void Them(String id, int sl) throws Exception {
-	    sachbo sb = new sachbo();
-	    sach book = sb.TimTheoId(id);
-	    for (Hang h : ds) {
-	    	if(h.getSach().getMasach().equals(book.getMasach())) {
-	    		int slt = h.getSoluong() + sl;
-	    		h.setSoluong(slt);
-	    		Long g = h.getSach().getGia();
-	    		Long tt = slt * g;
-	    		h.setThanhtien(tt);
-	    		return;
-	    	}
-	    }
-	    Hang h = new Hang(book, sl);
-	    ds.add(h);
-	}
+	public void Them(String masach, String tensach, Long gia) {
+			 for(Hang h: ds)
+				 if(h.getMasach().equals(masach)) {
+					 h.setSoluong(h.getSoluong() + 1);
+					 return;
+				 }
+			  ds.add(new Hang(masach, tensach, gia, 1));
+		  }
 
 	public long Tongtien(){
 		long s = 0;
@@ -35,10 +27,9 @@ public class GioHangBo {
 	
     public void CapNhatSoLuong(String masach, int slMoi) {
         for (Hang h : ds) {
-        	sach s = h.getSach();
-            if (s.getMasach().equals(masach)) {
+            if (h.getMasach().equals(masach)) {
                 h.setSoluong(slMoi);
-                Long g = s.getGia();
+                Long g = h.getGia();
                 Long tt = slMoi * g;
                 h.setThanhtien(tt);
                 break;
@@ -48,7 +39,7 @@ public class GioHangBo {
     
     public void Xoa(String masach) {
         for (Hang h : ds) {
-            if (h.getSach().getMasach().equals(masach)) {
+            if (h.getMasach().equals(masach)) {
                 ds.remove(h);
                 break;
             }
@@ -57,7 +48,7 @@ public class GioHangBo {
     
     public Hang getHangByMaSach(String masach) {
     	for(Hang h : ds) {
-    		if(h.getSach().getMasach().equals(masach)) {
+    		if(h.getMasach().equals(masach)) {
     			return h;
     		}
     	}

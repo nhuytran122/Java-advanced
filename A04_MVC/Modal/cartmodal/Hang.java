@@ -1,26 +1,36 @@
 package cartmodal;
 
-import sachmodal.sach;
-
 public class Hang {
-	private sach sach;
-	private int soluong;
-	private Long thanhtien;
-	public Hang() {
+    private String masach;
+    private String tensach;
+    private Long gia;
+    private int soluong;
+    private Long thanhtien;
+	public Hang(String masach, String tensach, Long gia, int soluong) {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Hang(sachmodal.sach sach, int soluong) {
-		super();
-		this.sach = sach;
+		this.masach = masach;
+		this.tensach = tensach;
+		this.gia = gia;
 		this.soluong = soluong;
-		this.thanhtien=sach.getGia()*soluong;
+		this.thanhtien=soluong*gia;
 	}
-	public sach getSach() {
-		return sach;
+	public String getMasach() {
+		return masach;
 	}
-	public void setSach(sach sach) {
-		this.sach = sach;
+	public void setMasach(String masach) {
+		this.masach = masach;
+	}
+	public String getTensach() {
+		return tensach;
+	}
+	public void setTensach(String tensach) {
+		this.tensach = tensach;
+	}
+	public Long getGia() {
+		return gia;
+	}
+	public void setGia(Long gia) {
+		this.gia = gia;
 	}
 	public int getSoluong() {
 		return soluong;
@@ -29,7 +39,7 @@ public class Hang {
 		this.soluong = soluong;
 	}
 	public Long getThanhtien() {
-		return thanhtien;
+		return soluong*gia;
 	}
 	public void setThanhtien(Long thanhtien) {
 		this.thanhtien = thanhtien;
