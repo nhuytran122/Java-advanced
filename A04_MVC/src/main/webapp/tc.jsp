@@ -47,7 +47,7 @@ String searchKeyword = request.getParameter("txtSearch");
                                     <h5 class="card-title text-center"><%= s.getTensach() %></h5>
                                     <p class="card-text text-center">Giá bán: <%= s.getGia() %> đ</p>
 
-                                    <form action="<%= session.getAttribute("userId") != null ? "giohangController" : "loginController" %>" method="post">
+                                    <form action="<%= session.getAttribute("kh") != null ? "giohangController" : "loginController" %>" method="post">
 								    <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
 								    <input type="hidden" name="ts" value="<%= s.getTensach() %>">
 								    <input type="hidden" name="gia" value="<%= s.getGia() %>">

@@ -14,10 +14,10 @@
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHD"/>
-    <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
     <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
     <fullyQualifiedTypeName name="sachmodal.sach"/>
     <fullyQualifiedTypeName name="sachmodal.sachbo"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
+    <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
 </qualifiedTypeNameHistroy>

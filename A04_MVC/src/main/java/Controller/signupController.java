@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import khachhangmodal.khachhang;
 import khachhangmodal.khachhangbo;
 
 /**
- * Servlet implementation class loginController
+ * Servlet implementation class signupController
  */
-@WebServlet("/loginController")
-public class loginController extends HttpServlet {
+@WebServlet("/signupController")
+public class signupController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public loginController() {
+    public signupController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,29 +31,41 @@ public class loginController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();  
+			String txtHoten = request.getParameter("txtHoten");
 			String txtLoginId = request.getParameter("txtLoginId");
+			String txtSdt = request.getParameter("txtSdt");
+			String txtEmail = request.getParameter("txtEmail");
+			String txtDiachi = request.getParameter("txtDiachi");
 			String txtPassword = request.getParameter("txtPassword");
-			String btnLogin = request.getParameter("btn-login");
+			String btnSignup = request.getParameter("btn-signup");
 			   
 			khachhangbo khbo = new khachhangbo();
 			boolean isInvalid = false; 
 			  
-			if (btnLogin != null) {
-				if (khbo.checkLogin(txtLoginId, txtPassword) != null) {
-			    session.setAttribute("kh", khbo.checkLogin(txtLoginId, txtPassword));
-			    response.sendRedirect("sachController");
-			    return;
+			if (btnSignup != null) {
+                if (txtHoten != null && txtLoginId != null && txtSdt != null && txtEmail != null && txtDiachi != null && txtPassword != null) {
+                	khachhang kh = khbo.themKH(txtHoten, txtDiachi, btnSignup, txtEmail, txtHoten, txtPassword);
+                	if(kh != null) {
+                		session.setAttribute("kh", kh);
+        			    response.sendRedirect("sachController");
+        			    return;
+                	}
 				} else
 					isInvalid = true;
 			}
 			request.setAttribute("loginId", txtLoginId);
 			request.setAttribute("password", txtPassword);
+			request.setAttribute("hoten", txtHoten);
+			request.setAttribute("sdt", txtSdt);
+			request.setAttribute("email", txtEmail);
+			request.setAttribute("diachi", txtDiachi);
+			request.setAttribute("password", txtPassword);
 			request.setAttribute("isInvalid", isInvalid);
 			  
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("signup.jsp");
 		    rd.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

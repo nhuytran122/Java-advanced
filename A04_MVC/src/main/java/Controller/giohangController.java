@@ -37,7 +37,7 @@ public class giohangController extends HttpServlet {
 			request.setAttribute("dsLoai", Chung.getDsLoai());
 			
 			HttpSession session = request.getSession();
-			if(session.getAttribute("userId") == null)
+			if(session.getAttribute("kh") == null)
 	            response.sendRedirect("loginController");
 			
 	        GioHangBo g = (GioHangBo) session.getAttribute("gh");

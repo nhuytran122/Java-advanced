@@ -1,7 +1,6 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import cartmodal.GioHangBo;
 import cartmodal.Hang;
-import chitiethoadonmodal.CTHD;
 import chitiethoadonmodal.CTHDbo;
-import hoadonmodal.hoadon;
 import hoadonmodal.hoadonbo;
 import khachhangmodal.khachhang;
-import khachhangmodal.khachhangbo;
 
 @WebServlet("/xacnhanController")
 public class xacnhanController extends HttpServlet {
@@ -30,45 +26,28 @@ public class xacnhanController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             request.setAttribute("dsLoai", Chung.getDsLoai());
-            GioHangBo g = (GioHangBo) session.getAttribute("gh");
-            String userID = (String) session.getAttribute("userId");
-            String pass = (String) session.getAttribute("userPass");
-            khachhang kh = new khachhangbo().checkLogin(userID, pass);
-
-            if (g != null && kh != null && !g.ds.isEmpty()) {
-
-                hoadonbo hdbo = new hoadonbo();
-                CTHDbo cthdbo = new CTHDbo();
-                
-                long maHoaDon = hdbo.themHoaDon(kh.getMakh());
-                for (Hang hang : g.ds) {
-                    cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maHoaDon);
-                }
-
-                g.ds.clear();
-                session.setAttribute("gh", g);
-                
-                session.setAttribute("invoiceCreated", true);
+           
+            if(session.getAttribute("kh") == null) {
+            	response.sendRedirect("loginController");
             }
+            else {
+            	 GioHangBo g = (GioHangBo) session.getAttribute("gh");
+                 khachhang kh = (khachhang) session.getAttribute("kh");
+                 hoadonbo hdbo = new hoadonbo();
+                 CTHDbo cthdbo = new CTHDbo();
+                 
+                 hdbo.themHoaDon(kh.getMakh());
+                 long maxHD = hdbo.getMaxHD();
+                 for (Hang hang : g.ds) {
+                     cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maxHD);
+                 }
 
-            hoadonbo hdbo = new hoadonbo();
-            CTHDbo cthdbo = new CTHDbo();
-            ArrayList<hoadon> dsHoaDon = hdbo.getListHoaDon(kh.getMakh());
-            if (dsHoaDon == null) {
-                dsHoaDon = new ArrayList<>();
+                 g.ds.clear();
+                 session.setAttribute("gh", g);
+                 RequestDispatcher rd = request.getRequestDispatcher("lichsuController");
+                 rd.forward(request, response);
             }
-
-            ArrayList<ArrayList<CTHD>> dsChiTietHoaDon = new ArrayList<>();
-            for (hoadon order : dsHoaDon) {
-                ArrayList<CTHD> dsCTHD = cthdbo.getListCTHD(order.getMaHoaDon());
-                dsChiTietHoaDon.add(dsCTHD != null ? dsCTHD : new ArrayList<>()); 
-            }
-
-            request.setAttribute("dsHoaDon", dsHoaDon);
-            request.setAttribute("dsChiTietHoaDon", dsChiTietHoaDon);
-
-            RequestDispatcher rd = request.getRequestDispatcher("order-history.jsp");
-            rd.forward(request, response);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

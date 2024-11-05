@@ -1,7 +1,5 @@
-<%@page import="cartmodal.Hang"%> 
-<%@page import="hoadonmodal.hoadon"%>
+<%@page import="lichsumodal.lichsu"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="chitiethoadonmodal.CTHD"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,10 +12,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<% 
-    ArrayList<hoadon> dsHoaDon = (ArrayList<hoadon>) request.getAttribute("dsHoaDon");
-    ArrayList<ArrayList<CTHD>> dsChiTietHoaDon = (ArrayList<ArrayList<CTHD>>) request.getAttribute("dsChiTietHoaDon");
- %>
+<%
+    ArrayList<lichsu> listLS = (ArrayList<lichsu>) request.getAttribute("listLS");
+%>
 <body>
     <%@ include file="layout/layout_navbar.jsp" %>
     <div class="container mt-3">
@@ -25,9 +22,9 @@
             <%@ include file="layout/layout_danhmuc.jsp" %>
             
             <div class="col-sm-8">
-                <h5>Lịch sử mua hàng</h5>
+                <h5>Lịch sử đặt hàng</h5>
                 
-                <% if (dsHoaDon == null || dsHoaDon.isEmpty()) { %>
+                <% if (listLS == null || listLS.isEmpty()) { %>
                     <div class="alert alert-warning text-center" role="alert">
                         Không có lịch sử mua hàng
                     </div>
@@ -35,30 +32,28 @@
                     <table class="table table-hover table-borderless">
                         <thead class="thead-light">
                             <tr>
-                                <th>Mã Hóa Đơn</th>
-                                <th>Ngày Mua</th>
-                                <th>Mã Sách</th>
+                                <th>Tên sách</th>
                                 <th>Số Lượng Mua</th>
+                                <th>Giá</th>
+                                <th>Thành tiền</th>
+                                <th>Ngày mua</th>
+                                <th>Đã mua</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% 
-                                for (int i = 0; i < dsHoaDon.size(); i++) { 
-                                    hoadon hoaDon = dsHoaDon.get(i);
-                                    String formattedDate = new java.text.SimpleDateFormat("dd/MM/yyyy").format(hoaDon.getNgayMua());
-                                    ArrayList<CTHD> dsCTHD = dsChiTietHoaDon.get(i);
-                                    
-                                    for (int j = 0; j < dsCTHD.size(); j++) { 
-                                        CTHD cthd = dsCTHD.get(j); 
+                                for (lichsu ls : listLS) { 
+                                    String formattedDate = new java.text.SimpleDateFormat("dd/MM/yyyy").format(ls.getNgayMua());
                             %>
-                                <tr>
-                                    <td><%= j == 0 ? hoaDon.getMaHoaDon() : "" %></td>
-                                    <td><%= j == 0 ? formattedDate : "" %></td>
-                                    <td><%= cthd.getMaSach() %></td>
-                                    <td><%= cthd.getSoLuongMua() %></td>
-                                </tr>
+                            <tr>
+                                <td><%= ls.getTensach() %></td>
+                                <td><%= ls.getSoLuongMua() %></td>
+                                <td><%= ls.getGia() %></td>
+                                <td><%= ls.getThanhTien() %></td>
+                                <td><%= formattedDate %></td>
+                                <td><%= ls.isDamua() ? "Đã mua" : "Chưa mua" %></td>
+                            </tr>
                             <% 
-                                    } 
                                 } 
                             %>
                         </tbody>

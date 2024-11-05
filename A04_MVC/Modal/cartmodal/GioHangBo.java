@@ -1,11 +1,7 @@
 package cartmodal;
 import java.util.ArrayList;
 
-import sachmodal.sach;
-import sachmodal.sachbo;
-
 public class GioHangBo {
-//Tao ra 1 mang de luu Hang
 	public ArrayList<Hang> ds = new ArrayList<Hang>();
 	
 	public void Them(String masach, String tensach, Long gia) {
@@ -14,7 +10,7 @@ public class GioHangBo {
 					 h.setSoluong(h.getSoluong() + 1);
 					 return;
 				 }
-			  ds.add(new Hang(masach, tensach, gia, 1));
+			  ds.add(new Hang(masach, tensach, gia, (long)1));
 		  }
 
 	public long Tongtien(){
@@ -25,7 +21,7 @@ public class GioHangBo {
 		return s;
 	}
 	
-    public void CapNhatSoLuong(String masach, int slMoi) {
+    public void CapNhatSoLuong(String masach, long slMoi) {
         for (Hang h : ds) {
             if (h.getMasach().equals(masach)) {
                 h.setSoluong(slMoi);
@@ -44,14 +40,5 @@ public class GioHangBo {
                 break;
             }
         }
-    }
-    
-    public Hang getHangByMaSach(String masach) {
-    	for(Hang h : ds) {
-    		if(h.getMasach().equals(masach)) {
-    			return h;
-    		}
-    	}
-    	return null;
     }
 }

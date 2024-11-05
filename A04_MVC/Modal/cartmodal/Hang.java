@@ -4,9 +4,9 @@ public class Hang {
     private String masach;
     private String tensach;
     private Long gia;
-    private int soluong;
+    private Long soluong;
     private Long thanhtien;
-	public Hang(String masach, String tensach, Long gia, int soluong) {
+	public Hang(String masach, String tensach, Long gia, Long soluong) {
 		super();
 		this.masach = masach;
 		this.tensach = tensach;
@@ -32,10 +32,10 @@ public class Hang {
 	public void setGia(Long gia) {
 		this.gia = gia;
 	}
-	public int getSoluong() {
+	public Long getSoluong() {
 		return soluong;
 	}
-	public void setSoluong(int soluong) {
+	public void setSoluong(Long soluong) {
 		this.soluong = soluong;
 	}
 	public Long getThanhtien() {

@@ -1,3 +1,4 @@
+<%@page import="khachhangmodal.khachhang"%>
 <%@page import="cartmodal.GioHangBo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
@@ -8,6 +9,7 @@ pageEncoding="UTF-8"%>
     if (cart != null) {
     	cntPrs = cart.ds.size();
     }
+    khachhang kh = (khachhang)session.getAttribute("kh");
 %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -18,7 +20,7 @@ pageEncoding="UTF-8"%>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">        
         <li class="nav-item">
-          <a class="nav-link" href="xacnhanController">Xác nhận đặt hàng</a>
+          <a class="nav-link" href="lichsuController">Xác nhận đặt hàng</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="lichsumuahangController">Lịch sử mua hàng</a>
@@ -26,21 +28,25 @@ pageEncoding="UTF-8"%>
       </ul>
       
       <ul class="navbar-nav ms-auto">
-        <% if (session.getAttribute("userId") != null) { %>
+        <% if (kh != null) { %>
         <li class="nav-item d-flex align-items-center">
           <i class="bi bi-cart4" style="color: white; "></i>
           <a class="nav-link" href="giohangController">Giỏ hàng (<%= cntPrs %>)</a>
         </li>
         <li class="nav-item d-flex align-items-center">
-          <span class="nav-link">Xin chào, <%= session.getAttribute("userId") %></span>
+          <span class="nav-link">Xin chào, <%= kh.getHoten() %></span>
         </li>
         <li class="nav-item d-flex align-items-center">
           <i class="bi bi-box-arrow-right" style="color: white; margin-left: 5px;"></i>
           <a class="nav-link" href="logoutController">Đăng xuất</a>
         </li>
         <% } else { %>
+        	<li class="nav-item d-flex align-items-center">
+	          <i class="bi bi-person-add" style="color: white;"></i>
+	          <a class="nav-link" href="signupController">Đăng ký</a>
+	        </li>
 	        <li class="nav-item d-flex align-items-center">
-	          <i class="bi bi-person-circle" style="color: white;"></i>
+	          <i class="bi bi-person-circle" style="color: white; margin-left: 5px;"></i>
 	          <a class="nav-link" href="loginController">Đăng nhập</a>
 	        </li>
         <% } %>
