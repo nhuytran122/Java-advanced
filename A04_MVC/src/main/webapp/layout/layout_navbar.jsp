@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">        
         <li class="nav-item">
-          <a class="nav-link" href="lichsuController">Xác nhận đặt hàng</a>
+          <a class="nav-link" href="xacnhanController">Xác nhận đặt hàng</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="lichsumuahangController">Lịch sử mua hàng</a>

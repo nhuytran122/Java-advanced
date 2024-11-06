@@ -33,7 +33,9 @@ public class signupController extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			HttpSession session = request.getSession();  
+			request.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
+            
 			String txtHoten = request.getParameter("txtHoten");
 			String txtLoginId = request.getParameter("txtLoginId");
 			String txtSdt = request.getParameter("txtSdt");
@@ -46,18 +48,18 @@ public class signupController extends HttpServlet {
 			boolean isInvalid = false; 
 			  
 			if (btnSignup != null) {
-                if (txtHoten != null && txtLoginId != null && txtSdt != null && txtEmail != null && txtDiachi != null && txtPassword != null) {
-                	khachhang kh = khbo.themKH(txtHoten, txtDiachi, btnSignup, txtEmail, txtHoten, txtPassword);
-                	if(kh != null) {
-                		session.setAttribute("kh", kh);
-        			    response.sendRedirect("sachController");
+				if (txtHoten != null && !txtHoten.trim().isEmpty() &&
+						txtLoginId != null && !txtLoginId.trim().isEmpty() &&
+						txtPassword != null && !txtPassword.trim().isEmpty()) {
+                	int kqkh = khbo.themKH(txtHoten, txtDiachi, txtSdt, txtEmail, txtLoginId, txtPassword);
+                	if(kqkh > 0) {
+        			    response.sendRedirect("loginController");
         			    return;
                 	}
 				} else
 					isInvalid = true;
 			}
 			request.setAttribute("loginId", txtLoginId);
-			request.setAttribute("password", txtPassword);
 			request.setAttribute("hoten", txtHoten);
 			request.setAttribute("sdt", txtSdt);
 			request.setAttribute("email", txtEmail);
@@ -71,10 +73,7 @@ public class signupController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

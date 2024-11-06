@@ -12,12 +12,18 @@
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDdao"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDbo"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHD"/>
     <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
     <fullyQualifiedTypeName name="sachmodal.sach"/>
     <fullyQualifiedTypeName name="sachmodal.sachbo"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="lichsumodal.lichsudao"/>
+    <fullyQualifiedTypeName name="Controller.Chung"/>
+    <fullyQualifiedTypeName name="lichsumodal.lichsubo"/>
     <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="lichsumodal.lichsu"/>
 </qualifiedTypeNameHistroy>

@@ -57,12 +57,11 @@ public class khachhangdao {
 	    return kh;
 	}
 	
-	public khachhang themKH(String hoten, String diachi, String sodt, String email, String tendn, String pass) throws Exception {
-        long maKH = -1; 
+	public int themKH(String hoten, String diachi, String sodt, String email, String tendn, String pass) throws Exception {
         KetNoi kn = new KetNoi();
 		kn.ketnoi();
         String sql = "INSERT INTO KhachHang (hoten, diachi, sodt, email, tendn, pass) VALUES (?, ?, ?, ?, ?, ?);";
-             PreparedStatement cmd = kn.cn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
             
             cmd.setString(1, hoten);
             cmd.setString(2, diachi);
@@ -71,17 +70,9 @@ public class khachhangdao {
             cmd.setString(5, tendn);
             cmd.setString(6, pass);
 
-            int affectedRows = cmd.executeUpdate();
-
-            if (affectedRows > 0) {
-                ResultSet rs = cmd.getGeneratedKeys();
-                    if (rs.next()) {
-                        maKH = rs.getLong(1);
-                    }
-            }
-            khachhang kh = new khachhang(maKH, hoten, diachi, sodt, email, tendn, pass);
+        int kq = cmd.executeUpdate();
         kn.cn.close();
             
-        return kh;
+        return kq;
     }
 }

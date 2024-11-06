@@ -13,6 +13,7 @@ import cartmodal.Hang;
 import chitiethoadonmodal.CTHDbo;
 import hoadonmodal.hoadonbo;
 import khachhangmodal.khachhang;
+import lichsumodal.lichsubo;
 
 @WebServlet("/xacnhanController")
 public class xacnhanController extends HttpServlet {
@@ -33,18 +34,25 @@ public class xacnhanController extends HttpServlet {
             else {
             	 GioHangBo g = (GioHangBo) session.getAttribute("gh");
                  khachhang kh = (khachhang) session.getAttribute("kh");
-                 hoadonbo hdbo = new hoadonbo();
-                 CTHDbo cthdbo = new CTHDbo();
                  
-                 hdbo.themHoaDon(kh.getMakh());
-                 long maxHD = hdbo.getMaxHD();
-                 for (Hang hang : g.ds) {
-                     cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maxHD);
+                 if(g != null && g.ds != null) {
+	                 hoadonbo hdbo = new hoadonbo();
+	                 CTHDbo cthdbo = new CTHDbo();
+	                 
+	                 hdbo.themHoaDon(kh.getMakh());
+	                 long maxHD = hdbo.getMaxHD();
+	                 for (Hang hang : g.ds) {
+	                     cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maxHD);
+	                 }
+	
+	                 g.ds.clear();
+	                 session.setAttribute("gh", g);
                  }
-
-                 g.ds.clear();
-                 session.setAttribute("gh", g);
-                 RequestDispatcher rd = request.getRequestDispatcher("lichsuController");
+                 
+                 
+                 lichsubo lsbo = new lichsubo();
+                 request.setAttribute("listLS", lsbo.getLichsu(kh.getMakh()));
+                 RequestDispatcher rd = request.getRequestDispatcher("order-history.jsp");
                  rd.forward(request, response);
             }
             

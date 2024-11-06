@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
         </div>
 
         <div class="col-md-5 bg-white p-4 border border-2 border-info">
-          <h3 class="mb-4 fg-color">GIẢNG VIÊN</h3>
+          <h3 class="mb-4 fg-color">ĐĂNG NHẬP</h3>
           <form action="loginController" method="post">
             <div class="mb-3">
               <label class="form-label">Tên đăng nhập:</label>
@@ -58,7 +58,7 @@ pageEncoding="UTF-8"%>
                 type="text"
                 class="form-control"
                 name="txtLoginId"
-                placeholder="Mã giảng viên/Email"
+                placeholder="Tên đăng nhập"
                 value="<%= (loginId != null) ? loginId : "" %>"
               />
             </div>

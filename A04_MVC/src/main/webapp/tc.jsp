@@ -47,17 +47,17 @@ String searchKeyword = request.getParameter("txtSearch");
                                     <h5 class="card-title text-center"><%= s.getTensach() %></h5>
                                     <p class="card-text text-center">Giá bán: <%= s.getGia() %> đ</p>
 
-                                    <form action="<%= session.getAttribute("kh") != null ? "giohangController" : "loginController" %>" method="post">
-								    <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
-								    <input type="hidden" name="ts" value="<%= s.getTensach() %>">
-								    <input type="hidden" name="gia" value="<%= s.getGia() %>">
-								    <div class="d-flex justify-content-center">
-								        <button type="submit" class="btn bg-info">
-								            <i class="bi bi-cart-plus me-2"></i>
-								            Thêm vào giỏ
-								        </button>
-								    </div>
-								</form>
+                                    <form action="giohangController" method="post">
+                                        <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
+                                        <input type="hidden" name="ts" value="<%= s.getTensach() %>">
+                                        <input type="hidden" name="gia" value="<%= s.getGia() %>">
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" class="btn bg-info">
+                                                <i class="bi bi-cart-plus me-2"></i>
+                                                Thêm vào giỏ
+                                            </button>
+                                        </div>
+								    </form>
 
                                 </div>
                             </div>
@@ -68,7 +68,7 @@ String searchKeyword = request.getParameter("txtSearch");
                     %>
                 </div>
 
-				<% if (pageCount > 1) { %> <!-- Chỉ hiển  phân trang khi số trang lớn hơn 1 -->
+				<% if (pageCount > 1) { %> <!-- Chỉ show phân trang khi số trang lớn hơn 1 -->
 				    <div class="text-center">
 				        <nav aria-label="Page navigation example">
 				            <ul class="pagination justify-content-center">
@@ -93,10 +93,6 @@ String searchKeyword = request.getParameter("txtSearch");
 				        </nav>
 				    </div>
 				<% } %>
-
-
-
-
             </div>
 
             <%@ include file="layout/layout_timkiem.jsp" %>
