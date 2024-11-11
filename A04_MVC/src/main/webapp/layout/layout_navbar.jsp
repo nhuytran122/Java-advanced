@@ -4,7 +4,6 @@
 pageEncoding="UTF-8"%>
 <%
     GioHangBo cart = (GioHangBo) session.getAttribute("gh");
-    int totalItems = 0;
     int cntPrs = 0;
     if (cart != null) {
     	cntPrs = cart.ds.size();

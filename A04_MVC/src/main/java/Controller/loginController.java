@@ -45,9 +45,9 @@ public class loginController extends HttpServlet {
 			  
 			if (btnLogin != null) {
 				if (khbo.checkLogin(txtLoginId, txtPassword) != null) {
-			    session.setAttribute("kh", khbo.checkLogin(txtLoginId, txtPassword));
-			    response.sendRedirect("sachController");
-			    return;
+				    session.setAttribute("kh", khbo.checkLogin(txtLoginId, txtPassword));
+				    response.sendRedirect("sachController");
+				    return;
 				} else
 					isInvalid = true;
 			}

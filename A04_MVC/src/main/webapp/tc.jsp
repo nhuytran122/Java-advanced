@@ -69,29 +69,31 @@ String searchKeyword = request.getParameter("txtSearch");
                 </div>
 
 				
-				<div class="text-center">
-				    <nav aria-label="Page navigation example">
-				        <ul class="pagination justify-content-center">
-						    <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
-						        <a class="page-link" href="<%= currentPage > 1 ? "sachController?page=" + (currentPage - 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") + (request.getParameter("ml") != null ? "&ml=" + request.getParameter("ml") : "") : "#" %>" aria-label="Previous">
-						            <span aria-hidden="true">&laquo;</span>
-						        </a>
-						    </li>
-						
-						    <% for (int p = 1; p <= pageCount; p++) { %>
-						        <li class="page-item <%= p == currentPage ? "active" : "" %>">
-						            <a class="page-link" href="sachController?page=<%= p %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %><%= request.getParameter("ml") != null ? "&ml=" + request.getParameter("ml") : "" %>"> <%= p %> </a>
-						        </li>
-						    <% } %>
-						
-						    <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
-						        <a class="page-link" href="<%= currentPage < pageCount ? "sachController?page=" + (currentPage + 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") + (request.getParameter("ml") != null ? "&ml=" + request.getParameter("ml") : "") : "#" %>" aria-label="Next">
-						            <span aria-hidden="true">&raquo;</span>
-						        </a>
-						    </li>
-						</ul>
-				     </nav>
-				</div>
+				<% if (n > 0) { %>
+				    <div class="text-center">
+				        <nav aria-label="Page navigation example">
+				            <ul class="pagination justify-content-center">
+				                <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
+				                    <a class="page-link" href="<%= currentPage > 1 ? "sachController?page=" + (currentPage - 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") + (request.getParameter("ml") != null ? "&ml=" + request.getParameter("ml") : "") : "#" %>" aria-label="Previous">
+				                        <span aria-hidden="true">&laquo;</span>
+				                    </a>
+				                </li>
+				            
+				                <% for (int p = 1; p <= pageCount; p++) { %>
+				                    <li class="page-item <%= p == currentPage ? "active" : "" %>">
+				                        <a class="page-link" href="sachController?page=<%= p %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %><%= request.getParameter("ml") != null ? "&ml=" + request.getParameter("ml") : "" %>"> <%= p %> </a>
+				                    </li>
+				                <% } %>
+				            
+				                <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
+				                    <a class="page-link" href="<%= currentPage < pageCount ? "sachController?page=" + (currentPage + 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") + (request.getParameter("ml") != null ? "&ml=" + request.getParameter("ml") : "") : "#" %>" aria-label="Next">
+				                        <span aria-hidden="true">&raquo;</span>
+				                    </a>
+				                </li>
+				            </ul>
+				         </nav>
+				    </div>
+				<% } %>
             </div>
 
             <%@ include file="layout/layout_timkiem.jsp" %>
