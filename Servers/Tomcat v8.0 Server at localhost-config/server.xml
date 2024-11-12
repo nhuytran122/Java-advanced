@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="A01_Introduce" path="/A01_Introduce" reloadable="true" source="org.eclipse.jst.jee.server:A01_Introduce"/><Context docBase="A03_Session" path="/A03_Session" reloadable="true" source="org.eclipse.jst.jee.server:A03_Session"/><Context docBase="A04_MVC" path="/A04_MVC" reloadable="true" source="org.eclipse.jst.jee.server:A04_MVC"/><Context docBase="A03_BTGioHang" path="/A03_BTGioHang" reloadable="true" source="org.eclipse.jst.jee.server:A03_BTGioHang"/><Context docBase="A02_JavaServer_Page" path="/A02_JavaServer_Page" reloadable="true" source="org.eclipse.jst.jee.server:A02_JavaServer_Page"/></Host>
+      <Context docBase="A01_Introduce" path="/A01_Introduce" reloadable="true" source="org.eclipse.jst.jee.server:A01_Introduce"/><Context docBase="A03_Session" path="/A03_Session" reloadable="true" source="org.eclipse.jst.jee.server:A03_Session"/><Context docBase="A04_MVC" path="/A04_MVC" reloadable="true" source="org.eclipse.jst.jee.server:A04_MVC"/><Context docBase="A03_BTGioHang" path="/A03_BTGioHang" reloadable="true" source="org.eclipse.jst.jee.server:A03_BTGioHang"/><Context docBase="A02_JavaServer_Page" path="/A02_JavaServer_Page" reloadable="true" source="org.eclipse.jst.jee.server:A02_JavaServer_Page"/><Context docBase="TranNhuY" path="/TranNhuY" reloadable="true" source="org.eclipse.jst.jee.server:TranNhuY"/></Host>
     </Engine>
   </Service>
 </Server>
