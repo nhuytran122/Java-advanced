@@ -54,6 +54,7 @@ public class sachdao {
             s.setGia(rs.getLong("gia"));
             s.setAnh(rs.getString("anh"));
             s.setMaloai(rs.getString("maloai"));
+            s.setSoTap(rs.getInt("sotap"));
             ds.add(s);
         }
         return ds;
@@ -75,5 +76,57 @@ public class sachdao {
 	    }
 	    return count;
 	}
-
+	
+	public int addSach(sach s) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    
+	    String sql = "INSERT INTO sach (masach, tensach, tacgia, soluong, gia, anh, maloai, sotap, NgayNhap) " +
+	                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, GETDATE())";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    
+	    cmd.setString(1, s.getMasach());     
+	    cmd.setString(2, s.getTensach());   
+	    cmd.setString(3, s.getTacgia());    
+	    cmd.setLong(4, s.getSoluong());      
+	    cmd.setLong(5, s.getGia());          
+	    cmd.setString(6, s.getAnh());       
+	    cmd.setString(7, s.getMaloai());     
+	    cmd.setInt(8, s.getSoTap());   
+	    
+	    int kq = cmd.executeUpdate();
+	    return kq;
+	}
+	
+	public int updateSach(sach s) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    
+	    String sql = "UPDATE sach " +
+	                 "SET tensach = ?, tacgia = ?, soluong = ?, gia = ?, anh = ?, maloai = ?, sotap = ? " +
+	                 "WHERE masach = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    
+	    cmd.setString(1, s.getTensach());   
+	    cmd.setString(2, s.getTacgia());    
+	    cmd.setLong(3, s.getSoluong());    
+	    cmd.setLong(4, s.getGia());      
+	    cmd.setString(5, s.getAnh());     
+	    cmd.setString(6, s.getMaloai());   
+	    cmd.setInt(7, s.getSoTap());     
+	    cmd.setString(8, s.getMasach());   
+	    
+	    int kq = cmd.executeUpdate();
+	    return kq;  
+	}
+	
+	public int deleteSach(String masach) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "DELETE FROM sach WHERE masach = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, masach);  
+	    int kq = cmd.executeUpdate();
+	    return kq; 
+	}
 }

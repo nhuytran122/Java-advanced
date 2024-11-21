@@ -29,5 +29,43 @@ public class loaidao {
 		rs.close();
 		kn.cn.close();
 		return ds;
-}
+	}
+	
+	public int addLoai(loai l) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "INSERT INTO loai (maloai, tenloai) VALUES (?, ?)";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    
+	    cmd.setString(1, l.getMaloai()); 
+	    cmd.setString(2, l.getTenloai()); 
+	    int kq = cmd.executeUpdate();
+	    return kq;  
+	}
+	
+	public int updateLoai(loai l) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "UPDATE loai SET tenloai = ? WHERE maloai = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    
+	    cmd.setString(1, l.getTenloai());  
+	    cmd.setString(2, l.getMaloai());  
+	    int kq = cmd.executeUpdate();
+	    return kq;  
+	}
+	
+	public int deleteLoai(String maloai) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "DELETE FROM loai WHERE maloai = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    
+	    cmd.setString(1, maloai);  
+	    int kq = cmd.executeUpdate();
+	    return kq;  
+	}
+
+
+
 }

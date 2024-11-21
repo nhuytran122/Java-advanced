@@ -15,4 +15,15 @@ public class sachbo {
 		return sdao.getRowCount(searchValue);
 	}
 	
+	public int addSach(sach s) throws Exception {
+		return sdao.addSach(s);
+	}
+	
+	public int updateSach(sach s) throws Exception {
+		return sdao.updateSach(s);
+	}
+	
+	public int deleteSach(String masach) throws Exception {
+		return sdao.deleteSach(masach);
+	}
 }
