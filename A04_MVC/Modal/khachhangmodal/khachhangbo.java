@@ -26,8 +26,6 @@ public class khachhangbo {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		byte[] messageDigest = md.digest(input.getBytes());
 		BigInteger bigInt = new BigInteger(1, messageDigest);
-		System.out.println("Pass goc: " + input);
-		System.out.println(bigInt.toString(16));
 		return bigInt.toString(16);
 		
 	}

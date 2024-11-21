@@ -11,8 +11,8 @@ public class KetNoi {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
         // Bước 2: Kết nối vào CSDL
+//        String url = "jdbc:sqlserver://LAB403-01:1433;databaseName=QlSach;user=sa;password=123;encrypt=true;trustServerCertificate=true";
         String url = "jdbc:sqlserver://DESKTOP-6HUBDCV:1433;databaseName=QlSach;user=sa;password=nhuytran;encrypt=true;trustServerCertificate=true";
         cn = DriverManager.getConnection(url);
-        System.out.println("Đã kết nối");
     }
 }

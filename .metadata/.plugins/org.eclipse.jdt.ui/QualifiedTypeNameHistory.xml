@@ -19,13 +19,24 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsudao"/>
     <fullyQualifiedTypeName name="Controller.Chung"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsubo"/>
     <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsu"/>
     <fullyQualifiedTypeName name="java.security.MessageDigest"/>
     <fullyQualifiedTypeName name="java.math.BigInteger"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="TranNhuYtintucModal.TranNhuY_K45G_tintucdao"/>
+    <fullyQualifiedTypeName name="TranNhuYtintucModal.TranNhuY_K45G_tintucbo"/>
+    <fullyQualifiedTypeName name="TranNhuYtintucModal.TranNhuY_K45G_tintuc"/>
+    <fullyQualifiedTypeName name="TranNhuYketnoimodal.TranNhuY_K45G_KetNoi"/>
+    <fullyQualifiedTypeName name="TranNhuYloaitinModal.TranNhuY_K45G_loaitin"/>
+    <fullyQualifiedTypeName name="TranNhuYloaitinModal.TranNhuY_K45G_loaitindao"/>
+    <fullyQualifiedTypeName name="TranNhuYloaitinModal.TranNhuY_K45G_loaitinbo"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongkedao"/>
+    <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongke"/>
+    <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongkebo"/>
 </qualifiedTypeNameHistroy>
