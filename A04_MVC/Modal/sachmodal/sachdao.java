@@ -154,7 +154,7 @@ public class sachdao {
 	    return null;
 	}
 	
-	public int inUsedSach(String masach) throws Exception {
+	public boolean inUsedSach(String masach) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    String sql = "IF EXISTS (SELECT * FROM ChiTietHoaDon WHERE MaSach = ?) "
@@ -172,7 +172,7 @@ public class sachdao {
 	    }
 	    rs.close();
 	    kn.cn.close();
-	    return result;
+	    return result > 0;
 	}
 
 }

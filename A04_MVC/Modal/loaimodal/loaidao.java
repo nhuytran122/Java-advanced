@@ -129,7 +129,7 @@ public class loaidao {
 	    return null;
 	}
 	
-	public int inUsedLoai(String maloai) throws Exception {
+	public boolean inUsedLoai(String maloai) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    
@@ -151,7 +151,7 @@ public class loaidao {
 	    rs.close();
 	    kn.cn.close();
 	    
-	    return kq;
+	    return kq > 0;
 	}
 
 

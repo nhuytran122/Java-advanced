@@ -63,10 +63,10 @@
                     <table class="table table-hover">
                       <thead class="table-light">
                         <tr>
-                          <th>Mã loại sách</th>
-                          <th>Tên loại sách</th>
-                          <th>Thao tác</th>
-                        </tr>
+					      <th class="col-3">Mã loại sách</th> 
+					      <th class="col-6">Tên loại sách</th> 
+					      <th class="col-3">Thao tác</th>   
+					    </tr>
                       </thead>
                       <tbody>
 					  <% 
@@ -113,7 +113,6 @@
 					      <div class="modal-content">
 					        <div class="modal-header">
 					          <h5 class="modal-title" id="deleteModalLabel<%= safeId %>">Xác nhận xóa loại sách</h5>
-					          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					        </div>
 					        <div class="modal-body">
 					          Bạn có chắc chắn muốn xóa loại sách <b><%= l.getTenloai() %></b> không?
@@ -129,10 +128,30 @@
 					    </div>
 					  </div>
 					
-					  <% 
-					      }
-					    }
-					  %>
+					  <!-- Modal không thể xóa sách -->
+						<% if (request.getAttribute("inUsed") != null) { 
+							if((Boolean) request.getAttribute("inUsed")){%>
+							<div class="modal fade" id="cannotDeleteModal" tabindex="-1" aria-labelledby="cannotDeleteModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="cannotDeleteModalLabel">Không thể xóa loại sách</h5>
+							      </div>
+							      <div class="modal-body text-danger">
+							        Không thể xóa sách vì loại sách này đang được sử dụng.
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						<% } 
+						}%>
+                        <% 
+                            }
+                          }
+                        %>
 					</tbody>
 
                     </table>
@@ -175,5 +194,14 @@
     </div>
   </div>
 </body>
+
+<% if (request.getAttribute("inUsed") != null && (Boolean) request.getAttribute("inUsed") == true) { %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#cannotDeleteModal').modal('show');  // Mở modal khi trang được tải
+        });
+    </script>
+<% } %>
+
 
 </html>

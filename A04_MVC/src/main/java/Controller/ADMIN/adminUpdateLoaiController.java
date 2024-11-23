@@ -1,4 +1,4 @@
-package Controller;
+package Controller.ADMIN;
 
 import java.io.IOException;
 
@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sachmodal.sachbo;
+import loaimodal.loaibo;
 
-@WebServlet("/adminUpdateSachController")
-public class adminUpdateSachController extends HttpServlet {
+@WebServlet("/adminUpdateLoaiController")
+public class adminUpdateLoaiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public adminUpdateSachController() {
+    public adminUpdateLoaiController() {
         super();
     }
 
@@ -29,27 +29,36 @@ public class adminUpdateSachController extends HttpServlet {
            
             if(session.getAttribute("ad") == null) {
             	response.sendRedirect("adminloginController");
+            	return;
             }
 
-            sachbo sbo = new sachbo();
-            String ms = request.getParameter("idSach");
-            if (request.getParameter("btnAddSach") != null) {
-            	request.setAttribute("dsLoai", Chung.getDsLoai());
-            	RequestDispatcher rd = request.getRequestDispatcher("ADMIN/add_book.jsp");
+            loaibo lbo = new loaibo();
+            String ms = request.getParameter("idLoai");
+            if (request.getParameter("btnAddLoai") != null) {
+            	RequestDispatcher rd = request.getRequestDispatcher("ADMIN/add_loai.jsp");
                 rd.forward(request, response);
-            }
-            
-            if (request.getParameter("btnUpdateSach") != null) {
-            	request.setAttribute("dsLoai", Chung.getDsLoai());
-            	request.setAttribute("book", sbo.getSach(ms));
-            	RequestDispatcher rd = request.getRequestDispatcher("ADMIN/update_book.jsp");
-                rd.forward(request, response);
-            }
-            if (request.getParameter("btnDeleteSach") != null) {
-            	sbo.deleteSach(ms);
-            	response.sendRedirect("adminController");
                 return;
             }
+            
+            if (request.getParameter("btnUpdateLoai") != null) {
+            	request.setAttribute("loai", lbo.getLoai(ms));
+            	RequestDispatcher rd = request.getRequestDispatcher("ADMIN/update_loai.jsp");
+                rd.forward(request, response);
+                return;
+            }
+            
+            if (request.getParameter("btnDeleteLoai") != null) {
+                boolean inUsed = lbo.inUsedLoai(ms);
+                request.setAttribute("inUsed", inUsed);
+                if (!inUsed) {
+                    lbo.deleteLoai(ms); 
+                    response.sendRedirect("adminLoaiController");
+                    return;
+                }
+                RequestDispatcher rd = request.getRequestDispatcher("adminLoaiController");
+                rd.forward(request, response);
+            }
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

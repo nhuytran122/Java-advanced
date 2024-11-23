@@ -1,4 +1,4 @@
-package Controller;
+package Controller.ADMIN;
 
 import java.io.IOException;
 
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Controller.Chung;
 import adminloginmodal.loginadminbo;
 import nl.captcha.Captcha;
 

@@ -36,37 +36,37 @@
                   <h4 class="card-title mb-4">Thêm mới sách</h4>
                   <form class="form-horizontal" action="adminSaveSachController" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtMasanpham">Mã sách</label>
+                      <label class="control-label col-sm-2">Mã sách</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtMasanpham" id="txtMasanpham" required>
+                        <input type="text" class="form-control" name="txtMasanpham" required>
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtTensach">Tên sách</label>
+                      <label class="control-label col-sm-2">Tên sách</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtTensach" id="txtTensach" required>
+                        <input type="text" class="form-control" name="txtTensach" required>
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtSoluong">Số lượng</label>
+                      <label class="control-label col-sm-2">Số lượng</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control" name="txtSoluong" id="txtSoluong" min="1" required>
+                        <input type="number" class="form-control" name="txtSoluong" min="1" required>
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtGia">Giá</label>
+                      <label class="control-label col-sm-2">Giá</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control" name="txtGia" id="txtGia" min="0" required>
+                        <input type="number" class="form-control" name="txtGia" min="0" required>
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtMaloai">Loại sách</label>
+                      <label class="control-label col-sm-2">Loại sách</label>
                       <div class="col-sm-10">
-                        <select class="form-control" name="txtMaloai" id="txtMaloai" required>
+                        <select class="form-control" name="txtMaloai" required>
                           <option selected>-- Chọn loại sách --</option>
                           <% 
                             ArrayList<loai> loaiSach = (ArrayList<loai>) request.getAttribute("dsLoai");
@@ -79,23 +79,23 @@
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtTacgia">Tác giả</label>
+                      <label class="control-label col-sm-2">Tác giả</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtTacgia" id="txtTacgia" required>
+                        <input type="text" class="form-control" name="txtTacgia" required>
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtSoTap">Số tập</label>
+                      <label class="control-label col-sm-2">Số tập</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtSoTap" id="txtSoTap" required>
+                        <input type="text" class="form-control" name="txtSoTap" required>
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="fileAnh">Ảnh</label>
+                      <label class="control-label col-sm-2">Ảnh</label>
                       <div class="col-sm-10">
-                        <input type="file" class="form-control" id="fileAnh" name="fileAnh" accept="image/*" required>
+                        <input type="file" class="form-control" name="fileAnh" accept="image/*" required>
                       </div>
                     </div>
 

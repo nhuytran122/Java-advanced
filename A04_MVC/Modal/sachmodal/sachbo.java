@@ -31,7 +31,7 @@ public class sachbo {
 		return sdao.getSach(masach);
 	}
 	
-	public int inUsedSach(String masach) throws Exception {
+	public boolean inUsedSach(String masach) throws Exception {
 		return sdao.inUsedSach(masach);
 	}
 }

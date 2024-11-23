@@ -20,7 +20,6 @@
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsudao"/>
-    <fullyQualifiedTypeName name="Controller.Chung"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsubo"/>
     <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsu"/>
@@ -39,4 +38,7 @@
     <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongkedao"/>
     <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongke"/>
     <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongkebo"/>
+    <fullyQualifiedTypeName name="loaimodal.loai"/>
+    <fullyQualifiedTypeName name="Controller.Chung"/>
+    <fullyQualifiedTypeName name="loaimodal.loaibo"/>
 </qualifiedTypeNameHistroy>

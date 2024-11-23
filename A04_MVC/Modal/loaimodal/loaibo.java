@@ -2,8 +2,6 @@ package loaimodal;
 
 import java.util.ArrayList;
 
-import sachmodal.sach;
-
 public class loaibo {
 	loaidao ldao = new loaidao();
 	
@@ -35,7 +33,7 @@ public class loaibo {
 		return ldao.deleteLoai(maloai);
 	}
 	
-	public int inUsedLoai(String maloai) throws Exception {
+	public boolean inUsedLoai(String maloai) throws Exception {
 		return ldao.inUsedLoai(maloai);
 	}
 }

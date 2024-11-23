@@ -1,4 +1,4 @@
-package Controller;
+package Controller.ADMIN;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,17 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import loaimodal.loai;
-import loaimodal.loaibo;
 import sachmodal.sach;
 import sachmodal.sachbo;
 
-@WebServlet("/adminLoaiController")
-public class adminLoaiController extends HttpServlet {
+@WebServlet("/adminSachController")
+public class adminSachController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public adminLoaiController() {
+    public adminSachController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +34,7 @@ public class adminLoaiController extends HttpServlet {
             	response.sendRedirect("adminloginController");
             }
 
-            loaibo lbo = new loaibo();
+            sachbo sbo = new sachbo();
             int page = 1;
             int pageSize = 9;
             String searchValue = "";
@@ -48,10 +47,10 @@ public class adminLoaiController extends HttpServlet {
                 searchValue = request.getParameter("txtSearch");
             }
 
-            ArrayList<loai> ds;
-            ds = lbo.getListLoai(page, pageSize, searchValue);
+            ArrayList<sach> ds;
+            ds = sbo.getListSach(page, pageSize, searchValue);
 
-            int rowCount = lbo.getRowCount(searchValue);
+            int rowCount = sbo.getRowCount(searchValue);
             
             int pageCount = rowCount / pageSize;
             if (rowCount % pageSize > 0) {
@@ -63,13 +62,13 @@ public class adminLoaiController extends HttpServlet {
             request.setAttribute("currentPage", page);
             request.setAttribute("searchKeyword", searchValue); 
 
-            RequestDispatcher rd = request.getRequestDispatcher("ADMIN/show_loai.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("ADMIN/show_books.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
 	}
-
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

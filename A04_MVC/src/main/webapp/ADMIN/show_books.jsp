@@ -109,34 +109,54 @@
                                   <i class="bi bi-pencil"></i>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= s.getMasach() %>" title="Xóa">
-								  <i class="bi bi-trash"></i>
-								</button>
+                                  <i class="bi bi-trash"></i>
+                                </button>
                               </form>
                             </div>
                           </td>
                         </tr>
 
-                        <!-- Modal xác nhận xóa -->
-						<div class="modal fade" id="deleteModal<%= s.getMasach() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa sách</h5>
-						      </div>
-						      <div class="modal-body">
-						        Bạn có chắc chắn muốn xóa sách <b><%= s.getTensach() %> </b> không?
-						      </div>
-						      <div class="modal-footer">
-						        <form method="post" action="adminUpdateSachController">
-						          <input type="hidden" name="idSach" value="<%= s.getMasach() %>">
-						          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button> <!-- Đổi 'data-dismiss' thành 'data-bs-dismiss' -->
-						          <button type="submit" name="btnDeleteSach" value="<%= s.getMasach() %>" class="btn btn-danger">Xóa</button>
-						        </form>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-
+                        <!-- Modal xác nhận xóa thông thường -->
+                        <div class="modal fade" id="deleteModal<%= s.getMasach() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa sách</h5>
+                              </div>
+                              <div class="modal-body">
+                                Bạn có chắc chắn muốn xóa sách <b><%= s.getTensach() %></b> không?
+                              </div>
+                              <div class="modal-footer">
+                                <form method="post" action="adminUpdateSachController">
+                                  <input type="hidden" name="idSach" value="<%= s.getMasach() %>">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                  <button type="submit" name="btnDeleteSach" value="<%= s.getMasach() %>" class="btn btn-danger">Xóa</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <!-- Modal không thể xóa sách -->
+						<% if (request.getAttribute("inUsed") != null) { 
+							if((Boolean) request.getAttribute("inUsed")){%>
+							<div class="modal fade" id="cannotDeleteModal" tabindex="-1" aria-labelledby="cannotDeleteModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="cannotDeleteModalLabel">Không thể xóa sách</h5>
+							      </div>
+							      <div class="modal-body text-danger">
+							        Không thể xóa sách vì sách này đang được sử dụng.
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						<% } 
+						}%>
                         <% 
                             }
                           }
@@ -176,11 +196,17 @@
             </nav>
           </div>
           <% } %>
-
         </div>
       </div>
     </div>
   </div>
 </body>
 
+<% if (request.getAttribute("inUsed") != null && (Boolean) request.getAttribute("inUsed") == true) { %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#cannotDeleteModal').modal('show');  // Mở modal khi trang được tải
+        });
+    </script>
+<% } %>
 </html>

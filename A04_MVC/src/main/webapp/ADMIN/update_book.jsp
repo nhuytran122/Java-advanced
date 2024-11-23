@@ -39,14 +39,14 @@
                   <h4 class="card-title mb-4">Sửa sách</h4>
                   <form class="form-horizontal" action="adminSaveSachController" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtMasach">Mã sách</label>
+                      <label class="control-label col-sm-2">Mã sách</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtMasach" required value="<%= s.getMasach() %>">
+                        <input disabled type="text" class="form-control" name="txtMasach" required value="<%= s.getMasach() %>">
                       </div>
                     </div>
                     
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtTensach">Tên sách</label>
+                      <label class="control-label col-sm-2">Tên sách</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" name="txtTensach" required value="<%= s.getTensach() %>">
                       </div>
@@ -60,14 +60,14 @@
                     </div>
                     
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtGia">Giá</label>
+                      <label class="control-label col-sm-2">Giá</label>
                       <div class="col-sm-10">
                         <input type="number" class="form-control" name="txtGia" min="0" required value="<%= s.getGia() %>">
                       </div>
                     </div>
                     
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtMaloai">Loại sách</label>
+                      <label class="control-label col-sm-2">Loại sách</label>
                       <div class="col-sm-10">
                         <select class="form-control" name="txtMaloai" required>
                           <option value="">-- Chọn loại sách --</option>
@@ -88,23 +88,23 @@
                     </div>
                     
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtTacgia">Tác giả</label>
+                      <label class="control-label col-sm-2">Tác giả</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="txtTacgia" name="txtTacgia" required value="<%= s.getTacgia() %>">
+                        <input type="text" class="form-control" name="txtTacgia" required value="<%= s.getTacgia() %>">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="txtSoTap">Số tập</label>
+                      <label class="control-label col-sm-2">Số tập</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" name="txtSoTap" required value="<%= s.getSoTap() %>">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="control-label col-sm-2" for="fileAnh">Ảnh</label>
+                      <label class="control-label col-sm-2">Ảnh</label>
                       <div class="col-sm-10">
-                        <input type="file" class="form-control" id="fileAnh" name="fileAnh" accept="image/*">
+                        <input type="file" class="form-control" name="fileAnh" accept="image/*">
                       </div>
                     </div>
 
