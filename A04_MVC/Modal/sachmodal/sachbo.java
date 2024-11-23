@@ -26,4 +26,12 @@ public class sachbo {
 	public int deleteSach(String masach) throws Exception {
 		return sdao.deleteSach(masach);
 	}
+	
+	public sach getSach(String masach) throws Exception {
+		return sdao.getSach(masach);
+	}
+	
+	public int inUsedSach(String masach) throws Exception {
+		return sdao.inUsedSach(masach);
+	}
 }

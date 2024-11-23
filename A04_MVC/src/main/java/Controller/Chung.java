@@ -8,6 +8,6 @@ import loaimodal.loaibo;
 public class Chung {
 	public static ArrayList<loai> getDsLoai() throws Exception {
         loaibo lbo = new loaibo();
-        return lbo.getLoai();
+        return lbo.getListLoai();
     }
 }

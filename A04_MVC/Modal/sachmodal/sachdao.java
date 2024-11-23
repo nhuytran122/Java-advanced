@@ -129,4 +129,50 @@ public class sachdao {
 	    int kq = cmd.executeUpdate();
 	    return kq; 
 	}
+	
+	public sach getSach(String masach) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    
+	    String sql = "SELECT * FROM sach WHERE masach = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, masach);
+	    
+	    ResultSet rs = cmd.executeQuery();
+	    if (rs.next()) {
+	        String ms = rs.getString("masach");
+	        String ten = rs.getString("tensach");
+	        String tg = rs.getString("tacgia");
+	        long sl = rs.getLong("soluong");
+	        long gia = rs.getLong("gia");
+	        String anh = rs.getString("anh");
+	        String maloai = rs.getString("maloai");
+	        int sotap = rs.getInt("sotap");
+	        
+	        return new sach(ms, ten, tg, sl, gia, anh, maloai, sotap);
+	    }
+	    return null;
+	}
+	
+	public int inUsedSach(String masach) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "IF EXISTS (SELECT * FROM ChiTietHoaDon WHERE MaSach = ?) "
+	               + "SELECT 1 "
+	               + "ELSE "
+	               + "SELECT 0";
+	    
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, masach);
+	    ResultSet rs = cmd.executeQuery();
+	    
+	    int result = 0;
+	    if (rs.next()) {
+	        result = rs.getInt(1);
+	    }
+	    rs.close();
+	    kn.cn.close();
+	    return result;
+	}
+
 }

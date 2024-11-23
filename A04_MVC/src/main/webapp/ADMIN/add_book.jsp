@@ -1,0 +1,124 @@
+<%@page import="loaimodal.loai"%>
+<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>BOOKSTORE - Thêm mới sách</title>
+  
+  <link rel="stylesheet" href="ADMIN/vendors/feather/feather.css">
+  <link rel="stylesheet" href="ADMIN/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="ADMIN/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="ADMIN/css/vertical-layout-light/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="ADMIN/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <%@ include file="layoutAdmin/navbar.jsp" %>
+    
+    <div class="container-fluid page-body-wrapper">
+      <%@ include file="layoutAdmin/settings-panel.jsp" %>
+      <%@ include file="layoutAdmin/left_sidebar.jsp" %>
+      
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title mb-4">Thêm mới sách</h4>
+                  <form class="form-horizontal" action="adminSaveSachController" method="post" enctype="multipart/form-data">
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2" for="txtMasanpham">Mã sách</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="txtMasanpham" id="txtMasanpham" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2" for="txtTensach">Tên sách</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="txtTensach" id="txtTensach" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2" for="txtSoluong">Số lượng</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control" name="txtSoluong" id="txtSoluong" min="1" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2" for="txtGia">Giá</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control" name="txtGia" id="txtGia" min="0" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2" for="txtMaloai">Loại sách</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" name="txtMaloai" id="txtMaloai" required>
+                          <option selected>-- Chọn loại sách --</option>
+                          <% 
+                            ArrayList<loai> loaiSach = (ArrayList<loai>) request.getAttribute("dsLoai");
+                            for (loai loai : loaiSach) { 
+                          %>
+                            <option value="<%= loai.getMaloai() %>"><%= loai.getTenloai() %></option>
+                          <% } %>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2" for="txtTacgia">Tác giả</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="txtTacgia" id="txtTacgia" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2" for="txtSoTap">Số tập</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="txtSoTap" id="txtSoTap" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2" for="fileAnh">Ảnh</label>
+                      <div class="col-sm-10">
+                        <input type="file" class="form-control" id="fileAnh" name="fileAnh" accept="image/*" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+					  <div class="col-sm-offset-2 col-sm-10 text-center">
+					    <button type="submit" class="btn btn-primary">Lưu</button>
+					    <a href="adminSachController" class="btn btn-secondary">Hủy</a>
+					  </div>
+					</div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <%@ include file="layoutAdmin/footer.jsp" %>
+      </div>
+    </div>   
+  </div>
+
+  <script src="ADMIN/vendors/js/vendor.bundle.base.js"></script>
+  <script src="ADMIN/js/template.js"></script>
+  <script src="ADMIN/js/settings.js"></script>
+</body>
+</html>

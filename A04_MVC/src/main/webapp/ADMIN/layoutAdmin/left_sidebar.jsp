@@ -15,7 +15,7 @@
         
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+        <a class="nav-link" href="adminLoaiController" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
           <i class="bi bi-bookmarks menu-icon"></i>
           <span class="menu-title">Loại sách</span>
         </a>
