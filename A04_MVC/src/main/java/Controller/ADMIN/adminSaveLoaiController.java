@@ -37,6 +37,7 @@ public class adminSaveLoaiController extends HttpServlet {
             String tenloai = request.getParameter("txtTenLoai");
             loaibo lbo = new loaibo();
             int done = 0;
+            boolean isInvalid = false;
 
             if(request.getParameter("btnAdd") != null) {
                 done = lbo.addLoai(maloai, tenloai);
@@ -46,14 +47,16 @@ public class adminSaveLoaiController extends HttpServlet {
             	done = lbo.updateLoai(maloai, tenloai);
             }
 
-            if(done != 0) {
-                response.sendRedirect("adminLoaiController");
+            if(done == 1) {
+            	response.sendRedirect("adminLoaiController");
                 return;
             }
+            else 
+            	isInvalid = true;
 
             request.setAttribute("maLoai", maloai);
             request.setAttribute("tenLoai", tenloai);
-            request.setAttribute("isInvalid", false); 
+            request.setAttribute("isInvalid", isInvalid); 
 
             RequestDispatcher rd = request.getRequestDispatcher("ADMIN/add_loai.jsp");
             rd.forward(request, response);

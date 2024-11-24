@@ -24,6 +24,7 @@
 <%
   String maLoai = (String)request.getAttribute("maLoai");
   String tenLoai = (String)request.getAttribute("tenLoai");
+  Boolean isInvalid = (Boolean) request.getAttribute("isInvalid");
     
 %>
   <div class="container-scroller">
@@ -46,6 +47,9 @@
 				        <div class="col-sm-10">
 				            <input type="text" class="form-control" name="txtMaLoai" required
 				                value="<%= (maLoai != null) ? maLoai : "" %>">
+				                <% if (isInvalid != null && isInvalid) { %>
+		              				<span class="text-danger">Mã loại đã tồn tại!</span>
+		              			<% } %>
 				        </div>
 				    </div>
 				
@@ -59,7 +63,6 @@
 				
 				    <div class="form-group row">
 				        <div class="col-sm-offset-2 col-sm-10 text-center">
-				            <!-- Chắc chắn nút này gửi giá trị "add" khi nhấn -->
 				            <button type="submit" name="btnAdd" value="add" class="btn btn-primary">Lưu</button>
 				            <a href="adminLoaiController" class="btn btn-secondary">Hủy</a>
 				        </div>

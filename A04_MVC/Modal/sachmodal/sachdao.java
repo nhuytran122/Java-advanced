@@ -76,39 +76,54 @@ public class sachdao {
 	    return count;
 	}
 	
-	public int addSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
+	public boolean checkSachExists(String masach) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    
-	    String sql = "IF EXISTS (SELECT 1 FROM sach WHERE masach = ?)\n"
-	               + "    SELECT -1;\n"
-	               + "ELSE\n"
-	               + "BEGIN\n"
-	               + "    INSERT INTO sach (masach, tensach, tacgia, soluong, gia, anh, maloai, sotap, NgayNhap)\n"
-	               + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, GETDATE());\n"
-	               + "    SELECT 1;\n" 
-	               + "END";
+	    String sql = "SELECT 1 FROM sach WHERE masach = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, masach);
+	    
+	    ResultSet rs = cmd.executeQuery();
+	    
+	    if (rs.next()) {
+	        return true; 
+	    }
+	    
+	    return false;
+	}
+
+	
+	public int addSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
+	    if (checkSachExists(masach)) {
+	        return -1;
+	    }
+
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    
+	    String sql = "INSERT INTO sach (masach, tensach, tacgia, soluong, gia, anh, maloai, sotap, NgayNhap) "
+	               + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, GETDATE());";
 	    
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	    
 	    cmd.setString(1, masach);
-	    cmd.setString(2, masach); 
-	    cmd.setString(3, tensach);
-	    cmd.setString(4, tacgia);
-	    cmd.setLong(5, soluong);
-	    cmd.setLong(6, gia);
-	    cmd.setString(7, anh);
-	    cmd.setString(8, maloai);
-	    cmd.setString(9, sotap);
+	    cmd.setString(2, tensach);
+	    cmd.setString(3, tacgia);
+	    cmd.setLong(4, soluong);
+	    cmd.setLong(5, gia);
+	    cmd.setString(6, anh);
+	    cmd.setString(7, maloai);
+	    cmd.setString(8, sotap);
 	    
-	    int kq = cmd.executeUpdate(); 
+	    int kq = cmd.executeUpdate();
 	    
-	    if (kq == 0) {
-	        return -1;  
+	    if (kq > 0) {
+	        return 1; 
 	    }
-	    
-	    return 1;
+	    return -1;
 	}
+
 
 	
 	public int updateSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
