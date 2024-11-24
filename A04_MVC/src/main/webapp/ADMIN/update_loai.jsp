@@ -37,11 +37,12 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title mb-4">Sửa loại</h4>
-                  <form class="form-horizontal" action="adminSaveLoaiController" method="post" enctype="multipart/form-data">
+                  <form class="form-horizontal" action="adminSaveLoaiController" method="post">
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Mã loại</label>
                       <div class="col-sm-10">
-                        <input disabled type="text" class="form-control" name="txtMaLoai" required value="<%= l.getMaloai() %>">
+                      <input type="hidden" class="form-control" name="txtMaLoai" value="<%= l.getMaloai() %>">
+                        <input disabled type="text" class="form-control" value="<%= l.getMaloai() %>">
                       </div>
                     </div>
 
@@ -54,7 +55,7 @@
 
                     <div class="form-group row">
 					  <div class="col-sm-offset-2 col-sm-10 text-center">
-					    <button type="submit" class="btn btn-primary">Lưu</button>
+					    <button type="submit" name="btnUpdate" value="update" class="btn btn-primary">Lưu</button>
 					    <a href="adminLoaiController" class="btn btn-secondary">Hủy</a>
 					  </div>
 					</div>

@@ -21,12 +21,12 @@ public class loaibo {
 		return ldao.getLoai(maloai);
 	}
 	
-	public int addLoai(loai l) throws Exception {
-		return ldao.addLoai(l);
+	public int addLoai(String maLoai, String tenLoai) throws Exception {
+		return ldao.addLoai(maLoai, tenLoai);
 	}
 	
-	public int updateLoai(loai l) throws Exception {
-		return ldao.updateLoai(l);
+	public int updateLoai(String maLoai, String tenLoai) throws Exception {
+		return ldao.updateLoai(maLoai, tenLoai);
 	}
 	
 	public int deleteLoai(String maloai) throws Exception {

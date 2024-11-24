@@ -20,6 +20,12 @@
 </head>
 
 <body>
+
+<%
+  String maLoai = (String)request.getAttribute("maLoai");
+  String tenLoai = (String)request.getAttribute("tenLoai");
+    
+%>
   <div class="container-scroller">
     <%@ include file="layoutAdmin/navbar.jsp" %>
     
@@ -34,28 +40,32 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title mb-4">Thêm mới loại</h4>
-                  <form class="form-horizontal" action="adminSaveLoaiController" method="post" enctype="multipart/form-data">
-                    <div class="form-group row">
-                      <label class="control-label col-sm-2">Mã loại</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtMaLoai" required>
-                      </div>
-                    </div>
+                  <form class="form-horizontal" action="adminSaveLoaiController" method="post">
+				    <div class="form-group row">
+				        <label class="control-label col-sm-2">Mã loại</label>
+				        <div class="col-sm-10">
+				            <input type="text" class="form-control" name="txtMaLoai" required
+				                value="<%= (maLoai != null) ? maLoai : "" %>">
+				        </div>
+				    </div>
+				
+				    <div class="form-group row">
+				        <label class="control-label col-sm-2">Tên loại</label>
+				        <div class="col-sm-10">
+				            <input type="text" class="form-control" name="txtTenLoai" required
+				                value="<%= (tenLoai != null) ? tenLoai : "" %>">
+				        </div>
+				    </div>
+				
+				    <div class="form-group row">
+				        <div class="col-sm-offset-2 col-sm-10 text-center">
+				            <!-- Chắc chắn nút này gửi giá trị "add" khi nhấn -->
+				            <button type="submit" name="btnAdd" value="add" class="btn btn-primary">Lưu</button>
+				            <a href="adminLoaiController" class="btn btn-secondary">Hủy</a>
+				        </div>
+				    </div>
+				</form>
 
-                    <div class="form-group row">
-                      <label class="control-label col-sm-2">Tên loại</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtTenLoai" required>
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-					  <div class="col-sm-offset-2 col-sm-10 text-center">
-					    <button type="submit" class="btn btn-primary">Lưu</button>
-					    <a href="adminLoaiController" class="btn btn-secondary">Hủy</a>
-					  </div>
-					</div>
-                  </form>
                 </div>
               </div>
             </div>

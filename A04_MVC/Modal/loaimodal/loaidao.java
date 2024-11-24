@@ -77,26 +77,26 @@ public class loaidao {
 	    return count;
 	}
 	
-	public int addLoai(loai l) throws Exception {
+	public int addLoai(String maLoai, String tenLoai) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    String sql = "INSERT INTO loai (maloai, tenloai) VALUES (?, ?)";
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	    
-	    cmd.setString(1, l.getMaloai()); 
-	    cmd.setString(2, l.getTenloai()); 
+	    cmd.setString(1, maLoai); 
+	    cmd.setString(2, tenLoai); 
 	    int kq = cmd.executeUpdate();
 	    return kq;  
 	}
 	
-	public int updateLoai(loai l) throws Exception {
+	public int updateLoai(String maLoai, String tenLoai) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    String sql = "UPDATE loai SET tenloai = ? WHERE maloai = ?";
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	    
-	    cmd.setString(1, l.getTenloai());  
-	    cmd.setString(2, l.getMaloai());  
+	    cmd.setString(1, tenLoai);  
+	    cmd.setString(2, maLoai);  
 	    int kq = cmd.executeUpdate();
 	    return kq;  
 	}
