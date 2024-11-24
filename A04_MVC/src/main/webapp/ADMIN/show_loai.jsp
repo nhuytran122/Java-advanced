@@ -203,5 +203,10 @@
     </script>
 <% } %>
 
+  <script src="ADMIN/vendors/js/vendor.bundle.base.js"></script>
+  <script src="ADMIN/js/off-canvas.js"></script>
+  <script src="ADMIN/js/hoverable-collapse.js"></script>
+  <script src="ADMIN/js/template.js"></script>
+  <script src="ADMIN/js/settings.js"></script>
 
 </html>

@@ -1,6 +1,6 @@
-<%@page import="loaimodal.loai"%>
-<%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="loaimodal.loai" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +21,21 @@
 
 <body>
   <div class="container-scroller">
-    <%@ include file="layoutAdmin/navbar.jsp" %>
+    <% 
+      // Lấy giá trị từ request
+      String maSach = (String) request.getAttribute("maSach");
+      String tenSach = (String) request.getAttribute("tenSach");
+      String soLuong = (String) request.getAttribute("soLuong");
+      String gia = (String) request.getAttribute("gia");
+      String tacGia = (String) request.getAttribute("tacGia");
+      String soTap = (String) request.getAttribute("soTap");
+      String maloai = (String) request.getAttribute("maloai");
+      ArrayList<loai> loaiSach = (ArrayList<loai>) request.getAttribute("dsLoai");
+      Boolean isInvalid = (Boolean) request.getAttribute("isInvalid");
+    %>
     
     <div class="container-fluid page-body-wrapper">
+      <%@ include file="layoutAdmin/navbar.jsp" %>
       <%@ include file="layoutAdmin/settings-panel.jsp" %>
       <%@ include file="layoutAdmin/left_sidebar.jsp" %>
       
@@ -33,46 +45,52 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title mb-4">Thêm mới sách</h4>
+                  <h4 class="card-title mb-4 text-center">Thêm mới sách</h4>
                   <form class="form-horizontal" action="adminSaveSachController" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Mã sách</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtMasanpham" required>
+                        <input type="text" class="form-control" name="txtMaSach" value="<%= maSach != null ? maSach : "" %>" required>
+                        
+			          <% if (isInvalid != null && isInvalid) { %>
+		              	<span class="text-danger">Mã sách đã tồn tại!</span>
+		              <% } %>
                       </div>
+                      
                     </div>
 
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Tên sách</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtTensach" required>
+                        <input type="text" class="form-control" name="txtTenSach" value="<%= tenSach != null ? tenSach : "" %>" required>	                      
                       </div>
+                       
                     </div>
 
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Số lượng</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control" name="txtSoluong" min="1" required>
+                        <input type="number" class="form-control" name="txtSoLuong" value="<%= soLuong != null ? soLuong : "" %>" min="1" required>
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Giá</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control" name="txtGia" min="0" required>
+                        <input type="number" class="form-control" name="txtGia" value="<%= gia != null ? gia : "" %>" min="0" required>
                       </div>
+                       
                     </div>
 
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Loại sách</label>
                       <div class="col-sm-10">
                         <select class="form-control" name="txtMaloai" required>
-                          <option selected>-- Chọn loại sách --</option>
-                          <% 
-                            ArrayList<loai> loaiSach = (ArrayList<loai>) request.getAttribute("dsLoai");
-                            for (loai loai : loaiSach) { 
-                          %>
-                            <option value="<%= loai.getMaloai() %>"><%= loai.getTenloai() %></option>
+                          <option value="">-- Chọn loại sách --</option>
+                          <% for (loai loai : loaiSach) { %>
+                            <option value="<%= loai.getMaloai() %>" <%= (loai.getMaloai().equals(maloai)) ? "selected" : "" %> >
+                              <%= loai.getTenloai() %>
+                            </option>
                           <% } %>
                         </select>
                       </div>
@@ -81,14 +99,14 @@
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Tác giả</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtTacgia" required>
+                        <input type="text" class="form-control" name="txtTacGia" value="<%= tacGia != null ? tacGia : "" %>" required>
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Số tập</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtSoTap" required>
+                        <input type="text" class="form-control" name="txtSoTap" value="<%= soTap != null ? soTap : "" %>" required>
                       </div>
                     </div>
 
@@ -100,11 +118,11 @@
                     </div>
 
                     <div class="form-group row">
-					  <div class="col-sm-offset-2 col-sm-10 text-center">
-					    <button type="submit" class="btn btn-primary">Lưu</button>
-					    <a href="adminSachController" class="btn btn-secondary">Hủy</a>
-					  </div>
-					</div>
+                      <div class="col-sm-offset-2 col-sm-10 text-center">
+                        <button type="submit" name="btnAdd" value="add" class="btn btn-primary">Lưu</button>
+                        <a href="adminSachController" class="btn btn-secondary">Hủy</a>
+                      </div>
+                    </div>
                   </form>
                 </div>
               </div>
@@ -118,6 +136,8 @@
   </div>
 
   <script src="ADMIN/vendors/js/vendor.bundle.base.js"></script>
+  <script src="ADMIN/js/off-canvas.js"></script>
+  <script src="ADMIN/js/hoverable-collapse.js"></script>
   <script src="ADMIN/js/template.js"></script>
   <script src="ADMIN/js/settings.js"></script>
 </body>

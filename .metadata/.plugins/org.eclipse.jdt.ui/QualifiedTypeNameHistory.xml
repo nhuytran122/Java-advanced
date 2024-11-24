@@ -10,11 +10,9 @@
     <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.chitiethoadon"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDdao"/>
-    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHD"/>
     <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
     <fullyQualifiedTypeName name="sachmodal.sach"/>
-    <fullyQualifiedTypeName name="sachmodal.sachbo"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
@@ -38,8 +36,12 @@
     <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongke"/>
     <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongkebo"/>
     <fullyQualifiedTypeName name="loaimodal.loai"/>
-    <fullyQualifiedTypeName name="Controller.Chung"/>
     <fullyQualifiedTypeName name="loaimodal.loaibo"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDbo"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="sachmodal.sachbo"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.Long"/>
+    <fullyQualifiedTypeName name="Controller.Chung"/>
 </qualifiedTypeNameHistroy>

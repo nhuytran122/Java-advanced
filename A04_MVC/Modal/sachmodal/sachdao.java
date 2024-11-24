@@ -46,16 +46,15 @@ public class sachdao {
 
        	ResultSet rs = cmd.executeQuery();
         while (rs.next()) {
-        	sach s = new sach();
-            s.setMasach(rs.getString("masach"));
-            s.setTensach(rs.getString("tensach"));
-            s.setTacgia(rs.getString("tacgia"));
-            s.setSoluong(rs.getLong("soluong"));
-            s.setGia(rs.getLong("gia"));
-            s.setAnh(rs.getString("anh"));
-            s.setMaloai(rs.getString("maloai"));
-            s.setSoTap(rs.getInt("sotap"));
-            ds.add(s);
+        	String ms = rs.getString("masach");
+	        String ten = rs.getString("tensach");
+	        String tg = rs.getString("tacgia");
+	        long sl = rs.getLong("soluong");
+	        long gia = rs.getLong("gia");
+	        String anh = rs.getString("anh");
+	        String maloai = rs.getString("maloai");
+	        String sotap = rs.getString("sotap");
+	        ds.add(new sach(ms, ten, tg, sl, gia, anh, maloai, sotap));
         }
         return ds;
     }
@@ -77,28 +76,42 @@ public class sachdao {
 	    return count;
 	}
 	
-	public int addSach(sach s) throws Exception {
+	public int addSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    
-	    String sql = "INSERT INTO sach (masach, tensach, tacgia, soluong, gia, anh, maloai, sotap, NgayNhap) " +
-	                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, GETDATE())";
+	    String sql = "IF EXISTS (SELECT 1 FROM sach WHERE masach = ?)\n"
+	               + "    SELECT -1;\n"
+	               + "ELSE\n"
+	               + "BEGIN\n"
+	               + "    INSERT INTO sach (masach, tensach, tacgia, soluong, gia, anh, maloai, sotap, NgayNhap)\n"
+	               + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, GETDATE());\n"
+	               + "    SELECT 1;\n" 
+	               + "END";
+	    
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	    
-	    cmd.setString(1, s.getMasach());     
-	    cmd.setString(2, s.getTensach());   
-	    cmd.setString(3, s.getTacgia());    
-	    cmd.setLong(4, s.getSoluong());      
-	    cmd.setLong(5, s.getGia());          
-	    cmd.setString(6, s.getAnh());       
-	    cmd.setString(7, s.getMaloai());     
-	    cmd.setInt(8, s.getSoTap());   
+	    cmd.setString(1, masach);
+	    cmd.setString(2, masach); 
+	    cmd.setString(3, tensach);
+	    cmd.setString(4, tacgia);
+	    cmd.setLong(5, soluong);
+	    cmd.setLong(6, gia);
+	    cmd.setString(7, anh);
+	    cmd.setString(8, maloai);
+	    cmd.setString(9, sotap);
 	    
-	    int kq = cmd.executeUpdate();
-	    return kq;
+	    int kq = cmd.executeUpdate(); 
+	    
+	    if (kq == 0) {
+	        return -1;  
+	    }
+	    
+	    return 1;
 	}
+
 	
-	public int updateSach(sach s) throws Exception {
+	public int updateSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    
@@ -107,14 +120,14 @@ public class sachdao {
 	                 "WHERE masach = ?";
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	    
-	    cmd.setString(1, s.getTensach());   
-	    cmd.setString(2, s.getTacgia());    
-	    cmd.setLong(3, s.getSoluong());    
-	    cmd.setLong(4, s.getGia());      
-	    cmd.setString(5, s.getAnh());     
-	    cmd.setString(6, s.getMaloai());   
-	    cmd.setInt(7, s.getSoTap());     
-	    cmd.setString(8, s.getMasach());   
+	    cmd.setString(1, tensach);   
+	    cmd.setString(2, tacgia);    
+	    cmd.setLong(3, soluong);    
+	    cmd.setLong(4, gia);      
+	    cmd.setString(5, anh);     
+	    cmd.setString(6, maloai);   
+	    cmd.setString(7, sotap);     
+	    cmd.setString(8, masach);   
 	    
 	    int kq = cmd.executeUpdate();
 	    return kq;  
@@ -147,7 +160,7 @@ public class sachdao {
 	        long gia = rs.getLong("gia");
 	        String anh = rs.getString("anh");
 	        String maloai = rs.getString("maloai");
-	        int sotap = rs.getInt("sotap");
+	        String sotap = rs.getString("sotap");
 	        
 	        return new sach(ms, ten, tg, sl, gia, anh, maloai, sotap);
 	    }

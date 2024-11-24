@@ -36,7 +36,7 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title mb-4">Sửa loại</h4>
+                  <h4 class="card-title mb-4 text-center">Sửa loại</h4>
                   <form class="form-horizontal" action="adminSaveLoaiController" method="post">
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Mã loại</label>
@@ -72,6 +72,8 @@
   </div>
 
   <script src="ADMIN/vendors/js/vendor.bundle.base.js"></script>
+  <script src="ADMIN/js/off-canvas.js"></script>
+  <script src="ADMIN/js/hoverable-collapse.js"></script>
   <script src="ADMIN/js/template.js"></script>
   <script src="ADMIN/js/settings.js"></script>
 </body>

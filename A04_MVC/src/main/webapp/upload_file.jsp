@@ -12,7 +12,7 @@
 	  Đia chi: <input type="text" name="txtdiachi" value=""> <br>
 	  file: <input type="file" name="txtfile"><br>
 	  <input type="submit"> 
-	  </form> 
+	</form> 
 
 </body>
 </html>

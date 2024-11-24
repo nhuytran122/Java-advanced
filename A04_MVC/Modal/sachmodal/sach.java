@@ -8,11 +8,11 @@ public class sach {
 	private Long gia;
 	private String anh;
 	private String maloai;
-	private int sotap;
+	private String sotap;
 	public sach() {
 		super();
 	}
-	public sach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, int sotap) {
+	public sach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) {
 		super();
 		this.masach = masach;
 		this.tensach = tensach;
@@ -65,10 +65,10 @@ public class sach {
 	public void setMaloai(String maloai) {
 		this.maloai = maloai;
 	}
-	public void setSoTap(int sotap) {
+	public void setSoTap(String sotap) {
 		this.sotap = sotap;
 	}
-	public int getSoTap() {
+	public String getSoTap() {
 		return this.sotap;
 	}
 }

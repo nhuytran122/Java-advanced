@@ -10,4 +10,8 @@ public class Chung {
         loaibo lbo = new loaibo();
         return lbo.getListLoai();
     }
+	
+	public static boolean isNullOrWhiteSpace(String str) {
+	    return str == null || str.trim().isEmpty();
+	}
 }
