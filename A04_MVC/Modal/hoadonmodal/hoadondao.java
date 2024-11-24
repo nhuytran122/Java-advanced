@@ -34,4 +34,26 @@ public class hoadondao {
             
         return max;
     }	
+	
+	public long updateHDByKH(long makh) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "UPDATE hoadon\n"
+	            + "SET damua = 1\n"
+	            + "WHERE MaHoaDon IN (\n"
+	            + "    SELECT MaHoaDon\n"
+	            + "    FROM ChiTietHoaDon cthd\n"
+	            + "    JOIN hoadon hd ON cthd.MaHoaDon = hd.MaHoaDon\n"
+	            + "    WHERE hd.makh = ?\n"
+	            + "    GROUP BY cthd.MaHoaDon\n"
+	            + "    HAVING COUNT(*) = SUM(CASE WHEN DaThanhToan = 1 THEN 1 ELSE 0 END)\n"
+	            + ")";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setLong(1, makh);
+	    long kq = cmd.executeUpdate();
+	    kn.cn.close();
+	    return kq;
+	}
+
+
 }

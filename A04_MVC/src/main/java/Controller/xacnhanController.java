@@ -51,7 +51,7 @@ public class xacnhanController extends HttpServlet {
                  
                  
                  lichsubo lsbo = new lichsubo();
-                 request.setAttribute("listLS", lsbo.getLichsu(kh.getMakh()));
+                 request.setAttribute("listLS", lsbo.getLichsu(kh.getMakh(), false));
                  RequestDispatcher rd = request.getRequestDispatcher("order-history.jsp");
                  rd.forward(request, response);
             }

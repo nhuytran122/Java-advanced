@@ -10,11 +10,12 @@ public class lichsu {
 	private Long ThanhTien;
 	private Date NgayMua;
 	private boolean damua;
+	private Long maCTHD;
 	public lichsu() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public lichsu(Long makh, String tensach, Long soLuongMua, Long gia, Long thanhTien, Date ngayMua, boolean damua) {
+	public lichsu(Long makh, String tensach, Long soLuongMua, Long gia, Long thanhTien, Date ngayMua, boolean damua, Long maCTHD) {
 		super();
 		this.makh = makh;
 		this.tensach = tensach;
@@ -23,6 +24,7 @@ public class lichsu {
 		ThanhTien = thanhTien;
 		NgayMua = ngayMua;
 		this.damua = damua;
+		this.maCTHD = maCTHD;
 	}
 	public Long getMakh() {
 		return makh;
@@ -65,5 +67,11 @@ public class lichsu {
 	}
 	public void setDamua(boolean damua) {
 		this.damua = damua;
+	}
+	public Long getMaCTHD() {
+		return this.maCTHD;
+	}
+	public void setMaCTHD(Long maCTHD) {
+		this.maCTHD = maCTHD;
 	}
 }

@@ -10,7 +10,6 @@
     <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.chitiethoadon"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDdao"/>
-    <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDbo"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHD"/>
     <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
@@ -41,4 +40,6 @@
     <fullyQualifiedTypeName name="loaimodal.loai"/>
     <fullyQualifiedTypeName name="Controller.Chung"/>
     <fullyQualifiedTypeName name="loaimodal.loaibo"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDbo"/>
 </qualifiedTypeNameHistroy>

@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="sachmodal.sachbo"%>
 <%@page import="sachmodal.sach"%>
@@ -19,6 +20,8 @@ ArrayList<sach> ds = (ArrayList<sach>)request.getAttribute("ds");
 int pageCount = (Integer)request.getAttribute("pageCount");
 int currentPage = (Integer)request.getAttribute("currentPage");
 String searchKeyword = request.getParameter("txtSearch");
+NumberFormat nf = NumberFormat.getInstance();
+nf.setGroupingUsed(true);
 %>
 
     <%@ include file="layout/layout_navbar.jsp" %>
@@ -41,27 +44,31 @@ String searchKeyword = request.getParameter("txtSearch");
                                 sach s = ds.get(i);
                     %>
                         <div class="col-sm-4 mb-4">
-                            <div class="card">
-                                <img src="<%= s.getAnh() %>" class="card-img-top" style="height: 264px;" alt="<%= s.getTensach() %>">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center"><%= s.getTensach() %></h5>
-                                    <p class="card-text text-center">Giá bán: <%= s.getGia() %> đ</p>
+						    <div class="card">
+						        <img src="<%= s.getAnh() %>" class="card-img-top img-fluid" style="height: 220px; object-fit: cover;" alt="<%= s.getTensach() %>">
+						        
+						        <div class="card-body d-flex flex-column">
+						            <h7 class="card-title text-center"><b> <%= s.getTensach() %></b> </h7>
+						            
+						            <!-- Giá sách -->
+						            <p class="card-text text-center">Giá bán: <%= nf.format(s.getGia()) %> đ</p>
+						
+						            <!-- Nút Thêm vào giỏ -->
+						            <form action="giohangController" method="post">
+						                <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
+						                <input type="hidden" name="ts" value="<%= s.getTensach() %>">
+						                <input type="hidden" name="gia" value="<%= s.getGia() %>">
+						                <div class="d-flex justify-content-center mt-auto">
+						                    <button type="submit" class="btn bg-info">
+						                        <i class="bi bi-cart-plus me-2"></i>
+						                        Thêm vào giỏ
+						                    </button>
+						                </div>
+						            </form>
+						        </div>
+						    </div>
+						</div>
 
-                                    <form action="giohangController" method="post">
-                                        <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
-                                        <input type="hidden" name="ts" value="<%= s.getTensach() %>">
-                                        <input type="hidden" name="gia" value="<%= s.getGia() %>">
-                                        <div class="d-flex justify-content-center">
-                                            <button type="submit" class="btn bg-info">
-                                                <i class="bi bi-cart-plus me-2"></i>
-                                                Thêm vào giỏ
-                                            </button>
-                                        </div>
-								    </form>
-
-                                </div>
-                            </div>
-                        </div>
                     <% 
                             }
                         } 

@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>
           <a class="nav-link" href="xacnhanController">Xác nhận đặt hàng</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="lichsumuahangController">Lịch sử mua hàng</a>
+          <a class="nav-link" href="lichSuMuaHangController">Lịch sử mua hàng</a>
         </li>
       </ul>
       

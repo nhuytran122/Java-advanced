@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="cartmodal.GioHangBo"%>
 <%@page import="cartmodal.Hang"%>
 <%@page import="java.util.ArrayList"%>
@@ -15,6 +16,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
+<%
+	NumberFormat nf = NumberFormat.getInstance();
+	nf.setGroupingUsed(true);
+%>
 <body>
     <%@ include file="layout/layout_navbar.jsp" %>
     <div class="container mt-3">
@@ -54,11 +59,11 @@
                                         <input type="checkbox" name="selectedItems" value="<%= sachId %>" />
                                     </td>
                                     <td><%= h.getTensach() %></td>
-                                    <td><%= h.getGia() %></td>
+                                    <td><%= nf.format(h.getGia()) %></td>
                                     <td>
                                         <input type="number" name="<%= sachId %>" value="<%= h.getSoluong() %>" class="form-control" />
                                     </td>
-                                    <td><%= h.getThanhtien() %></td>
+                                    <td><%= nf.format(h.getThanhtien()) %></td>
                                     <td>
 									    <button type="submit" name="btnSuaSL" value="<%=sachId%>" class="btn btn-warning btn-sm"> 
 									        <i class="bi bi-pencil"></i> Sửa 
@@ -73,7 +78,7 @@
                     </table>
 
                     <div class="text-end mb-3">
-                        <strong>Tổng tiền: <%= g.Tongtien() %></strong>
+                        <strong>Tổng tiền: <%= nf.format(g.Tongtien()) %></strong>
                     </div>
 
                     <div class="text-end mb-3">

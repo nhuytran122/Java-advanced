@@ -9,11 +9,18 @@ import ketnoimodal.KetNoi;
 
 public class lichsudao {
 	
-	public ArrayList<lichsu> getLichsu(long maKH) throws Exception {
+	public ArrayList<lichsu> getLichsu(long maKH, boolean flagPurchased) throws Exception {
 		ArrayList<lichsu> ds = new ArrayList<lichsu>();
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
-	    String sql = "select * from Vlichsu where makh = ?";
+	    String sql = "";
+	    if(flagPurchased) {
+	    	sql = "select * from Vlichsu where makh = ? AND DaThanhToan = 1";
+	    }
+	    else {
+	    	sql = "select * from Vlichsu where makh = ? AND DaThanhToan = 0";
+	    }
+	    
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	    cmd.setLong(1, maKH);
 	    ResultSet rs = cmd.executeQuery();
@@ -26,8 +33,8 @@ public class lichsudao {
 	        Long ThanhTien = rs.getLong("ThanhTien");
 	        Date NgayMua = rs.getDate("NgayMua");
 	        boolean damua = rs.getBoolean("damua");
-
-	        ds.add(new lichsu(makh, tensach, SoLuongMua, gia, ThanhTien, NgayMua, damua));
+	        Long maCTHD = rs.getLong("MaChiTietHD");
+	        ds.add(new lichsu(makh, tensach, SoLuongMua, gia, ThanhTien, NgayMua, damua, maCTHD));
 	    }
 
 	    rs.close();

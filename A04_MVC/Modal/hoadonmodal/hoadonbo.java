@@ -9,4 +9,7 @@ public class hoadonbo {
 	public long getMaxHD() throws Exception {
 		return hddao.getMaxHD();
 	}
+	public long updateHDByKH(long makh) throws Exception {
+		return hddao.updateHDByKH(makh);
+	}
 }

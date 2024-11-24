@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Xác nhận đặt hàng</title>
+    <title>Lịch sử mua hàng</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,24 +25,22 @@
             <%@ include file="layout/layout_danhmuc.jsp" %>
             
             <div class="col-sm-8">
-                <h5>Lịch sử đặt hàng</h5>
+                <h5>Lịch sử mua hàng</h5>
                 
                 <% if (listLS == null || listLS.isEmpty()) { %>
                     <div class="alert alert-warning text-center" role="alert">
-                        Không có lịch sử đặt hàng
+                        Không có lịch sử mua hàng
                     </div>
                 <% } else { %>
-                    <form method="post" action="thanhtoanController"> 
+                    
                         <table class="table table-hover table-borderless">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>
                                     <th class="col-4">Tên sách</th>
                                     <th class="col-1">Giá</th>
 				                    <th class="col-1">SL</th>
 				                    <th class="col-2">Thành tiền</th>
-				                    <th class="col-2">Ngày đặt</th>
-				                    <th class="col-2">Thanh toán </th>
+				                    <th class="col-2">Ngày mua</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,13 +50,11 @@
                                     
                                 %>
                                 <tr>
-                                    <td><input type="checkbox" name="selectedItems" value="<%= ls.getMaCTHD() %>" /> </td>
                                     <td><%= ls.getTensach() %></td>
                                     <td><%= nf.format(ls.getGia()) %></td>
                                     <td><%= ls.getSoLuongMua() %></td>
                                     <td><%= nf.format(ls.getThanhTien()) %></td>
                                     <td><%= formattedDate %></td>
-                                    <td><button type="submit" name="payNow" value="<%= ls.getMaCTHD() %>" class="btn btn-primary">Thanh toán</button></td>
                                 </tr>
                                 <% 
                                     } 
@@ -66,22 +62,8 @@
                             </tbody>
                         </table>
                         <div>
-                        
                         </div>
-                        
-                        <div class="d-flex justify-content-between mb-3">
-						    <div>
-						        <button type="submit" name="deleteSelected" value="Xoa" class="btn btn-danger me-2">Hủy đặt hàng đã chọn</button>
-						        <button type="submit" name="deleteAll" value="deleteAll" class="btn btn-danger">Hủy đặt hàng tất cả</button>
-						    </div>
-						    
-						    <div>
-						        <button type="submit" name="paySelected" value="paySelected" class="btn btn-success me-2">Thanh toán đã chọn</button>
-						        <button type="submit" name="payAll" value="payAll" class="btn btn-success">Thanh toán tất cả</button>
-						    </div>
-						</div>
-
-                    </form>
+                    
                 <% } %>
             </div>
             

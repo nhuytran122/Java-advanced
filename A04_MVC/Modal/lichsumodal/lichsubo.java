@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class lichsubo {
 	lichsudao lsdao = new lichsudao();
 	
-	public ArrayList<lichsu> getLichsu(long maKH) throws Exception {
-		return lsdao.getLichsu(maKH);
+	public ArrayList<lichsu> getLichsu(long maKH, boolean flagPurchased) throws Exception {
+		return lsdao.getLichsu(maKH, flagPurchased);
 	}
 }
