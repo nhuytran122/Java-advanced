@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="sachmodal.sach"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
@@ -25,6 +26,9 @@
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
     String searchKeyword = request.getParameter("txtSearch");
+    
+    NumberFormat nf = NumberFormat.getInstance();
+    nf.setGroupingUsed(true);
   %>
   <div class="container-scroller">
     <%@ include file="layoutAdmin/navbar.jsp" %>
@@ -95,7 +99,7 @@
                             </div>
                           </td>
                           <td><%= s.getSoluong() %></td>
-                          <td><%= s.getGia() %></td>
+                          <td><%= nf.format(s.getGia()) %></td>
                           <td><%= s.getMaloai() %></td>
                           <td><%= s.getTacgia() %></td>
                           <td>

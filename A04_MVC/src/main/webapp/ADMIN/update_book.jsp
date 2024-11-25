@@ -56,14 +56,14 @@
                     <div class="form-group row">
                       <label class="control-label col-sm-2" for="txtSoluong">Số lượng</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control" name="txtSoLuong" min="1" required value="<%= s.getSoluong() %>">
+                        <input type="text" class="form-control number-separator" name="txtSoLuong" min="1" required value="<%= s.getSoluong() %>">
                       </div>
                     </div>
                     
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Giá</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control" name="txtGia" min="0" required value="<%= s.getGia() %>">
+                        <input type="text" class="form-control number-separator" name="txtGia" min="0" required value="<%= s.getGia() %>">
                       </div>
                     </div>
                     
@@ -131,6 +131,21 @@
   <script src="ADMIN/js/hoverable-collapse.js"></script>
   <script src="ADMIN/js/template.js"></script>
   <script src="ADMIN/js/settings.js"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        // Đảm bảo mã JavaScript này được chạy sau khi trang được tải xong
+        $('.number-separator').inputmask({
+            alias: "numeric",
+            groupSeparator: ",",       // Dấu phẩy phân cách phần nghìn
+            autoGroup: true,           // Tự động thêm dấu phân cách
+            digits: 0,                 // Không có chữ số thập phân
+            rightAlign: false,
+            removeMaskOnSubmit: true   // Loại bỏ ký tự phân cách phần nghìn khi submit form
+        });
+    })
+    </script>
 </body>
 
 </html>
