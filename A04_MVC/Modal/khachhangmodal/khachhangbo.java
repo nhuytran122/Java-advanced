@@ -29,4 +29,8 @@ public class khachhangbo {
 		return bigInt.toString(16);
 		
 	}
+	
+	public int countKH() throws Exception {
+		return khdao.countKH();
+	}
 }

@@ -54,6 +54,46 @@ public class hoadondao {
 	    kn.cn.close();
 	    return kq;
 	}
+	
+	public int countAllHD() throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "SELECT COUNT(MaHoaDon) AS total FROM hoadon";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    ResultSet rs = cmd.executeQuery();
+
+	    int count = 0;
+	    if (rs.next()) {
+	        count = rs.getInt("total");
+	    }
+
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+
+	    return count;
+	}
+	
+	public int countHDPaid() throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "SELECT COUNT(*) AS total FROM hoadon WHERE damua = 1";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    ResultSet rs = cmd.executeQuery();
+
+	    int count = 0;
+	    if (rs.next()) {
+	        count = rs.getInt("total");
+	    }
+
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+
+	    return count;
+	}
+
+
 
 
 }

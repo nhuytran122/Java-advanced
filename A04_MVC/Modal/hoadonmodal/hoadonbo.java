@@ -12,4 +12,10 @@ public class hoadonbo {
 	public long updateHDByKH(long makh) throws Exception {
 		return hddao.updateHDByKH(makh);
 	}
+	public int countAllHD() throws Exception {
+		return hddao.countAllHD();
+	}
+	public int countHDPaid() throws Exception {
+		return hddao.countHDPaid();
+	}
 }

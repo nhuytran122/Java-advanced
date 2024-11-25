@@ -75,4 +75,23 @@ public class khachhangdao {
             
         return kq;
     }
+	
+	public int countKH() throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "SELECT COUNT(makh) FROM KhachHang";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    ResultSet rs = cmd.executeQuery();
+
+	    int count = 0;
+	    if (rs.next()) {
+	        count = rs.getInt(1);
+	    }
+
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+	    return count;
+	}
+
 }
