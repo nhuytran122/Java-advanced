@@ -18,6 +18,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import Controller.Chung;
 import loaimodal.loaibo;
+import sachmodal.sach;
 import sachmodal.sachbo;
 
 @WebServlet("/adminSaveSachController")
@@ -43,7 +44,8 @@ public class adminSaveSachController extends HttpServlet {
     		response.setCharacterEncoding("utf-8");
     		response.setContentType("text/html; charset=utf-8");
     		String masach = "", tensach = "", soluong = "", gia = "", 
-	                tacgia = "", sotap = "", anh = "", maloai = "";
+	                tacgia = "", sotap = "", anh = "", maloai = "",
+	                masachExists = "";
     		boolean isInvalid = false;
     		
     		 int done = 0;
@@ -59,15 +61,36 @@ public class adminSaveSachController extends HttpServlet {
     		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
     		ServletFileUpload upload = new ServletFileUpload(fileItemFactory);
     		String uniqueName = "";
+    		String oldAnh = "";
     		// String dirUrl1 = request.getServletContext().getRealPath("") + File.separator + "abc";
             
             List<FileItem> fileItems = upload.parseRequest(request);
+            
+            for (FileItem fileItem : fileItems) {
+				if (fileItem.isFormField()) {
+					String fieldName = fileItem.getFieldName();
+			        String fieldValue = fileItem.getString("UTF-8"); 
+			        if (fieldName.equals("txtMaSach") && fieldValue != null) {
+			        	masachExists = fieldValue; 
+			            break;
+			        }
+				}
+			}
+            
 			for (FileItem fileItem : fileItems) {
 				if (!fileItem.isFormField()) {
                     String nameimg = fileItem.getName();
                     if (!nameimg.equals("")) {
                         uniqueName = System.currentTimeMillis() + "_" + nameimg;
                         anh = "image_sach/" + uniqueName;  
+                    }
+                    else{
+                    	if (masachExists != "") {
+	                        var sachExists = sbo.getSach(masachExists);
+	                        if (sachExists != null) {
+	                            anh = sachExists.getAnh();
+	                        }
+                    	}
                     }
                 }
 				else {
@@ -106,6 +129,19 @@ public class adminSaveSachController extends HttpServlet {
 			                done = sbo.addSach(masach, tensach, tacgia, Long.parseLong(soluong), Long.parseLong(gia), anh, maloai, sotap);
 			                break;
 			            case "btnUpdate":
+			            	sach sachCu = sbo.getSach(masach);
+			                if (sachCu != null) {
+			                	
+			                	oldAnh = sachCu.getAnh();
+			                	
+			                    tensach = (tensach.isEmpty()) ? sachCu.getTensach() : tensach;
+			                    soluong = (soluong.isEmpty()) ? String.valueOf(sachCu.getSoluong()) : soluong;
+			                    gia = (gia.isEmpty()) ? String.valueOf(sachCu.getGia()) : gia;
+			                    maloai = (maloai.isEmpty()) ? sachCu.getMaloai() : maloai;
+			                    tacgia = (tacgia.isEmpty()) ? sachCu.getTacgia() : tacgia;
+			                    sotap = (sotap.isEmpty()) ? sachCu.getSoTap() : sotap;
+			                    anh = (anh.isEmpty()) ? sachCu.getAnh() : anh;
+			                }
 			                done = sbo.updateSach(masach, tensach, tacgia, Long.parseLong(soluong), Long.parseLong(gia), anh, maloai, sotap);
 			                break;
 			            default:
@@ -120,6 +156,17 @@ public class adminSaveSachController extends HttpServlet {
                     if (!fileItem.isFormField()) {
                         String nameimg  = fileItem.getName(); // Lấy tên file gốc
                         if (!nameimg.equals("")) {
+                        	
+                        	String appPath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/";
+                            File oldImageFile = new File(appPath + "/" + oldAnh);
+
+                            if (oldImageFile.exists()) {
+                                boolean isOldImageDeleted = oldImageFile.delete(); // Xóa ảnh cũ
+                                if (!isOldImageDeleted) {
+                                    System.out.println("Không thể xóa ảnh cũ: " + oldAnh);
+                                }
+                            }
+                        	
                             // Thực hiện upload file lên thư mục
                         	//String dirUrl = request.getServletContext().getRealPath("") + File.separator + "image_sach";
 

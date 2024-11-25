@@ -41,21 +41,22 @@
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Mã sách</label>
                       <div class="col-sm-10">
-                        <input disabled type="text" class="form-control" name="txtMasach" required value="<%= s.getMasach() %>">
+                      	<input type="hidden" class="form-control" name="txtMaSach" value="<%= s.getMasach() %>">
+                        <input disabled type="text" class="form-control" value="<%= s.getMasach() %>">
                       </div>
                     </div>
                     
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Tên sách</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtTensach" required value="<%= s.getTensach() %>">
+                        <input type="text" class="form-control" name="txtTenSach" required value="<%= s.getTensach() %>">
                       </div>
                     </div>
                     
                     <div class="form-group row">
                       <label class="control-label col-sm-2" for="txtSoluong">Số lượng</label>
                       <div class="col-sm-10">
-                        <input type="number" class="form-control" name="txtSoluong" min="1" required value="<%= s.getSoluong() %>">
+                        <input type="number" class="form-control" name="txtSoLuong" min="1" required value="<%= s.getSoluong() %>">
                       </div>
                     </div>
                     
@@ -90,7 +91,7 @@
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Tác giả</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="txtTacgia" required value="<%= s.getTacgia() %>">
+                        <input type="text" class="form-control" name="txtTacGia" required value="<%= s.getTacgia() %>">
                       </div>
                     </div>
 
@@ -110,7 +111,7 @@
 
                     <div class="form-group row">
 					  <div class="col-sm-offset-2 col-sm-10 text-center">
-					    <button type="submit" class="btn btn-primary">Lưu</button>
+					    <button type="submit" name="btnUpdate" value="add" class="btn btn-primary">Lưu</button>
 					    <a href="adminSachController" class="btn btn-secondary">Hủy</a>
 					  </div>
 					</div>
