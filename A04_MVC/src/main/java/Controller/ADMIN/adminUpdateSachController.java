@@ -74,6 +74,14 @@ public class adminUpdateSachController extends HttpServlet {
                     return;
                 }
             }
+            
+            if (request.getParameter("btnDetailSach") != null) {
+            	request.setAttribute("book", sbo.getSach(ms));
+            	RequestDispatcher rd = request.getRequestDispatcher("ADMIN/detail_book.jsp");
+                rd.forward(request, response);
+                return;
+            }
+            
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

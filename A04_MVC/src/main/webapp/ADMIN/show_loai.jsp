@@ -89,9 +89,6 @@
 					      <div class="btn-group" role="group">
 					        <form method="post" action="adminUpdateLoaiController">
 					          <input type="hidden" name="idLoai" value="<%= l.getMaloai() %>">
-					          <button type="submit" name="btnDetailLoai" class="btn btn-success btn-sm" title="Xem chi tiết">
-					            <i class="bi bi-eye"></i>
-					          </button>
 					          <button type="submit" name="btnUpdateLoai" value="<%= l.getMaloai() %>" class="btn btn-warning btn-sm" title="Sửa">
 					            <i class="bi bi-pencil"></i>
 					          </button>
