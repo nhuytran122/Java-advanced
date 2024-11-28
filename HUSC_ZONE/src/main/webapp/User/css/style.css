@@ -11,6 +11,10 @@
     --hover-bg: #f0f0f0;
 }
 
+body {
+    font-family: "Raleway", sans-serif;
+}
+
 .bg-primary-custom, .bg:hover {
     background-color: var(--primary-color);
     color: var(--text-light);

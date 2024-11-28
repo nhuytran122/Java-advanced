@@ -50,17 +50,28 @@
                             <li><h6 class="dropdown-header">Thông báo cũ</h6></li>
                             <li><a class="dropdown-item" href="#">Tài liệu được xếp hạng cao</a></li>
                         </ul>
-                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="" alt="" class="rounded-circle" width="30" height="30"> 
-                            Hi, Nhu Y
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/my-profile.html">Trang cá nhân</a></li>
-                            <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
-                        </ul>
-                    </li>
+    <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="../images/avatar.jpg" alt="Avatar" class="rounded-circle me-2" width="30" height="30"> 
+        <span>Hi, Nhu Y</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <!-- Avatar và tên -->
+        <li class="text-center p-3">
+            <img src="../images/avatar.jpg" alt="Avatar" class="rounded-circle mb-2" width="80" height="80">
+            <h6 class="fw-bold mb-0">Nhu Y</h6>
+            <p class="text-muted small">nhuy@example.com</p>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="/my-profile.html">
+            <i class="bi bi-person me-2"></i>Trang cá nhân
+        </a></li>
+        <li><a class="dropdown-item text-danger" href="/logout.html">
+            <i class="bi bi-box-arrow-right me-2"></i>Đăng xuất
+        </a></li>
+    </ul>
+</li>
+
                 </ul>
             </div>
         </div>
