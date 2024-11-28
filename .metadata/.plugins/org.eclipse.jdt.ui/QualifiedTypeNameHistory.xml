@@ -7,18 +7,14 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="ketnoimodal.DbHelper"/>
     <fullyQualifiedTypeName name="hoadonmodal.hoadon"/>
-    <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.chitiethoadon"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDdao"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHD"/>
-    <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
-    <fullyQualifiedTypeName name="sachmodal.sach"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsudao"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsubo"/>
-    <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsu"/>
     <fullyQualifiedTypeName name="java.security.MessageDigest"/>
     <fullyQualifiedTypeName name="java.math.BigInteger"/>
@@ -40,9 +36,13 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDbo"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-    <fullyQualifiedTypeName name="sachmodal.sachbo"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.Long"/>
     <fullyQualifiedTypeName name="Controller.Chung"/>
     <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="sachmodal.sach"/>
+    <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
+    <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
+    <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
+    <fullyQualifiedTypeName name="sachmodal.sachbo"/>
 </qualifiedTypeNameHistroy>

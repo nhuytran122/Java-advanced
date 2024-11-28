@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+:root {
+    --primary-color: #3c6382;
+    --primary-light: #cee2f2;
+    --primary-dark: #4a90e2;
+    --danger-color: #f62539;
+    --highlight-color: yellow;
+    --text-color: #333;
+    --text-light: #fff;
+    --hover-bg: #f0f0f0;
+}
+
+.bg-primary-custom, .bg:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.btn-primary-custom {
+    background-color: var(--primary-light);
+    border: none;
+    color: var(--text-color);
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+}
+
+.card-body button {
+    margin-top: 10px;
+}
+
+.btn-mark:hover {
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-color);
+    color: var(--text-light);
+}
+
+.custom-list-group .list-group-item {
+    border: none;
+    transition: transform 0.2s;
+}
+
+.custom-list-group .list-group-item:hover {
+    transform: scale(1.05);
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card.no-hover:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+
+.page-link {
+    transition: all 0.3s ease-in-out;
+}
+
+.page-link:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.profile-header {
+    background-color: #3c6382;
+    color: white;
+    padding: 12px;
+}
+.profile-header img {
+    border: 4px solid #fff;
+}
