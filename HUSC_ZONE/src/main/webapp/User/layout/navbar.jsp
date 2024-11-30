@@ -1,3 +1,4 @@
+<%@page import="UserModal.User"%>
 <%@page import="MaterialModal.Material"%>
 <%@page import="CategoryModal.Category"%>
 <%@page import="java.util.ArrayList"%>
@@ -6,37 +7,50 @@
 <%
     ArrayList<Category> listCates = (ArrayList<Category>)request.getAttribute("listCates");
     ArrayList<Material> listMates = (ArrayList<Material>)request.getAttribute("listMates");
+    
+    Long cateID = (request.getAttribute("cateID") != null) ? (Long)request.getAttribute("cateID") : 0L;
+    Long mateID = (request.getAttribute("mateID") != null) ? (Long)request.getAttribute("mateID") : 0L;
+    
+    User user = (User)session.getAttribute("user");
 %>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary-custom py-2">
     <div class="container-fluid mx-5">
-        <a class="navbar-brand text-white fw-bold" href="#">
+        <a class="navbar-brand text-white fw-bold" href="../home">
             <img src="../images/husc-removebg-preview.png" alt="HUSCZone Logo" style="height: 40px; width: 130px;" class="d-inline-block align-top">
         </a>
         <div class="collapse navbar-collapse">
-            <!-- Form tìm kiếm -->
             <form class="d-flex mx-auto align-items-center">
                 <select name="cateID" class="form-select form-select-sm me-2" style="margin-left: 150px;">
-                    <option value="0">-- Chọn ngành học --</option>
-                    <% 
-                        for(Category cate : listCates){
-                    %>
-                    <option value="<%= cate.getCategoryID() %>"> <%= cate.getCategoryName() %></option>
-                    <% 
-                        } 
-                    %>
-                </select>
-                
-                <select name="mateID" class="form-select form-select-sm me-2">
-                    <option value="0">-- Chọn dạng tài liệu --</option>
-                    <% 
-                        for(Material mate : listMates){
-                    %>
-                    <option value="<%= mate.getMaterialID() %>"> <%= mate.getMaterialName() %></option>
-                    <% 
-                        } 
-                    %>
-                </select>
+				    <option value="0" <%= (cateID == 0L ? "selected" : "") %>>-- Chọn ngành học --</option>
+				    <% 
+				        for(Category cate : listCates) {
+				    %>
+				    <option value="<%= cate.getCategoryID() %>" 
+				    	<%= (cate.getCategoryID().equals(cateID) ? "selected" : "") %>
+				    >
+				        <%= cate.getCategoryName() %>
+				    </option>
+				    <% 
+				        } 
+				    %>
+				</select>
+				
+				<select name="mateID" class="form-select form-select-sm me-2">
+				    <option value="0" <%= (mateID == 0L ? "selected" : "") %>>-- Chọn dạng tài liệu --</option>
+				    <% 
+				        for(Material mate : listMates) {
+				    %>
+				    <option value="<%= mate.getMaterialID() %>" 
+				    	<%= (mate.getMaterialID().equals(mateID) ? "selected" : "") %>
+				    >
+				        <%= mate.getMaterialName() %>
+				    </option>
+				    <% 
+				        } 
+				    %>
+				</select>
+
 
                 <input class="form-control form-control-sm me-2" 
                     style="width: 200px;"  
@@ -47,7 +61,7 @@
                     <i class="bi bi-search"></i>
                 </button>
             </form>
-
+<% if (user != null) { %>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link text-white" href="/show-docs.html">Tài liệu</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/show-status.html">Bài đăng</a></li>
@@ -70,22 +84,38 @@
                         <span>Hi, Nhu Y</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <!-- Avatar và tên -->
                         <li class="text-center p-3">
                             <img src="../images/avatar.jpg" alt="Avatar" class="rounded-circle mb-2" width="80" height="80">
-                            <h6 class="fw-bold mb-0">Nhu Y</h6>
-                            <p class="text-muted small">nhuy@example.com</p>
+                            <h6 class="fw-bold mb-0"><%= user.getName() %></h6>
+                            <p class="text-muted small"> <%= user.getEmail() %></p>
                         </li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/my-profile.html">
                             <i class="bi bi-person me-2"></i>Trang cá nhân
                         </a></li>
-                        <li><a class="dropdown-item text-danger" href="/logout.html">
+                        <li><a class="dropdown-item text-danger" href="../logout">
                             <i class="bi bi-box-arrow-right me-2"></i>Đăng xuất
                         </a></li>
                     </ul>
                 </li>
             </ul>
+            <% } else { %>
+			    <ul class="navbar-nav ms-auto d-flex align-items-center">
+			        <li class="nav-item">
+			            <a class="btn btn-primary btn-sm d-flex align-items-center px-3" href="../signup">
+			                <i class="bi bi-person-plus-fill me-2"></i>Đăng ký
+			            </a>
+			        </li>
+			        
+			        <li class="nav-item me-2">
+			            <a class="btn btn-outline-light btn-sm d-flex align-items-center px-3 mx-3" href="../login">
+			                <i class="bi bi-box-arrow-in-right me-2"></i>Đăng nhập
+			            </a>
+			        </li>			        
+			    </ul>
+			<% } %>
+
+
         </div>
     </div>
 </nav>

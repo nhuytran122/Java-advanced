@@ -5,17 +5,17 @@ import java.sql.Date;
 public class Like {
 	private Long LikeID;
 	private Long PostID;
-	private Date CreatedAt;
+	private Date LikedAt;
 	private Long LikedBy;
 	public Like() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Like(Long likeID, Long postID, Date createdAt, Long likedBy) {
+	public Like(Long likeID, Long postID, Date likedAt, Long likedBy) {
 		super();
 		LikeID = likeID;
 		PostID = postID;
-		CreatedAt = createdAt;
+		LikedAt = likedAt;
 		LikedBy = likedBy;
 	}
 	public Long getLikeID() {
@@ -30,11 +30,11 @@ public class Like {
 	public void setPostID(Long postID) {
 		PostID = postID;
 	}
-	public Date getCreatedAt() {
-		return CreatedAt;
+	public Date getLikedAt() {
+		return LikedAt;
 	}
-	public void setCreatedAt(Date createdAt) {
-		CreatedAt = createdAt;
+	public void setLikedAt(Date likedAt) {
+		LikedAt = likedAt;
 	}
 	public Long getLikedBy() {
 		return LikedBy;

@@ -7,25 +7,26 @@ public class Document {
 	private String Title;
 	private String Desription;
 	private Date CreatedAt;
+	private Date UpdatedAt;
 	private String FilePath;
 	private Long CategoryID;
 	private Long MaterialID;
-	private Long UploadBy;
+	private Long UploadedBy;
 	public Document() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Document(Long documentID, String title, String desription, Date createdAt, String filePath, Long categoryID,
-			Long materialID, Long uploadBy) {
+	public Document(Long documentID, String title, String desription, Date createdAt, Date updatedAt, String filePath,
+			Long categoryID, Long materialID, Long uploadedBy) {
 		super();
 		DocumentID = documentID;
 		Title = title;
 		Desription = desription;
 		CreatedAt = createdAt;
+		UpdatedAt = updatedAt;
 		FilePath = filePath;
 		CategoryID = categoryID;
 		MaterialID = materialID;
-		UploadBy = uploadBy;
+		UploadedBy = uploadedBy;
 	}
 	public Long getDocumentID() {
 		return DocumentID;
@@ -51,6 +52,12 @@ public class Document {
 	public void setCreatedAt(Date createdAt) {
 		CreatedAt = createdAt;
 	}
+	public Date getUpdatedAt() {
+		return UpdatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		UpdatedAt = updatedAt;
+	}
 	public String getFilePath() {
 		return FilePath;
 	}
@@ -70,9 +77,9 @@ public class Document {
 		MaterialID = materialID;
 	}
 	public Long getUploadBy() {
-		return UploadBy;
+		return UploadedBy;
 	}
-	public void setUploadBy(Long uploadBy) {
-		UploadBy = uploadBy;
+	public void setUploadBy(Long uploadedBy) {
+		UploadedBy = uploadedBy;
 	}
 }

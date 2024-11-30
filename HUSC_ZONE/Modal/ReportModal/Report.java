@@ -7,19 +7,19 @@ public class Report {
 	private String Reason;
 	private Date CreatedAt;
 	private Long CreatedBy;
-	private Long DocumentID;
+	private Long PostID;
 	private Long StatusID;
 	public Report() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Report(Long reportID, String reason, Date createdAt, Long createdBy, Long documentID, Long statusID) {
+	public Report(Long reportID, String reason, Date createdAt, Long createdBy, Long postID, Long statusID) {
 		super();
 		ReportID = reportID;
 		Reason = reason;
 		CreatedAt = createdAt;
 		CreatedBy = createdBy;
-		DocumentID = documentID;
+		PostID = postID;
 		StatusID = statusID;
 	}
 	public Long getReportID() {
@@ -46,11 +46,11 @@ public class Report {
 	public void setCreatedBy(Long createdBy) {
 		CreatedBy = createdBy;
 	}
-	public Long getDocumentID() {
-		return DocumentID;
+	public Long getPostID() {
+		return PostID;
 	}
-	public void setDocumentID(Long documentID) {
-		DocumentID = documentID;
+	public void setPostID(Long postID) {
+		PostID = postID;
 	}
 	public Long getStatusID() {
 		return StatusID;

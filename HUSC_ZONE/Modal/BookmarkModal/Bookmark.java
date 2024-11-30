@@ -6,7 +6,6 @@ public class Bookmark {
 	private Long MarkedBy;
 	public Bookmark() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Bookmark(Long bookmarkID, Long documentID, Long markedBy) {
 		super();

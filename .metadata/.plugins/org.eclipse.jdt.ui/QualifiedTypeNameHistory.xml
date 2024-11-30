@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="hoadonmodal.hoadon"/>
-    <fullyQualifiedTypeName name="chitiethoadonmodal.chitiethoadon"/>
-    <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDdao"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHD"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="cartmodal.Hang"/>
@@ -47,7 +44,6 @@
     <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="at.favre.lib.crypto.bcrypt.BCrypt"/>
     <fullyQualifiedTypeName name="org.mindrot.jbcrypt.BCrypt"/>
-    <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="CategoryModal.CategoryDao"/>
     <fullyQualifiedTypeName name="CategoryModal.Category"/>
     <fullyQualifiedTypeName name="CategoryModal.CategoryBo"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
+    <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
+    <fullyQualifiedTypeName name="DocumentModal.Document"/>
+    <fullyQualifiedTypeName name="DocumentModal.DocumentDao"/>
 </qualifiedTypeNameHistroy>
