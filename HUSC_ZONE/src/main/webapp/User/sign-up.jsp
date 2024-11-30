@@ -65,11 +65,11 @@
                             </div>
 
                             <% if (isInvalid) { %>
-                                <div class="alert alert-danger mt-2">Vui lòng nhập đầy đủ thông tin bắt buộc!</div>
+                                <span class="text-danger">Vui lòng nhập đầy đủ thông tin bắt buộc!</span>
                             <% } %>
 
                             <% if (isDuplicate) { %>
-                                <div class="alert alert-danger mt-2">Email đã tồn tại trong hệ thống!</div>
+                                <span class="text-danger">Email đã tồn tại trong hệ thống!</span>
                             <% } %>
 
                             <button type="submit" name="btn-signup" class="btn btn-default mt-3">Đăng ký</button>

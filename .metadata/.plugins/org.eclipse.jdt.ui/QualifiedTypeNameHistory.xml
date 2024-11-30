@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="cartmodal.CartDao"/>
-    <fullyQualifiedTypeName name="cartmodal.GioHangBo"/>
-    <fullyQualifiedTypeName name="java.sql.SQLException"/>
-    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="ketnoimodal.DbHelper"/>
     <fullyQualifiedTypeName name="hoadonmodal.hoadon"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.chitiethoadon"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDdao"/>
@@ -25,7 +19,6 @@
     <fullyQualifiedTypeName name="TranNhuYloaitinModal.TranNhuY_K45G_loaitindao"/>
     <fullyQualifiedTypeName name="TranNhuYloaitinModal.TranNhuY_K45G_loaitinbo"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongkedao"/>
     <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongke"/>
     <fullyQualifiedTypeName name="TranNhuYthongkeModal.TranNhuY_K45G_thongkebo"/>
@@ -47,11 +40,24 @@
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="KetNoiModal.KetNoi"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="ConstantModal.Constants"/>
-    <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="UserModal.UserDao"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
+    <fullyQualifiedTypeName name="at.favre.lib.crypto.bcrypt.BCrypt"/>
+    <fullyQualifiedTypeName name="org.mindrot.jbcrypt.BCrypt"/>
+    <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
+    <fullyQualifiedTypeName name="CategoryModal.CategoryDao"/>
+    <fullyQualifiedTypeName name="CategoryModal.Category"/>
+    <fullyQualifiedTypeName name="CategoryModal.CategoryBo"/>
+    <fullyQualifiedTypeName name="MaterialModal.MaterialDao"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="MaterialModal.Material"/>
+    <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
+    <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
+    <fullyQualifiedTypeName name="UserModal.UserBo"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 </qualifiedTypeNameHistroy>

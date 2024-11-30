@@ -41,15 +41,10 @@ public class SignUpController extends HttpServlet {
             boolean isDuplicate = false;
             
             if (btnSignup != null) {
-            	if (txtHoten == null || txtGioiTinh == null || txtPassword == null ||
-            		    txtHoten.trim().isEmpty() || txtGioiTinh.trim().isEmpty() || txtPassword.trim().isEmpty()) {
+            	if (txtHoten.trim().isEmpty() || txtGioiTinh.trim().isEmpty() || txtPassword.trim().isEmpty()) {
             		    isInvalid = true;
             	}
-
-	            if (txtHoten != null && !txtHoten.trim().isEmpty() &&
-						txtLoginId != null && !txtLoginId.trim().isEmpty() &&
-						txtPassword != null && !txtPassword.trim().isEmpty() &&
-						txtGioiTinh != null && !txtGioiTinh.trim().isEmpty()) {
+            	else {
 	            	int add = userBo.addUser(txtHoten, txtPassword, txtGioiTinh, txtLoginId, 
 	        			txtSdt, Constants.ROLE_USER);
 		            if(add <= 0) {

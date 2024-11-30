@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%
 	String loginId = (String)request.getAttribute("loginId");
+	boolean isWrong = (boolean)request.getAttribute("isWrong"); 
 	boolean isInvalid = (boolean)request.getAttribute("isInvalid"); 
+	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +39,12 @@
                                 <label>Password</label>
                                 <input name ="txtPassword" class="form-control mt-2" type="password" placeholder="Mật khẩu">
                             </div>
-                            <% if (isInvalid) { %>
+                            <% if (isWrong) { %>
 				              <span class="text-danger">Thông tin đăng nhập không đúng!</span>
+				            <% } %>
+				            
+				            <% if (isInvalid) { %>
+				              <span class="text-danger">Vui lòng nhập đầy đủ thông tin đăng nhập!</span>
 				            <% } %>
                             <button name="btn-login" type="submit" class="btn btn-default mt-3">Đăng nhập</button>
                         </form>

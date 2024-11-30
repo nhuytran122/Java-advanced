@@ -37,17 +37,24 @@ public class LoginController extends HttpServlet {
 			   
 			UserBo userBo = new UserBo();
 			boolean isInvalid = false; 
+			boolean isWrong = false;
 			  
 			if (btnLogin != null) {
-				if (userBo.checkLogin(txtLoginId, txtPassword) != null) {
-				    session.setAttribute("user", userBo.checkLogin(txtLoginId, txtPassword));
-				    response.sendRedirect("home");
-				    return;
-				} else
-					isInvalid = true;
+				if (txtLoginId.trim().isEmpty() || txtPassword.trim().isEmpty()) {
+        		    isInvalid = true;
+	        	}
+	        	else {
+					if (userBo.checkLogin(txtLoginId, txtPassword) != null) {
+					    session.setAttribute("user", userBo.checkLogin(txtLoginId, txtPassword));
+					    response.sendRedirect("home");
+					    return;
+					} else
+						isWrong = true;
+	        	}
 			}
 			request.setAttribute("loginId", txtLoginId);
 			request.setAttribute("isInvalid", isInvalid);
+			request.setAttribute("isWrong", isWrong);
 			  
 			RequestDispatcher rd = request.getRequestDispatcher("User/login.jsp");
 		    rd.forward(request, response);
