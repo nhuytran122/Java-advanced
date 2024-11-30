@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String loginId = (String)request.getAttribute("loginId");
+	boolean isInvalid = (boolean)request.getAttribute("isInvalid"); 
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - HUSCZone</title>
     <%@ include file="layout/import.jsp" %>
-    <link rel="stylesheet" href="../User/css/login-style.css">
+    <link rel="stylesheet" href="css/login-style.css">
 </head>
+
 <body class="bg-light">
 <%@ include file="layout/navbar.jsp" %>
     <div class="container my-4">
@@ -19,23 +24,27 @@
 
             <div class="col-md-5">
                 <div class="form-bg">
-                    <div class="form-container">
+                    <div class="form-container mt-3">
                         <div class="form-icon"><i class="bi bi-person-circle"></i></div>
                         <h3 class="title">Đăng nhập</h3>
-                        <form class="form-horizontal">
+                        <form action="../login" class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control mt-2" type="email" placeholder="Email">
+                                <input name="txtLoginId" class="form-control mt-2" type="email" 
+                                	placeholder="Email" value="<%= (loginId != null) ? loginId : "" %>"/>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input class="form-control mt-2" type="password" placeholder="Mật khẩu">
+                                <input name ="txtPassword" class="form-control mt-2" type="password" placeholder="Mật khẩu">
                             </div>
-                            <button type="button" class="btn btn-default mt-3">Đăng nhập</button>
+                            <% if (isInvalid) { %>
+				              <span class="text-danger">Thông tin đăng nhập không đúng!</span>
+				            <% } %>
+                            <button name="btn-login" type="submit" class="btn btn-default mt-3">Đăng nhập</button>
                         </form>
                         <p class="mt-4 text-center">
                             Bạn chưa có tài khoản? 
-                            <a href="register.jsp" class="text-primary fw-bold">Đăng ký</a>
+                            <a href="../signup" class="text-primary fw-bold">Đăng ký</a>
                         </p>
                     </div>
                 </div>

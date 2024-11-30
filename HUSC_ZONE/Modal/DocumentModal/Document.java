@@ -11,13 +11,12 @@ public class Document {
 	private Long CategoryID;
 	private Long MaterialID;
 	private Long UploadBy;
-	private Long StatusID;
 	public Document() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Document(Long documentID, String title, String desription, Date createdAt, String filePath, Long categoryID,
-			Long materialID, Long uploadBy, Long statusID) {
+			Long materialID, Long uploadBy) {
 		super();
 		DocumentID = documentID;
 		Title = title;
@@ -27,7 +26,6 @@ public class Document {
 		CategoryID = categoryID;
 		MaterialID = materialID;
 		UploadBy = uploadBy;
-		StatusID = statusID;
 	}
 	public Long getDocumentID() {
 		return DocumentID;
@@ -76,11 +74,5 @@ public class Document {
 	}
 	public void setUploadBy(Long uploadBy) {
 		UploadBy = uploadBy;
-	}
-	public Long getStatusID() {
-		return StatusID;
-	}
-	public void setStatusID(Long statusID) {
-		StatusID = statusID;
 	}
 }

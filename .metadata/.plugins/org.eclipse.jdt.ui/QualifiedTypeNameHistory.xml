@@ -43,10 +43,15 @@
     <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
     <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
     <fullyQualifiedTypeName name="sachmodal.sachbo"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="KetNoiModal.KetNoi"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="ConstantModal.Constants"/>
+    <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
+    <fullyQualifiedTypeName name="UserModal.UserDao"/>
+    <fullyQualifiedTypeName name="UserModal.User"/>
 </qualifiedTypeNameHistroy>
