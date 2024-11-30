@@ -12,24 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import khachhangmodal.khachhangbo;
 
-/**
- * Servlet implementation class loginController
- */
 @WebServlet("/loginController")
 public class loginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public loginController() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();  
@@ -41,19 +31,25 @@ public class loginController extends HttpServlet {
 			String btnLogin = request.getParameter("btn-login");
 			   
 			khachhangbo khbo = new khachhangbo();
-			boolean isInvalid = false; 
+			boolean isInvalid = false;
+			boolean isWrong = false;
 			  
 			if (btnLogin != null) {
-				if (khbo.checkLogin(txtLoginId, txtPassword) != null) {
-				    session.setAttribute("kh", khbo.checkLogin(txtLoginId, txtPassword));
-				    response.sendRedirect("sachController");
-				    return;
-				} else
-					isInvalid = true;
+				if (txtLoginId.trim().isEmpty() || txtPassword.trim().isEmpty()) {
+        		    isInvalid = true;
+	        	}
+				else {
+					if (khbo.checkLogin(txtLoginId, txtPassword) != null) {
+					    session.setAttribute("kh", khbo.checkLogin(txtLoginId, txtPassword));
+					    response.sendRedirect("sachController");
+					    return;
+					} else
+						isWrong = true;
+				}
 			}
 			request.setAttribute("loginId", txtLoginId);
-			request.setAttribute("password", txtPassword);
 			request.setAttribute("isInvalid", isInvalid);
+			request.setAttribute("isWrong", isWrong);
 			  
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 		    rd.forward(request, response);
@@ -62,11 +58,7 @@ public class loginController extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

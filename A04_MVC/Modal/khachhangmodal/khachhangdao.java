@@ -58,7 +58,10 @@ public class khachhangdao {
 	}
 	
 	public int themKH(String hoten, String diachi, String sodt, String email, String tendn, String pass) throws Exception {
-        KetNoi kn = new KetNoi();
+        if (checkTendnExists(tendn)) {
+        	return -1;
+        }
+		KetNoi kn = new KetNoi();
 		kn.ketnoi();
         String sql = "INSERT INTO KhachHang (hoten, diachi, sodt, email, tendn, pass) VALUES (?, ?, ?, ?, ?, ?);";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
@@ -93,5 +96,21 @@ public class khachhangdao {
 	    kn.cn.close();
 	    return count;
 	}
+	
+	public boolean checkTendnExists(String tendn) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "SELECT 1 FROM KhachHang WHERE tendn = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, tendn);
+	    ResultSet rs = cmd.executeQuery();
+
+	    boolean exists = rs.next();
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+	    return exists;
+	}
+
 
 }

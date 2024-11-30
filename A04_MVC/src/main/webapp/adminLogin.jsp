@@ -2,7 +2,6 @@
 pageEncoding="UTF-8"%>
 <%
   String loginId = (String)request.getAttribute("loginId");
-  String password = (String)request.getAttribute("password");
   boolean isInvalid = (boolean)request.getAttribute("isInvalid");
   int d = 0;
   if (session.getAttribute("dem") != null) {
@@ -68,7 +67,6 @@ pageEncoding="UTF-8"%>
 			    class="form-control"
 			    name="txtPassword"
 			    placeholder="Mật khẩu"
-			    value="<%= (password != null) ? password : "" %>"
 			  />
 			</div>
 			

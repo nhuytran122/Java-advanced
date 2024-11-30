@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%>
   String email = (String)request.getAttribute("email");
   String diachi = (String)request.getAttribute("diachi");
   boolean isInvalid = (boolean)request.getAttribute("isInvalid");
+  boolean isDuplicate = (boolean)request.getAttribute("isDuplicate");
 	
     
 %>
@@ -76,7 +77,11 @@ pageEncoding="UTF-8"%>
                     </div>
 
                     <% if (isInvalid) { %>
-                        <span class="text-danger">Vui lòng nhập đủ thông tin bắt buộc!</span>
+                        <span class="text-danger">Vui lòng nhập đầy đủ thông tin bắt buộc!</span>
+                    <% } %>
+
+                    <% if (isDuplicate) { %>
+                        <span class="text-danger">Tên đăng nhập đã tồn tại!</span>
                     <% } %>
 
                     <button type="submit" name="btn-signup" class="btn btn-primary w-100 bg-color py-2 my-2">Đăng ký</button>

@@ -2,8 +2,8 @@
 pageEncoding="UTF-8"%>
 <%
   String loginId = (String)request.getAttribute("loginId");
-  String password = (String)request.getAttribute("password");
   boolean isInvalid = (boolean)request.getAttribute("isInvalid");
+  boolean isWrong = (boolean)request.getAttribute("isWrong"); 
 
   // lay ve un va pass
   // kiem tra chay lan dau
@@ -69,12 +69,15 @@ pageEncoding="UTF-8"%>
                 class="form-control"
                 name="txtPassword"
                 placeholder="Mật khẩu"
-                value="<%= (password != null) ? password : "" %>"
               />
             </div>
-            <% if (isInvalid) { %>
-              <span class="text-danger">Thông tin đăng nhập không đúng!</span>
-            <% } %>
+			<% if (isWrong) { %>
+				 <span class="text-danger">Thông tin đăng nhập không đúng!</span>
+			<% } %>
+				            
+			<% if (isInvalid) { %>
+				 <span class="text-danger">Vui lòng nhập đầy đủ thông tin đăng nhập!</span>
+			<% } %>
             <button
               type="submit"
               name="btn-login"

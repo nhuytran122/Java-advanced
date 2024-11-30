@@ -46,19 +46,28 @@ public class signupController extends HttpServlet {
 			   
 			khachhangbo khbo = new khachhangbo();
 			boolean isInvalid = false; 
+			boolean isDuplicate = false;
 			  
 			if (btnSignup != null) {
-				if (txtHoten != null && !txtHoten.trim().isEmpty() &&
-						txtLoginId != null && !txtLoginId.trim().isEmpty() &&
-						txtPassword != null && !txtPassword.trim().isEmpty()) {
+				if (txtHoten.trim().isEmpty() ||
+					txtLoginId.trim().isEmpty() ||
+					txtPassword.trim().isEmpty()) {
+					
+					isInvalid = true;
+				}
+				else
+				{
                 	int kqkh = khbo.themKH(txtHoten, txtDiachi, txtSdt, txtEmail, txtLoginId, txtPassword);
-                	if(kqkh > 0) {
+                	if(kqkh <= 0) {
+		            	isDuplicate = true;
+		            }
+                	else {
         			    response.sendRedirect("loginController");
         			    return;
-                	}
-				} else
-					isInvalid = true;
+                	}	
+				} 
 			}
+			
 			request.setAttribute("loginId", txtLoginId);
 			request.setAttribute("hoten", txtHoten);
 			request.setAttribute("sdt", txtSdt);
@@ -66,6 +75,7 @@ public class signupController extends HttpServlet {
 			request.setAttribute("diachi", txtDiachi);
 			request.setAttribute("password", txtPassword);
 			request.setAttribute("isInvalid", isInvalid);
+			request.setAttribute("isDuplicate", isDuplicate);
 			  
 			RequestDispatcher rd = request.getRequestDispatcher("signup.jsp");
 		    rd.forward(request, response);
