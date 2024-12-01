@@ -1,5 +1,7 @@
 package hoadonmodal;
 
+import java.util.ArrayList;
+
 public class hoadonbo {
 	hoadondao hddao = new hoadondao();
 	
@@ -17,5 +19,14 @@ public class hoadonbo {
 	}
 	public int countHDPaid() throws Exception {
 		return hddao.countHDPaid();
+	}
+	public ArrayList<hoadon> getAllHD(String searchValue, int page, int pageSize) throws Exception {
+		return hddao.getAllHD(searchValue, page, pageSize);
+	}
+	public int countHDByCondition(String searchValue) throws Exception {
+		return hddao.countHDByCondition(searchValue);
+	}
+	public int deleteHD(long maHD) throws Exception {
+		return hddao.deleteHD(maHD);
 	}
 }

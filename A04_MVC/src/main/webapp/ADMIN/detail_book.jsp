@@ -50,7 +50,8 @@
                         <div class="col-md-12">
                           <h5 class="card-title mb-3"><%= s.getTensach() %></h5>
                           <p class="card-text"><strong>Mã sách:</strong> <%= s.getMasach() %></p>
-                          <p class="card-text"><strong>Giá:</strong> <%= nf.format(s.getGia()) %> VNĐ</p>
+                          <p class="card-text"><strong>Giá:</strong> <%= nf.format(s.getGia()) %>
+                          <p class="card-text"><strong>Số lượng:</strong> <%= s.getSoluong() %></p> 
                           <p class="card-text"><strong>Loại sách:</strong> <%= s.getMaloai() %></p>
                           <p class="card-text"><strong>Số Tập:</strong> <%= s.getSoTap() %></p>
                           <p class="card-text"><strong>Tác giả:</strong> <%= s.getTacgia() %></p>

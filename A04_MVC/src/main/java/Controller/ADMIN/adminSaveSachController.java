@@ -101,7 +101,7 @@ public class adminSaveSachController extends HttpServlet {
                 for (FileItem fileItem : fileItems) {
                     if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
                     	//String appPath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/image_sach";
-                    	String appPath = request.getServletContext().getRealPath("/image_sach");
+                    	String appPath = request.getServletContext().getRealPath("") +  File.separator + "image_sach";
                         File dir = new File(appPath);
                         if (!dir.exists()) 
                         	dir.mkdir();
@@ -112,9 +112,9 @@ public class adminSaveSachController extends HttpServlet {
 
                         // Xóa ảnh cũ nếu có
                         if (!oldAnh.isEmpty() && isUpdate) {
-                        	//String filePath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp";
-                        	String filePath = request.getServletContext().getRealPath("/");
-                            File oldFile = new File(filePath + File.separator + oldAnh);
+                        	//String filePath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/";
+                        	String filePath = request.getServletContext().getRealPath("") +  File.separator + oldAnh;
+                            File oldFile = new File(filePath);
                             if (oldFile.exists()) 
                             	oldFile.delete();
                         }

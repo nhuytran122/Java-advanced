@@ -21,19 +21,19 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+        <a class="nav-link" href="#charts" aria-expanded="false" aria-controls="charts">
           <i class="bi bi-person menu-icon"></i>
           <span class="menu-title">Khách hàng</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+        <a class="nav-link" href="adminOrderController" aria-expanded="false" aria-controls="tables">
           <i class="bi bi-receipt menu-icon"></i>
           <span class="menu-title">Đơn hàng</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+        <a class="nav-link" href="#auth" aria-expanded="false" aria-controls="auth">
           <i class="bi bi-person-circle menu-icon"></i>
           <span class="menu-title">Tài khoản của tôi</span>
         </a>
