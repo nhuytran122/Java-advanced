@@ -17,181 +17,116 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import Controller.Chung;
-import loaimodal.loaibo;
 import sachmodal.sach;
 import sachmodal.sachbo;
 
 @WebServlet("/adminSaveSachController")
 public class adminSaveSachController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     public adminSaveSachController() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
             HttpSession session = request.getSession();
 
-            if(session.getAttribute("ad") == null) {
+            if (session.getAttribute("ad") == null) {
                 response.sendRedirect("adminloginController");
                 return;
             }
-            
-            request.setCharacterEncoding("utf-8");
-    		response.setCharacterEncoding("utf-8");
-    		response.setContentType("text/html; charset=utf-8");
-    		String masach = "", tensach = "", soluong = "", gia = "", 
-	                tacgia = "", sotap = "", anh = "", maloai = "",
-	                masachExists = "";
-    		boolean isInvalid = false;
-    		
-    		 int done = 0;
-    		 sachbo sbo = new sachbo();
-    		
-    		// Kiểm tra nếu không có dữ liệu gửi lên
-//    		if (request.getContentLength() <= 0) {
-//    			RequestDispatcher rd = request.getRequestDispatcher("ADMIN/add_book.jsp");
-//    			rd.forward(request, response);
-//    			return;
-//    		}
-    		DiskFileItemFactory factory = new DiskFileItemFactory();
-    		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
-    		ServletFileUpload upload = new ServletFileUpload(fileItemFactory);
-    		String uniqueName = "";
-    		String oldAnh = "";
-    		// String dirUrl1 = request.getServletContext().getRealPath("") + File.separator + "abc";
-            
+
+            String masach = "", tensach = "", soluong = "0", gia = "0",
+                   tacgia = "", sotap = "", maloai = "", anh = "", oldAnh = "";
+            boolean isUpdate = false;
+            int done = 0;
+            sachbo sbo = new sachbo();
+            ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
             List<FileItem> fileItems = upload.parseRequest(request);
-            
+            String uniqueName = ""; // Tên file ảnh sau khi xử lý
+
+            // Lấy dữ liệu từ form
             for (FileItem fileItem : fileItems) {
-				if (fileItem.isFormField()) {
-					String fieldName = fileItem.getFieldName();
-			        String fieldValue = fileItem.getString("UTF-8"); 
-			        if (fieldName.equals("txtMaSach") && fieldValue != null) {
-			        	masachExists = fieldValue; 
-			            break;
-			        }
-				}
-			}
-            
-			for (FileItem fileItem : fileItems) {
-				if (!fileItem.isFormField()) {
-                    String nameimg = fileItem.getName();
-                    if (!nameimg.equals("")) {
-                        uniqueName = System.currentTimeMillis() + "_" + nameimg;
-                        anh = "image_sach/" + uniqueName;  
+                if (fileItem.isFormField()) {
+                    String fieldName = fileItem.getFieldName();
+                    String fieldValue = fileItem.getString("UTF-8");
+                    switch (fieldName) {
+                        case "txtMaSach": masach = fieldValue; break;
+                        case "txtTenSach": tensach = fieldValue; break;
+                        case "txtSoLuong": soluong = fieldValue; break;
+                        case "txtGia": gia = fieldValue; break;
+                        case "txtMaloai": maloai = fieldValue; break;
+                        case "txtTacGia": tacgia = fieldValue; break;
+                        case "txtSoTap": sotap = fieldValue; break;
+                        case "btnUpdate": 
+                        	isUpdate = true; 
+                        	break;
                     }
-                    else{
-                    	if (masachExists != "") {
-	                        var sachExists = sbo.getSach(masachExists);
-	                        if (sachExists != null) {
-	                            anh = sachExists.getAnh();
-	                        }
-                    	}
-                    }
+                } else if (!fileItem.getName().isEmpty()) {
+                    // Upload ảnh mới
+                    uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
+                    anh = "image_sach/" + uniqueName;
                 }
-				else {
-                    
-			        String fieldName = fileItem.getFieldName();
-			        String fieldValue = fileItem.getString("UTF-8"); 
-			        switch (fieldName) {
-			            case "txtMaSach":
-			                masach = fieldValue;
-			                break;
-			            case "txtTenSach":
-			                tensach = fieldValue;
-			                break;
-			            case "txtSoLuong":
-			                soluong = fieldValue;
-			                break;
-			            case "txtGia":
-			                gia = fieldValue;
-			                break;
-			            case "txtMaloai":
-			                maloai = fieldValue;
-			                break;
-			            case "txtTacGia":
-			                tacgia = fieldValue;
-			                break;
-			            case "txtSoTap":
-			                sotap = fieldValue;
-			                break;
-			            case "fileAnh":
-			            	String nameimg = fileItem.getName();
-			                if (!nameimg.equals("")) {
-			                    anh = "image_sach/" + uniqueName;
-			                }
-			                break;
-			            case "btnAdd":
-			                done = sbo.addSach(masach, tensach, tacgia, Long.parseLong(soluong), Long.parseLong(gia), anh, maloai, sotap);
-			                break;
-			            case "btnUpdate":
-			            	sach sachCu = sbo.getSach(masach);
-			                if (sachCu != null) {
-			                	
-			                	oldAnh = sachCu.getAnh();
-			                	
-			                    tensach = (tensach.isEmpty()) ? sachCu.getTensach() : tensach;
-			                    soluong = (soluong.isEmpty()) ? String.valueOf(sachCu.getSoluong()) : soluong;
-			                    gia = (gia.isEmpty()) ? String.valueOf(sachCu.getGia()) : gia;
-			                    maloai = (maloai.isEmpty()) ? sachCu.getMaloai() : maloai;
-			                    tacgia = (tacgia.isEmpty()) ? sachCu.getTacgia() : tacgia;
-			                    sotap = (sotap.isEmpty()) ? sachCu.getSoTap() : sotap;
-			                    anh = (anh.isEmpty()) ? sachCu.getAnh() : anh;
-			                }
-			                done = sbo.updateSach(masach, tensach, tacgia, Long.parseLong(soluong), Long.parseLong(gia), anh, maloai, sotap);
-			                break;
-			            default:
-			                break;
-			        }
-				}
-			}
+            }
 
-            if(done == 1) {
-            	// Chỉ upload ảnh nếu thêm/cập nhật thành công
+            // Lấy thông tin sách cũ nếu update
+            if (isUpdate && !masach.isEmpty()) {
+                sach sachCu = sbo.getSach(masach);
+                if (sachCu != null) {
+                    oldAnh = sachCu.getAnh(); // Lấy ảnh cũ để xử lý xóa nếu cần
+                    tensach = tensach.isEmpty() ? sachCu.getTensach() : tensach;
+                    soluong = (soluong.isEmpty()) ? String.valueOf(sachCu.getSoluong()) : soluong;
+                    gia = (gia.isEmpty()) ? String.valueOf(sachCu.getGia()) : gia;
+                    maloai = maloai.isEmpty() ? sachCu.getMaloai() : maloai;
+                    tacgia = tacgia.isEmpty() ? sachCu.getTacgia() : tacgia;
+                    sotap = sotap.isEmpty() ? sachCu.getSoTap() : sotap;
+                    anh = anh.isEmpty() ? sachCu.getAnh() : anh;
+                }
+            }
+
+            // Thêm hoặc cập nhật sách  
+            if (isUpdate) {
+                done = sbo.updateSach(masach, tensach, tacgia, Long.parseLong(soluong),
+                                      Long.parseLong(gia), anh, maloai, sotap);
+            } else {
+                done = sbo.addSach(masach, tensach, tacgia, Long.parseLong(soluong),
+                                   Long.parseLong(gia), anh, maloai, sotap);
+            }
+
+            if (done == 1) {
+                // Chỉ xử lý upload ảnh mới nếu add/update thành công
                 for (FileItem fileItem : fileItems) {
-                    if (!fileItem.isFormField()) {
-                        String nameimg  = fileItem.getName(); // Lấy tên file gốc
-                        if (!nameimg.equals("")) {
-                        	
-                        	String appPath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/";
-                            File oldImageFile = new File(appPath + "/" + oldAnh);
+                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
+                    	//String appPath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/image_sach";
+                    	String appPath = request.getServletContext().getRealPath("/image_sach");
+                        File dir = new File(appPath);
+                        if (!dir.exists()) 
+                        	dir.mkdir();
 
-                            if (oldImageFile.exists()) {
-                                boolean isOldImageDeleted = oldImageFile.delete(); // Xóa ảnh cũ
-                                if (!isOldImageDeleted) {
-                                    System.out.println("Không thể xóa ảnh cũ: " + oldAnh);
-                                }
-                            }
-                        	
-                            // Thực hiện upload file lên thư mục
-                        	//String dirUrl = request.getServletContext().getRealPath("") + File.separator + "image_sach";
+                        // Upload ảnh mới
+                        File file = new File(appPath + File.separator + uniqueName);
+                        fileItem.write(file);
 
-                            String dirUrl = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/image_sach";
-                            File dir = new File(dirUrl);
-                            if (!dir.exists()) {
-                                dir.mkdir();
-                            }
-                            String filePath = dirUrl + File.separator + uniqueName;
-                            File file = new File(filePath);
-                            try {
-                                fileItem.write(file);
-                                break;
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                        // Xóa ảnh cũ nếu có
+                        if (!oldAnh.isEmpty() && isUpdate) {
+                        	//String filePath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp";
+                        	String filePath = request.getServletContext().getRealPath("/");
+                            File oldFile = new File(filePath + File.separator + oldAnh);
+                            if (oldFile.exists()) 
+                            	oldFile.delete();
                         }
+                        break;
                     }
                 }
                 response.sendRedirect("adminSachController");
                 return;
             }
-            else 
-            	isInvalid = true;
-            
+
+            // Nếu add thất bại
+            request.setAttribute("isInvalid", true);
             request.setAttribute("maSach", masach);
             request.setAttribute("tenSach", tensach);
             request.setAttribute("soLuong", soluong);
@@ -200,8 +135,6 @@ public class adminSaveSachController extends HttpServlet {
             request.setAttribute("tacGia", tacgia);
             request.setAttribute("soTap", sotap);
             request.setAttribute("anh", anh);
-            
-            request.setAttribute("isInvalid", isInvalid);
 
             request.setAttribute("dsLoai", Chung.getDsLoai());
             RequestDispatcher rd = request.getRequestDispatcher("ADMIN/add_book.jsp");
@@ -210,10 +143,9 @@ public class adminSaveSachController extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-	}
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 }
