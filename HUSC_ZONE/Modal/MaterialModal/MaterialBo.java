@@ -9,4 +9,8 @@ public class MaterialBo {
 	public ArrayList<Material> getListMaterials() throws Exception{
 		return mateDao.getListMaterials();
 	}
+	
+	public Material getMaterialByID(Long mateID) throws Exception {
+		return mateDao.getMaterialByID(mateID);
+	}
 }

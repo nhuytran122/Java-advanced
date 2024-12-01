@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class BookmarkBo {
 	BookmarkDao bDao = new BookmarkDao();
 	
-	public ArrayList<Bookmark> getListBookmarks(Long userID) throws Exception {
-		return bDao.getListBookmarks(userID);
+	public ArrayList<Bookmark> getListBookmarks(Long userID, int page, int pageSize) throws Exception {
+		return bDao.getListBookmarks(userID, page, pageSize);
 	}
 	
 	public int getCountBookmarks(Long userID) throws Exception {

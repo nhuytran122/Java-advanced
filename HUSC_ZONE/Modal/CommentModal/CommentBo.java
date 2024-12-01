@@ -5,8 +5,12 @@ import java.util.ArrayList;
 public class CommentBo {
 	CommentDao cmtDao = new CommentDao();
 	
-	public ArrayList<Comment> getListComments(Long userID) throws Exception {
-		return cmtDao.getListComments(userID);
+	public ArrayList<Comment> getListCommentsByUserID(Long userID) throws Exception {
+		return cmtDao.getListCommentsByUserID(userID);
+	}
+	
+	public ArrayList<Comment> getListCommentsByPostID(Long postID) throws Exception {
+		return cmtDao.getListCommentsByPostID(postID);
 	}
 	
 	public int addComment(Long postID, Long userID, String content) throws Exception {

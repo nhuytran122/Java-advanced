@@ -14,8 +14,12 @@ public class UserBo {
 		return userDao.getListUsers();
 	}
 	
+	public User getUserByID(Long userID) throws Exception {
+		return userDao.getUserByID(userID);
+	}
+	
 	public User checkLogin(String email, String password) throws Exception {
-	    User user = userDao.getUserWithEmail(email);
+	    User user = userDao.getUserByEmail(email);
 	    
 	    if (user == null) {
 	        return null;
@@ -46,7 +50,7 @@ public class UserBo {
 	}
 	
 	public Long changePassword(String email, String oldPassword, String newPassword) throws Exception {
-        User user = userDao.getUserWithEmail(email);
+        User user = userDao.getUserByEmail(email);
         
         if (!BCrypt.checkpw(oldPassword, user.getPassword())) {
             return Constants.WRONG_PASSWORD;

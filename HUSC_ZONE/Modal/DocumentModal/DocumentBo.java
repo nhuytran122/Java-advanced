@@ -6,12 +6,21 @@ public class DocumentBo {
 
 	DocumentDao docDao = new DocumentDao();
 	
-	public ArrayList<Document> getListDocs(int page, int pageSize, String searchValue, Long categoryID, Long materialID, Long userID) throws Exception {
-		return docDao.getListDocs(page, pageSize, searchValue, categoryID, materialID, userID);
+	public ArrayList<Document> getDocsByUserID(int page, int pageSize, Long userID) throws Exception {
+		return docDao.getDocsByUserID(page, pageSize, userID);
 	}
 	
-	public int getRowCount(String searchValue, Long categoryID, Long materialID, Long userID) throws Exception {
-		return docDao.getRowCount(searchValue, categoryID, materialID, userID);
+	public ArrayList<Document> getDocsByConditions(int page, int pageSize, String searchValue,
+			Long categoryID, Long materialID) throws Exception {
+		return docDao.getDocsByConditions(page, pageSize, searchValue, categoryID, materialID);
+	}
+	
+	public int getCountDocsByUserID(Long userID) throws Exception {
+		return docDao.getCountDocsByUserID(userID);
+	}
+	
+	public int getCountDocsByConditions(String searchValue, Long categoryID, Long materialID) throws Exception {
+		return docDao.getCountDocsByConditions(searchValue, categoryID, materialID);
 	}
 	
 	public int addDocument(String title, String description, String filePath, Long categoryID, Long materialID, Long uploadedBy) throws Exception {

@@ -9,33 +9,29 @@ import CommonModal.Constants;
 import CommonModal.KetNoi;
 
 public class ReportDao {
-	public ArrayList<Report> getListReports(Long userID) throws Exception {
-	    ArrayList<Report> ds = new ArrayList<Report>();
-	    
-	    KetNoi kn = new KetNoi();
-	    kn.ketnoi();
-	    String sql = "SELECT * FROM tbl_Reports WHERE CreatedBy = ?";
-	    
-	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
-	    cmd.setLong(1, userID); 
-	    ResultSet rs = cmd.executeQuery();
-	    while (rs.next()) {
-	        Long ReportID = rs.getLong("ReportID");
-	        String reason = rs.getString("Reason");
-	        Date createdAt = rs.getDate("CreatedAt");
-	        Long createdBy = rs.getLong("CreatedBy");
-	        Long postID = rs.getLong("PostID");
-	        Long statusID = rs.getLong("StatusID");
-	        ds.add(new Report(ReportID, reason, createdAt, createdBy, postID, statusID));
-	    }
-	    
-	    rs.close();
-	    cmd.close();
-	    kn.cn.close();
-	    
-	    return ds;
-	}
-	
+    
+    public ArrayList<Report> getListReportsByUserID(Long userID) throws Exception {
+        ArrayList<Report> ds = new ArrayList<Report>();
+
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "SELECT * FROM tbl_Reports WHERE CreatedBy = ?";
+
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, userID);
+        ResultSet rs = cmd.executeQuery();
+
+        while (rs.next()) {
+            ds.add(mapReport(rs));
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+
+        return ds;
+    }
+
     public int addReport(Long postID, Long userID, String reason) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
@@ -62,5 +58,37 @@ public class ReportDao {
         cmd.close();
         kn.cn.close();
         return result;
+    }
+
+    public Report getReport(Long reportID) throws Exception {
+
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "SELECT * FROM tbl_Reports WHERE ReportID = ?";
+
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, reportID);
+        ResultSet rs = cmd.executeQuery();
+
+        if (rs.next()) {
+            return mapReport(rs);
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+
+        return null;
+    }
+    
+    private Report mapReport(ResultSet rs) throws Exception {
+        Long ReportID = rs.getLong("ReportID");
+        String reason = rs.getString("Reason");
+        Date createdAt = rs.getDate("CreatedAt");
+        Long createdBy = rs.getLong("CreatedBy");
+        Long postID = rs.getLong("PostID");
+        Long statusID = rs.getLong("StatusID");
+        
+        return new Report(ReportID, reason, createdAt, createdBy, postID, statusID);
     }
 }

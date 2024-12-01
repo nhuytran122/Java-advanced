@@ -6,8 +6,8 @@ public class ReportBo {
 
 	ReportDao rpDao = new ReportDao();
 	
-	public ArrayList<Report> getListReports(Long userID) throws Exception {
-		return rpDao.getListReports(userID);
+	public ArrayList<Report> getListReportsByUserID(Long userID) throws Exception {
+		return rpDao.getListReportsByUserID(userID);
 	}
 	
 	public int addReport(Long postID, Long userID, String reason) throws Exception {

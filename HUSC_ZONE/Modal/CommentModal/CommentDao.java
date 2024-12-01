@@ -9,33 +9,56 @@ import CommonModal.KetNoi;
 
 public class CommentDao {
 
-	public ArrayList<Comment> getListComments(Long userID) throws Exception {
-	    ArrayList<Comment> ds = new ArrayList<Comment>();
-	    
-	    KetNoi kn = new KetNoi();
-	    kn.ketnoi();
-	    
-	    String sql = "SELECT * FROM tbl_Comments WHERE CommentedBy = ?";
-	    
-	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
-	    cmd.setLong(1, userID); 
-	    
-	    ResultSet rs = cmd.executeQuery();
-	    while (rs.next()) {
-	        Long CommentID = rs.getLong("CommentID");
-	        String content = rs.getString("CommentContent");
-	        Long postID = rs.getLong("PostID");
-	        Long commentedBy = rs.getLong("CommentedBy");
-	        Date commentedAt = rs.getDate("CommentedAt");
-	        Date updatedAt = rs.getDate("UpdatedAt");
-	        ds.add(new Comment(CommentID, content, postID, commentedBy, commentedAt, updatedAt));
-	    }
-	    rs.close();
-	    cmd.close();
-	    kn.cn.close();
-	    
-	    return ds;
-	}
+	public ArrayList<Comment> getListCommentsByUserID(Long userID) throws Exception {
+        ArrayList<Comment> ds = new ArrayList<Comment>();
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+
+        String sql = "SELECT * FROM tbl_Comments WHERE CommentedBy = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, userID);
+
+        ResultSet rs = cmd.executeQuery();
+        while (rs.next()) {
+            ds.add(mapComment(rs));
+        }
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+
+        return ds;
+    }
+
+    public ArrayList<Comment> getListCommentsByPostID(Long postID) throws Exception {
+        ArrayList<Comment> ds = new ArrayList<Comment>();
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+
+        String sql = "SELECT * FROM tbl_Comments WHERE PostID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, postID);
+
+        ResultSet rs = cmd.executeQuery();
+        while (rs.next()) {
+            ds.add(mapComment(rs));
+        }
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+
+        return ds;
+    }
+	
+	private Comment mapComment(ResultSet rs) throws Exception {
+        Long commentID = rs.getLong("CommentID");
+        String content = rs.getString("CommentContent");
+        Long postID = rs.getLong("PostID");
+        Long commentedBy = rs.getLong("CommentedBy");
+        Date commentedAt = rs.getDate("CommentedAt");
+        Date updatedAt = rs.getDate("UpdatedAt");
+        
+        return new Comment(commentID, content, postID, commentedBy, commentedAt, updatedAt);
+    }
 	
     public int addComment(Long postID, Long userID, String content) throws Exception {
         KetNoi kn = new KetNoi();

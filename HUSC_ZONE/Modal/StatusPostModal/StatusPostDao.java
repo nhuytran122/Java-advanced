@@ -9,91 +9,117 @@ import CommonModal.KetNoi;
 
 public class StatusPostDao {
 
-	public ArrayList<StatusPost> getListPosts(int page, int pageSize, Long userID) throws Exception {
-	    ArrayList<StatusPost> ds = new ArrayList<StatusPost>();
-	    KetNoi kn = new KetNoi();
-	    kn.ketnoi();
+    public ArrayList<StatusPost> getPostsByUserID(int page, int pageSize, Long userID) throws Exception {
+        ArrayList<StatusPost> ds = new ArrayList<StatusPost>();
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
 
-	    String sql = "";
-	    if (userID != null && userID > 0) {
-	        sql = "SELECT * " +
-	              "FROM tbl_StatusPosts " +
-	              "WHERE UploadedBy = ? " +
-	              "ORDER BY CreatedAt DESC " +
-	              "OFFSET (? - 1) * ? ROWS " +
-	              "FETCH NEXT ? ROWS ONLY";
-	    } else {
-	        sql = "SELECT * " +
-	              "FROM tbl_StatusPosts " +
-	              "ORDER BY CreatedAt DESC " +
-	              "OFFSET (? - 1) * ? ROWS " +
-	              "FETCH NEXT ? ROWS ONLY";
-	    }
+        String sql = "SELECT * " +
+                "FROM tbl_StatusPosts " +
+                "WHERE UploadedBy = ? " +
+                "ORDER BY CreatedAt DESC " +
+                "OFFSET (? - 1) * ? ROWS " +
+                "FETCH NEXT ? ROWS ONLY";
 
-	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, userID);
+        cmd.setInt(2, page);
+        cmd.setInt(3, pageSize);
+        cmd.setInt(4, pageSize);
 
-	    if (userID != null && userID > 0) {
-	        cmd.setLong(1, userID);
-	        cmd.setInt(2, page);
-	        cmd.setInt(3, pageSize);
-	        cmd.setInt(4, pageSize);
-	    } else {
-	        cmd.setInt(1, page);
-	        cmd.setInt(2, pageSize);
-	        cmd.setInt(3, pageSize);
-	    }
+        ResultSet rs = cmd.executeQuery();
+        while (rs.next()) {
+            ds.add(mapStatusPost(rs));
+        }
 
-	    ResultSet rs = cmd.executeQuery();
-	    while (rs.next()) {
-	        Long postID = rs.getLong("PostID");
-	        String postContent = rs.getString("PostContent");
-	        String imagePath = rs.getString("ImagePath");
-	        Long uploadedBy = rs.getLong("UploadedBy");
-	        Date createdAt = rs.getDate("CreatedAt");
-	        Date updatedAt = rs.getDate("UpdatedAt");
+        rs.close();
+        cmd.close();
+        kn.cn.close();
 
-	        ds.add(new StatusPost(postID, postContent, uploadedBy, createdAt, updatedAt, imagePath));
-	    }
+        return ds;
+    }
 
-	    rs.close();
-	    cmd.close();
-	    kn.cn.close();
+    public ArrayList<StatusPost> getAllPosts(int page, int pageSize, String searchValue) throws Exception {
+        ArrayList<StatusPost> ds = new ArrayList<StatusPost>();
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
 
-	    return ds;
-	}
+        String sql = "SELECT * FROM tbl_StatusPosts " +
+                     "WHERE PostContent LIKE ? " + 
+                     "ORDER BY CreatedAt DESC " +
+                     "OFFSET (? - 1) * ? ROWS " +  
+                     "FETCH NEXT ? ROWS ONLY";
 
-	public int getCountPosts(Long userID) throws Exception {
-	    int count = 0;
-	    KetNoi kn = new KetNoi();
-	    kn.ketnoi();
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setString(1, "%" + searchValue + "%");
+        cmd.setInt(2, page);
+        cmd.setInt(3, pageSize);
+        cmd.setInt(4, pageSize);
 
-	    String sql = "";
-	    if (userID != null && userID > 0) {
-	        sql = "SELECT COUNT(*) " +
-	              "FROM tbl_StatusPosts " +
-	              "WHERE UploadedBy = ?";
-	    } else {
-	        sql = "SELECT COUNT(*) " +
-	              "FROM tbl_StatusPosts";
-	    }
+        ResultSet rs = cmd.executeQuery();
+        while (rs.next()) {
+            ds.add(mapStatusPost(rs));
+        }
 
-	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        rs.close();
+        cmd.close();
+        kn.cn.close();
 
-	    if (userID != null && userID > 0) {
-	        cmd.setLong(1, userID);
-	    }
+        return ds;
+    }
 
-	    ResultSet rs = cmd.executeQuery();
-	    if (rs.next()) {
-	        count = rs.getInt(1);
-	    }
 
-	    rs.close();
-	    cmd.close();
-	    kn.cn.close();
+    private StatusPost mapStatusPost(ResultSet rs) throws Exception {
+        Long postID = rs.getLong("PostID");
+        String postContent = rs.getString("PostContent");
+        String imagePath = rs.getString("ImagePath");
+        Long uploadedBy = rs.getLong("UploadedBy");
+        Date createdAt = rs.getDate("CreatedAt");
+        Date updatedAt = rs.getDate("UpdatedAt");
 
-	    return count;
-	}
+        return new StatusPost(postID, postContent, uploadedBy, createdAt, updatedAt, imagePath);
+    }
+
+    public int getCountPostsByUserID(Long userID) throws Exception {
+        int count = 0;
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+
+        String sql = "SELECT COUNT(*) FROM tbl_StatusPosts WHERE UploadedBy = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, userID);
+
+        ResultSet rs = cmd.executeQuery();
+        if (rs.next()) {
+            count = rs.getInt(1);
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+
+        return count;
+    }
+
+    public int getCountAllPost() throws Exception {
+        int count = 0;
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+
+        String sql = "SELECT COUNT(*) FROM tbl_StatusPosts";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+
+        ResultSet rs = cmd.executeQuery();
+        if (rs.next()) {
+            count = rs.getInt(1);
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+
+        return count;
+    }
 
     public int addStatusPost(String content, Long userID, String imgPath) throws Exception {
         KetNoi kn = new KetNoi();
@@ -143,7 +169,7 @@ public class StatusPostDao {
             cmdDltCmts.executeUpdate();
             cmdDltCmts.close();
 
-            String sqlDltRpts = "DELETE FROM tbl_Comments WHERE PostID = ?";
+            String sqlDltRpts = "DELETE FROM tbl_Reports WHERE PostID = ?";
             PreparedStatement cmdDltRpts = kn.cn.prepareStatement(sqlDltRpts);
             cmdDltRpts.setLong(1, StatusPostID);
             cmdDltRpts.executeUpdate();
@@ -171,21 +197,13 @@ public class StatusPostDao {
         ResultSet rs = cmd.executeQuery();
 
         if (rs.next()) {
-            Long postID = rs.getLong("StatusPostID");
-            String postContent = rs.getString("PostContent");
-            String imagePath = rs.getString("ImagePath");
-            Long uploadedBy = rs.getLong("UploadedBy");
-            Date createdAt = rs.getDate("CreatedAt");
-            Date updatedAt = rs.getDate("UpdatedAt");
-            rs.close();
-            cmd.close();
-            kn.cn.close();
-            return new StatusPost(postID, postContent, uploadedBy, createdAt, updatedAt, imagePath);
+            return mapStatusPost(rs);
         }
 
         rs.close();
         cmd.close();
         kn.cn.close();
+
         return null;
     }
 

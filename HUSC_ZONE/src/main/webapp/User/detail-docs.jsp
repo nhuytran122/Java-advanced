@@ -1,3 +1,7 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="MaterialModal.MaterialBo"%>
+<%@page import="CategoryModal.CategoryBo"%>
+<%@page import="DocumentModal.Document"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +11,17 @@
     <title>Chi tiết Tài liệu</title>
     <%@ include file="layout/import.jsp" %>
 </head>
+<%
+	Document docs = (Document)request.getAttribute("docs");
+	
+	Category cateOfDocs = (Category)request.getAttribute("cateOfDocs");
+	Material mateOfDocs = (Material)request.getAttribute("mateOfDocs");
+	User uploadedBy = (User)request.getAttribute("uploadedBy");
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String formattedDate = docs.getCreatedAt() != null ? sdf.format(docs.getCreatedAt()) : "";
 
+%>
 <body class="bg-light">
 <%@ include file="layout/navbar.jsp" %>
 
@@ -32,12 +46,12 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4 class="card-title mb-3">Lập trình Java Cơ bản</h4>
-                            <p class="card-text">Tài liệu hướng dẫn lập trình Java từ cơ bản đến nâng cao, rất phù hợp cho những ai muốn bắt đầu học lập trình.</p>
-                            <p><strong>Loại tài liệu:</strong> Slide</p>
-                            <p><strong>Ngành học:</strong> Công nghệ Thông tin</p>
-                            <p><strong>Tải lên bởi:</strong> Nguyễn Văn A</p>
-                            <p><strong>Ngày tải lên:</strong> 28/11/2024</p>
+                            <h4 class="card-title mb-3"><%=docs.getTitle() %></h4>
+                            <p class="card-text"><%=docs.getDesription() %></p>
+                            <p><strong>Ngành học:</strong> <%= cateOfDocs.getCategoryName() %></p>
+                            <p><strong>Loại tài liệu:</strong> <%= mateOfDocs.getMaterialName() %></p>
+                            <p><strong>Tải lên bởi:</strong> <%= uploadedBy.getName() %></p>
+                            <p><strong>Ngày tải lên:</strong> <%= formattedDate %></p>
 
                             <div class="d-flex align-items-center">
                                 <a class="btn btn-outline-warning me-2 p-2">
@@ -49,8 +63,8 @@
                             </div>
 
                             <div class="mt-3">
-                                <a href="#" class="badge bg-info text-white text-decoration-none">CNTT</a>
-                                <a href="#" class="badge bg-success text-white text-decoration-none">Slide</a>
+                                <a href="#" class="badge bg-info text-white text-decoration-none"><%= cateOfDocs.getCategoryName() %></a>
+                                <a href="#" class="badge bg-success text-white text-decoration-none"><%= mateOfDocs.getMaterialName() %></a>
                             </div>
                         </div>
                     </div>

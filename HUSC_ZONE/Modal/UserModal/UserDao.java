@@ -8,90 +8,66 @@ import java.util.Date;
 import CommonModal.*;
 
 public class UserDao {
-	public ArrayList<User> getListUsers() throws Exception{
-		ArrayList<User> ds = new ArrayList<User>();
-		KetNoi kn = new KetNoi();
-		kn.ketnoi();
-		String sql = "select * from tbl_Users";
-		PreparedStatement cmd = kn.cn.prepareStatement(sql);
-		ResultSet rs = cmd.executeQuery();
-		while(rs.next()) {
-			Long userID = rs.getLong("UserID");
-			String name = rs.getString("Name");
-			String password = rs.getString("Password");
-			String gender = rs.getString("Gender");
-			String email = rs.getString("Email");
-			String phone = rs.getString("Phone");
-			boolean status = rs.getBoolean("Status");
-			Date createdAt = rs.getDate("CreatedAt");
-			Date updatedAt = rs.getDate("UpdatedAt");
-			Long roleID = rs.getLong("RoleID");
-			String avatar = rs.getString("Avatar");
-			ds.add(new User(userID, name, password, gender, email, phone, status, createdAt, updatedAt, roleID, avatar));
-		} 
-		rs.close();
-		kn.cn.close();
-		return ds;
-	}
-	
-	public User getUser() throws Exception{
-		KetNoi kn = new KetNoi();
-		kn.ketnoi();
-		String sql = "select * from tbl_Users WHERE";
-		PreparedStatement cmd = kn.cn.prepareStatement(sql);
-		ResultSet rs = cmd.executeQuery();
-		User user = null;
-		while(rs.next()) {
-			Long userID = rs.getLong("UserID");
-			String name = rs.getString("Name");
-			String password = rs.getString("Password");
-			String gender = rs.getString("Gender");
-			String email = rs.getString("Email");
-			String phone = rs.getString("Phone");
-			boolean status = rs.getBoolean("Status");
-			Date createdAt = rs.getDate("CreatedAt");
-			Date updatedAt = rs.getDate("UpdatedAt");
-			Long roleID = rs.getLong("RoleID");
-			String avatar = rs.getString("Avatar");
-			user = new User(userID, name, password, gender, email, phone, status, createdAt, updatedAt, roleID, avatar);
-		} 
-		rs.close();
-		kn.cn.close();
-		return user;
-	}
-	
-	public User getUserWithEmail(String email) throws Exception {
-	    KetNoi kn = new CommonModal.KetNoi();
-	    kn.ketnoi();
-	    String sql = "SELECT * FROM tbl_Users WHERE Email = ?";
-	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
-	    cmd.setString(1, email);
-	    ResultSet rs = cmd.executeQuery();
+	public ArrayList<User> getListUsers() throws Exception {
+        ArrayList<User> ds = new ArrayList<>();
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "SELECT * FROM tbl_Users";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        ResultSet rs = cmd.executeQuery();
 
-	    User user = null;
-	    if (rs.next()) {
-	    	Long userID = rs.getLong("UserID");
-			String name = rs.getString("Name");
-			String gender = rs.getString("Gender");
-			String phone = rs.getString("Phone");
-			boolean status = rs.getBoolean("Status");
-			Date createdAt = rs.getDate("CreatedAt");
-			Date updatedAt = rs.getDate("UpdatedAt");
-			Long roleID = rs.getLong("RoleID");
-			String password = rs.getString("password");
-			String avatar = rs.getString("Avatar");
-			user = new User(userID, name, password, gender, email, phone, status, createdAt, updatedAt, roleID, avatar);
-	    }
-	    rs.close();
-	    cmd.close();
-	    kn.cn.close();
-	    return user;
-	}
+        while (rs.next()) {
+            ds.add(mapUser(rs));
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+        return ds;
+    }
+	
+	public User getUserByID(Long userID) throws Exception {
+        User user = null;
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "SELECT * FROM tbl_Users WHERE UserID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, userID);
+        ResultSet rs = cmd.executeQuery();
+
+        if (rs.next()) {
+            user = mapUser(rs);
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+        return user;
+    }
+	
+	public User getUserByEmail(String email) throws Exception {
+        User user = null;
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "SELECT * FROM tbl_Users WHERE Email = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setString(1, email);
+        ResultSet rs = cmd.executeQuery();
+
+        if (rs.next()) {
+            user = mapUser(rs);
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+        return user;
+    }
 	
 	public int addUser(String name, String password, String gender, String email, 
 			String phone, Long roleID) throws Exception {
 		
-		if (getUserWithEmail(email) != null) {
+		if (getUserByEmail(email) != null) {
 	        return -1;
 	    }
         KetNoi kn = new KetNoi();
@@ -175,5 +151,20 @@ public class UserDao {
         int kq = cmd.executeUpdate();
         kn.cn.close();
         return kq;
+    }
+    
+    private User mapUser(ResultSet rs) throws Exception {
+        Long userID = rs.getLong("UserID");
+        String name = rs.getString("Name");
+        String password = rs.getString("Password");
+        String gender = rs.getString("Gender");
+        String email = rs.getString("Email");
+        String phone = rs.getString("Phone");
+        boolean status = rs.getBoolean("Status");
+        Date createdAt = rs.getDate("CreatedAt");
+        Date updatedAt = rs.getDate("UpdatedAt");
+        Long roleID = rs.getLong("RoleID");
+        String avatar = rs.getString("Avatar");
+        return new User(userID, name, password, gender, email, phone, status, createdAt, updatedAt, roleID, avatar);
     }
 }

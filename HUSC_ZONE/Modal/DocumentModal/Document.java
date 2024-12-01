@@ -76,10 +76,10 @@ public class Document {
 	public void setMaterialID(Long materialID) {
 		MaterialID = materialID;
 	}
-	public Long getUploadBy() {
+	public Long getUploadedBy() {
 		return UploadedBy;
 	}
-	public void setUploadBy(Long uploadedBy) {
+	public void setUploadedBy(Long uploadedBy) {
 		UploadedBy = uploadedBy;
 	}
 }

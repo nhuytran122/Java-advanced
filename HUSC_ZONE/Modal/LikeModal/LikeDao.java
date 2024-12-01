@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import CommonModal.KetNoi;
 
 public class LikeDao {
-	public ArrayList<Like> getListLikes(Long userID) throws Exception {
+	public ArrayList<Like> getListLikesByUserID(Long userID) throws Exception {
 	    ArrayList<Like> ds = new ArrayList<Like>();
 	    
 	    KetNoi kn = new KetNoi();
@@ -82,5 +82,27 @@ public class LikeDao {
         kn.cn.close();
 
         return isLiked;
+    }
+    
+    public int countLikesByPostID(Long postID) throws Exception {
+        int count = 0;
+
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+
+        String sql = "SELECT COUNT(*) FROM tbl_Likes WHERE PostID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, postID);
+
+        ResultSet rs = cmd.executeQuery();
+        if (rs.next()) {
+            count = rs.getInt(1); 
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+
+        return count;
     }
 }

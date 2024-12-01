@@ -7,22 +7,47 @@ import java.util.ArrayList;
 import CommonModal.KetNoi;
 
 public class CategoryDao {
-	
-	public ArrayList<Category> getListCategories() throws Exception{
-		ArrayList<Category> ds = new ArrayList<Category>();
-		KetNoi kn = new KetNoi();
-		kn.ketnoi();
-		String sql = "select * from tbl_Categories";
-		PreparedStatement cmd = kn.cn.prepareStatement(sql);
-		ResultSet rs = cmd.executeQuery();
-		while(rs.next()) {
-			Long CategoryID = rs.getLong("CategoryID");
-			String CategoryName = rs.getString("CategoryName");
-			String Description = rs.getString("Description");
-			ds.add(new Category(CategoryID, CategoryName, Description));
-		} 
-		rs.close();
-		kn.cn.close();
-		return ds;
-	}
+
+    private Category mapCategory(ResultSet rs) throws Exception {
+        Long CategoryID = rs.getLong("CategoryID");
+        String CategoryName = rs.getString("CategoryName");
+        String Description = rs.getString("Description");
+        return new Category(CategoryID, CategoryName, Description);
+    }
+
+    public ArrayList<Category> getListCategories() throws Exception {
+        ArrayList<Category> ds = new ArrayList<Category>();
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "SELECT * FROM tbl_Categories";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        ResultSet rs = cmd.executeQuery();
+
+        while (rs.next()) {
+            ds.add(mapCategory(rs));
+        }
+        
+        rs.close();
+        kn.cn.close();
+        return ds;
+    }
+
+    public Category getCategoryByID(Long cateID) throws Exception {
+        Category category = null;
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+
+        String sql = "SELECT * FROM tbl_Categories WHERE CategoryID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, cateID);
+
+        ResultSet rs = cmd.executeQuery();
+        if (rs.next()) {
+            category = mapCategory(rs);
+        }
+        
+        rs.close();
+        kn.cn.close();
+        return category;
+    }
 }

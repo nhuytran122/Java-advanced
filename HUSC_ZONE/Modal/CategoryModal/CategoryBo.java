@@ -9,4 +9,8 @@ public class CategoryBo {
 		return cateDao.getListCategories();
 	}
 	
+	public Category getCategoryByID(Long cateID) throws Exception {
+		return cateDao.getCategoryByID(cateID);
+	}
+	
 }

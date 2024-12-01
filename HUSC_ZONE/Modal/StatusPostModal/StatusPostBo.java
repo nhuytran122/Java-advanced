@@ -6,12 +6,20 @@ public class StatusPostBo {
 	
 	StatusPostDao sttDao = new StatusPostDao();
 	
-	public ArrayList<StatusPost> getListPosts(int page, int pageSize, Long userID) throws Exception {
-		return sttDao.getListPosts(page, pageSize, userID);
+	public ArrayList<StatusPost> getPostsByUserID(int page, int pageSize, Long userID) throws Exception {
+		return sttDao.getPostsByUserID(page, pageSize, userID);
 	}
 	
-	public StatusPost getStatusPost(Long StatusPostID) throws Exception {
-		return sttDao.getStatusPost(StatusPostID);
+	public ArrayList<StatusPost> getAllPosts(int page, int pageSize, String searchValue) throws Exception {
+		return sttDao.getAllPosts(page, pageSize, searchValue);
+	}
+	
+	public int getCountPostsByUserID(Long userID) throws Exception {
+		return sttDao.getCountPostsByUserID(userID);
+	}
+	
+	public int getCountAllPost() throws Exception {
+		return sttDao.getCountAllPost();
 	}
 	
 	public int addStatusPost(String content, Long userID, String imgPath) throws Exception {

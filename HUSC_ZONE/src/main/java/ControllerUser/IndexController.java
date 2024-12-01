@@ -53,9 +53,9 @@ public class IndexController extends HttpServlet {
                 mateID = Long.parseLong(request.getParameter("mateID"));
             }
 
-            ArrayList<Document> ds = docBo.getListDocs(page, pageSize, searchValue, cateID, mateID, null);
+            ArrayList<Document> ds = docBo.getDocsByConditions(page, pageSize, searchValue, cateID, mateID);
 
-            int rowCount = docBo.getRowCount(searchValue, cateID, mateID, null);
+            int rowCount = docBo.getCountDocsByConditions(searchValue, cateID, mateID);
             
             int pageCount = rowCount / pageSize;
             if (rowCount % pageSize > 0) {
