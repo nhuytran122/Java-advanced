@@ -17,8 +17,8 @@ public class BookmarkBo {
 		return bDao.addBookmark(documentID, userID);
 	}
 	
-	public int deleteBookmark(Long bookmarkID) throws Exception {
-		return bDao.deleteBookmark(bookmarkID);
+	public int deleteBookmark(Long docID, Long userID) throws Exception {
+		return bDao.deleteBookmark(docID, userID);
 	}
 	
 	public boolean hasUserMarkedDocs(Long userID, Long docID) throws Exception {

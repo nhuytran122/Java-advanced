@@ -56,25 +56,23 @@
                             <p><strong>Ngày tải lên:</strong> <%= formattedDate %></p>
 
                             <div class="d-flex align-items-center">
-						    <%
-						        if (isMarked != null && isMarked) {
-						    %>
-						        <a class="btn btn-warning me-2 p-2">
-						            <i class="bi bi-bookmark-heart-fill"></i> Đã Yêu thích
-						        </a>
-						    <%
-						        } else {
-						    %>
-						        <a class="btn btn-outline-warning me-2 p-2">
-						            <i class="bi bi-bookmark-heart"></i> Yêu thích
-						        </a>
-						    <%
-						        }
-						    %>
-						    <a href="#" class="btn btn-outline-success p-2">
-						        <i class="bi bi-download"></i> Download
-						    </a>
-						</div>
+							    <form action="../interact" method="POST" class="me-2">
+							        <input type="hidden" name="docsID" value="<%= dtlDocs.getDocumentID()%>">
+							        <% if (isMarked != null && isMarked) { %>
+							            <button type="submit" name="btn-mark" value="unmark" class="btn btn-warning p-2 mt-0">
+							                <i class="bi bi-bookmark-heart-fill"></i> Đã Yêu thích
+							            </button>
+							        <% } else { %>
+							            <button type="submit" name="btn-mark" value="mark" class="btn btn-outline-warning p-2 mt-0">
+							                <i class="bi bi-bookmark-heart"></i> Yêu thích
+							            </button>
+							        <% } %>
+							    </form>
+							    <a href="#" class="btn btn-outline-success p-2">
+							        <i class="bi bi-download"></i> Download
+							    </a>
+							</div>
+
 
 
                             <div class="mt-3">
@@ -99,17 +97,19 @@
 			                for (DetailsDoc doc : lstDocsSuggest) {
 			        %>
 			        <div class="col-md-3">
-			            <div class="card h-100">
-			                <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
-			                <div class="card-body">
-			                    <h6 class="card-title"><%= doc.getTitle() %></h6>
-			                    <div class="pb-2">
-			                        <span class="badge bg-info text-white"><%= doc.getCategoryName() %></span>
-			                        <span class="badge bg-success text-white"><%= doc.getMaterialName() %></span>
-			                    </div>
-			                    <p class="text-muted"><%= doc.getDesription() %></p>
-			                </div>
-			            </div>
+			        	<a href="../details?docsID=<%=doc.getDocumentID() %>" class="card-link" style="display: block; text-decoration: none;">
+				            <div class="card h-100">
+				                <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
+				                <div class="card-body">
+				                    <h6 class="card-title"><%= doc.getTitle() %></h6>
+				                    <div class="pb-2">
+				                        <span class="badge bg-info text-white"><%= doc.getCategoryName() %></span>
+				                        <span class="badge bg-success text-white"><%= doc.getMaterialName() %></span>
+				                    </div>
+				                    <p class="text-muted"><%= doc.getDesription() %></p>
+				                </div>
+				            </div>
+				        </a>
 			        </div>
 			        <%
 			                }

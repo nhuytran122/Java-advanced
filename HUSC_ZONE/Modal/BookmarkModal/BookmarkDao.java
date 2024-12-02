@@ -80,12 +80,13 @@ public class BookmarkDao {
     }
 
 
-    public int deleteBookmark(Long bookmarkID) throws Exception {
+    public int deleteBookmark(Long docID, Long userID) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
-        String sql = "DELETE FROM tbl_Bookmarkss WHERE BookmarkID = ?";
+        String sql = "DELETE FROM tbl_Bookmarks WHERE DocumentID = ? AND MarkedBy = ?";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, bookmarkID);
+        cmd.setLong(1, docID);
+        cmd.setLong(2, userID);
         int result = cmd.executeUpdate();
         cmd.close();
         kn.cn.close();

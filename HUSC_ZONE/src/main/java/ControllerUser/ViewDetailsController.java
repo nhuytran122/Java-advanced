@@ -12,15 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import BookmarkModal.BookmarkBo;
-import CategoryModal.Category;
-import CategoryModal.CategoryBo;
 import CommonModal.MethodCommon;
-import DocumentModal.Document;
-import DocumentModal.DocumentBo;
-import MaterialModal.Material;
-import MaterialModal.MaterialBo;
 import UserModal.User;
-import UserModal.UserBo;
 import V_DetailsDoc.DetailsDoc;
 import V_DetailsDoc.DetailsDocBo;
 
@@ -75,10 +68,6 @@ public class ViewDetailsController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-
-        
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
