@@ -5,12 +5,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-    ArrayList<Category> listCates = (ArrayList<Category>)request.getAttribute("listCates");
-    ArrayList<Material> listMates = (ArrayList<Material>)request.getAttribute("listMates");
-    
-    Long cateID = (request.getAttribute("cateID") != null) ? (Long)request.getAttribute("cateID") : 0L;
-    Long mateID = (request.getAttribute("mateID") != null) ? (Long)request.getAttribute("mateID") : 0L;
-    
     User user = (User)session.getAttribute("user");
 %>
 <!-- Navbar -->
@@ -21,47 +15,16 @@
         </a>
         <div class="collapse navbar-collapse">
             <form class="d-flex mx-auto align-items-center"
-            	action="../home" method="post">
-                <select name="cateID" class="form-select form-select-sm me-2 py-2" style="margin-left: 150px;">
-				    <option value="0" <%= (cateID == 0L ? "selected" : "") %>>-- Chọn ngành học --</option>
-				    <% 
-				        for(Category cate : listCates) {
-				    %>
-				    <option value="<%= cate.getCategoryID() %>" 
-				    	<%= (cate.getCategoryID().equals(cateID) ? "selected" : "") %>
-				    >
-				        <%= cate.getCategoryName() %>
-				    </option>
-				    <% 
-				        } 
-				    %>
-				</select>
-				
-				<select name="mateID" class="form-select form-select-sm me-2 py-2">
-				    <option value="0" <%= (mateID == 0L ? "selected" : "") %>>-- Chọn dạng tài liệu --</option>
-				    <% 
-				        for(Material mate : listMates) {
-				    %>
-				    <option value="<%= mate.getMaterialID() %>" 
-				    	<%= (mate.getMaterialID().equals(mateID) ? "selected" : "") %>
-				    >
-				        <%= mate.getMaterialName() %>
-				    </option>
-				    <% 
-				        } 
-				    %>
-				</select>
-
-
+				action="../status-post" method="post">
                 <input class="form-control form-control-sm me-2 py-2" 
-                    style="width: 200px;"  
-                    placeholder="Tìm kiếm tài liệu..." 
+                    style="width: 400px; margin-left: 300px;"  
+                    placeholder="Tìm kiếm bài đăng, người dùng..." 
                     autofocus
-                    name="txtSearch"
+					name="txtSearch"
 	                value="<%= request.getParameter("txtSearch") != null 
 	                	? request.getParameter("txtSearch") : "" %>">
 
-                <button type="submit" name="btn-search" value = "search" class="btn btn-primary-custom btn-sm py-2">
+                <button type="submit" class="btn btn-primary-custom p-2">
                     <i class="bi bi-search"></i>
                 </button>
             </form>
@@ -118,8 +81,6 @@
 			        </li>			        
 			    </ul>
 			<% } %>
-
-
         </div>
     </div>
 </nav>

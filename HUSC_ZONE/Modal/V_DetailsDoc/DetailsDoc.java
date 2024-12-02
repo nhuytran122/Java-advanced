@@ -1,6 +1,6 @@
 package V_DetailsDoc;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class DetailsDoc {
 	private Long DocumentID;

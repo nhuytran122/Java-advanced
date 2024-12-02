@@ -1,3 +1,4 @@
+<%@page import="StatusPostModal.StatusPost"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,8 +26,15 @@
     </style>
     
 </head>
+<%
+    ArrayList<StatusPost> ds = (ArrayList<StatusPost>) request.getAttribute("ds");
+    int pageCount = (Integer) request.getAttribute("pageCount");
+    int currentPage = (Integer) request.getAttribute("currentPage");
+    String searchKeyword = request.getParameter("txtSearch");
+    
+%>
 <body class="bg-light">
-    <%@ include file="layout/navbar.jsp" %>
+    <%@ include file="layout/nav_bar_for_Post.jsp" %>
     
     <div class="container-fluid my-3">
         <div class="row">
@@ -50,59 +58,62 @@
                 
                 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <textarea class="form-control" rows="5" placeholder="Như Ý ơi, bạn muốn chia sẻ gì nào?"></textarea>
-                                </div>
-                                <div class="card mb-3" style="width: 465px; margin: auto; border: 1px solid #ddd; border-radius: 8px;">
-                                    <div class="card-body text-center">
-                                        <div class="upload-area" style="position: relative; border: 2px dashed #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
-                                            <label style="cursor: pointer;">
-                                                <div style="margin-bottom: 10px;">
-                                                    <i class="bi bi-image-fill"></i>
-                                                </div>
-                                                <strong>Thêm ảnh/video</strong>
-                                                <p style="color: #888;">hoặc kéo và thả</p>
-                                            </label>
-                                            <input type="file" multiple style="display: none;">
-                                            <button type="button" class="btn-close position-absolute" style="top: 10px; right: 10px;"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                <button type="button" class="btn btn-success">Đăng bài</button>
-                            </div>
-                        </div>
+	                    <form action="../edit-status" method="post" enctype="multipart/form-data">
+	                        <div class="modal-content">
+	                            <div class="modal-header">
+	                                <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>
+	                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	                            </div>
+	                            <div class="modal-body">
+	                                <div class="mb-3">
+	                                    <textarea class="form-control" rows="5" placeholder="Như Ý ơi, bạn muốn chia sẻ gì nào?"
+		                                    name="txtContent" required></textarea>
+	                                </div>
+	                                <div class="card mb-3" style="width: 465px; margin: auto; border: 1px solid #ddd; border-radius: 8px;">
+	                                    <div class="card-body text-center">
+	                                        <div class="upload-area" style="position: relative; border: 2px dashed #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+	                                            <label style="cursor: pointer;">
+	                                            	<strong>Thêm ảnh/video</strong>
+	                                                <input type="file" name="fileAnh" accept="image/*">
+	                                            </label>
+	                                           
+	                                            <button type="button" class="btn-close position-absolute" style="top: 10px; right: 10px;"></button>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="modal-footer">
+	                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+	                                <button type="submit" 
+                                	name="btnAdd" value="add" class="btn btn-success">Đăng bài</button>
+	                            </div>
+	                        </div>
+	                    </form>
                     </div>
                 </div>
                 
-                
+                <% 
+                          int n = ds.size();
+                          if (n == 0) {
+                        %>
+                            <div class="alert alert-warning">
+							  Không tìm thấy bài đăng nào.
+							</div>
+                        <% 
+                          } else { 
+                            for (int i = 0; i < n; i++) {
+                              StatusPost stt = ds.get(i);
+                        %>
                 <div class="card no-hover mb-3">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
                             <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
                             <div>
-                                <h6 class="mb-0">Góc Ôn Nhu</h6>
-                                <small class="text-muted">3 giờ trước</small>
+                                <h6 class="mb-0"><%= stt.getUploadBy() %></h6>
+                                <small class="text-muted"><%= stt.getCreatedAt() %></small>
                             </div>
                         </div>
-                        <p>Mộ Dao biết được Oán Nữ đang giấu trong người mình, nên em ấy đã quyết định hy sinh.
-                            🏮 Hoá ra năm xưa, cha của Mộ Dao cố gắng tìm được Mị Nữ vì truyền thuyết: chỉ cần có được trái tim của Mị Nữ, đại sư bắt yêu sẽ lên cấp Thiên.
-                            Sau khi bắt Mị Nữ và phát hiện không còn tim, ông ấy mới đọc được khúc sau trong sách: Mị Nữ bị mất trái tim sẽ trở thành Oán Nữ.
-                            Ha hả, đọc thì ráng đọc cho hết chứ 🥲
-                            🏮 Cha của Mộ Dao không thể giech Oán Nữ, cho nên đã nhốt trong hầm Mộ gia. Vào đêm nọ, Oán Nữ dụ//dỗ được Mộ Thanh đưa rịu độc cho mình => thoát khỏi gông xiềng thuần khiết của x//ác Mị Nữ => chạy ra ngoài và nhập vào Mộ Dao.
-                            Oán Nữ giech sạch người Mộ gia, trong lúc định nhập vào Mộ Thanh thì bị dây cột tóc đánh văng ra => Oán Nữ đành dưỡng th//ương trong người Mộ Dao đến hiện tại.
-                            🏮 Cho nên đây là một chuỗi oan nghiệt, phải chi từ đầu cha Mộ Dao không tham lam, thì sẽ không tìm đến gây sự với Mị Nữ (mẹ của Mộ Thanh).
-                            Cũng vì ông mà Mộ Thanh thành trẻ mồ côi => đến Mộ gia làm con nuôi => bị Oán Nữ dụ//dỗ => Oán Nữ thoát ra và diệt cả nhà Mộ gia.
-                            ---
-                            Phim: Vĩnh Dạ Tinh Hà - tập 30 
+                        <p><%= stt.getPostContent() %>
                             <a href="#" class="text-primary">Xem thêm</a>
                         </p>
                         <div>
@@ -152,6 +163,8 @@
                         </div>
                     </div>
                 </div>
+                <% } 
+						}%>
             </main>
         </div>
     </div>

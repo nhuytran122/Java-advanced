@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import CommonModal.MethodCommon;
-import DocumentModal.Document;
-import DocumentModal.DocumentBo;
+import V_DetailsDoc.DetailsDoc;
+import V_DetailsDoc.DetailsDocBo;
 
 @WebServlet("/home")
 public class IndexController extends HttpServlet {
@@ -30,7 +30,7 @@ public class IndexController extends HttpServlet {
             request.setAttribute("listCates", MethodCommon.getListCates());
             request.setAttribute("listMates", MethodCommon.getListMates());
 
-            DocumentBo docBo = new DocumentBo();
+            DetailsDocBo dtdocBo = new DetailsDocBo();
             int page = 1;
             int pageSize = 9;
             String searchValue = "";
@@ -40,22 +40,24 @@ public class IndexController extends HttpServlet {
             if (request.getParameter("page") != null) {
                 page = Integer.parseInt(request.getParameter("page"));
             }
+            
+            if(request.getParameter("btn-search") != null) {
 
-            if (request.getParameter("txtSearch") != null) {
-                searchValue = request.getParameter("txtSearch");
+	            if (request.getParameter("txtSearch") != null) {
+	                searchValue = request.getParameter("txtSearch");
+	            }
+	
+	            if (request.getParameter("cateID") != null) {
+	                cateID = Long.parseLong(request.getParameter("cateID"));
+	            }
+	
+	            if (request.getParameter("mateID") != null) {
+	                mateID = Long.parseLong(request.getParameter("mateID"));
+	            }
             }
+            ArrayList<DetailsDoc> ds = dtdocBo.getDocsByConditions(page, pageSize, searchValue, cateID, mateID);
 
-            if (request.getParameter("cateID") != null) {
-                cateID = Long.parseLong(request.getParameter("cateID"));
-            }
-
-            if (request.getParameter("mateID") != null) {
-                mateID = Long.parseLong(request.getParameter("mateID"));
-            }
-
-            ArrayList<Document> ds = docBo.getDocsByConditions(page, pageSize, searchValue, cateID, mateID);
-
-            int rowCount = docBo.getCountDocsByConditions(searchValue, cateID, mateID);
+            int rowCount = dtdocBo.getCountDocsByConditions(searchValue, cateID, mateID);
             
             int pageCount = rowCount / pageSize;
             if (rowCount % pageSize > 0) {

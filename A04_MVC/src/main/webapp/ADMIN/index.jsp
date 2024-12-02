@@ -104,7 +104,7 @@ int cntHDPaid = (Integer) request.getAttribute("cntHDPaid");
               </div>
               <div class="row">
                 <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-	                <a href="adminHDController" class="card card-tale text-decoration-none">
+	                <a href="adminOrderController" class="card card-tale text-decoration-none">
 	                  <div class="card card-light-blue">
 	                    <div class="card-body">
 	                      <p class="mb-4">Số lượng hóa đơn</p>
@@ -114,7 +114,7 @@ int cntHDPaid = (Integer) request.getAttribute("cntHDPaid");
 	                </a>
                 </div>
                 <div class="col-md-6 stretch-card transparent">
-	                <a href="adminHDController" class="card card-tale text-decoration-none">
+	                <a href="adminOrderController" class="card card-tale text-decoration-none">
 	                  <div class="card card-light-danger">
 	                    <div class="card-body">
 	                      <p class="mb-4">Số lượng hóa đơn đã thanh toán</p>

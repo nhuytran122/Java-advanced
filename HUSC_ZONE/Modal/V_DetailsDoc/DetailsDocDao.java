@@ -1,6 +1,6 @@
 package V_DetailsDoc;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -51,8 +51,110 @@ public class DetailsDocDao {
 		return ds;
 	}
 	
+	public int getCountDocsByConditions(String searchValue, Long categoryID, Long materialID) throws Exception {
+		int count = 0;
+		searchValue = "%" + searchValue + "%";
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT COUNT(*) " +
+				"FROM V_Details_Docs " +
+				"WHERE (Title LIKE ? OR Description LIKE ? OR Name Like ?) " +
+				"AND (? = 0 OR CategoryID = ?) " +
+				"AND (? = 0 OR MaterialID = ?)";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, searchValue);
+		cmd.setString(2, searchValue);
+		cmd.setString(3, searchValue);
+		cmd.setLong(4, categoryID);
+		cmd.setLong(5, categoryID);
+		cmd.setLong(6, materialID);
+		cmd.setLong(7, materialID);
+
+		ResultSet rs = cmd.executeQuery();
+		if (rs.next()) {
+			count = rs.getInt(1);
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return count;
+	}
+	
+	public ArrayList<DetailsDoc> getDocsByUserID(int page, int pageSize, Long userID) throws Exception {
+		ArrayList<DetailsDoc> ds = new ArrayList<DetailsDoc>();
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT * " +
+				"FROM tbl_DetailsDocs " +
+				"WHERE UploadedBy = ? " +
+				"ORDER BY CreatedAt DESC " +
+				"OFFSET (? - 1) * ? ROWS " +
+				"FETCH NEXT ? ROWS ONLY";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, userID);
+		cmd.setInt(2, page);
+		cmd.setInt(3, pageSize);
+		cmd.setInt(4, pageSize);
+
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			ds.add(mapDetailsDoc(rs));
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return ds;
+	}
+
+	public ArrayList<DetailsDoc> getDocsByConditions(int page, int pageSize, String searchValue,
+			Long categoryID, Long materialID) throws Exception {
+		ArrayList<DetailsDoc> ds = new ArrayList<DetailsDoc>();
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT * " +
+				"FROM V_Details_Docs " +
+				"WHERE (Title LIKE ? OR Description LIKE ?) " +
+				"AND (? = 0 OR CategoryID = ?) " +
+				"AND (? = 0 OR MaterialID = ?) " +
+				"ORDER BY CreatedAt DESC " +
+				"OFFSET (? - 1) * ? ROWS " +
+				"FETCH NEXT ? ROWS ONLY";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		searchValue = "%" + searchValue + "%";
+		cmd.setString(1, searchValue);
+		cmd.setString(2, searchValue);
+		cmd.setLong(3, categoryID);
+		cmd.setLong(4, categoryID);
+		cmd.setLong(5, materialID);
+		cmd.setLong(6, materialID);
+		cmd.setInt(7, page);
+		cmd.setInt(8, pageSize);
+		cmd.setInt(9, pageSize);
+
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			ds.add(mapDetailsDoc(rs));
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return ds;
+	}
+	
 	private DetailsDoc mapDetailsDoc(ResultSet rs) throws Exception {
-	    Long documentID = rs.getLong("DocumentID");
+	    Long DocumentID = rs.getLong("DocumentID");
 	    String title = rs.getString("Title");
 	    String description = rs.getString("Description");
 	    String filePath = rs.getString("FilePath");
@@ -65,6 +167,6 @@ public class DetailsDocDao {
 	    String materialName = rs.getString("MaterialName");
 	    String name = rs.getString("Name");
 
-	    return new DetailsDoc(documentID, title, description, createdAt, updatedAt, filePath, catID, matID, uploadedBy, categoryName, materialName, name);
+	    return new DetailsDoc(DocumentID, title, description, createdAt, updatedAt, filePath, catID, matID, uploadedBy, categoryName, materialName, name);
 	}
 }

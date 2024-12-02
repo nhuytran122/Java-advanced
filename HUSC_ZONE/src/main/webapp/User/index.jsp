@@ -1,6 +1,6 @@
+<%@page import="V_DetailsDoc.DetailsDoc"%>
 <%@page import="MaterialModal.MaterialBo"%>
 <%@page import="CategoryModal.CategoryBo"%>
-<%@page import="DocumentModal.Document"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,13 +13,10 @@
 </head>
 
 <%
-    ArrayList<Document> ds = (ArrayList<Document>) request.getAttribute("ds");
+    ArrayList<DetailsDoc> ds = (ArrayList<DetailsDoc>) request.getAttribute("ds");
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
     String searchKeyword = request.getParameter("txtSearch");
-    
-    CategoryBo cateBo = new CategoryBo();
-    MaterialBo mateBo = new MaterialBo();
 %>
   
 <body class="bg-light">
@@ -50,7 +47,7 @@
                         <% 
                           } else { 
                             for (int i = 0; i < n; i++) {
-                              Document docs = ds.get(i);
+                            	DetailsDoc docs = ds.get(i);
                         %>
 		            <div class="col-md-3 mb-4">
 					    <a href="../details?docsID=<%=docs.getDocumentID() %>" class="card-link" style="display: block; text-decoration: none;">
@@ -59,8 +56,8 @@
 					            <div class="card-body">
 					                <h6 class="card-title text-truncate"><%= docs.getTitle() %></h6>
 					                <div>
-					                    <span class="badge bg-info text-white"><%= cateBo.getCategoryByID(docs.getCategoryID()).getCategoryName() %></span>
-					                    <span class="badge bg-success text-white"><%= mateBo.getMaterialByID(docs.getMaterialID()).getMaterialName() %></span>
+					                    <span class="badge bg-info text-white"><%= docs.getCategoryName() %></span>
+					                    <span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
 					                </div>
 					                <p class="text-muted small mt-2"><%= docs.getDesription() %></p>
 					            </div>

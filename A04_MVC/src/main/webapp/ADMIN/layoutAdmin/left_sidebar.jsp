@@ -21,7 +21,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#charts" aria-expanded="false" aria-controls="charts">
+        <a class="nav-link" href="adminKHController" aria-expanded="false" aria-controls="charts">
           <i class="bi bi-person menu-icon"></i>
           <span class="menu-title">Khách hàng</span>
         </a>

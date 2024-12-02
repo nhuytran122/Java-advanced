@@ -86,7 +86,7 @@ public class SaveDocsController extends HttpServlet {
 
             // Lấy thông tin docs cũ nếu update
             if (isUpdate && docID != null) {
-                Document oldDoc = docBo.getDocument(docID);
+                Document oldDoc = docBo.getDocumentByID(docID);
                 if (oldDoc != null) {
                 	oldFileName = oldDoc.getFilePath(); // Lấy file cũ để xử lý xóa
                     tenDocs = tenDocs.isEmpty() ? oldDoc.getTitle() : tenDocs;

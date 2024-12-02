@@ -101,7 +101,10 @@
                           <td><%= s.getSoluong() %></td>
                           <td><%= nf.format(s.getGia()) %></td>
                           <td><%= s.getMaloai() %></td>
-                          <td><%= s.getTacgia() %></td>
+                          <td>
+	                          <div style="max-width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.5;">
+	                              <%= s.getTacgia() %>
+	                           </div>
                           <td>
                             <div class="btn-group" role="group">
                               <form method="post" action="adminUpdateSachController">

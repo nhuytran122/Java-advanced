@@ -50,14 +50,14 @@ public class EditDocsController extends HttpServlet {
             }
 
             if (request.getParameter("btnUpdateDoc") != null) {
-                request.setAttribute("doc", docBo.getDocument(docID));
+                request.setAttribute("doc", docBo.getDocumentByID(docID));
                 RequestDispatcher rd = request.getRequestDispatcher("User/update_docs.jsp");
                 rd.forward(request, response);
                 return;
             }
 
             if (request.getParameter("btnDeleteDoc") != null) {
-                String filePath = docBo.getDocument(docID).getFilePath();
+                String filePath = docBo.getDocumentByID(docID).getFilePath();
 
                 docBo.deleteDocument(docID);
 
@@ -76,7 +76,7 @@ public class EditDocsController extends HttpServlet {
             }
 
             if (request.getParameter("btnDetailSach") != null) {
-                request.setAttribute("book", docBo.getDocument(docID));
+                request.setAttribute("book", docBo.getDocumentByID(docID));
                 RequestDispatcher rd = request.getRequestDispatcher("ADMIN/detail_book.jsp");
                 rd.forward(request, response);
                 return;

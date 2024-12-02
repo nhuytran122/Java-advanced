@@ -41,7 +41,7 @@ public class adminSaveSachController extends HttpServlet {
 
             String masach = "", tensach = "", soluong = "0", gia = "0",
                    tacgia = "", sotap = "", maloai = "", anh = "", oldAnh = "";
-            boolean isUpdate = false;
+            boolean isUpdate = false, isUploaded = false;
             int done = 0;
             sachbo sbo = new sachbo();
             ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
@@ -69,24 +69,21 @@ public class adminSaveSachController extends HttpServlet {
                     // Upload ảnh mới
                     uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
                     anh = "image_sach/" + uniqueName;
+                    isUploaded = true;
                 }
             }
 
-            // Lấy thông tin sách cũ nếu update
+            // Lấy thông tin ảnh sách cũ nếu update
             if (isUpdate && !masach.isEmpty()) {
                 sach sachCu = sbo.getSach(masach);
                 if (sachCu != null) {
-                    oldAnh = sachCu.getAnh(); // Lấy ảnh cũ để xử lý xóa nếu cần
-                    tensach = tensach.isEmpty() ? sachCu.getTensach() : tensach;
-                    soluong = (soluong.isEmpty()) ? String.valueOf(sachCu.getSoluong()) : soluong;
-                    gia = (gia.isEmpty()) ? String.valueOf(sachCu.getGia()) : gia;
-                    maloai = maloai.isEmpty() ? sachCu.getMaloai() : maloai;
-                    tacgia = tacgia.isEmpty() ? sachCu.getTacgia() : tacgia;
-                    sotap = sotap.isEmpty() ? sachCu.getSoTap() : sotap;
-                    anh = anh.isEmpty() ? sachCu.getAnh() : anh;
+                	if(isUploaded) 
+                		oldAnh = sachCu.getAnh(); // Lấy ảnh cũ để xóa
+                	else
+                		anh = sachCu.getAnh(); // không upload thì lấy lại data cũ
                 }
+                      
             }
-
             // Thêm hoặc cập nhật sách  
             if (isUpdate) {
                 done = sbo.updateSach(masach, tensach, tacgia, Long.parseLong(soluong),
@@ -95,36 +92,36 @@ public class adminSaveSachController extends HttpServlet {
                 done = sbo.addSach(masach, tensach, tacgia, Long.parseLong(soluong),
                                    Long.parseLong(gia), anh, maloai, sotap);
             }
-
+            
+            // Chỉ xử lý upload ảnh mới nếu add/update thành công & CÓ UPLOAD
             if (done == 1) {
-                // Chỉ xử lý upload ảnh mới nếu add/update thành công
-                for (FileItem fileItem : fileItems) {
-                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
-                    	//String appPath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/image_sach";
-                    	String appPath = request.getServletContext().getRealPath("") +  File.separator + "image_sach";
-                        File dir = new File(appPath);
-                        if (!dir.exists()) 
-                        	dir.mkdir();
-
-                        // Upload ảnh mới
-                        File file = new File(appPath + File.separator + uniqueName);
-                        fileItem.write(file);
-
-                        // Xóa ảnh cũ nếu có
-                        if (!oldAnh.isEmpty() && isUpdate) {
-                        	//String filePath = "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/";
-                        	String filePath = request.getServletContext().getRealPath("") +  File.separator + oldAnh;
-                            File oldFile = new File(filePath);
-                            if (oldFile.exists()) 
-                            	oldFile.delete();
-                        }
-                        break;
-                    }
-                }
+            	if(isUploaded) {
+	                for (FileItem fileItem : fileItems) {
+	                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
+	                        String folderPath = request.getServletContext().getRealPath("") + File.separator + "image_sach";
+	                        File dir = new File(folderPath);
+	                        if (!dir.exists()) 
+	                            dir.mkdir();
+	
+	                        // Upload ảnh mới
+	                        File file = new File(folderPath + File.separator + uniqueName);
+	                        fileItem.write(file);
+	
+	                        // Xóa ảnh cũ khi update và có upload ảnh mới
+	                        if (isUpdate && !oldAnh.isEmpty()) {
+	                            String filePath = request.getServletContext().getRealPath("") + File.separator + oldAnh;
+	                            File oldFile = new File(filePath);
+	                            if (oldFile.exists()) 
+	                                oldFile.delete();
+	                        }
+	                        break;
+	                    }
+	                }
+            	}
                 response.sendRedirect("adminSachController");
                 return;
             }
-
+            
             // Nếu add thất bại
             request.setAttribute("isInvalid", true);
             request.setAttribute("maSach", masach);

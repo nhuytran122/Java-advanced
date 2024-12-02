@@ -39,7 +39,7 @@ public class StatusPostDao {
         return ds;
     }
 
-    public ArrayList<StatusPost> getAllPosts(int page, int pageSize, String searchValue) throws Exception {
+    public ArrayList<StatusPost> getPostsByConditions(int page, int pageSize, String searchValue) throws Exception {
         ArrayList<StatusPost> ds = new ArrayList<StatusPost>();
         KetNoi kn = new KetNoi();
         kn.ketnoi();
@@ -101,13 +101,17 @@ public class StatusPostDao {
         return count;
     }
 
-    public int getCountAllPost() throws Exception {
+    public int getCountPostsByConditions(String searchValue) throws Exception {
         int count = 0;
         KetNoi kn = new KetNoi();
         kn.ketnoi();
 
-        String sql = "SELECT COUNT(*) FROM tbl_StatusPosts";
+        String sql = "SELECT COUNT(*) FROM tbl_StatusPosts "
+        			+ "WHERE PostContent LIKE ?";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
+
+        searchValue = "%" + searchValue + "%";
+        cmd.setString(1, searchValue);  
 
         ResultSet rs = cmd.executeQuery();
         if (rs.next()) {
@@ -188,7 +192,7 @@ public class StatusPostDao {
         }
     }
 
-    public StatusPost getStatusPost(Long StatusPostID) throws Exception {
+    public StatusPost getStatusPostByID(Long StatusPostID) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
         String sql = "SELECT * FROM tbl_StatusPosts WHERE StatusPostID = ?";

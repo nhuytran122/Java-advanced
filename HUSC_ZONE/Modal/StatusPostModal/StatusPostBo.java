@@ -10,16 +10,16 @@ public class StatusPostBo {
 		return sttDao.getPostsByUserID(page, pageSize, userID);
 	}
 	
-	public ArrayList<StatusPost> getAllPosts(int page, int pageSize, String searchValue) throws Exception {
-		return sttDao.getAllPosts(page, pageSize, searchValue);
+	public ArrayList<StatusPost> getPostsByConditions(int page, int pageSize, String searchValue) throws Exception {
+		return sttDao.getPostsByConditions(page, pageSize, searchValue);
 	}
 	
 	public int getCountPostsByUserID(Long userID) throws Exception {
 		return sttDao.getCountPostsByUserID(userID);
 	}
 	
-	public int getCountAllPost() throws Exception {
-		return sttDao.getCountAllPost();
+	public int getCountPostsByConditions(String searchValue) throws Exception {
+		return sttDao.getCountPostsByConditions(searchValue);
 	}
 	
 	public int addStatusPost(String content, Long userID, String imgPath) throws Exception {
@@ -32,5 +32,9 @@ public class StatusPostBo {
 	
 	public int deleteStatusPost(Long StatusPostID) throws Exception {
 		return sttDao.deleteStatusPost(StatusPostID);
+	}
+	
+	public StatusPost getStatusPostByID(Long StatusPostID) throws Exception {
+		return sttDao.getStatusPostByID(StatusPostID);
 	}
 }

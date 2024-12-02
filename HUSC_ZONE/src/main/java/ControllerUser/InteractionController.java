@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import BookmarkModal.BookmarkBo;
-import CommonModal.MethodCommon;
 import UserModal.User;
 
 @WebServlet("/interact")
