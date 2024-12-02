@@ -38,4 +38,5 @@ public class DocumentBo {
 	public Document getDocument(Long documentID) throws Exception {
 		return docDao.getDocument(documentID);
 	}
+	
 }

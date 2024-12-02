@@ -220,5 +220,4 @@ public class DocumentDao {
 	    kn.cn.close();
 	    return null;
 	}
-
 }

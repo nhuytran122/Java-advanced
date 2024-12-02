@@ -1,0 +1,70 @@
+package V_DetailsDoc;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import CommonModal.KetNoi;
+
+public class DetailsDocDao {
+	public DetailsDoc getDetailsDocByID(Long docID) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "select * from V_Details_Docs where DocumentID = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setLong(1, docID);
+	    ResultSet rs = cmd.executeQuery();
+
+	    if (rs.next()) { 
+	        return mapDetailsDoc(rs);
+	    }
+
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+	    return null;
+	}
+	
+	public ArrayList<DetailsDoc> getListDocsSuggest(Long docID, Long cateID) throws Exception {
+		ArrayList<DetailsDoc> ds = new ArrayList<DetailsDoc>();
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT TOP 4 * "
+		           + "FROM V_Details_Docs "
+		           + "WHERE CategoryID = ? AND DocumentID != ?";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, cateID);
+		cmd.setLong(2, docID);
+
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			ds.add(mapDetailsDoc(rs));
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return ds;
+	}
+	
+	private DetailsDoc mapDetailsDoc(ResultSet rs) throws Exception {
+	    Long documentID = rs.getLong("DocumentID");
+	    String title = rs.getString("Title");
+	    String description = rs.getString("Description");
+	    String filePath = rs.getString("FilePath");
+	    Long catID = rs.getLong("CategoryID");
+	    Long matID = rs.getLong("MaterialID");
+	    Long uploadedBy = rs.getLong("UploadedBy");
+	    Date createdAt = rs.getDate("CreatedAt");
+	    Date updatedAt = rs.getDate("UpdatedAt");
+	    String categoryName = rs.getString("CategoryName");
+	    String materialName = rs.getString("MaterialName");
+	    String name = rs.getString("Name");
+
+	    return new DetailsDoc(documentID, title, description, createdAt, updatedAt, filePath, catID, matID, uploadedBy, categoryName, materialName, name);
+	}
+}

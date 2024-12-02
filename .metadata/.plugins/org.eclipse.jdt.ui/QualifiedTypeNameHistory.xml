@@ -16,19 +16,12 @@
     <fullyQualifiedTypeName name="KetNoiModal.KetNoi"/>
     <fullyQualifiedTypeName name="ConstantModal.Constants"/>
     <fullyQualifiedTypeName name="UserModal.UserDao"/>
-    <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="at.favre.lib.crypto.bcrypt.BCrypt"/>
     <fullyQualifiedTypeName name="org.mindrot.jbcrypt.BCrypt"/>
     <fullyQualifiedTypeName name="CategoryModal.CategoryDao"/>
-    <fullyQualifiedTypeName name="CategoryModal.Category"/>
-    <fullyQualifiedTypeName name="CategoryModal.CategoryBo"/>
     <fullyQualifiedTypeName name="MaterialModal.MaterialDao"/>
-    <fullyQualifiedTypeName name="MaterialModal.Material"/>
-    <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
-    <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="DocumentModal.DocumentDao"/>
-    <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
     <fullyQualifiedTypeName name="BookmarkModal.Bookmark"/>
     <fullyQualifiedTypeName name="BookmarkModal.BookmarkDao"/>
     <fullyQualifiedTypeName name="LikeModal.Like"/>
@@ -36,7 +29,6 @@
     <fullyQualifiedTypeName name="ReportModal.Report"/>
     <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="ReportModal.ReportDao"/>
-    <fullyQualifiedTypeName name="DocumentModal.Document"/>
     <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -48,7 +40,6 @@
     <fullyQualifiedTypeName name="StatusPostModal.StatusPostDao"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-    <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.disk.DiskFileItemFactory"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.servlet.ServletFileUpload"/>
     <fullyQualifiedTypeName name="java.util.List"/>
@@ -60,4 +51,13 @@
     <fullyQualifiedTypeName name="hoadonmodal.hoadon"/>
     <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsubo"/>
+    <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
+    <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
+    <fullyQualifiedTypeName name="DocumentModal.Document"/>
+    <fullyQualifiedTypeName name="CategoryModal.CategoryBo"/>
+    <fullyQualifiedTypeName name="CategoryModal.Category"/>
+    <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
+    <fullyQualifiedTypeName name="MaterialModal.Material"/>
+    <fullyQualifiedTypeName name="UserModal.UserBo"/>
+    <fullyQualifiedTypeName name="UserModal.User"/>
 </qualifiedTypeNameHistroy>

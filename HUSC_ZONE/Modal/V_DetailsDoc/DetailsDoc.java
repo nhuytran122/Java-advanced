@@ -1,8 +1,8 @@
-package DocumentModal;
+package V_DetailsDoc;
 
 import java.sql.Date;
 
-public class Document {
+public class DetailsDoc {
 	private Long DocumentID;
 	private String Title;
 	private String Description;
@@ -12,21 +12,28 @@ public class Document {
 	private Long CategoryID;
 	private Long MaterialID;
 	private Long UploadedBy;
-	public Document() {
+	private String CategoryName;
+	private String MaterialName;
+	private String Name;
+	public DetailsDoc() {
 		super();
 	}
-	public Document(Long documentID, String title, String description, Date createdAt, Date updatedAt, String filePath,
-			Long categoryID, Long materialID, Long uploadedBy) {
+	public DetailsDoc(Long documentID, String title, String desription, Date createdAt, Date updatedAt, String filePath,
+			Long categoryID, Long materialID, Long uploadedBy, String categoryName, String materialName,
+			String name) {
 		super();
 		DocumentID = documentID;
 		Title = title;
-		Description = description;
+		Description = desription;
 		CreatedAt = createdAt;
 		UpdatedAt = updatedAt;
 		FilePath = filePath;
 		CategoryID = categoryID;
 		MaterialID = materialID;
 		UploadedBy = uploadedBy;
+		CategoryName = categoryName;
+		MaterialName = materialName;
+		Name = name;
 	}
 	public Long getDocumentID() {
 		return DocumentID;
@@ -43,8 +50,8 @@ public class Document {
 	public String getDesription() {
 		return Description;
 	}
-	public void setDesription(String description) {
-		Description = description;
+	public void setDesription(String desription) {
+		Description = desription;
 	}
 	public Date getCreatedAt() {
 		return CreatedAt;
@@ -82,4 +89,23 @@ public class Document {
 	public void setUploadedBy(Long uploadedBy) {
 		UploadedBy = uploadedBy;
 	}
+	public String getCategoryName() {
+		return CategoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		CategoryName = categoryName;
+	}
+	public String getMaterialName() {
+		return MaterialName;
+	}
+	public void setMaterialName(String materialName) {
+		MaterialName = materialName;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	
 }

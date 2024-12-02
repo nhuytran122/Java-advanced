@@ -1,3 +1,4 @@
+<%@page import="V_DetailsDoc.DetailsDoc"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="MaterialModal.MaterialBo"%>
 <%@page import="CategoryModal.CategoryBo"%>
@@ -12,14 +13,15 @@
     <%@ include file="layout/import.jsp" %>
 </head>
 <%
-	Document docs = (Document)request.getAttribute("docs");
-	
-	Category cateOfDocs = (Category)request.getAttribute("cateOfDocs");
-	Material mateOfDocs = (Material)request.getAttribute("mateOfDocs");
+
+
+	DetailsDoc dtlDocs = (DetailsDoc)request.getAttribute("dtlDocs");
 	User uploadedBy = (User)request.getAttribute("uploadedBy");
+	ArrayList<DetailsDoc> lstDocsSuggest = (ArrayList<DetailsDoc>)request.getAttribute("lstDocsSuggest");
+	Boolean isMarked = (Boolean)request.getAttribute("isMarked");
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    String formattedDate = docs.getCreatedAt() != null ? sdf.format(docs.getCreatedAt()) : "";
+    String formattedDate = dtlDocs.getCreatedAt() != null ? sdf.format(dtlDocs.getCreatedAt()) : "";
 
 %>
 <body class="bg-light">
@@ -46,93 +48,76 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4 class="card-title mb-3"><%=docs.getTitle() %></h4>
-                            <p class="card-text"><%=docs.getDesription() %></p>
-                            <p><strong>Ngành học:</strong> <%= cateOfDocs.getCategoryName() %></p>
-                            <p><strong>Loại tài liệu:</strong> <%= mateOfDocs.getMaterialName() %></p>
-                            <p><strong>Tải lên bởi:</strong> <%= uploadedBy.getName() %></p>
+                            <h4 class="card-title mb-3"><%=dtlDocs.getTitle() %></h4>
+                            <p class="card-text"><%=dtlDocs.getDesription() %></p>
+                            <p><strong>Ngành học:</strong> <%= dtlDocs.getCategoryName() %></p>
+                            <p><strong>Loại tài liệu:</strong> <%= dtlDocs.getMaterialName() %></p>
+                            <p><strong>Tải lên bởi:</strong> <%= dtlDocs.getName() %></p>
                             <p><strong>Ngày tải lên:</strong> <%= formattedDate %></p>
 
                             <div class="d-flex align-items-center">
-                                <a class="btn btn-outline-warning me-2 p-2">
-                                    <i class="bi bi-bookmark-heart"></i> Yêu thích
-                                </a>
-                                <a href="#" class="btn btn-outline-success p-2">
-                                    <i class="bi bi-download"></i> Download
-                                </a>
-                            </div>
+						    <%
+						        if (isMarked != null && isMarked) {
+						    %>
+						        <a class="btn btn-warning me-2 p-2">
+						            <i class="bi bi-bookmark-heart-fill"></i> Đã Yêu thích
+						        </a>
+						    <%
+						        } else {
+						    %>
+						        <a class="btn btn-outline-warning me-2 p-2">
+						            <i class="bi bi-bookmark-heart"></i> Yêu thích
+						        </a>
+						    <%
+						        }
+						    %>
+						    <a href="#" class="btn btn-outline-success p-2">
+						        <i class="bi bi-download"></i> Download
+						    </a>
+						</div>
+
 
                             <div class="mt-3">
-                                <a href="#" class="badge bg-info text-white text-decoration-none"><%= cateOfDocs.getCategoryName() %></a>
-                                <a href="#" class="badge bg-success text-white text-decoration-none"><%= mateOfDocs.getMaterialName() %></a>
+                                <a href="#" class="badge bg-info text-white text-decoration-none"><%= dtlDocs.getCategoryName() %></a>
+                                <a href="#" class="badge bg-success text-white text-decoration-none"><%= dtlDocs.getMaterialName() %></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Suggested Documents Section -->
-            <div class="mt-5">
-                <h5 class="fw-bold mb-3">Tài liệu tương tự</h5>
-                <div class="row">
-                    <!-- Suggested documents -->
-                    <div class="col-md-3">
-                        <div class="card h-100">
-                            <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
-                            <div class="card-body">
-                                <h6 class="card-title">Lập trình C cơ bản</h6>
-                                <div class="pb-2">
-                                    <span class="badge bg-info text-white">CNTT</span>
-                                    <span class="badge bg-success text-white">Slide</span>
-                                </div>
-                                <p class="text-muted">Tài liệu về C.</p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Suggested Documents -->
+			<div class="mt-5">
+			    <h5 class="fw-bold mb-3">Tài liệu tương tự</h5>
+			    <div class="row">
+			        <%
+			            if (lstDocsSuggest == null || lstDocsSuggest.size() == 0) {
+			        %>
+			            <p class="text-muted">Hiện không có tài liệu tương tự.</p>
+			        <%
+			            } else {
+			                for (DetailsDoc doc : lstDocsSuggest) {
+			        %>
+			        <div class="col-md-3">
+			            <div class="card h-100">
+			                <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
+			                <div class="card-body">
+			                    <h6 class="card-title"><%= doc.getTitle() %></h6>
+			                    <div class="pb-2">
+			                        <span class="badge bg-info text-white"><%= doc.getCategoryName() %></span>
+			                        <span class="badge bg-success text-white"><%= doc.getMaterialName() %></span>
+			                    </div>
+			                    <p class="text-muted"><%= doc.getDesription() %></p>
+			                </div>
+			            </div>
+			        </div>
+			        <%
+			                }
+			            }
+			        %>
+			    </div>
+			</div>
 
-                    <div class="col-md-3">
-                        <div class="card h-100">
-                            <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
-                            <div class="card-body">
-                                <h6 class="card-title">Lập trình Python nâng cao</h6>
-                                <div class="pb-2">
-                                    <span class="badge bg-info text-white">CNTT</span>
-                                    <span class="badge bg-success text-white">Slide</span>
-                                </div>
-                                <p class="text-muted">Khóa học Python cho người có kinh nghiệm.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card h-100">
-                            <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
-                            <div class="card-body">
-                                <h6 class="card-title">Học lập trình JavaScript</h6>
-                                <div class="pb-2">
-                                    <span class="badge bg-info text-white">CNTT</span>
-                                    <span class="badge bg-success text-white">Slide</span>
-                                </div>
-                                <p class="text-muted">Giới thiệu về JavaScript cho lập trình viên web.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card h-100">
-                            <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
-                            <div class="card-body">
-                                <h6 class="card-title">Giới thiệu về C++</h6>
-                                <div class="pb-2">
-                                    <span class="badge bg-info text-white">CNTT</span>
-                                    <span class="badge bg-success text-white">Slide</span>
-                                </div>
-                                <p class="text-muted">Khóa học cơ bản về lập trình C++.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
     </div>
 </div>

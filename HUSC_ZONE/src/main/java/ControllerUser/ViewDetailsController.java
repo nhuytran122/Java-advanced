@@ -1,6 +1,7 @@
 package ControllerUser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import BookmarkModal.BookmarkBo;
 import CategoryModal.Category;
 import CategoryModal.CategoryBo;
 import CommonModal.MethodCommon;
@@ -18,6 +21,8 @@ import MaterialModal.Material;
 import MaterialModal.MaterialBo;
 import UserModal.User;
 import UserModal.UserBo;
+import V_DetailsDoc.DetailsDoc;
+import V_DetailsDoc.DetailsDocBo;
 
 @WebServlet("/details")
 public class ViewDetailsController extends HttpServlet {
@@ -31,28 +36,35 @@ public class ViewDetailsController extends HttpServlet {
 		try {
 			request.setCharacterEncoding("utf-8");
 	        response.setCharacterEncoding("utf-8");
+	        HttpSession session = request.getSession();
 	        
 	        request.setAttribute("listCates", MethodCommon.getListCates());
 	        request.setAttribute("listMates", MethodCommon.getListMates());
 	        
+			User user = null;
+			Boolean isMarked = false;
+			
+	        if(session.getAttribute("user") != null) 
+	        	user = (User)(session.getAttribute("user"));
 	        
 	        if(request.getParameter("docsID") != null) {
 	        	Long docID = Long.parseLong(request.getParameter("docsID"));
-	        	DocumentBo docBo = new DocumentBo();
-	        	Document docs = docBo.getDocument(docID);
-	        	if(docs != null) {
-	        		CategoryBo cateBo = new CategoryBo();
-		        	MaterialBo mateBo = new MaterialBo();
-		        	UserBo uBo = new UserBo();
+	        	
+	        	DetailsDocBo dtdocsBo = new DetailsDocBo();
+	        	
+	        	DetailsDoc dtlDocs = dtdocsBo.getDetailsDocByID(docID);
+	        	if(dtlDocs != null) {
+		        	BookmarkBo bmkBo = new BookmarkBo();
 		        	
-		        	Category cateOfDocs = cateBo.getCategoryByID(docs.getCategoryID());
-		        	Material mateOfDocs = mateBo.getMaterialByID(docs.getMaterialID());
-		        	User uploadedBy = uBo.getUserByID(docs.getUploadedBy());
+		        	ArrayList<DetailsDoc> lstDocsSuggest = dtdocsBo.getListDocsSuggest(docID, dtlDocs.getCategoryID());
+		        	if(user != null) {
+		        		isMarked = bmkBo.hasUserMarkedDocs(user.getUserID(), docID);
+		        	}
 		        	
-	        		request.setAttribute("docs", docs);
-	        		request.setAttribute("cateOfDocs", cateOfDocs);
-	        		request.setAttribute("mateOfDocs", mateOfDocs);
-	        		request.setAttribute("uploadedBy", uploadedBy);
+		        	
+	        		request.setAttribute("dtlDocs", dtlDocs);
+	        		request.setAttribute("lstDocsSuggest", lstDocsSuggest);
+	        		request.setAttribute("isMarked", isMarked);
 	        		
 	        		RequestDispatcher rd = request.getRequestDispatcher("User/detail-docs.jsp");
 	                rd.forward(request, response);
