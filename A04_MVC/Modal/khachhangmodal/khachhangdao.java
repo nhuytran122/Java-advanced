@@ -8,28 +8,69 @@ import ketnoimodal.KetNoi;
 
 public class khachhangdao {
 	
-	public ArrayList<khachhang> getKH() throws Exception{
-		ArrayList<khachhang> ds = new ArrayList<khachhang>();
-		KetNoi kn = new KetNoi();
-		kn.ketnoi();
-		String sql = "select * from KhachHang";
-		PreparedStatement cmd = kn.cn.prepareStatement(sql);
-		ResultSet rs = cmd.executeQuery();
-		while(rs.next()) {
-			Long makh = rs.getLong("makh");
-			String hoten = rs.getString("hoten");
-			String diachi = rs.getString("diachi");
-			String sodt = rs.getString("sodt");
-			String email = rs.getString("email");
-			String tendn = rs.getString("tendn");
-			String pass = rs.getString("pass");
-			ds.add(new khachhang(makh, hoten, diachi, sodt, email, tendn, pass));
-		} 
-		rs.close();
-		kn.cn.close();
-		return ds;
-		}
-	
+	public ArrayList<khachhang> getKHByCondition(int page, int pageSize, String searchValue) throws Exception {
+	    ArrayList<khachhang> ds = new ArrayList<khachhang>();
+	    searchValue = "%" + searchValue + "%";
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+
+	    String sql = "SELECT * " +
+	                 "FROM KhachHang " +
+	                 "WHERE hoten LIKE ? OR email LIKE ?" +
+	                 "ORDER BY makh " +
+	                 "OFFSET (? - 1) * ? ROWS " +
+	                 "FETCH NEXT ? ROWS ONLY";
+
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, searchValue); 
+	    cmd.setString(2, searchValue);
+	    cmd.setInt(3, page);         
+	    cmd.setInt(4, pageSize);     
+	    cmd.setInt(5, pageSize);      
+
+	    ResultSet rs = cmd.executeQuery();
+	    while (rs.next()) {
+	        Long makh = rs.getLong("makh");
+	        String hoten = rs.getString("hoten");
+	        String diachi = rs.getString("diachi");
+	        String sodt = rs.getString("sodt");
+	        String email = rs.getString("email");
+	        String tendn = rs.getString("tendn");
+	        String pass = rs.getString("pass");
+	        ds.add(new khachhang(makh, hoten, diachi, sodt, email, tendn, pass));
+	    }
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+	    return ds;
+	}
+
+	public int countKHWithSearch(String searchValue) throws Exception {
+	    int count = 0;
+	    searchValue = "%" + searchValue + "%";
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+
+	    String sql = "SELECT COUNT(*) " +
+	                 "FROM KhachHang " +
+	                 "WHERE hoten LIKE ? OR diachi LIKE ? OR email LIKE ?";
+
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, searchValue);
+	    cmd.setString(2, searchValue);
+	    cmd.setString(3, searchValue);
+
+	    ResultSet rs = cmd.executeQuery();
+	    if (rs.next()) {
+	        count = rs.getInt(1);
+	    }
+
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+	    return count;
+	}
+
 	public khachhang checkLogin(String tenDn, String Pass) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
@@ -79,7 +120,7 @@ public class khachhangdao {
         return kq;
     }
 	
-	public int countKH() throws Exception {
+	public int countAllKH() throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    String sql = "SELECT COUNT(makh) FROM KhachHang";

@@ -32,7 +32,7 @@ public class adminController extends HttpServlet {
             if(session.getAttribute("ad") == null) {
             	response.sendRedirect("adminloginController");
             }            
-            request.setAttribute("cntKH", (new khachhangbo().countKH()));
+            request.setAttribute("cntKH", (new khachhangbo().countAllKH()));
             request.setAttribute("cntSach", (new sachbo().getRowCount("")));
             request.setAttribute("cntHD", (new hoadonbo().countAllHD()));
             request.setAttribute("cntHDPaid", (new hoadonbo().countHDPaid()));

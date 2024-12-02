@@ -1,6 +1,5 @@
-<%@page import="hoadonmodal.hoadon"%>
+<%@page import="khachhangmodal.khachhang"%>
 <%@page import="java.text.NumberFormat"%>
-<%@page import="sachmodal.sach"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -9,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>BOOKSTORE - Quản lý đơn hàng</title>
+  <title>BOOKSTORE - Quản lý khách hàng</title>
 
   <link rel="stylesheet" href="ADMIN/vendors/feather/feather.css">
   <link rel="stylesheet" href="ADMIN/vendors/ti-icons/css/themify-icons.css">
@@ -23,7 +22,7 @@
 
 <body>
   <%
-  	ArrayList<hoadon> ds = (ArrayList<hoadon>) request.getAttribute("ds");
+    ArrayList<khachhang> ds = (ArrayList<khachhang>) request.getAttribute("ds");
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
     String searchKeyword = request.getParameter("txtSearch");
@@ -36,8 +35,8 @@
       <div class="main-panel">
         <ul class="navbar-nav mr-lg-2 my-4" style="display: flex; justify-content: center; width: 100%;">
           <li class="nav-item nav-search d-none d-lg-block" style="display: flex; align-items: center;">
-            <form action="adminOrderController" method="get" class="d-flex" style="width: 100%; justify-content: center; align-items: center;">
-              <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm đơn hàng theo tên khách hàng" name="txtSearch" aria-label="search"
+            <form action="adminSachController" method="get" class="d-flex" style="width: 100%; justify-content: center; align-items: center;">
+              <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm khách hàng..." name="txtSearch" aria-label="search"
                      value="<%= request.getParameter("txtSearch") != null ? request.getParameter("txtSearch") : "" %>"
                      style="width: 400px; font-size: 14px; margin-right: 10px;">
               <button type="submit" class="btn btn-primary btn-sm p-2">
@@ -53,16 +52,18 @@
               <div class="card position-relative">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 class="card-title">Danh sách đơn hàng</h4>
+                    <h4 class="card-title">Danh sách Khách hàng</h4>
+                    
                   </div>
 
                   <div class="table-responsive">
                     <table class="table table-hover">
                       <thead class="table-light">
                         <tr>
-                          <th>Khách hàng</th>
-                          <th>Ngày mua</th>
-                          <th>Tình trạng</th>
+                          <th>Họ tên</th>
+                          <th>Địa chỉ</th>
+                          <th>Số điện thoại</th>
+                          <th>Email</th>
                           <th>Thao tác</th>
                         </tr>
                       </thead>
@@ -72,31 +73,36 @@
                           if (n == 0) {
                         %>
                             <tr>
-                              <td colspan="7" class="text-center text-danger">Không tìm thấy đơn hàng nào.</td>
+                              <td colspan="7" class="text-center text-danger">Không tìm thấy khách nào.</td>
                             </tr>
                         <% 
                           } else { 
                             for (int i = 0; i < n; i++) {
-                              hoadon s = ds.get(i);
+                              khachhang kh = ds.get(i);
                         %>
                         <tr>
                           <td>
                             <div style="max-width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.5;">
-                              <%= s.getHoten() %>
+                              <%= kh.getHoten() %>
                             </div>
                           </td>
                           <td>
-                              <%= s.getNgayMua() %>
+                            <div style="max-width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.5;">
+                              <%= kh.getDiachi() %>
+                            </div>
                           </td>
-                          <td><%= s.isDamua() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
-                          <td>
+                          <td><%= kh.getSodt() %></td>
+                          <td><%= kh.getEmail() %></td>
                             <div class="btn-group" role="group">
-                              <form method="post" action="adminUpdateHDController">
-                                <input type="hidden" name="idHD" value="<%= s.getMaHoaDon() %>">
-                                <button type="submit" name="btnDetailHD" class="btn btn-success btn-sm" title="Xem chi tiết">
+                              <form method="post" action="adminUpdateKHController">
+                                <input type="hidden" name="idKH" value="<%= kh.getMakh() %>">
+                                <button type="submit" name="btnDetailSach" class="btn btn-success btn-sm" title="Xem chi tiết">
                                   <i class="bi bi-eye"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= s.getMaHoaDon() %>" title="Xóa">
+                                <button type="submit" name="btnUpdateKH" value="<%= kh.getMakh() %>" class="btn btn-warning btn-sm" title="Sửa">
+                                  <i class="bi bi-pencil"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= kh.getMakh() %>" title="Xóa">
                                   <i class="bi bi-trash"></i>
                                 </button>
                               </form>
@@ -105,25 +111,46 @@
                         </tr>
 
                         <!-- Modal xác nhận xóa thông thường -->
-                        <div class="modal fade" id="deleteModal<%= s.getMaHoaDon() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteModal<%= kh.getMakh() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa hóa đơn</h5>
+                                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa khách hàng</h5>
                               </div>
                               <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa hóa đơn này không?
+                                Bạn có chắc chắn muốn xóa khách hàng <b><%= kh.getHoten() %></b> không?
                               </div>
                               <div class="modal-footer">
-                                <form method="post" action="adminUpdateHDController">
-                                  <input type="hidden" name="idHD" value="<%= s.getMaHoaDon() %>">
+                                <form method="post" action="adminUpdateKHController">
+                                  <input type="hidden" name="idKH" value="<%= kh.getMakh() %>">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                  <button type="submit" name="btnDeleteHD" value="<%= s.getMaHoaDon() %>" class="btn btn-danger">Xóa</button>
+                                  <button type="submit" name="btnDeleteKH" value="<%= kh.getMakh() %>" class="btn btn-danger">Xóa</button>
                                 </form>
                               </div>
                             </div>
                           </div>
                         </div>
+                        
+                        <!-- Modal không thể xóa sách -->
+						<% if (request.getAttribute("inUsed") != null) { 
+							if((Boolean) request.getAttribute("inUsed")){%>
+							<div class="modal fade" id="cannotDeleteModal" tabindex="-1" aria-labelledby="cannotDeleteModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="cannotDeleteModalLabel">Không thể xóa khách hàng</h5>
+							      </div>
+							      <div class="modal-body text-danger">
+							        Không thể xóa khách hàng vì khách hàng này đang có hóa đơn.
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						<% } 
+						}%>
                         <% 
                             }
                           }
@@ -141,21 +168,21 @@
             <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center">
                 <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
-                  <a class="page-link" href="<%= currentPage > 1 ? "adminOrderController?page=" + (currentPage - 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" aria-label="Previous">
+                  <a class="page-link" href="<%= currentPage > 1 ? "adminKHController?page=" + (currentPage - 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                   </a>
                 </li>
 
                 <% for (int p = 1; p <= pageCount; p++) { %>
                   <li class="page-item <%= p == currentPage ? "active" : "" %>">
-                    <a class="page-link" href="adminOrderController?page=<%= p %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %>">
+                    <a class="page-link" href="adminKHController?page=<%= p %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %>">
                       <%= p %>
                     </a>
                   </li>
                 <% } %>
 
                 <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
-                  <a class="page-link" href="<%= currentPage < pageCount ? "adminOrderController?page=" + (currentPage + 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" aria-label="Next">
+                  <a class="page-link" href="<%= currentPage < pageCount ? "adminKHController?page=" + (currentPage + 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                   </a>
                 </li>
