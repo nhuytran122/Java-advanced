@@ -14,15 +14,15 @@ import javax.servlet.http.HttpSession;
 import hoadonmodal.hoadon;
 import hoadonmodal.hoadonbo;
 
-@WebServlet("/adminOrderController")
-public class adminOrderController extends HttpServlet {
+@WebServlet("/adminUnpaidOrderController")
+public class adminUnpaidOrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public adminOrderController() {
+    public adminUnpaidOrderController() {
         super();
     }
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
@@ -47,9 +47,9 @@ public class adminOrderController extends HttpServlet {
             }
 
             ArrayList<hoadon> ds;
-            ds = hdbo.getAllHDFromView(searchValue, page, pageSize);
+            ds = hdbo.getListHDUnpaidFromView(searchValue, page, pageSize);
 
-            int rowCount = hdbo.countAllHDByCondition(searchValue);
+            int rowCount = hdbo.countListHDUnpaidByCondition(searchValue);
             
             int pageCount = rowCount / pageSize;
             if (rowCount % pageSize > 0) {
@@ -61,13 +61,13 @@ public class adminOrderController extends HttpServlet {
             request.setAttribute("currentPage", page);
             request.setAttribute("searchKeyword", searchValue); 
 
-            RequestDispatcher rd = request.getRequestDispatcher("ADMIN/show_orders.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("ADMIN/show_confirm_orders.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

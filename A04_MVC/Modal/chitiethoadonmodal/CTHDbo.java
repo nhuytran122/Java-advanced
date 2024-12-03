@@ -7,19 +7,16 @@ public class CTHDbo {
 		return cthddao.themCTHD(maSach, slm, MaHD);
 	}
 	
-	public long thanhtoanCTHD(long MaCTHD) throws Exception {
-		return  cthddao.thanhtoanCTHD(MaCTHD);
-	}
-	
-	public long thanhtoanAll(long maKh) throws Exception {
-		return cthddao.thanhtoanAll(maKh);
-	}
+//	public long thanhtoanCTHD(long MaCTHD) throws Exception {
+//		return  cthddao.thanhtoanCTHD(MaCTHD);
+//	}
 	
 	public long xoaCTHD(long MaCTHD) throws Exception {
 		return cthddao.xoaCTHD(MaCTHD);
 	}
 	
-	public long xoaAllCTHDNotPay(long maKh) throws Exception {
-		return cthddao.xoaAllCTHDNotPay(maKh);
+	public long suaCTHD(long MaCTHD, long soLuongMua) throws Exception {
+		return cthddao.suaCTHD(MaCTHD, soLuongMua);
 	}
+	
 }

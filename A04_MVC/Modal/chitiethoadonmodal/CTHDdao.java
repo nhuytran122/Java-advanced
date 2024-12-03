@@ -20,30 +20,16 @@ public class CTHDdao {
         return kq;
     }
 	
-	public long thanhtoanCTHD(long MaCTHD) throws Exception {
-		KetNoi kn = new KetNoi();
-		kn.ketnoi();
-        String sql = "UPDATE ChiTietHoaDon SET DaThanhToan = 1 WHERE MaChiTietHD = ?";
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, MaCTHD);
-        long kq = cmd.executeUpdate();
-        kn.cn.close();
-        return kq;
-    }
-	
-	public long thanhtoanAll(long makh) throws Exception {
-	    KetNoi kn = new KetNoi();
-	    kn.ketnoi();
-	    String sql = "UPDATE ChiTietHoaDon " +
-                "SET DaThanhToan = 1 " +
-                "FROM ChiTietHoaDon INNER JOIN hoadon ON ChiTietHoaDon.MaHoaDon = hoadon.MaHoaDon " +
-                "WHERE hoadon.makh = ?";
-	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
-	    cmd.setLong(1, makh);
-	    long kq = cmd.executeUpdate();
-	    kn.cn.close();
-	    return kq;
-	}
+//	public long thanhtoanCTHD(long MaCTHD) throws Exception {
+//		KetNoi kn = new KetNoi();
+//		kn.ketnoi();
+//        String sql = "UPDATE ChiTietHoaDon SET DaThanhToan = 1 WHERE MaChiTietHD = ?";
+//        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+//        cmd.setLong(1, MaCTHD);
+//        long kq = cmd.executeUpdate();
+//        kn.cn.close();
+//        return kq;
+//    }
 	
 	public long xoaCTHD(long MaCTHD) throws Exception {
 	    KetNoi kn = new KetNoi();
@@ -56,16 +42,18 @@ public class CTHDdao {
 	    return kq;
 	}
 	
-	public long xoaAllCTHDNotPay(long makh) throws Exception {
+	public long suaCTHD(long MaCTHD, long soLuongMua) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
-	    String sql = "DELETE ChiTietHoaDon " +
-	                 "FROM ChiTietHoaDon " +
-	                 "INNER JOIN hoadon ON ChiTietHoaDon.MaHoaDon = hoadon.MaHoaDon " +
-	                 "WHERE ChiTietHoaDon.DaThanhToan = 0 AND hoadon.makh = ?";
+
+	    String sql = "UPDATE ChiTietHoaDon SET SoLuongMua = ? WHERE MaChiTietHD = ?";
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
-	    cmd.setLong(1, makh);
+
+	    cmd.setLong(1, soLuongMua);
+	    cmd.setLong(2, MaCTHD);
+
 	    long kq = cmd.executeUpdate();
+
 	    kn.cn.close();
 	    return kq;
 	}

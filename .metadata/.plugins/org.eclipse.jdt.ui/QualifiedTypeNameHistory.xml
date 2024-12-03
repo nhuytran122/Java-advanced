@@ -26,7 +26,6 @@
     <fullyQualifiedTypeName name="StatusPostModal.StatusPostDao"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsu"/>
-    <fullyQualifiedTypeName name="hoadonmodal.hoadon"/>
     <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsubo"/>
     <fullyQualifiedTypeName name="CategoryModal.CategoryBo"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.text.ParseException"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="hoadonmodal.hoadon"/>
 </qualifiedTypeNameHistroy>

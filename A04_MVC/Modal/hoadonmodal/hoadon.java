@@ -8,17 +8,19 @@ public class hoadon {
 	private Date NgayMua;
 	private Long TongSoLuong;
 	private Long ThanhTien;
+	private boolean damua;
 	public hoadon() {
 		super();
 	}
 	
-	public hoadon(Long maHoaDon, String hoten, Date ngayMua, Long tongSoLuong, Long thanhTien) {
+	public hoadon(Long maHoaDon, String hoten, Date ngayMua, Long tongSoLuong, Long thanhTien, boolean daMua) {
 		super();
 		MaHoaDon = maHoaDon;
 		this.hoten = hoten;
 		NgayMua = ngayMua;
 		TongSoLuong = tongSoLuong;
 		ThanhTien = thanhTien;
+		damua = daMua;
 	}
 
 	public Long getMaHoaDon() {
@@ -54,5 +56,13 @@ public class hoadon {
 
 	public void setThanhTien(Long thanhTien) {
 		ThanhTien = thanhTien;
+	}
+
+	public boolean isDamua() {
+		return damua;
+	}
+
+	public void setDamua(boolean damua) {
+		this.damua = damua;
 	}
 }

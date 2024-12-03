@@ -28,7 +28,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="adminConfirmOrderController" aria-expanded="false" >
+        <a class="nav-link" href="adminUnpaidOrderController" aria-expanded="false" >
           <i class="bi bi-receipt menu-icon"></i>
           <span class="menu-title">Xác nhận đơn hàng</span>
         </a>

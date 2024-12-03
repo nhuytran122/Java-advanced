@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>BOOKSTORE - Quản lý đơn hàng</title>
+  <title>BOOKSTORE - Quản lý xác nhận thanh toán</title>
 
   <link rel="stylesheet" href="ADMIN/vendors/feather/feather.css">
   <link rel="stylesheet" href="ADMIN/vendors/ti-icons/css/themify-icons.css">
@@ -57,7 +57,7 @@
               <div class="card position-relative">
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4 class="card-title">Danh sách đơn hàng</h4>
+                    <h4 class="card-title">Đơn hàng chờ thanh toán</h4>
                   </div>
 
                   <div class="table-responsive">
@@ -104,8 +104,14 @@
                                 <button type="submit" name="btnDetailHD" class="btn btn-success btn-sm" title="Xem chi tiết">
                                   <i class="bi bi-eye"></i>
                                 </button>
+                                <button type="submit" name="btnUpdateHD" value="<%= s.getMaHoaDon() %>" class="btn btn-warning btn-sm" title="Sửa">
+                                  <i class="bi bi-pencil"></i>
+                                </button>
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= s.getMaHoaDon() %>" title="Xóa">
                                   <i class="bi bi-trash"></i>
+                                </button>
+                                <button type="submit" name="btnPayHD" class="btn btn-primary btn-sm" >
+                                  Xác nhận thanh toán
                                 </button>
                               </form>
                             </div>
