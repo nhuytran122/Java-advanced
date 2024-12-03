@@ -1,5 +1,7 @@
 package sachmodal;
 
+import java.util.Date;
+
 public class sach {
 	private String masach;
 	private String tensach;
@@ -9,10 +11,11 @@ public class sach {
 	private String anh;
 	private String maloai;
 	private String sotap;
+	private Date ngaynhap;
 	public sach() {
 		super();
 	}
-	public sach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) {
+	public sach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap, Date ngaynhap) {
 		super();
 		this.masach = masach;
 		this.tensach = tensach;
@@ -22,6 +25,7 @@ public class sach {
 		this.anh = anh;
 		this.maloai = maloai;
 		this.sotap = sotap;
+		this.ngaynhap = ngaynhap;
 	}
 	public String getMasach() {
 		return masach;
@@ -70,5 +74,11 @@ public class sach {
 	}
 	public String getSoTap() {
 		return this.sotap;
+	}
+	public Date getNgaynhap() {
+		return ngaynhap;
+	}
+	public void setNgaynhap(Date ngaynhap) {
+		this.ngaynhap = ngaynhap;
 	}
 }

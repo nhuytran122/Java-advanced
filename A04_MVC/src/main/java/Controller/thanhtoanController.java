@@ -56,7 +56,7 @@ public class thanhtoanController extends HttpServlet {
 	            if (request.getParameter("deleteAll") != null) {
 	                cthdbo.xoaAllCTHDNotPay(kh.getMakh());
 	                
-	                hdbo.updateHDByKH(kh.getMakh());
+	                // hdbo.updateHDByKH(kh.getMakh());
 	                response.sendRedirect("xacnhanController");
 	                return;
 	            }
@@ -69,12 +69,12 @@ public class thanhtoanController extends HttpServlet {
 	                        cthdbo.xoaCTHD(ma);
 	                    }
 	                }
-	                hdbo.updateHDByKH(kh.getMakh());
+	                // hdbo.updateHDByKH(kh.getMakh());
 	                response.sendRedirect("xacnhanController");
 	                return;
 	            }
 	            
-	            hdbo.updateHDByKH(kh.getMakh());
+	            // hdbo.updateHDByKH(kh.getMakh());
 	            response.sendRedirect("lichSuMuaHangController");
             }
 	            

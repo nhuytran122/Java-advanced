@@ -47,7 +47,7 @@ public class adminOrderController extends HttpServlet {
             }
 
             ArrayList<hoadon> ds;
-            ds = hdbo.getAllHD(searchValue, page, pageSize);
+            ds = hdbo.getAllHDFromView(searchValue, page, pageSize);
 
             int rowCount = hdbo.countHDByCondition(searchValue);
             

@@ -15,11 +15,13 @@ public class sachbo {
 		return sdao.getRowCount(searchValue);
 	}
 	
-	public int addSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
+	public int addSach(String masach, String tensach, String tacgia, 
+			Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
 		return sdao.addSach(masach, tensach, tacgia, soluong, gia, anh, maloai, sotap);
 	}
 	
-	public int updateSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
+	public int updateSach(String masach, String tensach, String tacgia, 
+			Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
 		return sdao.updateSach(masach, tensach, tacgia, soluong, gia, anh, maloai, sotap);
 	}
 	

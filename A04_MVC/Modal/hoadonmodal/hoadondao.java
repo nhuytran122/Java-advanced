@@ -41,15 +41,15 @@ public class hoadondao {
 		KetNoi kn = new KetNoi();
 		kn.ketnoi();
 		String sql = "UPDATE hoadon\n"
-				+ "SET damua = 1\n"
-				+ "WHERE MaHoaDon IN (\n"
-				+ "    SELECT MaHoaDon\n"
-				+ "    FROM ChiTietHoaDon cthd\n"
-				+ "    JOIN hoadon hd ON cthd.MaHoaDon = hd.MaHoaDon\n"
-				+ "    WHERE hd.makh = ?\n"
-				+ "    GROUP BY cthd.MaHoaDon\n"
-				+ "    HAVING COUNT(*) = SUM(CASE WHEN DaThanhToan = 1 THEN 1 ELSE 0 END)\n"
-				+ ")";
+		           + "SET damua = 1\n"
+		           + "WHERE MaHoaDon IN (\n"
+		           + "    SELECT cthd.MaHoaDon\n"
+		           + "    FROM ChiTietHoaDon cthd\n"
+		           + "    JOIN hoadon hd ON cthd.MaHoaDon = hd.MaHoaDon\n"
+		           + "    WHERE hd.makh = ?\n"
+		           + "    GROUP BY cthd.MaHoaDon\n"
+		           + "    HAVING COUNT(*) = SUM(CASE WHEN cthd.DaThanhToan = 1 THEN 1 ELSE 0 END)\n"
+		           + ")";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setLong(1, makh);
 		long kq = cmd.executeUpdate();
@@ -95,14 +95,14 @@ public class hoadondao {
 		return count;
 	}
 
-	public ArrayList<hoadon> getAllHD(String searchValue, int page, int pageSize) throws Exception {
+	public ArrayList<hoadon> getAllHDFromView(String searchValue, int page, int pageSize) throws Exception {
 		ArrayList<hoadon> ds = new ArrayList<>();
 		searchValue = "%" + searchValue + "%";
 
 		KetNoi kn = new KetNoi();
 		kn.ketnoi();
 
-		String sql = "SELECT * FROM VOrder " +
+		String sql = "SELECT * FROM V_HoaDon " +
 				"WHERE hoten LIKE ? " +
 				"ORDER BY NgayMua DESC " +
 				"OFFSET (? - 1) * ? ROWS " +
@@ -120,11 +120,11 @@ public class hoadondao {
 		while (rs.next()) {
 			Long MaHoaDon = rs.getLong("MaHoaDon");
 			Date NgayMua = rs.getDate("NgayMua");
-			boolean damua = rs.getBoolean("damua");
 			String hoten = rs.getString("hoten");
-			Long makh = rs.getLong("makh");
-
-			ds.add(new hoadon(MaHoaDon, makh, hoten, NgayMua, damua));
+			Long TongSoLuong = rs.getLong("TongSoLuong");
+			Long ThanhTien = rs.getLong("ThanhTien");
+			
+			ds.add(new hoadon(MaHoaDon, hoten, NgayMua, TongSoLuong, ThanhTien));
 		}
 
 		rs.close();
@@ -138,7 +138,7 @@ public class hoadondao {
 		KetNoi kn = new KetNoi();
 		kn.ketnoi();
 		searchValue = "%" + searchValue + "%";
-		String sql = "SELECT COUNT(MaHoaDon) AS total FROM VOrder WHERE hoten like ?";
+		String sql = "SELECT COUNT(MaHoaDon) AS total FROM V_HoaDon WHERE hoten like ?";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setString(1, searchValue);
 		ResultSet rs = cmd.executeQuery();
@@ -159,11 +159,11 @@ public class hoadondao {
 		KetNoi kn = new KetNoi();
 		kn.ketnoi();
 
-		String sqlDltCTHD = "DELETE FROM ChiTietHoaDon WHERE MaHoaDon = ?";
-		PreparedStatement cmdDltCTHD = kn.cn.prepareStatement(sqlDltCTHD);
-		cmdDltCTHD.setLong(1, maHD);
-		cmdDltCTHD.executeUpdate();
-		cmdDltCTHD.close();
+//		String sqlDltCTHD = "DELETE FROM ChiTietHoaDon WHERE MaHoaDon = ?";
+//		PreparedStatement cmdDltCTHD = kn.cn.prepareStatement(sqlDltCTHD);
+//		cmdDltCTHD.setLong(1, maHD);
+//		cmdDltCTHD.executeUpdate();
+//		cmdDltCTHD.close();
 
 		String sqlDltHD = "DELETE FROM hoadon WHERE MaHoaDon = ?";
 		PreparedStatement cmdDltHD = kn.cn.prepareStatement(sqlDltHD);

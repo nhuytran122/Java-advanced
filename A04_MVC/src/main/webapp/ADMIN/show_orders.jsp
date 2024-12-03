@@ -1,3 +1,4 @@
+<%@page import="Controller.Chung"%>
 <%@page import="hoadonmodal.hoadon"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="sachmodal.sach"%>
@@ -27,6 +28,9 @@
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
     String searchKeyword = request.getParameter("txtSearch");
+    
+    NumberFormat nf = NumberFormat.getInstance();
+    nf.setGroupingUsed(true);
   %>
   <div class="container-scroller">
     <%@ include file="layoutAdmin/navbar.jsp" %>
@@ -61,8 +65,9 @@
                       <thead class="table-light">
                         <tr>
                           <th>Khách hàng</th>
+                          <th>Tổng số lượng</th>
+                          <th>Tổng thành tiền</th>
                           <th>Ngày mua</th>
-                          <th>Tình trạng</th>
                           <th>Thao tác</th>
                         </tr>
                       </thead>
@@ -86,9 +91,10 @@
                             </div>
                           </td>
                           <td>
-                              <%= s.getNgayMua() %>
+                              <%= s.getTongSoLuong() %>
                           </td>
-                          <td><%= s.isDamua() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
+                          <td><%= nf.format(s.getThanhTien()) %></td>
+                          <td><%= Chung.convertDateToString(s.getNgayMua()) %></td>
                           <td>
                             <div class="btn-group" role="group">
                               <form method="post" action="adminUpdateHDController">

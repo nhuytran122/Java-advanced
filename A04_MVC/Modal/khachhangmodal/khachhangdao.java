@@ -16,7 +16,7 @@ public class khachhangdao {
 
 	    String sql = "SELECT * " +
 	                 "FROM KhachHang " +
-	                 "WHERE hoten LIKE ? OR email LIKE ?" +
+	                 "WHERE hoten LIKE ? OR email LIKE ? " +
 	                 "ORDER BY makh " +
 	                 "OFFSET (? - 1) * ? ROWS " +
 	                 "FETCH NEXT ? ROWS ONLY";
@@ -53,7 +53,7 @@ public class khachhangdao {
 
 	    String sql = "SELECT COUNT(*) " +
 	                 "FROM KhachHang " +
-	                 "WHERE hoten LIKE ? OR diachi LIKE ? OR email LIKE ?";
+	                 "WHERE hoten LIKE ? OR diachi LIKE ? OR email LIKE ? ";
 
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	    cmd.setString(1, searchValue);

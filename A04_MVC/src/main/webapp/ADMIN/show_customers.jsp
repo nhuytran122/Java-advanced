@@ -80,35 +80,37 @@
                             for (int i = 0; i < n; i++) {
                               khachhang kh = ds.get(i);
                         %>
-                        <tr>
-                          <td>
-                            <div style="max-width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.5;">
-                              <%= kh.getHoten() %>
-                            </div>
-                          </td>
-                          <td>
-                            <div style="max-width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.5;">
-                              <%= kh.getDiachi() %>
-                            </div>
-                          </td>
-                          <td><%= kh.getSodt() %></td>
-                          <td><%= kh.getEmail() %></td>
-                            <div class="btn-group" role="group">
-                              <form method="post" action="adminUpdateKHController">
-                                <input type="hidden" name="idKH" value="<%= kh.getMakh() %>">
-                                <button type="submit" name="btnDetailSach" class="btn btn-success btn-sm" title="Xem chi tiết">
-                                  <i class="bi bi-eye"></i>
-                                </button>
-                                <button type="submit" name="btnUpdateKH" value="<%= kh.getMakh() %>" class="btn btn-warning btn-sm" title="Sửa">
-                                  <i class="bi bi-pencil"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= kh.getMakh() %>" title="Xóa">
-                                  <i class="bi bi-trash"></i>
-                                </button>
-                              </form>
-                            </div>
-                          </td>
-                        </tr>
+	                        <tr>
+							  <td>
+							    <div style="max-width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.5;">
+							      <%= kh.getHoten() %>
+							    </div>
+							  </td>
+							  <td>
+							    <div style="max-width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.5;">
+							      <%= kh.getDiachi() %>
+							    </div>
+							  </td>
+							  <td><%= kh.getSodt() %></td>
+							  <td><%= kh.getEmail() %></td>
+							  <td>
+							    <div class="btn-group" role="group">
+							      <form method="post" action="adminUpdateKHController">
+							        <input type="hidden" name="idKH" value="<%= kh.getMakh() %>">
+							        <button type="submit" name="btnDetailSach" class="btn btn-success btn-sm" title="Xem chi tiết">
+							          <i class="bi bi-eye"></i>
+							        </button>
+							        <button type="submit" name="btnUpdateKH" value="<%= kh.getMakh() %>" class="btn btn-warning btn-sm" title="Sửa">
+							          <i class="bi bi-pencil"></i>
+							        </button>
+							        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= kh.getMakh() %>" title="Xóa">
+							          <i class="bi bi-trash"></i>
+							        </button>
+							      </form>
+							    </div>
+							  </td>
+							</tr>
+
 
                         <!-- Modal xác nhận xóa thông thường -->
                         <div class="modal fade" id="deleteModal<%= kh.getMakh() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">

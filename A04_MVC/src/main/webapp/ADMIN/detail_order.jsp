@@ -1,3 +1,4 @@
+<%@page import="Controller.Chung"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="lichsumodal.lichsu" %>
@@ -62,7 +63,7 @@
                                                 <td><%= ls.getSoLuongMua() %></td>
                                                 <td><%= nf.format(ls.getGia()) %></td>
                                                 <td><%= nf.format(ls.getThanhTien()) %></td>
-                                                <td><%= ls.getNgayMua() %></td>
+                                                <td><%= Chung.convertDateToString(ls.getNgayMua()) %></td>
                                                 <td><%= ls.isDamua() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
                                             </tr>
                                             <% } %>

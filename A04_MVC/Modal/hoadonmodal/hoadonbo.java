@@ -20,8 +20,8 @@ public class hoadonbo {
 	public int countHDPaid() throws Exception {
 		return hddao.countHDPaid();
 	}
-	public ArrayList<hoadon> getAllHD(String searchValue, int page, int pageSize) throws Exception {
-		return hddao.getAllHD(searchValue, page, pageSize);
+	public ArrayList<hoadon> getAllHDFromView(String searchValue, int page, int pageSize) throws Exception {
+		return hddao.getAllHDFromView(searchValue, page, pageSize);
 	}
 	public int countHDByCondition(String searchValue) throws Exception {
 		return hddao.countHDByCondition(searchValue);

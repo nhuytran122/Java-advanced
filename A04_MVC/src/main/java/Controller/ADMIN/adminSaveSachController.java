@@ -61,6 +61,7 @@ public class adminSaveSachController extends HttpServlet {
                         case "txtMaloai": maloai = fieldValue; break;
                         case "txtTacGia": tacgia = fieldValue; break;
                         case "txtSoTap": sotap = fieldValue; break;
+//                        case "txtNgayNhap": ngaynhap = fieldValue; break;
                         case "btnUpdate": 
                         	isUpdate = true; 
                         	break;

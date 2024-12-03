@@ -3,6 +3,7 @@ package sachmodal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 
 import ketnoimodal.KetNoi;
 
@@ -54,7 +55,8 @@ public class sachdao {
 	        String anh = rs.getString("anh");
 	        String maloai = rs.getString("maloai");
 	        String sotap = rs.getString("sotap");
-	        ds.add(new sach(ms, ten, tg, sl, gia, anh, maloai, sotap));
+	        Date ngaynhap = rs.getDate("NgayNhap");
+	        ds.add(new sach(ms, ten, tg, sl, gia, anh, maloai, sotap, ngaynhap));
         }
         return ds;
     }
@@ -94,7 +96,8 @@ public class sachdao {
 	}
 
 	
-	public int addSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
+	public int addSach(String masach, String tensach, String tacgia, 
+			Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
 	    if (checkSachExists(masach)) {
 	        return -1;
 	    }
@@ -115,6 +118,7 @@ public class sachdao {
 	    cmd.setString(6, anh);
 	    cmd.setString(7, maloai);
 	    cmd.setString(8, sotap);
+//	    cmd.setDate(9, new java.sql.Date(ngaynhap.getTime()));
 	    
 	    int kq = cmd.executeUpdate();
 	    
@@ -126,13 +130,15 @@ public class sachdao {
 
 
 	
-	public int updateSach(String masach, String tensach, String tacgia, Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
+	public int updateSach(String masach, String tensach, String tacgia, Long soluong,
+			Long gia, String anh, String maloai, String sotap) throws Exception {
 	    KetNoi kn = new KetNoi();
 	    kn.ketnoi();
 	    
 	    String sql = "UPDATE sach " +
-	                 "SET tensach = ?, tacgia = ?, soluong = ?, gia = ?, anh = ?, maloai = ?, sotap = ? " +
-	                 "WHERE masach = ?";
+	             "SET tensach = ?, tacgia = ?, soluong = ?, gia = ?, " +
+	             "anh = ?, maloai = ?, sotap = ? " + 
+	             "WHERE masach = ?";
 	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	    
 	    cmd.setString(1, tensach);   
@@ -141,8 +147,9 @@ public class sachdao {
 	    cmd.setLong(4, gia);      
 	    cmd.setString(5, anh);     
 	    cmd.setString(6, maloai);   
-	    cmd.setString(7, sotap);     
-	    cmd.setString(8, masach);   
+	    cmd.setString(7, sotap);
+//	    cmd.setDate(8, new java.sql.Date(ngaynhap.getTime()));
+	    cmd.setString(9, masach);   
 	    
 	    int kq = cmd.executeUpdate();
 	    return kq;  
@@ -176,8 +183,9 @@ public class sachdao {
 	        String anh = rs.getString("anh");
 	        String maloai = rs.getString("maloai");
 	        String sotap = rs.getString("sotap");
+	        Date ngaynhap = rs.getDate("NgayNhap");
 	        
-	        return new sach(ms, ten, tg, sl, gia, anh, maloai, sotap);
+	        return new sach(ms, ten, tg, sl, gia, anh, maloai, sotap, ngaynhap);
 	    }
 	    return null;
 	}

@@ -4,33 +4,28 @@ import java.util.Date;
 
 public class hoadon {
 	private Long MaHoaDon;
-	private Long makh;
 	private String hoten;
 	private Date NgayMua;
-	private boolean damua;
+	private Long TongSoLuong;
+	private Long ThanhTien;
 	public hoadon() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public hoadon(Long maHoaDon, Long makh, String hoten, Date ngayMua, boolean damua) {
+	
+	public hoadon(Long maHoaDon, String hoten, Date ngayMua, Long tongSoLuong, Long thanhTien) {
 		super();
 		MaHoaDon = maHoaDon;
-		this.makh = makh;
 		this.hoten = hoten;
 		NgayMua = ngayMua;
-		this.damua = damua;
+		TongSoLuong = tongSoLuong;
+		ThanhTien = thanhTien;
 	}
+
 	public Long getMaHoaDon() {
 		return MaHoaDon;
 	}
 	public void setMaHoaDon(Long maHoaDon) {
 		MaHoaDon = maHoaDon;
-	}
-	public Long getMakh() {
-		return makh;
-	}
-	public void setMakh(Long makh) {
-		this.makh = makh;
 	}
 	public String getHoten() {
 		return hoten;
@@ -44,10 +39,20 @@ public class hoadon {
 	public void setNgayMua(Date ngayMua) {
 		NgayMua = ngayMua;
 	}
-	public boolean isDamua() {
-		return damua;
+
+	public Long getTongSoLuong() {
+		return TongSoLuong;
 	}
-	public void setDamua(boolean damua) {
-		this.damua = damua;
+
+	public void setTongSoLuong(Long tongSoLuong) {
+		TongSoLuong = tongSoLuong;
+	}
+
+	public Long getThanhTien() {
+		return ThanhTien;
+	}
+
+	public void setThanhTien(Long thanhTien) {
+		ThanhTien = thanhTien;
 	}
 }

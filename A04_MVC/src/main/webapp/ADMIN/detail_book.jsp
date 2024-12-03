@@ -1,3 +1,4 @@
+<%@page import="Controller.Chung"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="sachmodal.sach"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
@@ -55,6 +56,7 @@
                           <p class="card-text"><strong>Loại sách:</strong> <%= s.getMaloai() %></p>
                           <p class="card-text"><strong>Số Tập:</strong> <%= s.getSoTap() %></p>
                           <p class="card-text"><strong>Tác giả:</strong> <%= s.getTacgia() %></p>
+                          <p class="card-text"><strong>Ngày nhập:</strong> <%= Chung.convertDateToString(s.getNgaynhap()) %></p>
                         </div>
                       </div>
 
