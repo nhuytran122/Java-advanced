@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import CommonModal.Constants;
 import StatusPostModal.StatusPost;
 import StatusPostModal.StatusPostBo;
 import UserModal.User;
@@ -50,9 +51,10 @@ public class EditStatusController extends HttpServlet {
             if (request.getParameter("sttID") != null)
             	sttID = Long.parseLong(request.getParameter("sttID"));
 
-			String content = "", fileName = "", 
-					oldFileName = "";
-			boolean isUpdate = false;
+			String content = "", imgName = "", 
+					oldImgName = "";
+			String uniqueName = ""; // Tên file ảnh sau khi xử lý
+			boolean isUpdate = false, isUploaded = false;
             int done = 0;
             ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
             List<FileItem> fileItems = upload.parseRequest(request);
@@ -74,7 +76,9 @@ public class EditStatusController extends HttpServlet {
                         	break;
                     }
                 } else if (!fileItem.getName().isEmpty()) {
-                	fileName = System.currentTimeMillis() + "_" + fileItem.getName();
+                	uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
+                	imgName = "../images/status_images/" + uniqueName;
+                	isUploaded = true;
                 }
             }
 
@@ -82,45 +86,51 @@ public class EditStatusController extends HttpServlet {
             if (isUpdate && sttID != null) {
                 StatusPost oldStt = sttBo.getStatusPostByID(sttID);
                 if (oldStt != null) {
-                	oldFileName = oldStt.getImagePath(); // Lấy file cũ để xử lý xóa
-                    content = content.isEmpty() ? oldStt.getPostContent() : content;
-                    fileName = fileName.isEmpty() ? oldStt.getImagePath() : fileName;
+                	if(isUploaded) 
+                		oldImgName = oldStt.getImagePath(); // Lấy file cũ để xử lý xóa
+                	else
+                		imgName = oldStt.getImagePath(); // không upload thì lấy lại data cũ
                 }
             }
 
             // Thêm hoặc cập nhật stt  
             if (isUpdate) {
-                done = sttBo.updateStatusPost(sttID, content, fileName);
+                done = sttBo.updateStatusPost(sttID, content, imgName);
             } else {
-                done = sttBo.addStatusPost(content, user.getUserID(), fileName);
+                done = sttBo.addStatusPost(content, user.getUserID(), imgName);
             }
 
+         // Chỉ xử lý upload file mới nếu add/update thành công
             if (done == 1) {
-                // Chỉ xử lý upload file mới nếu add/update thành công
-                for (FileItem fileItem : fileItems) {
-                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
-                    	String folderPath = request.getServletContext().getRealPath("") +  File.separator + "docs";
-                        File dir = new File(folderPath);
-                        if (!dir.exists()) 
-                        	dir.mkdir();
+            	if(isUploaded) {
+	                for (FileItem fileItem : fileItems) {
+	                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
+	                    	String folderPath = request.getServletContext().getRealPath("") + Constants.IMG_POST_FOLDER_PATH;
 
-                        // Upload file mới
-                        File file = new File(folderPath + File.separator + fileName);
-                        fileItem.write(file);
-
-                        // Xóa ảnh cũ nếu có
-                        if (!oldFileName.isEmpty() && isUpdate) {
-                            File oldFile = new File(folderPath + File.separator + oldFileName);
-                            if (oldFile.exists()) 
-                            	oldFile.delete();
-                        }
-                        break;
-                    }
-                }
+	                        File dir = new File(folderPath);
+	                        if (!dir.exists()) 
+	                        	dir.mkdir();
+	
+	                        // Upload file mới
+	                        File file = new File(folderPath + File.separator + uniqueName);
+	                        fileItem.write(file);
+	
+	                        // Xóa ảnh cũ khi update và có upload ảnh mới
+	                        if (isUpdate && !oldImgName.isEmpty()) {
+	                        	String filePath = request.getServletContext().getRealPath("") + oldImgName;
+	                            File oldFile = new File(filePath);
+	                            if (oldFile.exists()) 
+	                            	oldFile.delete();
+	                        }
+	                        break;
+	                    }
+	                }
+            	}
                 response.sendRedirect("status-post");
                 return;
             }
-
+            
+            //TODO: above
             if (request.getParameter("btnUpdateStt") != null) {
                 request.setAttribute("stt", sttBo.getStatusPostByID(sttID));
                 RequestDispatcher rd = request.getRequestDispatcher("User/update_status.jsp");

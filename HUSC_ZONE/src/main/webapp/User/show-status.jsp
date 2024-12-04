@@ -113,11 +113,11 @@
                                 <small class="text-muted"><%= stt.getCreatedAt() %></small>
                             </div>
                         </div>
-                        <p><%= stt.getPostContent() %>
-                            <a href="#" class="text-primary">Xem thêm</a>
+                        <p>
+                        	<%= stt.getPostContent() %>
                         </p>
                         <div>
-                            <img src="https://via.placeholder.com/600x300" alt="Post Image" class="img-fluid rounded">
+                            <img src="<%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 300px;">
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between">

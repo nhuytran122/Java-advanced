@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import StatusPostModal.StatusPost;
 import StatusPostModal.StatusPostBo;
@@ -25,7 +26,13 @@ public class StatusPostController extends HttpServlet {
         try {
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
+            HttpSession session = request.getSession();
 
+            if (session.getAttribute("user") == null) {
+                response.sendRedirect("login");
+                return;
+            }
+            
             StatusPostBo sttBo = new StatusPostBo();
             int page = 1;
             int pageSize = 9;
