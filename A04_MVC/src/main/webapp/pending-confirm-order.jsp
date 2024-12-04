@@ -22,7 +22,7 @@
     nf.setGroupingUsed(true);
 
     // Tính tổng tiền
-    double totalPrice = 0;
+    long totalPrice = 0;
     if (listLS != null) {
         for (lichsu ls : listLS) {
         	totalPrice += ls.getThanhTien();
@@ -62,9 +62,9 @@
                             %>
                             <tr>
                                 <td><%= ls.getTensach() %></td>
-                                <td><%= nf.format(ls.getGia()) %></td>
+                                <td><%= nf.format(ls.getGia()) %>đ</td>
                                 <td><%= ls.getSoLuongMua() %></td>
-                                <td><%= nf.format(ls.getThanhTien()) %></td>
+                                <td><%= nf.format(ls.getThanhTien()) %>đ</td>
                                 <td><%= formattedDate %></td>
                                 <td><%= ls.isDaThanhToan() ? "Đã hoàn thành" : "Đang chờ" %></td>
                             </tr>
@@ -75,7 +75,7 @@
                     </table>
                     
                     <div class="text-end mt-3 mx-5">
-                        <strong>Tổng tiền: <%= nf.format(totalPrice) %></strong>
+                        <strong>Tổng tiền: <%= nf.format(totalPrice) %>đ</strong>
                     </div>
                 <% } %>
             </div>

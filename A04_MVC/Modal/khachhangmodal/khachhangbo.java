@@ -32,4 +32,8 @@ public class khachhangbo {
 	public int countAllKH() throws Exception {
 		return khdao.countAllKH();
 	}
+	
+	public int deleteKH(Long maKH) throws Exception {
+		return khdao.deleteKH(maKH);
+	}
 }

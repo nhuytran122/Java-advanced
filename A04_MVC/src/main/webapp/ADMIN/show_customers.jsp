@@ -117,10 +117,16 @@
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa khách hàng</h5>
+                                <h5 class="modal-title text-danger" id="deleteModalLabel<%= kh.getMakh() %>">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                Xác nhận xóa Khách hàng
                               </div>
                               <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa khách hàng <b><%= kh.getHoten() %></b> không?
+                                Bạn có chắc chắn muốn xóa khách hàng <b class="text-primary"> <%= kh.getHoten() %></b> không?
+                                
+                                <div class="alert alert-warning d-flex align-items-center mt-4" role="alert">
+						          Lưu ý: Xóa Khách hàng này sẽ đồng thời xóa các hóa đơn liên quan.
+						        </div>
                               </div>
                               <div class="modal-footer">
                                 <form method="post" action="adminUpdateKHController">
@@ -133,26 +139,6 @@
                           </div>
                         </div>
                         
-                        <!-- Modal không thể xóa sách -->
-						<% if (request.getAttribute("inUsed") != null) { 
-							if((Boolean) request.getAttribute("inUsed")){%>
-							<div class="modal fade" id="cannotDeleteModal" tabindex="-1" aria-labelledby="cannotDeleteModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="cannotDeleteModalLabel">Không thể xóa khách hàng</h5>
-							      </div>
-							      <div class="modal-body text-danger">
-							        Không thể xóa khách hàng vì khách hàng này đang có hóa đơn.
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-						<% } 
-						}%>
                         <% 
                             }
                           }
@@ -197,14 +183,6 @@
     </div>
   </div>
 </body>
-
-<% if (request.getAttribute("inUsed") != null && (Boolean) request.getAttribute("inUsed") == true) { %>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#cannotDeleteModal').modal('show');  // Mở modal khi trang được tải
-        });
-    </script>
-<% } %>
 
   <script src="ADMIN/vendors/js/vendor.bundle.base.js"></script>
   <script src="ADMIN/js/off-canvas.js"></script>

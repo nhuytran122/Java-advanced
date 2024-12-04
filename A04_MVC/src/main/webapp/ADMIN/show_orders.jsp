@@ -94,7 +94,7 @@
                           <td>
                               <%= s.getTongSoLuong() %>
                           </td>
-                          <td><%= nf.format(s.getThanhTien()) %></td>
+                          <td><%= nf.format(s.getThanhTien()) %>đ</td>
                           <td><%= Chung.convertDateToString(s.getNgayMua()) %></td>
                           <td><%= s.isDamua() ? "Đã thanh toán" : "Đang chờ" %></td>
                           <td>
@@ -176,14 +176,6 @@
     </div>
   </div>
 </body>
-
-<% if (request.getAttribute("inUsed") != null && (Boolean) request.getAttribute("inUsed") == true) { %>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#cannotDeleteModal').modal('show');  // Mở modal khi trang được tải
-        });
-    </script>
-<% } %>
 
   <script src="ADMIN/vendors/js/vendor.bundle.base.js"></script>
   <script src="ADMIN/js/off-canvas.js"></script>

@@ -66,7 +66,7 @@
 				                                        <input type="checkbox" name="selectedItems" value="<%= ls.getMaCTHD() %>" />
 				                                    </td>
 	                                                <td><%= ls.getTensach() %></td>
-	                                                <td><%= nf.format(ls.getGia()) %></td>
+	                                                <td><%= nf.format(ls.getGia()) %>đ</td>
 	                                                <td>
 	                                                	<div class="input-group input-group-sm">
 											                <input type="number" name="<%= ls.getMaCTHD() %>" 
@@ -80,7 +80,7 @@
 											                </button>
 											            </div>
 	                                                </td>
-	                                                <td><%= nf.format(ls.getThanhTien()) %></td>
+	                                                <td><%= nf.format(ls.getThanhTien()) %>đ</td>
 	                                                <td><%= ls.isDaThanhToan() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
 	                                            	<td>
 	                                            		<button type="submit" name="btnDeleteCTHD" value="<%= ls.getMaCTHD() %>" class="btn btn-danger btn-sm" title="Xóa">
@@ -99,7 +99,7 @@
 											                </div>
 											                
 											                <div class="text-end d-flex align-items-center">
-											                    <h4>Tổng hóa đơn: <%= nf.format(hd.getThanhTien()) %></h4>
+											                    <h4>Tổng hóa đơn: <%= nf.format(hd.getThanhTien()) %>đ</h4>
 											                    <button type="submit" name="btnPayHDInEdit" value="payHD" class="btn btn-success mx-3" title="Xác nhận thanh toán">
 											                        XÁC NHẬN THANH TOÁN
 											                    </button>

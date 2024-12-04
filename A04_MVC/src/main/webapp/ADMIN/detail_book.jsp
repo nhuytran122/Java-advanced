@@ -95,27 +95,6 @@
                           </div>
                         </div>
                       </div>
-                      
-                      <!-- Modal không thể xóa sách -->
-                      <% if (request.getAttribute("inUsed") != null) { 
-                        if((Boolean) request.getAttribute("inUsed")){%>
-                        <div class="modal fade" id="cannotDeleteModal" tabindex="-1" aria-labelledby="cannotDeleteModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="cannotDeleteModalLabel">Không thể xóa sách</h5>
-                              </div>
-                              <div class="modal-body text-danger">
-                                Không thể xóa sách vì sách này đang được sử dụng.
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      <% } 
-                      }%>
                     </div>
                   </div>
                 </div>

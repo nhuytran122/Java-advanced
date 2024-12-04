@@ -30,14 +30,7 @@ public class khachhangdao {
 
 	    ResultSet rs = cmd.executeQuery();
 	    while (rs.next()) {
-	        Long makh = rs.getLong("makh");
-	        String hoten = rs.getString("hoten");
-	        String diachi = rs.getString("diachi");
-	        String sodt = rs.getString("sodt");
-	        String email = rs.getString("email");
-	        String tendn = rs.getString("tendn");
-	        String pass = rs.getString("pass");
-	        ds.add(new khachhang(makh, hoten, diachi, sodt, email, tendn, pass));
+	        ds.add(mapToKhachhang(rs));
 	    }
 	    rs.close();
 	    cmd.close();
@@ -80,22 +73,14 @@ public class khachhangdao {
 	    cmd.setString(2, Pass);
 	    ResultSet rs = cmd.executeQuery();
 
-	    khachhang kh = null;
 	    if (rs.next()) {
-	        Long makh = rs.getLong("makh");
-	        String hoten = rs.getString("hoten");
-	        String diachi = rs.getString("diachi");
-	        String sodt = rs.getString("sodt");
-	        String email = rs.getString("email");
-	        String tendn = rs.getString("tendn");
-	        String pass = rs.getString("pass");
-	        kh = new khachhang(makh, hoten, diachi, sodt, email, tendn, pass);
+	        return mapToKhachhang(rs);
 	    }
 
 	    rs.close();
 	    cmd.close();
 	    kn.cn.close();
-	    return kh;
+	    return null;
 	}
 	
 	public int themKH(String hoten, String diachi, String sodt, String email, String tendn, String pass) throws Exception {
@@ -152,6 +137,26 @@ public class khachhangdao {
 	    kn.cn.close();
 	    return exists;
 	}
-
-
+	
+	public int deleteKH(Long maKH) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "DELETE FROM KhachHang WHERE makh = ?";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    
+	    cmd.setLong(1, maKH);  
+	    int kq = cmd.executeUpdate();
+	    return kq;  
+	}
+	
+	private khachhang mapToKhachhang(ResultSet rs) throws Exception {
+        Long makh = rs.getLong("makh");
+        String hoten = rs.getString("hoten");
+        String diachi = rs.getString("diachi");
+        String sodt = rs.getString("sodt");
+        String email = rs.getString("email");
+        String tendn = rs.getString("tendn");
+        String pass = rs.getString("pass");
+        return new khachhang(makh, hoten, diachi, sodt, email, tendn, pass);
+    }
 }

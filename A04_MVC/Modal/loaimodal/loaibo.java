@@ -32,8 +32,4 @@ public class loaibo {
 	public int deleteLoai(String maloai) throws Exception {
 		return ldao.deleteLoai(maloai);
 	}
-	
-	public boolean inUsedLoai(String maloai) throws Exception {
-		return ldao.inUsedLoai(maloai);
-	}
 }

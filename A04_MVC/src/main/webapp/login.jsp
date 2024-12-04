@@ -85,6 +85,7 @@ pageEncoding="UTF-8"%>
             >
               Đăng nhập
             </button>
+            <p class="text-center text-muted mt-5 mb-0">Chưa có tài khoản? <a href="signupController" class="fw-bold text-body">Đăng ký</a></p>
           </form>
         </div>
       </div>

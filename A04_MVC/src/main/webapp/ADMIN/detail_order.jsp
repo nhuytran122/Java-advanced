@@ -28,7 +28,7 @@
         nf.setGroupingUsed(true);
 
         // Tính tổng tiền
-        double totalPrice = 0;
+        long totalPrice = 0;
         for (lichsu ls : ds) {
         	totalPrice += ls.getThanhTien();
         }
@@ -52,8 +52,8 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Tên sách</th>
-                                                <th>Số lượng mua</th>
                                                 <th>Giá</th>
+                                                <th>Số lượng mua</th>
                                                 <th>Thành tiền</th>
                                                 <th>Ngày mua</th>
                                                 <th>Tình trạng</th>
@@ -65,9 +65,9 @@
                                             <tr>
                                                 <td><%= count++ %></td>
                                                 <td><%= ls.getTensach() %></td>
+                                                <td><%= nf.format(ls.getGia()) %>đ</td>
                                                 <td><%= ls.getSoLuongMua() %></td>
-                                                <td><%= nf.format(ls.getGia()) %></td>
-                                                <td><%= nf.format(ls.getThanhTien()) %></td>
+                                                <td><%= nf.format(ls.getThanhTien()) %>đ</td>
                                                 <td><%= Chung.convertDateToString(ls.getNgayMua()) %></td>
                                                 <td><%= ls.isDaThanhToan() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
                                             </tr>
@@ -76,7 +76,7 @@
                                     </table>
 
                                     <div class="d-flex justify-content-end mt-3 mx-5">
-									    <strong>Tổng hóa đơn: <%= nf.format(totalPrice) %></strong>
+									    <strong>Tổng hóa đơn: <%= nf.format(totalPrice) %>đ</strong>
 									</div>
                                 </div>
                             </div>

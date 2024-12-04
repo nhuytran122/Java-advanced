@@ -155,31 +155,6 @@ public class loaidao {
 	    }
 	    return null;
 	}
-	
-	public boolean inUsedLoai(String maloai) throws Exception {
-	    KetNoi kn = new KetNoi();
-	    kn.ketnoi();
-	    
-	    String sql = "IF EXISTS (SELECT * FROM sach WHERE maloai = ?) "
-	               + "SELECT 1 "
-	               + "ELSE "
-	               + "SELECT 0";
-	    
-	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
-	    cmd.setString(1, maloai);
-	    
-	    ResultSet rs = cmd.executeQuery();
-	    
-	    int kq = 0;
-	    if (rs.next()) {
-	        kq = rs.getInt(1);
-	    }
-	    
-	    rs.close();
-	    kn.cn.close();
-	    
-	    return kq > 0;
-	}
 
 
 }

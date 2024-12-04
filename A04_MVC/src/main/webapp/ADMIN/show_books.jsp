@@ -128,10 +128,17 @@
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa sách</h5>
+                                <h5 class="modal-title text-danger" id="deleteModalLabel<%= s.getMasach() %>">
+                                	<i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                	Xác nhận xóa Sách
+                                </h5>
                               </div>
                               <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa sách <b><%= s.getTensach() %></b> không?
+                                Bạn có chắc chắn muốn xóa sách <b class="text-primary"><%= s.getTensach() %></b> không?
+                                
+                                <div class="alert alert-warning d-flex align-items-center mt-4" role="alert">
+						          Lưu ý: Xóa sách này sẽ đồng thời xóa các chi tiết hóa đơn liên quan.
+						        </div>
                               </div>
                               <div class="modal-footer">
                                 <form method="post" action="adminUpdateSachController">
@@ -143,27 +150,6 @@
                             </div>
                           </div>
                         </div>
-                        
-                        <!-- Modal không thể xóa sách -->
-						<% if (request.getAttribute("inUsed") != null) { 
-							if((Boolean) request.getAttribute("inUsed")){%>
-							<div class="modal fade" id="cannotDeleteModal" tabindex="-1" aria-labelledby="cannotDeleteModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="cannotDeleteModalLabel">Không thể xóa sách</h5>
-							      </div>
-							      <div class="modal-body text-danger">
-							        Không thể xóa sách vì sách này đang được sử dụng.
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-						<% } 
-						}%>
                         <% 
                             }
                           }
@@ -209,13 +195,6 @@
   </div>
 </body>
 
-<% if (request.getAttribute("inUsed") != null && (Boolean) request.getAttribute("inUsed") == true) { %>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#cannotDeleteModal').modal('show');  // Mở modal khi trang được tải
-        });
-    </script>
-<% } %>
 
   <script src="ADMIN/vendors/js/vendor.bundle.base.js"></script>
   <script src="ADMIN/js/off-canvas.js"></script>

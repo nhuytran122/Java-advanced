@@ -51,9 +51,9 @@
                                 %>
                                 <tr>
                                     <td><%= ls.getTensach() %></td>
-                                    <td><%= nf.format(ls.getGia()) %></td>
+                                    <td><%= nf.format(ls.getGia()) %>đ</td>
                                     <td><%= ls.getSoLuongMua() %></td>
-                                    <td><%= nf.format(ls.getThanhTien()) %></td>
+                                    <td><%= nf.format(ls.getThanhTien()) %>đ</td>
                                     <td><%= formattedDate %></td>
                                 </tr>
                                 <% 
