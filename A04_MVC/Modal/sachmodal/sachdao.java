@@ -149,7 +149,7 @@ public class sachdao {
 	    cmd.setString(6, maloai);   
 	    cmd.setString(7, sotap);
 //	    cmd.setDate(8, new java.sql.Date(ngaynhap.getTime()));
-	    cmd.setString(9, masach);   
+	    cmd.setString(8, masach);   
 	    
 	    int kq = cmd.executeUpdate();
 	    return kq;  

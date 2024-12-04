@@ -15,6 +15,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+    </style>
 </head>
 <%
 	NumberFormat nf = NumberFormat.getInstance();
@@ -29,13 +31,13 @@
             <div class="col-sm-8">
                 <h5>Giỏ hàng</h5>
                 <% 
-                    
                     GioHangBo g = (GioHangBo) session.getAttribute("gh");
                     int sh = g.ds.size();
 
                     if(sh > 0){
                 %>
 
+                <!-- Form để cập nhật giỏ hàng -->
                 <form method="post" action="updategioController">
                     <table class="table table-hover">
                         <thead class="thead-light">
@@ -61,7 +63,7 @@
                                     <td><%= h.getTensach() %></td>
                                     <td><%= nf.format(h.getGia()) %></td>
                                     <td>
-                                        <input type="number" name="<%= sachId %>" value="<%= h.getSoluong() %>" class="form-control" />
+                                        <input type="number" name="<%= sachId %>" value="<%= h.getSoluong() %>" class="form-control" min="1"/>
                                     </td>
                                     <td><%= nf.format(h.getThanhtien()) %></td>
                                     <td>
@@ -81,9 +83,14 @@
                         <strong>Tổng tiền: <%= nf.format(g.Tongtien()) %></strong>
                     </div>
 
-                    <div class="text-end mb-3">
+                    <div class="text-end">
                         <button type="submit" name="deleteSelected" value="Xoa" class="btn btn-danger me-2">Xóa đã chọn</button>
                         <button type="submit" name="deleteAll" value="deleteAll" class="btn btn-danger">Xóa tất cả</button>
+                    </div>
+                </form>
+
+                <form method="post" action="xacnhanController" class="mt-3">
+                    <div class="text-end">
                         <button type="submit" name="confirm" value="confirm" class="btn btn-success">Xác nhận đặt hàng</button>
                     </div>
                 </form>
@@ -91,7 +98,9 @@
                 <% 
                     } else { 
                 %>
-                    <p>Giỏ hàng trống.</p>
+                    <div class="alert alert-warning" role="alert">
+                        Giỏ hàng của bạn đang trống. Hãy thêm sản phẩm để tiếp tục mua sắm!
+                    </div>
                 <% 
                     } 
                 %>

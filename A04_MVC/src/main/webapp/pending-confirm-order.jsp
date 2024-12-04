@@ -56,7 +56,7 @@
                                     <td><%= ls.getSoLuongMua() %></td>
                                     <td><%= nf.format(ls.getThanhTien()) %></td>
                                     <td><%= formattedDate %></td>
-                                    <td><%= ls.isDamua() ? "Đã hoàn thành" : "Đang chờ" %></td>
+                                    <td><%= ls.isDaThanhToan() ? "Đã hoàn thành" : "Đang chờ" %></td>
                                 </tr>
                                 <% 
                                     } 

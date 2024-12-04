@@ -81,7 +81,7 @@
 											            </div>
 	                                                </td>
 	                                                <td><%= nf.format(ls.getThanhTien()) %></td>
-	                                                <td><%= ls.isDamua() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
+	                                                <td><%= ls.isDaThanhToan() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
 	                                            	<td>
 	                                            		<button type="submit" name="btnDeleteCTHD" value="<%= ls.getMaCTHD() %>" class="btn btn-danger btn-sm" title="Xóa">
 						                                  <i class="bi bi-trash"></i>

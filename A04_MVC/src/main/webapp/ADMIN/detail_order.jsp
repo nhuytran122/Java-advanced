@@ -64,7 +64,7 @@
                                                 <td><%= nf.format(ls.getGia()) %></td>
                                                 <td><%= nf.format(ls.getThanhTien()) %></td>
                                                 <td><%= Chung.convertDateToString(ls.getNgayMua()) %></td>
-                                                <td><%= ls.isDamua() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
+                                                <td><%= ls.isDaThanhToan() ? "Đã thanh toán" : "Đang chờ thanh toán" %></td>
                                             </tr>
                                             <% } %>
                                         </tbody>

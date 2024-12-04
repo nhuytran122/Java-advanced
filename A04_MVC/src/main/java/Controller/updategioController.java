@@ -54,10 +54,6 @@ public class updategioController extends HttpServlet {
             }
             session.setAttribute("gh", g);
             
-            if (request.getParameter("confirm") != null) {
-                response.sendRedirect("xacnhanController");
-                return;
-            }
             response.sendRedirect("giohangController");
         } catch (Exception e) {
             e.printStackTrace();

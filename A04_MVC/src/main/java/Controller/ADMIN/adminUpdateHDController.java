@@ -73,13 +73,6 @@ public class adminUpdateHDController extends HttpServlet {
                 return;
             }
             
-            //show page edit CTHD
-            if (request.getParameter("btnUpdateHD") != null) {
-                request.setAttribute("lstCTHD", lsbo.getCTHDByOrderID(maHD));
-                request.setAttribute("idHD", maHD);
-                request.setAttribute("hd", hdbo.getHDByMaHD(maHD));
-            }
-            
             // Edit
             if (request.getParameter("deleteSelected") != null) {
                 String[] selectedItems = request.getParameterValues("selectedItems");

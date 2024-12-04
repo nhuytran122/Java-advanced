@@ -34,19 +34,20 @@ public class xacnhanController extends HttpServlet {
             } else {
                 GioHangBo g = (GioHangBo) session.getAttribute("gh");
                 khachhang kh = (khachhang) session.getAttribute("kh");
-
-                if (g != null && g.ds != null) {
-                    hoadonbo hdbo = new hoadonbo();
-                    CTHDbo cthdbo = new CTHDbo();
-
-                    hdbo.themHoaDon(kh.getMakh());
-                    long maxHD = hdbo.getMaxHD();
-                    for (Hang hang : g.ds) {
-                        cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maxHD);
-                    }
-
-                    g.ds.clear();
-                    session.setAttribute("gh", g);
+                if (request.getParameter("confirm") != null) {
+	                if (g != null && g.ds != null) {
+	                    hoadonbo hdbo = new hoadonbo();
+	                    CTHDbo cthdbo = new CTHDbo();
+	
+	                    hdbo.themHoaDon(kh.getMakh());
+	                    long maxHD = hdbo.getMaxHD();
+	                    for (Hang hang : g.ds) {
+	                        cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maxHD);
+	                    }
+	
+	                    g.ds.clear();
+	                    session.setAttribute("gh", g);
+	                }
                 }
 
                 lichsubo lsbo = new lichsubo();
