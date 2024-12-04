@@ -23,10 +23,15 @@
 
 <body>
     <%
-        // Lấy danh sách chi tiết hóa đơn từ request
         ArrayList<lichsu> ds = (ArrayList<lichsu>) request.getAttribute("lstCTHD");
         NumberFormat nf = NumberFormat.getInstance();
         nf.setGroupingUsed(true);
+
+        // Tính tổng tiền
+        double totalPrice = 0;
+        for (lichsu ls : ds) {
+        	totalPrice += ls.getThanhTien();
+        }
     %>
 
     <div class="container-scroller">
@@ -69,6 +74,10 @@
                                             <% } %>
                                         </tbody>
                                     </table>
+
+                                    <div class="d-flex justify-content-end mt-3 mx-5">
+									    <strong>Tổng hóa đơn: <%= nf.format(totalPrice) %></strong>
+									</div>
                                 </div>
                             </div>
                         </div>
@@ -87,4 +96,3 @@
 <script src="ADMIN/js/settings.js"></script>
 
 </html>
-s

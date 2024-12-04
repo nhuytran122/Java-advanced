@@ -1,3 +1,4 @@
+<%@page import="hoadonmodal.hoadon"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="lichsumodal.lichsu"%>
 <%@page import="java.util.ArrayList"%>
@@ -15,8 +16,18 @@
 </head>
 <%
     ArrayList<lichsu> listLS = (ArrayList<lichsu>) request.getAttribute("listLS");
+    hoadon hd = (hoadon)request.getAttribute("hd");
+    
     NumberFormat nf = NumberFormat.getInstance();
     nf.setGroupingUsed(true);
+
+    // Tính tổng tiền
+    double totalPrice = 0;
+    if (listLS != null) {
+        for (lichsu ls : listLS) {
+        	totalPrice += ls.getThanhTien();
+        }
+    }
 %>
 <body>
     <%@ include file="layout/layout_navbar.jsp" %>
@@ -33,39 +44,39 @@
                     </div>
                 <% } else { %>
                     
-                        <table class="table table-hover table-borderless">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="col-4">Tên sách</th>
-                                    <th class="col-1">Giá</th>
-				                    <th class="col-1">SL</th>
-				                    <th class="col-2">Thành tiền</th>
-				                    <th class="col-2">Ngày đặt</th>
-				                    <th class="col-2">Trạng thái </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% 
-                                    for (lichsu ls : listLS) { 
-                                    	String formattedDate = new java.text.SimpleDateFormat("dd/MM/yyyy").format(ls.getNgayMua());
-                                    
-                                %>
-                                <tr>
-                                    <td><%= ls.getTensach() %></td>
-                                    <td><%= nf.format(ls.getGia()) %></td>
-                                    <td><%= ls.getSoLuongMua() %></td>
-                                    <td><%= nf.format(ls.getThanhTien()) %></td>
-                                    <td><%= formattedDate %></td>
-                                    <td><%= ls.isDaThanhToan() ? "Đã hoàn thành" : "Đang chờ" %></td>
-                                </tr>
-                                <% 
-                                    } 
-                                %>
-                            </tbody>
-                        </table>
-                        <div>
-                        </div>
-                        
+                    <table class="table table-hover table-borderless">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="col-4">Tên sách</th>
+                                <th class="col-1">Giá</th>
+                                <th class="col-1">SL</th>
+                                <th class="col-2">Thành tiền</th>
+                                <th class="col-2">Ngày đặt</th>
+                                <th class="col-2">Trạng thái </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% 
+                                for (lichsu ls : listLS) { 
+                                    String formattedDate = new java.text.SimpleDateFormat("dd/MM/yyyy").format(ls.getNgayMua());
+                            %>
+                            <tr>
+                                <td><%= ls.getTensach() %></td>
+                                <td><%= nf.format(ls.getGia()) %></td>
+                                <td><%= ls.getSoLuongMua() %></td>
+                                <td><%= nf.format(ls.getThanhTien()) %></td>
+                                <td><%= formattedDate %></td>
+                                <td><%= ls.isDaThanhToan() ? "Đã hoàn thành" : "Đang chờ" %></td>
+                            </tr>
+                            <% 
+                                } 
+                            %>
+                        </tbody>
+                    </table>
+                    
+                    <div class="text-end mt-3 mx-5">
+                        <strong>Tổng tiền: <%= nf.format(totalPrice) %></strong>
+                    </div>
                 <% } %>
             </div>
             
