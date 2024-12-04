@@ -31,7 +31,7 @@ nf.setGroupingUsed(true);
             
             <div class="col-sm-8">
                 <h5 class="mb-3">Sách</h5>
-                <div class="row">
+                <div class="row g-3">
                     <% 
                         int n = ds.size();
                         
@@ -43,32 +43,28 @@ nf.setGroupingUsed(true);
                             for(int i = 0; i < n; i++){
                                 sach s = ds.get(i);
                     %>
-                        <div class="col-sm-4 mb-4">
-						    <div class="card">
-						        <img src="<%= s.getAnh() %>" class="card-img-top img-fluid" style="height: 220px; object-fit: cover;" alt="<%= s.getTensach() %>">
-						        
-						        <div class="card-body d-flex flex-column">
-						            <h7 class="card-title text-center"><b> <%= s.getTensach() %></b> </h7>
-						            
-						            <!-- Giá sách -->
-						            <p class="card-text text-center">Giá bán: <%= nf.format(s.getGia()) %> đ</p>
-						
-						            <!-- Nút Thêm vào giỏ -->
-						            <form action="giohangController" method="post">
-						                <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
-						                <input type="hidden" name="ts" value="<%= s.getTensach() %>">
-						                <input type="hidden" name="gia" value="<%= s.getGia() %>">
-						                <div class="d-flex justify-content-center mt-auto">
-						                    <button type="submit" class="btn bg-info">
-						                        <i class="bi bi-cart-plus me-2"></i>
-						                        Thêm vào giỏ
-						                    </button>
-						                </div>
-						            </form>
-						        </div>
-						    </div>
-						</div>
-
+                        <div class="col-sm-4 mb-3">
+					        <div class="card h-100">
+					            <img src="<%= s.getAnh() %>" class="card-img-top img-fluid" style="height: 220px; object-fit: cover;" alt="<%= s.getTensach() %>">
+					            <div class="card-body d-flex flex-column">
+					                <h7 class="card-title text-center mb-3"><b><%= s.getTensach() %></b></h7>
+					                <p class="card-text text-center mt-auto">Giá bán: <%= nf.format(s.getGia()) %> đ</p>
+					                <div class="mt-3">
+					                    <form action="giohangController" method="post">
+					                        <input type="hidden" name="bookId" value="<%= s.getMasach() %>">
+					                        <input type="hidden" name="ts" value="<%= s.getTensach() %>">
+					                        <input type="hidden" name="gia" value="<%= s.getGia() %>">
+					                        <div class="d-flex justify-content-center">
+					                            <button type="submit" class="btn bg-info">
+					                                <i class="bi bi-cart-plus me-2"></i>
+					                                Thêm vào giỏ
+					                            </button>
+					                        </div>
+					                    </form>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
                     <% 
                             }
                         } 

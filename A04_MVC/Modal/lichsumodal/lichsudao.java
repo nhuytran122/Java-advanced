@@ -26,16 +26,7 @@ public class lichsudao {
 	    ResultSet rs = cmd.executeQuery();
 
 	    while(rs.next()) {
-	        Long makh = rs.getLong("makh");
-	        String tensach = rs.getString("tensach");
-	        Long SoLuongMua = rs.getLong("SoLuongMua");
-	        Long gia = rs.getLong("gia");
-	        Long ThanhTien = rs.getLong("ThanhTien");
-	        Date NgayMua = rs.getDate("NgayMua");
-	        boolean damua = rs.getBoolean("damua");
-	        Long maCTHD = rs.getLong("MaChiTietHD");
-	        Long maHD = rs.getLong("MaHoaDon");
-	        ds.add(new lichsu(makh, tensach, SoLuongMua, gia, ThanhTien, NgayMua, damua, maCTHD, maHD));
+	    	ds.add(mapLichsu(rs));
 	    }
 
 	    rs.close();
@@ -55,15 +46,7 @@ public class lichsudao {
 	    ResultSet rs = cmd.executeQuery();
 
 	    while(rs.next()) {
-	        Long makh = rs.getLong("makh");
-	        String tensach = rs.getString("tensach");
-	        Long SoLuongMua = rs.getLong("SoLuongMua");
-	        Long gia = rs.getLong("gia");
-	        Long ThanhTien = rs.getLong("ThanhTien");
-	        Date NgayMua = rs.getDate("NgayMua");
-	        boolean damua = rs.getBoolean("damua");
-	        Long maCTHD = rs.getLong("MaChiTietHD");
-	        ds.add(new lichsu(makh, tensach, SoLuongMua, gia, ThanhTien, NgayMua, damua, maCTHD, maHD));
+	    	ds.add(mapLichsu(rs));
 	    }
 
 	    rs.close();
@@ -71,4 +54,18 @@ public class lichsudao {
 	    kn.cn.close();
 	    return ds;
 	}
+	
+    private lichsu mapLichsu(ResultSet rs) throws Exception {
+        Long makh = rs.getLong("makh");
+        String tensach = rs.getString("tensach");
+        Long SoLuongMua = rs.getLong("SoLuongMua");
+        Long gia = rs.getLong("gia");
+        Long ThanhTien = rs.getLong("ThanhTien");
+        Date NgayMua = rs.getDate("NgayMua");
+        Long maCTHD = rs.getLong("MaChiTietHD");
+        Long maHD = rs.getLong("MaHoaDon");
+        Boolean DaThanhToan = rs.getBoolean("DaThanhToan");
+        
+        return new lichsu(makh, tensach, SoLuongMua, gia, ThanhTien, NgayMua, maCTHD, maHD, DaThanhToan);
+    }
 }

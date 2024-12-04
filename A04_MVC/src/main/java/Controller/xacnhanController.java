@@ -23,45 +23,45 @@ public class xacnhanController extends HttpServlet {
         super();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
             request.setAttribute("dsLoai", Chung.getDsLoai());
-           
-            if(session.getAttribute("kh") == null) {
-            	response.sendRedirect("loginController");
+
+            if (session.getAttribute("kh") == null) {
+                response.sendRedirect("loginController");
+            } else {
+                GioHangBo g = (GioHangBo) session.getAttribute("gh");
+                khachhang kh = (khachhang) session.getAttribute("kh");
+
+                if (g != null && g.ds != null) {
+                    hoadonbo hdbo = new hoadonbo();
+                    CTHDbo cthdbo = new CTHDbo();
+
+                    hdbo.themHoaDon(kh.getMakh());
+                    long maxHD = hdbo.getMaxHD();
+                    for (Hang hang : g.ds) {
+                        cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maxHD);
+                    }
+
+                    g.ds.clear();
+                    session.setAttribute("gh", g);
+                }
+
+                lichsubo lsbo = new lichsubo();
+                request.setAttribute("listLS", lsbo.getLichsu(kh.getMakh(), false));
+                RequestDispatcher rd = request.getRequestDispatcher("pending-confirm-order.jsp");
+                rd.forward(request, response);
             }
-            else {
-            	 GioHangBo g = (GioHangBo) session.getAttribute("gh");
-                 khachhang kh = (khachhang) session.getAttribute("kh");
-                 
-                 if(g != null && g.ds != null) {
-	                 hoadonbo hdbo = new hoadonbo();
-	                 CTHDbo cthdbo = new CTHDbo();
-	                 
-	                 hdbo.themHoaDon(kh.getMakh());
-	                 long maxHD = hdbo.getMaxHD();
-	                 for (Hang hang : g.ds) {
-	                     cthdbo.themCTHD(hang.getMasach(), hang.getSoluong(), maxHD);
-	                 }
-	
-	                 g.ds.clear();
-	                 session.setAttribute("gh", g);
-                 }
-                 
-                 
-                 lichsubo lsbo = new lichsubo();
-                 request.setAttribute("listLS", lsbo.getLichsu(kh.getMakh(), false));
-                 RequestDispatcher rd = request.getRequestDispatcher("order-history.jsp");
-                 rd.forward(request, response);
-            }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         doGet(request, response);
     }
 }

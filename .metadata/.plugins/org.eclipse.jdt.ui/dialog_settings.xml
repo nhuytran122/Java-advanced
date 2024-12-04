@@ -94,6 +94,7 @@
 	<section name="CallHierarchySearchScope">
 	</section>
 	<section name="RenameInformationPopup">
+		<item key="snap_position" value="2"/>
 	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item key="updateSimilarElements" value="false"/>

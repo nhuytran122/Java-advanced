@@ -71,7 +71,7 @@
 	                                                	<div class="input-group input-group-sm">
 											                <input type="number" name="<%= ls.getMaCTHD() %>" 
 											                    value="<%= ls.getSoLuongMua() %>" 
-											                    class="form-control" />
+											                    class="form-control" min="1"/>
 											                <button type="submit" name="btnSuaSL" 
 											                    value="<%= ls.getMaCTHD() %>" 
 											                    class="btn btn-warning btn-sm mx-2" 

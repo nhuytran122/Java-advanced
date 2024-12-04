@@ -41,7 +41,7 @@
 				                    <th class="col-1">SL</th>
 				                    <th class="col-2">Thành tiền</th>
 				                    <th class="col-2">Ngày đặt</th>
-				                    <th class="col-2">Thanh toán </th>
+				                    <th class="col-2">Trạng thái </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,6 +56,7 @@
                                     <td><%= ls.getSoLuongMua() %></td>
                                     <td><%= nf.format(ls.getThanhTien()) %></td>
                                     <td><%= formattedDate %></td>
+                                    <td><%= ls.isDamua() ? "Đã hoàn thành" : "Đang chờ" %></td>
                                 </tr>
                                 <% 
                                     } 

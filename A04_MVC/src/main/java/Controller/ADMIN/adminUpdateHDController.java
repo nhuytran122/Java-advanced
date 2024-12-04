@@ -78,9 +78,6 @@ public class adminUpdateHDController extends HttpServlet {
                 request.setAttribute("lstCTHD", lsbo.getCTHDByOrderID(maHD));
                 request.setAttribute("idHD", maHD);
                 request.setAttribute("hd", hdbo.getHDByMaHD(maHD));
-                RequestDispatcher rd = request.getRequestDispatcher("ADMIN/update_order.jsp");
-                rd.forward(request, response);
-                return;
             }
             
             // Edit
@@ -103,6 +100,13 @@ public class adminUpdateHDController extends HttpServlet {
                 String msxoa = request.getParameter("btnDeleteCTHD");
                 cthdbo.xoaCTHD(Long.parseLong(msxoa));
             }
+            
+            request.setAttribute("lstCTHD", lsbo.getCTHDByOrderID(maHD));
+            request.setAttribute("idHD", maHD);
+            request.setAttribute("hd", hdbo.getHDByMaHD(maHD));
+            
+            RequestDispatcher rd = request.getRequestDispatcher("ADMIN/update_order.jsp");
+            rd.forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
