@@ -58,6 +58,6 @@
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
     <fullyQualifiedTypeName name="CommonModal.FileUploadUtil"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
-    <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="UserModal.UserBo"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
 </qualifiedTypeNameHistroy>

@@ -40,14 +40,7 @@
 <body>
     
     <%@ include file="layout/navbar_for_Post.jsp" %>
-    <div class="profile-header text-center">
-	    <% if (user.getAvatar() == null) { %>
-	        <img src="../images/default-avt.jpg" style="width: 120px; height: 120px" alt="Default" class="rounded-circle mb-3">
-	    <% } else { %>
-	        <img src="<%= user.getAvatar() %>" alt="Avatar" class="rounded-circle mb-3">
-	    <% } %>
-	    <h2 class="mb-0"><%= user.getName() %></h2>
-	</div>
+    <%@ include file="layout/profile-header.jsp" %>
 
     <div class="container my-4">
         <div class="row">
@@ -70,10 +63,11 @@
                 <div class="form-bg">
                 	<div class="form-container">
                             <h3 class="title text-center">Chỉnh sửa thông tin cá nhân</h3>
-                            <form action="../edit-profile" method="post" class="form-horizontal">
+                            <form action="../save-profile" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     <div class="mb-3 form-group">
                                         <label>Tên</label> <span class="text-danger">*</span>
-                                        <input class="form-control mt-2" type="text" name="txtHoten" value="<%= user.getName() %>" required/>
+                                        <input class="form-control mt-2" type="text" 
+                                        	name="txtHoten" value="<%= user.getName() %>" required/>
                                     </div>
         
                                     <div class="mb-3 form-group">
@@ -83,7 +77,8 @@
         
                                     <div class="mb-3 form-group">
                                         <label class="form-label">Số điện thoại</label>
-                                        <input type="text" class="form-control" value="<%= user.getPhone() %>" />
+                                        <input type="text" name="txtSdt" class="form-control" 
+                                        	value="<%= user.getPhone() %>" />
                                     </div>
         
                                     <div class="mb-3 form-group">

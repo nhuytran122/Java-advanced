@@ -120,8 +120,8 @@ public class UserDao {
         cmd.setString(3, phone);
         cmd.setBoolean(4, status);
         cmd.setLong(5, roleID);
-        cmd.setLong(6, userID);
-        cmd.setString(7, avatar);
+        cmd.setString(6, avatar);
+        cmd.setLong(7, userID);  
         int kq = cmd.executeUpdate();
         kn.cn.close();
         return kq;

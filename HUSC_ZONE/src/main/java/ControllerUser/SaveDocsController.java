@@ -48,8 +48,6 @@ public class SaveDocsController extends HttpServlet {
 				user = (User)(session.getAttribute("user"));
 			}
 
-			request.setCharacterEncoding("utf-8");
-			response.setCharacterEncoding("utf-8");
 			response.setContentType("text/html; charset=utf-8");
 			Long docID = null;
 			String tenDocs = "", moTa = "", fileName = "", 

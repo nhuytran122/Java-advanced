@@ -32,4 +32,5 @@ public class Constants {
     public static final Long CHANGE_PASSWORD_SUCCESS = 1L;
     
     public static final String IMG_POST_FOLDER_PATH = "images/status_images";
+    public static final String IMG_AVT_USER_FOLDER_PATH = "images/avt_users";
 }

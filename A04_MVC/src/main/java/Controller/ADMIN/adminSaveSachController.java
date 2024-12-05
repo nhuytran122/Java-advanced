@@ -100,6 +100,7 @@ public class adminSaveSachController extends HttpServlet {
 	                for (FileItem fileItem : fileItems) {
 	                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
 	                        String folderPath = request.getServletContext().getRealPath("") + File.separator + "image_sach";
+//	                        String folderPath4= request.getServletContext().getRealPath("/image_sach");
 	                        File dir = new File(folderPath);
 	                        if (!dir.exists()) 
 	                            dir.mkdir();

@@ -11,14 +11,7 @@
 <body>
     
     <%@ include file="layout/navbar_for_Post.jsp" %>
-    <div class="profile-header text-center">
-	    <% if (user.getAvatar() == null) { %>
-	        <img src="../images/default-avt.jpg" style="width: 120px; height: 120px" alt="Default" class="rounded-circle mb-3">
-	    <% } else { %>
-	        <img src="<%= user.getAvatar() %>" alt="Avatar" class="rounded-circle mb-3">
-	    <% } %>
-	    <h2 class="mb-0"><%= user.getName() %></h2>
-	</div>
+    <%@ include file="layout/profile-header.jsp" %>
 
 
     <div class="container my-4">
