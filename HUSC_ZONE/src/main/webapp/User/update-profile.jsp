@@ -5,18 +5,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUSCZone - My Profile</title>
+    <title>HUSCZone - Chỉnh sửa thông tin</title>
     <%@ include file="layout/import.jsp" %>
-    <style>
-    </style>
+    <link rel="stylesheet" href="css/login-style.css">
 </head>
+
+<style>
+.form-container .form-horizontal .btn-save-edit-inf, 
+.form-container .form-horizontal .btn-cancel-edit-inf {
+    border-radius: 50px;
+    padding: 12px;
+    width: 45%;
+    color: #fff;
+}
+
+.form-container .form-horizontal .btn-save-edit-inf {
+    background-color: #28a745;
+}
+
+.form-container .form-horizontal .btn-save-edit-inf:hover {
+    background-color: #218838;
+}
+
+.form-container .form-horizontal .btn-cancel-edit-inf {
+    background-color: #dc3545;
+}
+
+.form-container .form-horizontal .btn-cancel-edit-inf:hover {
+    background-color: #c82333;
+}
+
+
+</style>
 <body>
     
-    <%@ include file="layout/navbar.jsp" %>
+    <%@ include file="layout/navbar_for_Post.jsp" %>
     <div class="profile-header text-center">
-        <img src="https://via.placeholder.com/120" alt="Avatar" class="rounded-circle mb-3">
-        <h2 class="mb-0">Như Ý</h2>
-    </div>
+	    <% if (user.getAvatar() == null) { %>
+	        <img src="../images/default-avt.jpg" style="width: 120px; height: 120px" alt="Default" class="rounded-circle mb-3">
+	    <% } else { %>
+	        <img src="<%= user.getAvatar() %>" alt="Avatar" class="rounded-circle mb-3">
+	    <% } %>
+	    <h2 class="mb-0"><%= user.getName() %></h2>
+	</div>
 
     <div class="container my-4">
         <div class="row">
@@ -24,67 +55,92 @@
                 <div class="card no-hover">
                     <div class="card-body">
                         <h5 class="card-title">Thông tin cá nhân</h5>
-                        <p class="mt-3"><strong>Email:</strong> nhuy@gmail.com</p>
-                        <p><strong>Số điện thoại:</strong> 0123-456-789</p>
-                        <p><strong>Ngày sinh:</strong> 15/07/1999</p>
-                        <p><strong>Địa chỉ:</strong> TP. Hồ Chí Minh</p>
-                        <a href="/change-password.html" class="btn btn-primary-custom">Đổi mật khẩu</a>
+                        <p class="mt-3"><strong>Email:</strong> <%= user.getEmail() %></p>
+                        <p><strong>Số điện thoại:</strong> <%= user.getPhone() %></p>
+                        <p><strong>Giới tính:</strong> <%= user.getGender() %></p>
+                        <form action="../edit-profile" method="post">
+                        	<button type="submit" name="btnChangePW" value="btnUpdateProfile" class="btn btn-primary-custom">Đổi mật khẩu</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-8">
                 <!-- Tab content -->
-                <div class="tab-content">
-                    <main class="col">
-                        <div class="card no-hover mb-3">
-                            <h4 class="mb-0 p-3 text-center">Chỉnh sửa thông tin cá nhân</h4>
-                            <div class="card-body">
-                                <form>
-                                    <div class="mb-3">
-                                        <label class="form-label">Họ và tên</label>
-                                        <input type="text" class="form-control" value="Như Ý">
+                <div class="form-bg">
+                	<div class="form-container">
+                            <h3 class="title text-center">Chỉnh sửa thông tin cá nhân</h3>
+                            <form action="../edit-profile" method="post" class="form-horizontal">
+                                    <div class="mb-3 form-group">
+                                        <label>Tên</label> <span class="text-danger">*</span>
+                                        <input class="form-control mt-2" type="text" name="txtHoten" value="<%= user.getName() %>" required/>
                                     </div>
         
-                                    <div class="mb-3">
+                                    <div class="mb-3 form-group">
                                         <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" value="nhuy@gmail.com" disabled>
+                                        <input type="email" class="form-control" value="<%= user.getEmail() %>" disabled>
                                     </div>
         
-                                    <div class="mb-3">
+                                    <div class="mb-3 form-group">
                                         <label class="form-label">Số điện thoại</label>
-                                        <input type="text" class="form-control" value="0123-456-789">
+                                        <input type="text" class="form-control" value="<%= user.getPhone() %>" />
                                     </div>
         
-                                    <div class="mb-3">
-                                        <label class="form-label">Ngày sinh</label>
-                                        <input type="date" class="form-control" value="1999-07-15">
-                                    </div>
-        
-                                    <div class="mb-3">
+                                    <div class="mb-3 form-group">
                                         <label class="form-label">Giới tính</label>
-                                        <select class="form-select" >
-                                            <option value="" selected>-- Chọn giới tính --</option>
-                                            <option value="male">Nam</option>
-                                            <option value="female">Nữ</option>
+                                        <select class="form-control p-1 px-4" name="txtGioiTinh" required>
+                                            <option value="" <%= (user.getGender() == null) ? "selected" : "" %>>-- Chọn giới tính --</option>
+	                                        <option value="Nam" <%= "Nam".equals(user.getGender()) ? "selected" : "" %>>Nam</option>
+	                                        <option value="Nữ" <%= "Nữ".equals(user.getGender()) ? "selected" : "" %>>Nữ</option>
+	                                        <option value="Khác" <%= "Khác".equals(user.getGender()) ? "selected" : "" %>>Khác</option>
                                         </select>
+                                    </div>
+                                    
+                                    <div class="mb-3 form-group">
+                                         <label class="form-label">Ảnh</label>
+					                     <input type="file" class="form-control px-4" name="fileAnh" accept="image/*" id="fileInput">
+                                    </div>
+                                    
+                                    <div class="mb-3 form-group">
+                                        <label class="form-label">Preview Ảnh</label>
+										<div class="col-sm-10">
+										  <!-- Hiển thị ảnh nếu có -->
+										  <img id="imagePreview" src="<%= user.getAvatar() != null ?  user.getAvatar() : "" %>" alt="Image Preview" style="max-height: 250px; display: <%= user.getAvatar() != null ? "block" : "none" %>;"/>
+										</div>
                                     </div>
         
                                     <div class="text-center">
-		                                <a href="/show-docs.html" class="btn btn-danger mt-2 py-2 px-3 pb-2 me-2">
+		                                <a href="../my-profile" class="btn btn-cancel-edit-inf me-2">
 		                                    Hủy
 		                                </a>
-		                                <button type="submit" class="btn btn-success py-2">
+		                                <button type="submit" name="btn-save-edit-inf" class="btn btn-save-edit-inf">
 		                                     Lưu thay đổi
 		                                </button>
 		                            </div>
                                 </form>
                             </div>
                         </div>
-                    </main>
+                    
                 </div>
             </div>
         </div>
-    </div>
+    
+    
+    <script>
+    $(document).ready(function () {
+        // Hiển thị ảnh preview khi người dùng chọn ảnh mới
+        $('#fileInput').change(function (e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imagePreview').attr('src', e.target.result);
+                $('#imagePreview').show();
+            };
+
+            reader.readAsDataURL(file);
+        });
+    });
+  </script>
 </body>
 </html>

@@ -34,7 +34,7 @@
     
 %>
 <body class="bg-light">
-    <%@ include file="layout/nav_bar_for_Post.jsp" %>
+    <%@ include file="layout/navbar_for_Post.jsp" %>
     
     <div class="container-fluid my-3">
         <div class="row">

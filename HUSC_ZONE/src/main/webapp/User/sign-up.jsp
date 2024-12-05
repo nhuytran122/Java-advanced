@@ -5,7 +5,7 @@
   String hoten = (String)request.getAttribute("hoten");
   String sdt = (String)request.getAttribute("sdt");
   String email = (String)request.getAttribute("loginId");
-  String diachi = (String)request.getAttribute("diachi");
+  String gioitinh = (String)request.getAttribute("gioitinh");
   boolean isInvalid = (boolean)request.getAttribute("isInvalid");
   boolean isDuplicate = (boolean)request.getAttribute("isDuplicate");
 %>
@@ -51,10 +51,10 @@
                                 <div class="col-md-6">
                                     <label class="form-label">Giới tính</label> <span class="text-danger">*</span>
                                     <select class="form-control p-1 px-4" name="txtGioiTinh">
-                                        <option value="" <%= (request.getAttribute("gioitinh") == null) ? "selected" : "" %>>-- Chọn giới tính --</option>
-                                        <option value="Nam" <%= "Nam".equals(request.getAttribute("gioitinh")) ? "selected" : "" %>>Nam</option>
-                                        <option value="Nữ" <%= "Nữ".equals(request.getAttribute("gioitinh")) ? "selected" : "" %>>Nữ</option>
-                                        <option value="Khác" <%= "Khác".equals(request.getAttribute("gioitinh")) ? "selected" : "" %>>Khác</option>
+                                        <option value="" <%= (gioitinh == null) ? "selected" : "" %>>-- Chọn giới tính --</option>
+                                        <option value="Nam" <%= "Nam".equals(gioitinh) ? "selected" : "" %>>Nam</option>
+                                        <option value="Nữ" <%= "Nữ".equals(gioitinh) ? "selected" : "" %>>Nữ</option>
+                                        <option value="Khác" <%= "Khác".equals(gioitinh) ? "selected" : "" %>>Khác</option>
                                     </select>
                                 </div>
                             </div>

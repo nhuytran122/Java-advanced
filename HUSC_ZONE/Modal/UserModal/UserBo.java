@@ -36,8 +36,8 @@ public class UserBo {
     }
 	
 	public int addUser(String name, String password, String gender, String email, 
-			String phone, Long roleID) throws Exception {
-		return userDao.addUser(name, hashPassword(password), gender, email, phone, roleID);
+			String phone, Long roleID, String avt) throws Exception {
+		return userDao.addUser(name, hashPassword(password), gender, email, phone, roleID, avt);
 	}
 	
 	public int countUsers() throws Exception {

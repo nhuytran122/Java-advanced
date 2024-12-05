@@ -47,17 +47,25 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../images/avatar.jpg" alt="Avatar" class="rounded-circle me-2" width="30" height="30"> 
+                        <% if (user.getAvatar() == null) { %>
+						        <img src="../images/default-avt.jpg" alt="Default" class="rounded-circle me-2" style="width: 30px; height: 30px">
+						<% } else { %>
+						        <img src="<%= user.getAvatar() %>" alt="Avatar" class="rounded-circle me-2" style="width: 30px; height: 30px">
+						<% } %>
                         <span>Hi, Nhu Y</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li class="text-center p-3">
-                            <img src="../images/avatar.jpg" alt="Avatar" class="rounded-circle mb-2" width="80" height="80">
+                            <% if (user.getAvatar() == null) { %>
+						        <img src="../images/default-avt.jpg" style="width: 80px; height: 80px" alt="Default" class="rounded-circle mb-3">
+						    <% } else { %>
+						        <img src="<%= user.getAvatar() %>" alt="Avatar" class="rounded-circle mb-3" style="width: 80px; height: 80px">
+						    <% } %>
                             <h6 class="fw-bold mb-0"><%= user.getName() %></h6>
                             <p class="text-muted small"> <%= user.getEmail() %></p>
                         </li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/my-profile.html">
+                        <li><a class="dropdown-item" href="../my-profile">
                             <i class="bi bi-person me-2"></i>Trang cá nhân
                         </a></li>
                         <li><a class="dropdown-item text-danger" href="../logout">

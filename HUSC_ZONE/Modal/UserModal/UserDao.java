@@ -65,15 +65,15 @@ public class UserDao {
     }
 	
 	public int addUser(String name, String password, String gender, String email, 
-			String phone, Long roleID) throws Exception {
+			String phone, Long roleID, String avt) throws Exception {
 		
 		if (getUserByEmail(email) != null) {
 	        return -1;
 	    }
         KetNoi kn = new KetNoi();
 		kn.ketnoi();
-        String sql = "INSERT INTO tbl_Users (Name, Password, Gender, Email, Phone, Status, CreatedAt, RoleID) "
-        		+ "VALUES (?, ?, ?, ?, ?, ?, GETDATE(), ?);";
+        String sql = "INSERT INTO tbl_Users (Name, Password, Gender, Email, Phone, Status, CreatedAt, RoleID, Avatar) "
+        		+ "VALUES (?, ?, ?, ?, ?, ?, GETDATE(), ?, ?);";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
             
             cmd.setString(1, name);
@@ -83,6 +83,7 @@ public class UserDao {
             cmd.setString(5, phone);
             cmd.setBoolean(6, Constants.ACC_USING);
             cmd.setLong(7, roleID);
+            cmd.setString(8, avt);
         int kq = cmd.executeUpdate();
         kn.cn.close();
             

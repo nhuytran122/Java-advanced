@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="KetNoiModal.KetNoi"/>
     <fullyQualifiedTypeName name="ConstantModal.Constants"/>
@@ -16,7 +14,6 @@
     <fullyQualifiedTypeName name="LikeModal.Like"/>
     <fullyQualifiedTypeName name="LikeModal.LikeDao"/>
     <fullyQualifiedTypeName name="ReportModal.Report"/>
-    <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="ReportModal.ReportDao"/>
     <fullyQualifiedTypeName name="CommentModal.Comment"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
@@ -30,7 +27,6 @@
     <fullyQualifiedTypeName name="CategoryModal.Category"/>
     <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
     <fullyQualifiedTypeName name="MaterialModal.Material"/>
-    <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="DocumentModal.Document"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
@@ -38,7 +34,6 @@
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDocDao"/>
     <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
-    <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDocBo"/>
@@ -48,11 +43,8 @@
     <fullyQualifiedTypeName name="StatusPostModal.StatusPostBo"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.servlet.ServletFileUpload"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.disk.DiskFileItemFactory"/>
     <fullyQualifiedTypeName name="StatusPostModal.StatusPost"/>
-    <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
-    <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.text.ParseException"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
@@ -60,4 +52,12 @@
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
     <fullyQualifiedTypeName name="chitiethoadonmodal.CTHDbo"/>
+    <fullyQualifiedTypeName name="khachhangmodal.khachhangbo"/>
+    <fullyQualifiedTypeName name="khachhangmodal.khachhang"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
+    <fullyQualifiedTypeName name="CommonModal.FileUploadUtil"/>
+    <fullyQualifiedTypeName name="UserModal.User"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
+    <fullyQualifiedTypeName name="UserModal.UserBo"/>
 </qualifiedTypeNameHistroy>

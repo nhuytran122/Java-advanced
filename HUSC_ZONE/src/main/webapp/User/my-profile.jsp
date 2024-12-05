@@ -10,11 +10,16 @@
 </head>
 <body>
     
-    <%@ include file="layout/navbar.jsp" %>
+    <%@ include file="layout/navbar_for_Post.jsp" %>
     <div class="profile-header text-center">
-        <img src="https://via.placeholder.com/120" alt="Avatar" class="rounded-circle mb-3">
-        <h2 class="mb-0">Như Ý</h2>
-    </div>
+	    <% if (user.getAvatar() == null) { %>
+	        <img src="../images/default-avt.jpg" style="width: 120px; height: 120px" alt="Default" class="rounded-circle mb-3">
+	    <% } else { %>
+	        <img src="<%= user.getAvatar() %>" alt="Avatar" class="rounded-circle mb-3">
+	    <% } %>
+	    <h2 class="mb-0"><%= user.getName() %></h2>
+	</div>
+
 
     <div class="container my-4">
         <div class="row">
@@ -23,14 +28,16 @@
                 <div class="card no-hover">
                     <div class="card-body">
                         <h5 class="card-title">Thông tin cá nhân</h5>
-                        <p class="mt-3"><strong>Email:</strong> nhuy@gmail.com</p>
-                        <p><strong>Số điện thoại:</strong> 0123-456-789</p>
-                        <p><strong>Ngày sinh:</strong> 15/07/1999</p>
-                        <p><strong>Địa chỉ:</strong> TP. Hồ Chí Minh</p>
-                        <div class="d-flex">
-                            <a href="/update-profile.html" class="btn btn-primary-custom me-2">Chỉnh sửa thông tin</a>
-                            <a href="/change-password.html" class="btn btn-primary-custom">Đổi mật khẩu</a>
-                        </div>
+                        <p class="mt-3"><strong>Email:</strong> <%= user.getEmail() %></p>
+                        <p><strong>Số điện thoại:</strong> <%= user.getPhone() %></p>
+                        <p><strong>Giới tính:</strong> <%= user.getGender() %></p>
+	                        <div class="d-flex">
+	                        <form action="../edit-profile" method="post">
+	                            <button type="submit" name="btnUpdateProfile" value="btnUpdateProfile" class="btn btn-primary-custom me-2">Chỉnh sửa thông tin</button>
+	                            <button type="submit" name="btnChangePW" value="btnUpdateProfile" class="btn btn-primary-custom">Đổi mật khẩu</button>
+	                        </form>
+	                        </div>
+	                    
                     </div>
                 </div>
             </div>
@@ -60,52 +67,53 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
                                     <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
-                                    <input class="form-control rounded-pill" placeholder="Như Ý ơi, bạn muốn chia sẻ gì nào?" style="background-color: #f8f9fa;" data-bs-toggle="modal" data-bs-target="#postModal" readonly>
+                                    <input class="form-control rounded-pill" placeholder="<%= user.getName() %> ơi, bạn muốn chia sẻ gì nào?" style="background-color: #f8f9fa;" data-bs-toggle="modal" data-bs-target="#postModal" readonly>
                                 </div>
                             </div>
                         </div>
 
                         <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            <textarea class="form-control" rows="5" placeholder="Như Ý ơi, bạn muốn chia sẻ gì nào?"></textarea>
-                                        </div>
-                                        <div class="card mb-3" style="width: 465px; margin: auto; border: 1px solid #ddd; border-radius: 8px;">
-                                            <div class="card-body text-center">
-                                                <div class="upload-area" style="position: relative; border: 2px dashed #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
-                                                    <label for="file-upload" style="cursor: pointer;">
-                                                        <div style="margin-bottom: 10px;">
-                                                            <i class="bi bi-image-fill"></i>
-                                                        </div>
-                                                        <strong>Thêm ảnh/video</strong>
-                                                        <p style="color: #888;">hoặc kéo và thả</p>
-                                                    </label>
-                                                    <input type="file" id="file-upload" multiple style="display: none;">
-                                                    <button type="button" class="btn-close position-absolute" style="top: 10px; right: 10px;"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                        <button type="button" class="btn btn-success">Đăng bài</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+		                    <div class="modal-dialog">
+			                    <form action="../edit-status" method="post" enctype="multipart/form-data">
+			                        <div class="modal-content">
+			                            <div class="modal-header">
+			                                <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>
+			                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			                            </div>
+			                            <div class="modal-body">
+			                                <div class="mb-3">
+			                                    <textarea class="form-control" rows="5" placeholder="<%= user.getName() %> ơi, bạn muốn chia sẻ gì nào?"
+				                                    name="txtContent" required></textarea>
+			                                </div>
+			                                <div class="card mb-3" style="width: 465px; margin: auto; border: 1px solid #ddd; border-radius: 8px;">
+			                                    <div class="card-body text-center">
+			                                        <div class="upload-area" style="position: relative; border: 2px dashed #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+			                                            <label style="cursor: pointer;">
+			                                            	<strong>Thêm ảnh/video</strong>
+			                                                <input type="file" name="fileAnh" accept="image/*">
+			                                            </label>
+			                                           
+			                                            <button type="button" class="btn-close position-absolute" style="top: 10px; right: 10px;"></button>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                            <div class="modal-footer">
+			                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+			                                <button type="submit" 
+		                                	name="btnAdd" value="add" class="btn btn-success">Đăng bài</button>
+			                            </div>
+			                        </div>
+			                    </form>
+		                    </div>
+		                </div>
 
                         <div class="card no-hover">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
                                     <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle me-3">
                                     <div>
-                                        <h6 class="mb-0">Như Ý</h6>
+                                        <h6 class="mb-0"><%= user.getName() %></h6>
                                         <small class="text-muted">2 giờ trước</small>
                                     </div>
                                 </div>
