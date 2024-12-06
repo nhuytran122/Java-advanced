@@ -1,3 +1,5 @@
+<%@page import="CommonModal.MethodCommon"%>
+<%@page import="V_DetailsPostModal.DetailsPost"%>
 <%@page import="StatusPostModal.StatusPost"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -27,7 +29,7 @@
     
 </head>
 <%
-    ArrayList<StatusPost> ds = (ArrayList<StatusPost>) request.getAttribute("ds");
+    ArrayList<DetailsPost> ds = (ArrayList<DetailsPost>) request.getAttribute("ds");
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
     String searchKeyword = request.getParameter("txtSearch");
@@ -102,22 +104,28 @@
                         <% 
                           } else { 
                             for (int i = 0; i < n; i++) {
-                              StatusPost stt = ds.get(i);
+                              DetailsPost stt = ds.get(i);
                         %>
                 <div class="card no-hover mb-3">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                            <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { %>
+						        <img src="../images/default-avt.jpg" style="width: 50px; height: 50px;" alt="Default" class="rounded-circle me-3">
+						    <% } else { %>
+					        	<img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 50px; height: 50px" alt="Avatar" class="rounded-circle me-3">
+					    	<% } %>
                             <div>
-                                <h6 class="mb-0"><%= stt.getUploadBy() %></h6>
-                                <small class="text-muted"><%= stt.getCreatedAt() %></small>
+                                <h6 class="mb-0"><%= stt.getName() %></h6>
+                                <small class="text-muted"><%=  MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
                             </div>
                         </div>
                         <p>
                         	<%= stt.getPostContent() %>
                         </p>
                         <div>
-                            <img src="<%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 300px;">
+                            <% if (stt.getImagePath() != null) { %>
+						    	<img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 300px;">
+						    <% } %>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between">

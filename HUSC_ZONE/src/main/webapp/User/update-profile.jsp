@@ -100,7 +100,7 @@
                                         <label class="form-label">Preview Ảnh</label>
 										<div class="col-sm-10">
 										  <!-- Hiển thị ảnh nếu có -->
-										  <img id="imagePreview" src="<%= user.getAvatar() != null ?  user.getAvatar() : "" %>" alt="Image Preview" style="max-height: 250px; display: <%= user.getAvatar() != null ? "block" : "none" %>;"/>
+										  <img id="imagePreview" src="<%= request.getContextPath() %><%= user.getAvatar() != null ?  user.getAvatar() : "" %>" alt="Image Preview" style="max-height: 250px; display: <%= user.getAvatar() != null ? "block" : "none" %>;"/>
 										</div>
                                     </div>
         
@@ -122,20 +122,20 @@
     
     
     <script>
-    $(document).ready(function () {
-        // Hiển thị ảnh preview khi người dùng chọn ảnh mới
-        $('#fileInput').change(function (e) {
-            var file = e.target.files[0];
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imagePreview').attr('src', e.target.result);
-                $('#imagePreview').show();
-            };
-
-            reader.readAsDataURL(file);
-        });
-    });
+	    $(document).ready(function () {
+	        // Hiển thị ảnh preview khi người dùng chọn ảnh mới
+	        $('#fileInput').change(function (e) {
+	            var file = e.target.files[0];
+	            var reader = new FileReader();
+	
+	            reader.onload = function (e) {
+	                $('#imagePreview').attr('src', e.target.result);
+	                $('#imagePreview').show();
+	            };
+	
+	            reader.readAsDataURL(file);
+	        });
+	    });
   </script>
 </body>
 </html>

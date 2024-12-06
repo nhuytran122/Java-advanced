@@ -1,4 +1,4 @@
-package V_DetailsDoc;
+package V_DetailsDocModal;
 
 import java.util.Date;
 import java.sql.PreparedStatement;
@@ -9,31 +9,31 @@ import CommonModal.KetNoi;
 
 public class DetailsDocDao {
 	public DetailsDoc getDetailsDocByID(Long docID) throws Exception {
-	    KetNoi kn = new KetNoi();
-	    kn.ketnoi();
-	    String sql = "select * from V_Details_Docs where DocumentID = ?";
-	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
-	    cmd.setLong(1, docID);
-	    ResultSet rs = cmd.executeQuery();
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+		String sql = "select * from V_Details_Docs where DocumentID = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, docID);
+		ResultSet rs = cmd.executeQuery();
 
-	    if (rs.next()) { 
-	        return mapDetailsDoc(rs);
-	    }
+		if (rs.next()) {
+			return mapDetailsDoc(rs);
+		}
 
-	    rs.close();
-	    cmd.close();
-	    kn.cn.close();
-	    return null;
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+		return null;
 	}
-	
+
 	public ArrayList<DetailsDoc> getListDocsSuggest(Long docID, Long cateID) throws Exception {
 		ArrayList<DetailsDoc> ds = new ArrayList<DetailsDoc>();
 		KetNoi kn = new KetNoi();
 		kn.ketnoi();
 
 		String sql = "SELECT TOP 4 * "
-		           + "FROM V_Details_Docs "
-		           + "WHERE CategoryID = ? AND DocumentID != ?";
+				+ "FROM V_Details_Docs "
+				+ "WHERE CategoryID = ? AND DocumentID != ?";
 
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setLong(1, cateID);
@@ -50,7 +50,7 @@ public class DetailsDocDao {
 
 		return ds;
 	}
-	
+
 	public int getCountDocsByConditions(String searchValue, Long categoryID, Long materialID) throws Exception {
 		int count = 0;
 		searchValue = "%" + searchValue + "%";
@@ -83,14 +83,14 @@ public class DetailsDocDao {
 
 		return count;
 	}
-	
+
 	public ArrayList<DetailsDoc> getDocsByUserID(int page, int pageSize, Long userID) throws Exception {
 		ArrayList<DetailsDoc> ds = new ArrayList<DetailsDoc>();
 		KetNoi kn = new KetNoi();
 		kn.ketnoi();
 
 		String sql = "SELECT * " +
-				"FROM tbl_DetailsDocs " +
+				"FROM V_Details_Docs " +
 				"WHERE UploadedBy = ? " +
 				"ORDER BY CreatedAt DESC " +
 				"OFFSET (? - 1) * ? ROWS " +
@@ -152,21 +152,22 @@ public class DetailsDocDao {
 
 		return ds;
 	}
-	
-	private DetailsDoc mapDetailsDoc(ResultSet rs) throws Exception {
-	    Long DocumentID = rs.getLong("DocumentID");
-	    String title = rs.getString("Title");
-	    String description = rs.getString("Description");
-	    String filePath = rs.getString("FilePath");
-	    Long catID = rs.getLong("CategoryID");
-	    Long matID = rs.getLong("MaterialID");
-	    Long uploadedBy = rs.getLong("UploadedBy");
-	    Date createdAt = rs.getDate("CreatedAt");
-	    Date updatedAt = rs.getDate("UpdatedAt");
-	    String categoryName = rs.getString("CategoryName");
-	    String materialName = rs.getString("MaterialName");
-	    String name = rs.getString("Name");
 
-	    return new DetailsDoc(DocumentID, title, description, createdAt, updatedAt, filePath, catID, matID, uploadedBy, categoryName, materialName, name);
+	private DetailsDoc mapDetailsDoc(ResultSet rs) throws Exception {
+		Long DocumentID = rs.getLong("DocumentID");
+		String title = rs.getString("Title");
+		String description = rs.getString("Description");
+		String filePath = rs.getString("FilePath");
+		Long catID = rs.getLong("CategoryID");
+		Long matID = rs.getLong("MaterialID");
+		Long uploadedBy = rs.getLong("UploadedBy");
+		Date createdAt = rs.getDate("CreatedAt");
+		Date updatedAt = rs.getDate("UpdatedAt");
+		String categoryName = rs.getString("CategoryName");
+		String materialName = rs.getString("MaterialName");
+		String name = rs.getString("Name");
+
+		return new DetailsDoc(DocumentID, title, description, createdAt, updatedAt, filePath, catID, matID, uploadedBy,
+				categoryName, materialName, name);
 	}
 }

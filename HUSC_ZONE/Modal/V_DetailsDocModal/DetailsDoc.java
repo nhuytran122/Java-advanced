@@ -1,4 +1,4 @@
-package V_DetailsDoc;
+package V_DetailsDocModal;
 
 import java.util.Date;
 

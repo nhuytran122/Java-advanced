@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import CommonModal.MethodCommon;
-import V_DetailsDoc.DetailsDoc;
-import V_DetailsDoc.DetailsDocBo;
+import V_DetailsDocModal.DetailsDoc;
+import V_DetailsDocModal.DetailsDocBo;
 
 @WebServlet("/home")
 public class IndexController extends HttpServlet {

@@ -1,7 +1,5 @@
-<%@page import="CommonModal.MethodCommon"%>
-<%@page import="V_DetailsPostModal.DetailsPost"%>
-<%@page import="DocumentModal.Document"%>
 <%@page import="StatusPostModal.StatusPost"%>
+<%@page import="DocumentModal.Document"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +13,7 @@
 <body>
 
 <%
-    ArrayList<DetailsPost> dsStt = (ArrayList<DetailsPost>) request.getAttribute("dsStt");
+    ArrayList<StatusPost> dsStt = (ArrayList<StatusPost>) request.getAttribute("dsStt");
     int pageCountPosts = (Integer) request.getAttribute("pageCountPosts");
     int currentPagePosts = (Integer) request.getAttribute("currentPagePosts");
     
@@ -67,10 +65,10 @@
                         <div class="card no-hover" style="margin-bottom: 20px;">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
-                                    <% if (user.getAvatar() == null || user.getAvatar().isBlank()) { %>
+	                                <% if (user_tmp.getAvatar() == null || user_tmp.getAvatar().isBlank()) { %>
 								        <img src="../images/default-avt.jpg" class="rounded-circle me-3" style="width: 50px; height: 50px;">
 								    <% } else { %>
-							        	<img src="<%= request.getContextPath() %><%= user.getAvatar() %>" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+							        <img src="<%= request.getContextPath() %><%= user_tmp.getAvatar() %>" class="rounded-circle me-3" style="width: 50px; height: 50px;">
 							    	<% } %>
                                     <input class="form-control rounded-pill" placeholder="<%= user.getName() %> ơi, bạn muốn chia sẻ gì nào?" style="background-color: #f8f9fa;" data-bs-toggle="modal" data-bs-target="#postModal" readonly>
                                 </div>
@@ -113,53 +111,96 @@
 		                    </div>
 		                </div>
 
-                        <% for (DetailsPost stt : dsStt) { %>
-						    <div class="card no-hover mb-3">
+                         <% for (StatusPost stt : dsStt) { %>
+						    <div class="card no-hover">
 						        <div class="card-body">
 						            <div class="d-flex align-items-center mb-3">
-						                <% if (user.getAvatar() == null || user.getAvatar().isBlank()) { %>
-									        <img src="../images/default-avt.jpg" class="rounded-circle me-3" style="width: 50px; height: 50px;">
-									    <% } else { %>
-								        	<img src="<%= request.getContextPath() %><%= user.getAvatar() %>" class="rounded-circle me-3" style="width: 50px; height: 50px;">
-								    	<% } %>
+						                <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle me-3">
 						                <div>
 						                    <h6 class="mb-0"><%= user.getName() %></h6>
-						                    <small class="text-muted"><%= MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
+						                    <small class="text-muted"><%= stt.getCreatedAt() %></small>
 						                </div>
 						            </div>
 						            <p><%= stt.getPostContent() %></p>
 						            <% if (stt.getImagePath() != null) { %>
-						                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
+						                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded">
 						            <% } %>
 						        </div>
-						        <div class="card-footer d-flex justify-content-between">
-			                        <div>
-			                            <a class="btn btn-outline-primary btn-sm btn-like">
-			                                <i class="bi bi-heart-fill text-danger"></i> Thích
-			                            </a>
-			                            <span class="ms-2"><%= stt.getCountLikes() %> lượt thích</span>
-			                        </div>
-			                    </div>
-			                    
 						    </div>
-						<% } %>
+						    <% } %>
+                        
+                        <div class="pagination-container">
+					        <nav>
+					            <ul class="pagination justify-content-center mt-4">
+					                <!-- Previous Page -->
+					                <li class="page-item <%= currentPagePosts > 1 ? "" : "disabled" %>">
+					                    <a class="page-link" href="<%= currentPagePosts > 1 ? "../profile?pagePosts=" + (currentPagePosts - 1) : "#" %>" tabindex="-1" aria-disabled="true">
+					                        <i class="bi bi-chevron-left"></i>
+					                    </a>
+					                </li>
+					
+					                <% for (int p = 1; p <= pageCountPosts; p++) { %>
+					                    <li class="page-item <%= p == currentPagePosts ? "active" : "" %>">
+					                        <a class="page-link" href="../profile?pagePosts=<%= p %>">
+					                            <%= p %>
+					                        </a>
+					                    </li>
+					                <% } %>
+					
+					                <li class="page-item <%= currentPagePosts < pageCountPosts ? "" : "disabled" %>">
+					                    <a class="page-link" href="<%= currentPagePosts < pageCountPosts ? "../profile?pagePosts=" + (currentPagePosts + 1) : "#" %>">
+					                        <i class="bi bi-chevron-right"></i>
+					                    </a>
+					                </li>
+					            </ul>
+					        </nav>
+					    </div>
                     </div>
 
                     <!-- Tab: Tài liệu của tôi -->
-                    <div class="tab-pane fade" id="my-docs" role="tabpanel">
-                        <div class="card no-hover">
-                            <div class="card-body">
-                                <h5 class="card-title">Tài liệu của tôi</h5>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-file-earmark-text me-2"></i> Slide Lập trình Web</li>
-                                    <li><i class="bi bi-file-earmark-text me-2"></i> Bài tập Cơ sở dữ liệu</li>
-                                    <li><i class="bi bi-file-earmark-text me-2"></i> Đồ án Hệ thống thông tin</li>
-                                </ul>
-                                <a href="#" class="btn btn-primary-custom btn-sm">Xem tất cả</a>
-                            </div>
-                        </div>
-                    </div> 
-                    
+					<div class="tab-pane fade" id="my-docs" role="tabpanel">
+					    <div class="card no-hover">
+					        <div class="card-body">
+					            <h5 class="card-title">Tài liệu của tôi</h5>
+					            <ul class="list-unstyled">
+					                <% 
+					                    ArrayList<Document> docs = (ArrayList<Document>) request.getAttribute("docs");
+					                    for (Document doc : docs) {
+					                %>
+					                <li><i class="bi bi-file-earmark-text me-2"></i><%= doc.getTitle() %></li>
+					                <% } %>
+					            </ul>
+					
+					            <nav>
+					                <ul class="pagination justify-content-center mt-4">
+					                    <!-- Previous Page -->
+					                    <li class="page-item <%= currentPageDocs > 1 ? "" : "disabled" %>">
+					                        <a class="page-link" href="<%= currentPageDocs > 1 ? "../profile?pageDocs=" + (currentPageDocs - 1) : "#" %>" tabindex="-1" aria-disabled="true">
+					                            <i class="bi bi-chevron-left"></i>
+					                        </a>
+					                    </li>
+					
+					                    <% for (int p = 1; p <= pageCountDocs; p++) { %>
+					                        <li class="page-item <%= p == currentPageDocs ? "active" : "" %>">
+					                            <a class="page-link" href="../profile?pageDocs=<%= p %>">
+					                                <%= p %>
+					                            </a>
+					                        </li>
+					                    <% } %>
+					
+					                    <!-- Next Page -->
+					                    <li class="page-item <%= currentPageDocs < pageCountDocs ? "" : "disabled" %>">
+					                        <a class="page-link" href="<%= currentPageDocs < pageCountDocs ? "../profile?pageDocs=" + (currentPageDocs + 1) : "#" %>">
+					                            <i class="bi bi-chevron-right"></i>
+					                        </a>
+					                    </li>
+					                </ul>
+					            </nav>
+					        </div>
+					    </div>
+					</div>
+
+
                 </div>
             </div>
         </div>

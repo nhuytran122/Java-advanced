@@ -1,4 +1,4 @@
-<%@page import="V_DetailsDoc.DetailsDoc"%>
+<%@page import="V_DetailsDocModal.DetailsDoc"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="MaterialModal.MaterialBo"%>
 <%@page import="CategoryModal.CategoryBo"%>

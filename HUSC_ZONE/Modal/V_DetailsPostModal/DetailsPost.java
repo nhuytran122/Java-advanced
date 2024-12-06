@@ -1,21 +1,23 @@
-package StatusPostModal;
+package V_DetailsPostModal;
 
-import java.sql.Date;
+import java.util.Date;
 
-public class StatusPost {
+public class DetailsPost {
 	private Long PostID;
 	private String PostContent;
 	private Long UploadedBy;
 	private Date CreatedAt;
 	private Date UpdatedAt;
 	private String ImagePath;
-
-	public StatusPost() {
+	private String Name;
+	private String Avatar;
+	private Long CountLikes;
+	public DetailsPost() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-
-	public StatusPost(Long postID, String postContent, Long uploadedBy, Date createdAt, Date updatedAt,
-			String imagePath) {
+	public DetailsPost(Long postID, String postContent, Long uploadedBy, Date createdAt, Date updatedAt,
+			String imagePath, String name, String avatar, Long countLikes) {
 		super();
 		PostID = postID;
 		PostContent = postContent;
@@ -23,53 +25,62 @@ public class StatusPost {
 		CreatedAt = createdAt;
 		UpdatedAt = updatedAt;
 		ImagePath = imagePath;
+		Name = name;
+		Avatar = avatar;
+		CountLikes = countLikes;
 	}
-
 	public Long getPostID() {
 		return PostID;
 	}
-
 	public void setPostID(Long postID) {
 		PostID = postID;
 	}
-
 	public String getPostContent() {
 		return PostContent;
 	}
-
 	public void setPostContent(String postContent) {
 		PostContent = postContent;
 	}
-
-	public Long getUploadBy() {
+	public Long getUploadedBy() {
 		return UploadedBy;
 	}
-
-	public void setUploadBy(Long uploadedBy) {
+	public void setUploadedBy(Long uploadedBy) {
 		UploadedBy = uploadedBy;
 	}
-
 	public Date getCreatedAt() {
 		return CreatedAt;
 	}
-
 	public void setCreatedAt(Date createdAt) {
 		CreatedAt = createdAt;
 	}
-
 	public Date getUpdatedAt() {
 		return UpdatedAt;
 	}
-
 	public void setUpdatedAt(Date updatedAt) {
 		UpdatedAt = updatedAt;
 	}
-
 	public String getImagePath() {
 		return ImagePath;
 	}
-
 	public void setImagePath(String imagePath) {
 		ImagePath = imagePath;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public String getAvatar() {
+		return Avatar;
+	}
+	public void setAvatar(String avatar) {
+		Avatar = avatar;
+	}
+	public Long getCountLikes() {
+		return CountLikes;
+	}
+	public void setCountLikes(Long countLikes) {
+		CountLikes = countLikes;
 	}
 }

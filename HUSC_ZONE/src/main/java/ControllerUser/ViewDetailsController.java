@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import BookmarkModal.BookmarkBo;
 import CommonModal.MethodCommon;
 import UserModal.User;
-import V_DetailsDoc.DetailsDoc;
-import V_DetailsDoc.DetailsDocBo;
+import V_DetailsDocModal.DetailsDoc;
+import V_DetailsDocModal.DetailsDocBo;
 
 @WebServlet("/details")
 public class ViewDetailsController extends HttpServlet {

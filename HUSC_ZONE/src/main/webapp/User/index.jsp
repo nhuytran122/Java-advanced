@@ -1,4 +1,4 @@
-<%@page import="V_DetailsDoc.DetailsDoc"%>
+<%@page import="V_DetailsDocModal.DetailsDoc"%>
 <%@page import="MaterialModal.MaterialBo"%>
 <%@page import="CategoryModal.CategoryBo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

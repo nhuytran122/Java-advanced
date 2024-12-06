@@ -11,10 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DocumentModal.DocumentBo;
 import StatusPostModal.StatusPost;
 import StatusPostModal.StatusPostBo;
 import UserModal.User;
 import UserModal.UserBo;
+import V_DetailsDocModal.DetailsDoc;
+import V_DetailsDocModal.DetailsDocBo;
+import V_DetailsPostModal.DetailsPost;
+import V_DetailsPostModal.DetailsPostBo;
 
 @WebServlet("/my-profile")
 public class MyProfileController extends HttpServlet {
@@ -35,34 +40,44 @@ public class MyProfileController extends HttpServlet {
                 return;
             }
             
-            UserBo userBo = new UserBo();
             User user = (User)session.getAttribute("user");
+            DetailsPostBo dtSttBo = new DetailsPostBo();
+            DetailsDocBo dtDocBo = new DetailsDocBo();
             
-//            int page = 1;
-//            int pageSize = 9;
-//            String searchValue = "";
-//
-//            if (request.getParameter("page") != null) {
-//                page = Integer.parseInt(request.getParameter("page"));
-//            }
-//
-//            if (request.getParameter("txtSearch") != null) {
-//                searchValue = request.getParameter("txtSearch");
-//            }
-//
-//            ArrayList<StatusPost> ds = sttBo.getPostsByConditions(page, pageSize, searchValue);
-//
-//            int rowCount = sttBo.getCountPostsByConditions(searchValue);
-//            
-//            int pageCount = rowCount / pageSize;
-//            if (rowCount % pageSize > 0) {
-//                pageCount += 1;
-//            }
-//
-//            request.setAttribute("ds", ds);
-//            request.setAttribute("pageCount", pageCount);
-//            request.setAttribute("currentPage", page);
-//            request.setAttribute("searchKeyword", searchValue);
+            int currentPagePosts = 1, currentPageDocs =  1;
+            int pageSize = 9;
+
+            if (request.getParameter("pagePosts") != null) {
+            	currentPagePosts = Integer.parseInt(request.getParameter("pagePosts"));
+            }
+            if (request.getParameter("pageDocs") != null) {
+            	currentPageDocs = Integer.parseInt(request.getParameter("pageDocs"));
+            }
+
+            ArrayList<DetailsPost> dsStt = dtSttBo.getPostsByUserID(currentPagePosts, pageSize, user.getUserID());
+            ArrayList<DetailsDoc> dsDocs = dtDocBo.getDocsByUserID(currentPageDocs, pageSize, user.getUserID());
+
+            int rowCountStt = dtSttBo.getCountPostsByConditions("");
+            int rowCountDocs = dtDocBo.getCountDocsByConditions("", 0L, 0L);
+            
+            int pageCountPosts = rowCountStt / pageSize;
+            int pageCountDocs = rowCountDocs / pageSize;
+            
+            if (rowCountStt % pageSize > 0) {
+            	pageCountPosts += 1;
+            }
+            
+            if (rowCountDocs % pageSize > 0) {
+            	pageCountDocs += 1;
+            }
+
+            request.setAttribute("dsStt", dsStt);
+            request.setAttribute("pageCountPosts", pageCountPosts);
+            request.setAttribute("currentPagePosts", currentPagePosts);
+
+            request.setAttribute("dsDocs", dsDocs);
+            request.setAttribute("pageCountDocs", pageCountDocs);
+            request.setAttribute("currentPageDocs", currentPagePosts);
 
             RequestDispatcher rd = request.getRequestDispatcher("User/my-profile.jsp");
             rd.forward(request, response);

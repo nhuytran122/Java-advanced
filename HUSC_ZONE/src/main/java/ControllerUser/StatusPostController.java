@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import StatusPostModal.StatusPost;
 import StatusPostModal.StatusPostBo;
+import V_DetailsPostModal.DetailsPost;
+import V_DetailsPostModal.DetailsPostBo;
 
 @WebServlet("/status-post")
 public class StatusPostController extends HttpServlet {
@@ -33,7 +35,7 @@ public class StatusPostController extends HttpServlet {
                 return;
             }
             
-            StatusPostBo sttBo = new StatusPostBo();
+            DetailsPostBo sttBo = new DetailsPostBo();
             int page = 1;
             int pageSize = 9;
             String searchValue = "";
@@ -46,7 +48,7 @@ public class StatusPostController extends HttpServlet {
                 searchValue = request.getParameter("txtSearch");
             }
 
-            ArrayList<StatusPost> ds = sttBo.getPostsByConditions(page, pageSize, searchValue);
+            ArrayList<DetailsPost> ds = sttBo.getPostsByConditions(page, pageSize, searchValue);
 
             int rowCount = sttBo.getCountPostsByConditions(searchValue);
             
