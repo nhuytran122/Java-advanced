@@ -34,7 +34,6 @@
     ArrayList<User> dsUsers = (ArrayList<User>) request.getAttribute("dsUsers");
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
-    String searchKeyword = request.getParameter("txtSearch");
 %>
 <body class="bg-light">
     <%@ include file="layout/navbar_for_Post.jsp" %>
@@ -205,18 +204,13 @@
                     } else {
                         if (searchKeyword != null && !searchKeyword.isEmpty()) {
                             if (dsPosts == null || dsPosts.isEmpty()) {
-                                %>
-                                <div class="alert alert-warning">
-                                    Không tìm thấy bài đăng nào với từ khóa <b>"<%= searchKeyword %>".</b>
-                                </div>
-                                <%
-                            }
-                            else {
-                                %>
-                                <div class="alert alert-warning">
-                                    Không tìm thấy người dùng nào với từ khóa <b>"<%= searchKeyword %>".</b>
-                                </div>
-                                <%
+                            %>
+                                <p class="text-center text-danger">Không tìm thấy bài đăng nào với từ khóa <b>"<%= searchKeyword %>".</b></p>
+                                
+                            <%}else {
+                             %>
+                                <p class="text-center text-danger">Không tìm thấy người dùng nào với từ khóa <b>"<%= searchKeyword %>".</b></p>
+                            <%
                             }
                         } 
                     }

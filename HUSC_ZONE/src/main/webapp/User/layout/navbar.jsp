@@ -12,7 +12,7 @@
     Long mateID = request.getParameter("mateID") != null ? Long.parseLong(request.getParameter("mateID")) : 0L;
     
     User user = (User)session.getAttribute("user");
-    String keyWord = request.getParameter("txtSearch");
+    String searchKeyword = request.getParameter("txtSearch");
 %>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary-custom py-2">
@@ -59,8 +59,8 @@
                     placeholder="Tìm kiếm tài liệu..." 
                     autofocus
                     name="txtSearch"
-	                value="<%= keyWord != null 
-	                	? keyWord : "" %>">
+	                value="<%= searchKeyword != null 
+	                	? searchKeyword : "" %>">
 
                 <button type="submit" name="btn-search" value = "search" class="btn btn-primary-custom btn-sm py-2">
                     <i class="bi bi-search"></i>

@@ -1,3 +1,7 @@
+<%@page import="V_DetailsBookmarkModal.DetailsBookmark"%>
+<%@page import="V_DetailsDocModal.DetailsDoc"%>
+<%@page import="MaterialModal.MaterialBo"%>
+<%@page import="CategoryModal.CategoryBo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,142 +12,96 @@
     <title>Tài liệu yêu thích - HUSCZone</title>
     <%@ include file="layout/import.jsp" %>
 </head>
-<body class="bg-light">
-    <!-- Navbar -->
-    <%@ include file="layout/navbar.jsp" %>
 
-    <!-- Nội dung chính -->
+<%
+    ArrayList<DetailsBookmark> ds = (ArrayList<DetailsBookmark>) request.getAttribute("ds");
+    int pageCount = (Integer) request.getAttribute("pageCount");
+    int currentPage = (Integer) request.getAttribute("currentPage");
+%>
+  
+<body class="bg-light">
+<%@ include file="layout/navbar.jsp" %>
+
     <div class="container-fluid my-3">
+    
         <div class="row">
             <%@ include file="layout/sidebar.jsp" %>
-            
-            <main class="col-md-9 my-3">
-                <h4 class="pb-2">Tài liệu yêu thích</h4>
-                <div class="row">
-                    <div class="col-md-3 mb-4">
-					    <a href="document-detail.jsp" class="card-link" style="display: block; text-decoration: none;">
+	        <main class="col-md-9 my-4">
+		        <div class="d-flex justify-content-between align-items-center mb-3">
+	            	<h4 class="fw-bold">Tài liệu yêu thích</h4>
+	            </div>
+	            
+	            <div class="row">
+	            <% 
+                          int n = ds.size();
+                          if (n == 0) {
+                        %>
+                            <p class="text-center text-danger">Hiện bạn chưa yêu thích tài liệu nào. Tìm kiếm tài liệu phù hợp với bạn ngay nào!</p>
+                        <% 
+                          } else { 
+                            for (int i = 0; i < n; i++) {
+                            	DetailsBookmark docs = ds.get(i);
+                        %>
+		            <div class="col-md-3 mb-4">
+					    <a href="../details?docsID=<%=docs.getDocumentID() %>" class="card-link" style="display: block; text-decoration: none;">
 					        <div class="card" title="Click để xem chi tiết">
 					            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
 					            <div class="card-body">
-					                <h6 class="card-title text-truncate">Tiêu đề tài liệu</h6>
+					                <h6 class="card-title text-truncate"><%= docs.getTitle() %></h6>
 					                <div>
-					                    <span class="badge bg-info text-white">CNTT</span>
-					                    <span class="badge bg-success text-white">Slide</span>
+					                    <span class="badge bg-info text-white"><%= docs.getCategoryName() %></span>
+					                    <span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
 					                </div>
-					                <p class="text-muted small mt-2">Mô tả tài liệu ngắn gọn...</p>
 					            </div>
-					            <div class="card-footer d-flex justify-content-between">
-								    <a href="#" class="btn btn-outline-success btn-sm">
+					            <div class="card-footer d-flex align-items-center">
+								    <a href="#" class="btn btn-outline-success btn-sm me-2">
 								        <i class="bi bi-download"></i> Download
 								    </a>
-								    <a class="btn btn-warning btn-sm">
-								        <i class="bi bi-heart-fill"></i> Bỏ yêu thích
-								    </a>
-								</div>
-					        </div>
-					    </a>
-					</div>
-                    
-                    <div class="col-md-3 mb-4">
-					    <a href="document-detail.jsp" class="card-link" style="display: block; text-decoration: none;">
-					        <div class="card" title="Click để xem chi tiết">
-					            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
-					            <div class="card-body">
-					                <h6 class="card-title text-truncate">Tiêu đề tài liệu</h6>
-					                <div>
-					                    <span class="badge bg-info text-white">CNTT</span>
-					                    <span class="badge bg-success text-white">Slide</span>
-					                </div>
-					                <p class="text-muted small mt-2">Mô tả tài liệu ngắn gọn...</p>
-					            </div>
-					            <div class="card-footer d-flex justify-content-between">
-								    <a href="#" class="btn btn-outline-success btn-sm">
-								        <i class="bi bi-download"></i> Download
-								    </a>
-								    <a class="btn btn-warning btn-sm">
-								        <i class="bi bi-heart-fill"></i> Bỏ yêu thích
-								    </a>
-								</div>
-					        </div>
-					    </a>
-					</div>
-                    
-                    <div class="col-md-3 mb-4">
-					    <a href="document-detail.jsp" class="card-link" style="display: block; text-decoration: none;">
-					        <div class="card" title="Click để xem chi tiết">
-					            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
-					            <div class="card-body">
-					                <h6 class="card-title text-truncate">Tiêu đề tài liệu</h6>
-					                <div>
-					                    <span class="badge bg-info text-white">CNTT</span>
-					                    <span class="badge bg-success text-white">Slide</span>
-					                </div>
-					                <p class="text-muted small mt-2">Mô tả tài liệu ngắn gọn...</p>
-					            </div>
-					            <div class="card-footer d-flex justify-content-between">
-								    <a href="#" class="btn btn-outline-success btn-sm">
-								        <i class="bi bi-download"></i> Download
-								    </a>
-								    <a class="btn btn-warning btn-sm">
-								        <i class="bi bi-heart-fill"></i> Bỏ yêu thích
-								    </a>
-								</div>
-					        </div>
-					    </a>
-					</div>
-					
-					<div class="col-md-3 mb-4">
-					    <a href="document-detail.jsp" class="card-link" style="display: block; text-decoration: none;">
-					        <div class="card" title="Click để xem chi tiết">
-					            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
-					            <div class="card-body">
-					                <h6 class="card-title text-truncate">Tiêu đề tài liệu</h6>
-					                <div>
-					                    <span class="badge bg-info text-white">CNTT</span>
-					                    <span class="badge bg-success text-white">Slide</span>
-					                </div>
-					                <p class="text-muted small mt-2">Mô tả tài liệu ngắn gọn...</p>
-					            </div>
-					            <div class="card-footer d-flex justify-content-between">
-								    <a href="#" class="btn btn-outline-success btn-sm">
-								        <i class="bi bi-download"></i> Download
-								    </a>
-								    <button class="btn btn-warning btn-sm">
-								        <i class="bi bi-heart-fill"></i> Bỏ yêu thích
-								    </button>
+								    <form action="../interact" method="POST" class="mb-0">
+								        <input type="hidden" name="docsID" value="<%= docs.getDocumentID() %>">
+								        <input type="hidden" name="unMarkInList" value="unMarkInList">
+								        <button type="submit" 
+								                name="btn-mark" value="unmark" 
+								                class="btn btn-danger btn-sm">
+								            <i class="bi bi-heart-fill"></i> Bỏ yêu thích
+								        </button>
+								    </form>
 								</div>
 
 					        </div>
 					    </a>
 					</div>
-                    
-                </div>
-                <nav>
-				    <ul class="pagination justify-content-center mt-4">
-				        <li class="page-item disabled">
-				            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-				                <i class="bi bi-chevron-left"></i>
-				            </a>
-				        </li>
-				        <li class="page-item active" aria-current="page">
-				            <a class="page-link" href="#">1</a>
-				        </li>
-				        <li class="page-item">
-				            <a class="page-link" href="#">2</a>
-				        </li>
-				        <li class="page-item">
-				            <a class="page-link" href="#">3</a>
-				        </li>
-				        <li class="page-item">
-				            <a class="page-link" href="#">
-				                 <i class="bi bi-chevron-right"></i>
-				            </a>
-				        </li>
-				    </ul>
-				</nav>
+					<% } 
+						}%>
+				</div>
+				<% if (n > 0) { %>
+				    <nav>
+				        <ul class="pagination justify-content-center mt-4">
+				            <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
+				                <a class="page-link" href="<%= currentPage > 1 ? "../liked-docs?page=" + (currentPage - 1) : "#" %>" tabindex="-1" aria-disabled="true">
+				                    <i class="bi bi-chevron-left"></i>
+				                </a>
+				            </li>
+				            
+				            <% for (int p = 1; p <= pageCount; p++) { %>
+				              <li class="page-item <%= p == currentPage ? "active" : "" %>">
+				                <a class="page-link" href="../liked-docs?page=<%= p %>">
+				                  <%= p %>
+				                </a>
+				              </li>
+				            <% } %>
+				            <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
+				                <a class="page-link" href="<%= currentPage < pageCount ? "../liked-docs?page=" + (currentPage + 1) : "#" %>">
+				                     <i class="bi bi-chevron-right"></i>
+				                </a>
+				            </li>
+				        </ul>
+				    </nav>
+				<% } %>
 
-            </main>
-        </div>
+        	</main>
+     	</div>
+
     </div>
 </body>
 </html>

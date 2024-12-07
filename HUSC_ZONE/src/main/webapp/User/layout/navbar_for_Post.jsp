@@ -8,6 +8,7 @@
 <%
     User user = (User)session.getAttribute("user");
 	Long typeSearchID = request.getParameter("typeSearchID") != null ? Long.parseLong(request.getParameter("typeSearchID")) : 0L;
+	String searchKeyword = request.getParameter("txtSearch");
 %>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary-custom py-2">
@@ -30,8 +31,8 @@
                     placeholder="Tìm kiếm bài đăng, người dùng..." 
                     autofocus
 					name="txtSearch"
-	                value="<%= request.getParameter("txtSearch") != null 
-	                	? request.getParameter("txtSearch") : "" %>">
+	                value="<%= searchKeyword != null 
+	                	? searchKeyword : "" %>">
 
                 <button type="submit" class="btn btn-primary-custom p-2">
                     <i class="bi bi-search"></i>

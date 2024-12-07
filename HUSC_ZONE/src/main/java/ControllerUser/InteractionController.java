@@ -54,9 +54,12 @@ public class InteractionController extends HttpServlet {
                 }
                 request.setAttribute("docsID", docsID);
                 
+                if(request.getParameter("unMarkInList") != null) {
+                	response.sendRedirect("liked-docs");
+                    return;
+                }
                 //C1: response.sendRedirect("details?docsID=" + docsID);
                 //return;
-                
                 RequestDispatcher rd = request.getRequestDispatcher("details");
                 rd.forward(request, response); 
             } 

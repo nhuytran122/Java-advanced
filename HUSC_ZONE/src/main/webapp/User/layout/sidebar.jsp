@@ -6,7 +6,7 @@
             <a href="../user-profile" class="list-group-item bg-light text-dark fw-bold py-3 d-flex align-items-center">
                 <i class="bi bi-person-circle me-2 text-primary"></i> Quản lý tài khoản
             </a>
-            <a href="/liked-docs.html" class="list-group-item bg-light text-dark fw-bold py-3 d-flex align-items-center">
+            <a href="../liked-docs" class="list-group-item bg-light text-dark fw-bold py-3 d-flex align-items-center">
                 <i class="bi bi-bookmark-heart-fill me-2 text-warning"></i> Tài liệu yêu thích
             </a>
             <a href="/liked-status.html" class="list-group-item bg-light text-dark fw-bold py-3 d-flex align-items-center">

@@ -16,7 +16,6 @@
     ArrayList<DetailsDoc> ds = (ArrayList<DetailsDoc>) request.getAttribute("ds");
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
-    String searchKeyword = request.getParameter("txtSearch");
 %>
   
 <body class="bg-light">
