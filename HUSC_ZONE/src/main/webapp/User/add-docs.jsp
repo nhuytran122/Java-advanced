@@ -37,11 +37,12 @@
                     <div class="card-body">
                         <form action="../save-docs" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <label class="form-label">Tiêu đề</label> required
-                                <input type="text" class="form-control" placeholder="Nhập tiêu đề tài liệu" 
-	                                name="txtTenDocs" 
-	                                value="<%= tenDocs != null ? tenDocs : "" %>" required>
-                            </div>
+							    <label class="form-label">Tiêu đề</label>
+							    <input type="text" class="form-control" placeholder="Nhập tiêu đề tài liệu" 
+							           name="txtTenDocs" 
+							           value="<%= tenDocs != null ? tenDocs : "" %>" 
+							           required>
+							</div>
                             <div class="mb-3">
                                 <label class="form-label">Mô tả</label>
                                 <textarea class="form-control" rows="3" placeholder="Nhập mô tả ngắn gọn về tài liệu" 
@@ -49,7 +50,7 @@
 	                                value="<%= moTa != null ? moTa : "" %>" ></textarea>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Ngành học</label> required
+                                <label class="form-label">Ngành học</label>
                                 <select class="form-select" name = "txtMaNganh" required>
                                     <option value="">-- Chọn ngành học --</option>
 			                          <% for (Category cate : listCates) { %>
@@ -60,7 +61,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Loại tài liệu</label> required
+                                <label class="form-label">Loại tài liệu</label>
                                 <select class="form-select" name = "txtMaLoai" required>
                                     <option value="">-- Chọn loại tài liệu --</option>
 			                          <% for (Material mate : listMates) { %>
@@ -71,7 +72,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-							    <label class="form-label">Tải lên tài liệu</label> required
+							    <label class="form-label">Tải lên tài liệu</label>
 							    <input type="file" class="form-control" name="fileDocs" 
 							           accept="image/*,application/pdf,.doc,.docx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation" 
 							           required>

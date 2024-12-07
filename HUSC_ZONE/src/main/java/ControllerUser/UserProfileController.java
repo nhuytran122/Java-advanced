@@ -36,7 +36,7 @@ public class UserProfileController extends HttpServlet {
                 response.sendRedirect("login");
                 return;
             }
-            
+            User currentUser = (User)session.getAttribute("user");
             User user = null;
             Long userID = 0L;
             UserBo userBo = new UserBo();
@@ -48,7 +48,7 @@ public class UserProfileController extends HttpServlet {
             	isGuest = true;
             }
             else {
-            	user = (User)session.getAttribute("user");
+            	user = currentUser;
             }
             
             DetailsPostBo dtSttBo = new DetailsPostBo();
@@ -81,8 +81,13 @@ public class UserProfileController extends HttpServlet {
             RequestDispatcher rd = null;
             
             if(isGuest) {
-            	rd = request.getRequestDispatcher("User/user-profile.jsp");
-            	request.setAttribute("targetUser", user);
+            	if(user.getUserID() == currentUser.getUserID()) {
+            		rd = request.getRequestDispatcher("User/my-profile.jsp");
+            	}
+            	else {
+	            	rd = request.getRequestDispatcher("User/user-profile.jsp");
+	            	request.setAttribute("targetUser", user);
+            	}
             }
             else 
             	rd = request.getRequestDispatcher("User/my-profile.jsp");

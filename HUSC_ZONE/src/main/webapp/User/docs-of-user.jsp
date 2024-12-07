@@ -61,32 +61,64 @@
 					                    <span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
 					                </div>
 					            </div>
-					            <div class="card-footer">
-					                <a href="#" class="btn btn-outline-success btn-sm" style="float: left;">
-					                    <i class="bi bi-download"></i> Download
-					                </a>
-					                <% if (user != null && IDPoster == (user.getUserID())) { %>
-					                	<form method="post" action="../edit-docs">
-						                	<input type="hidden" name="docID" value="<%= docs.getDocumentID() %>">
-						                	<button type="submit" name="btnDeleteDoc" value="btnDeleteDoc" class="btn btn-outline-danger btn-sm" style="float: right; ">
-									            <i class="bi bi-trash"></i> Xóa
-									        </button>
-									        <button type="submit" name="btnUpdateDoc" value="btnUpdateDoc" class="btn btn-outline-warning btn-sm" style="float: right; margin-right: 5px;">
-									            <i class="bi bi-pencil"></i> Sửa
-									        </button>
-									    </form>
-								        
+					            <div class="card-footer d-flex justify-content-between align-items-center">
+								    <a href="#" class="btn btn-outline-success btn-sm">
+								        <i class="bi bi-download"></i> Download
+								    </a>
+								
+								    <% if (user != null && IDPoster == (user.getUserID())) { %>
+								        <div class="d-flex">
+								            <form method="post" action="../edit-docs" class="d-inline-flex">
+								                <input type="hidden" name="docID" value="<%= docs.getDocumentID() %>">
+								                <button type="submit" name="btnUpdateDoc" value="btnUpdateDoc" class="btn btn-outline-warning btn-sm mx-2">
+								                    <i class="bi bi-pencil"></i> Sửa
+								                </button>
+								
+								                <button 
+								                    type="button" 
+								                    class="btn btn-outline-danger btn-sm" 
+								                    data-bs-toggle="modal" 
+								                    data-bs-target="#deleteModal<%= docs.getDocumentID() %>" 
+								                    title="Xóa">
+								                    <i class="bi bi-trash"></i> Xóa
+								                </button>
+								            </form>
+								        </div>
 								    <% } else { %>
-								        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal" style="float: right;">
+								        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
 								            <i class="bi bi-flag"></i> Báo cáo
 								        </button>
 								    <% } %>
-					            </div>
+								</div>
+
 					        </div>
 					    </a>
 					</div>
+					
+					<div class="modal fade" id="deleteModal<%= docs.getDocumentID() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title text-danger" id="deleteModalLabel<%= docs.getDocumentID() %>">
+                                	<i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                	Xác nhận xóa Tài liệu
+                                </h5>
+                              </div>
+                              <div class="modal-body">
+                                Bạn có chắc chắn muốn xóa Tài liệu <b class="text-primary"><%= docs.getTitle() %></b> không?
+                              </div>
+                              <div class="modal-footer">
+                                <form method="post" action="../edit-docs">
+                                  <input type="hidden" name="docID" value="<%= docs.getDocumentID() %>">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                  <button type="submit" name="btnDeleteSach" value="<%= docs.getDocumentID() %>" class="btn btn-danger">Xóa</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 					<% } 
-						}%>
+				}%>
 				</div>
 				<% if (n > 0) { %>
 				    <nav>

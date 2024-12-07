@@ -58,11 +58,9 @@ public class EditDocsController extends HttpServlet {
 
             if (request.getParameter("btnDeleteDoc") != null) {
                 String filePath = docBo.getDocumentByID(docID).getFilePath();
-
                 docBo.deleteDocument(docID);
-
-                String appPath = request.getServletContext().getRealPath("")
-                        + File.separator + "docs" + File.separator + filePath;
+                
+                String appPath = request.getServletContext().getRealPath("") + filePath;
                 File fileDocs = new File(appPath);
                 System.out.println("Path of image: " + fileDocs.getAbsolutePath());
                 if (fileDocs.exists()) {
@@ -71,17 +69,9 @@ public class EditDocsController extends HttpServlet {
                         System.out.println("Không thể xóa file: " + filePath);
                     }
                 }
-                response.sendRedirect("home");
+                response.sendRedirect("docs-of-user");
                 return;
             }
-
-            if (request.getParameter("btnDetailSach") != null) {
-                request.setAttribute("book", docBo.getDocumentByID(docID));
-                RequestDispatcher rd = request.getRequestDispatcher("ADMIN/detail_book.jsp");
-                rd.forward(request, response);
-                return;
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
