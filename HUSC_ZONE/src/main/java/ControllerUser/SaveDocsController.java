@@ -51,8 +51,8 @@ public class SaveDocsController extends HttpServlet {
 			response.setContentType("text/html; charset=utf-8");
 			Long docID = null;
 			String tenDocs = "", moTa = "", fileName = "", 
-					maNganh = "", maLoai= "", oldFileName = "";
-			boolean isUpdate = false;
+					maNganh = "", maLoai= "", oldFileName = "", uniqueName = "";
+			boolean isUpdate = false, isUploaded = false;
             int done = 0;
             DocumentBo docBo = new DocumentBo();
             ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
@@ -78,7 +78,9 @@ public class SaveDocsController extends HttpServlet {
                         	break;
                     }
                 } else if (!fileItem.getName().isEmpty()) {
-                	fileName = System.currentTimeMillis() + "_" + fileItem.getName();
+                	uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
+                	fileName = "/docs/" + uniqueName; 
+                	isUploaded = true;
                 }
             }
 
@@ -86,12 +88,10 @@ public class SaveDocsController extends HttpServlet {
             if (isUpdate && docID != null) {
                 Document oldDoc = docBo.getDocumentByID(docID);
                 if (oldDoc != null) {
-                	oldFileName = oldDoc.getFilePath(); // Lấy file cũ để xử lý xóa
-                    tenDocs = tenDocs.isEmpty() ? oldDoc.getTitle() : tenDocs;
-                    moTa = (moTa.isEmpty()) ? oldDoc.getDesription() : moTa;
-                    maNganh = maNganh.isEmpty() ? String.valueOf(oldDoc.getCategoryID()) : maNganh;
-                    maLoai = maLoai.isEmpty() ? String.valueOf(oldDoc.getMaterialID()) : maLoai; // Ensure you update this field
-                    fileName = fileName.isEmpty() ? oldDoc.getFilePath() : fileName;
+                	if(isUploaded) 
+                		oldFileName = oldDoc.getFilePath(); // Lấy file cũ để xử lý xóa
+                	else 
+                		fileName = oldDoc.getFilePath(); // không upload thì lấy lại data cũ
                 }
             }
 
@@ -103,43 +103,46 @@ public class SaveDocsController extends HttpServlet {
                 done = docBo.addDocument(tenDocs, moTa, fileName, Long.parseLong(maNganh), 
                 		Long.parseLong(maLoai), user.getUserID());
             }
-
+            
+         // Chỉ xử lý upload file mới nếu add/update thành công
             if (done == 1) {
-                // Chỉ xử lý upload file mới nếu add/update thành công
-                for (FileItem fileItem : fileItems) {
-                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
-                    	String folderPath = request.getServletContext().getRealPath("") +  File.separator + "docs";
-                        File dir = new File(folderPath);
-                        if (!dir.exists()) 
-                        	dir.mkdir();
-
-                        // Upload file mới
-                        File file = new File(folderPath + File.separator + fileName);
-                        fileItem.write(file);
-
-                        // Xóa ảnh cũ nếu có
-                        if (!oldFileName.isEmpty() && isUpdate) {
-                            File oldFile = new File(folderPath + File.separator + oldFileName);
-                            if (oldFile.exists()) 
-                            	oldFile.delete();
-                        }
-                        break;
-                    }
-                }
-                response.sendRedirect("home");
+            	if(isUploaded) {
+	                for (FileItem fileItem : fileItems) {
+	                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
+	                    	String folderPath = request.getServletContext().getRealPath("") +  File.separator + "docs";
+	                        File dir = new File(folderPath);
+	                        if (!dir.exists()) 
+	                        	dir.mkdir();
+	
+	                        // Upload file mới
+	                        File file = new File(folderPath + File.separator + uniqueName);
+	                        fileItem.write(file);
+	
+	                        // Xóa file cũ nếu có khi update và có upload file mới
+	                        if (isUpdate && !oldFileName.isEmpty()) {
+	                        	String oldFilePath = request.getServletContext().getRealPath("") + File.separator + oldFileName;
+	                            File oldFile = new File(oldFilePath);
+	                            if (oldFile.exists()) 
+	                            	oldFile.delete();
+	                        }
+	                        break;
+	                    }
+	                }
+            	}
+            	response.sendRedirect("docs-of-user");
                 return;
             }
 
             // Nếu add thất bại
-            request.setAttribute("isInvalid", true);
-            request.setAttribute("docID", docID);
-            request.setAttribute("tenDocs", tenDocs);
-            request.setAttribute("moTa", moTa);
-            request.setAttribute("maNganh", maNganh);
-            request.setAttribute("maLoai", maLoai);
-            request.setAttribute("fileName", fileName);
+//            request.setAttribute("isInvalid", true);
+//            request.setAttribute("docID", docID);
+//            request.setAttribute("tenDocs", tenDocs);
+//            request.setAttribute("moTa", moTa);
+//            request.setAttribute("maNganh", maNganh);
+//            request.setAttribute("maLoai", maLoai);
+//            request.setAttribute("fileName", fileName);
 
-            RequestDispatcher rd = request.getRequestDispatcher("ADMIN/add_docs.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("User/add-docs.jsp");
             rd.forward(request, response);
 
         } catch (Exception e) {

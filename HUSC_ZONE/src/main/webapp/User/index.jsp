@@ -59,7 +59,6 @@
 					                    <span class="badge bg-info text-white"><%= docs.getCategoryName() %></span>
 					                    <span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
 					                </div>
-					                <p class="text-muted small mt-2"><%= docs.getDesription() %></p>
 					            </div>
 					            <div class="card-footer">
 					                <a href="#" class="btn btn-outline-success btn-sm" style="float: left;">

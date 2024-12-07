@@ -31,10 +31,17 @@ public class ShowDocsOfUserController extends HttpServlet {
             response.setCharacterEncoding("utf-8");
             HttpSession session = request.getSession();
             
+            User currentUser = null;
+            Long posterID = 0L;
             if (session.getAttribute("user") == null) {
                 response.sendRedirect("login");
                 return;
             }
+            else {
+            	currentUser = (User)session.getAttribute("user");
+            	posterID = currentUser.getUserID();
+            }
+            
             request.setAttribute("listCates", MethodCommon.getListCates());
             request.setAttribute("listMates", MethodCommon.getListMates());
 
@@ -42,20 +49,19 @@ public class ShowDocsOfUserController extends HttpServlet {
             UserBo userBo = new UserBo();
             
             int page = 1;
-            Long userID = 0L;
             int pageSize = 9;
 
             if (request.getParameter("page") != null) {
                 page = Integer.parseInt(request.getParameter("page"));
             }
             if (request.getParameter("posterID") != null) {
-            	userID = Long.parseLong(request.getParameter("posterID"));
+            	posterID = Long.parseLong(request.getParameter("posterID"));
             }
             
-            ArrayList<DetailsDoc> ds = dtdocBo.getDocsByUserIDPagination(page, pageSize, userID);
-            User poster = userBo.getUserByID(userID);
+            ArrayList<DetailsDoc> ds = dtdocBo.getDocsByUserIDPagination(page, pageSize, posterID);
+            User poster = userBo.getUserByID(posterID);
             		
-            int rowCount = dtdocBo.getCountDocsByUserID(userID);
+            int rowCount = dtdocBo.getCountDocsByUserID(posterID);
             
             int pageCount = rowCount / pageSize;
             if (rowCount % pageSize > 0) {

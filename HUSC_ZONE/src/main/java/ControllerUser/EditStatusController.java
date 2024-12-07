@@ -153,7 +153,7 @@ public class EditStatusController extends HttpServlet {
                         System.out.println("Không thể xóa file: " + filePath);
                     }
                 }
-                response.sendRedirect("my-profile");
+                response.sendRedirect("user-profile");
                 return;
             }
 

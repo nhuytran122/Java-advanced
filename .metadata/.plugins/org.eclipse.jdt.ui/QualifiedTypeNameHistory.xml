@@ -58,6 +58,6 @@
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
+    <fullyQualifiedTypeName name="UserModal.UserBo"/>
 </qualifiedTypeNameHistroy>

@@ -52,7 +52,7 @@
 						<% } else { %>
 						        <img src="<%= request.getContextPath() %><%= user.getAvatar() %>" alt="Avatar" class="rounded-circle me-2" style="width: 30px; height: 30px">
 						<% } %>
-                        <span>Hi, Nhu Y</span>
+                        <span>Hi, <%= user.getName() %></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li class="text-center p-3">
@@ -65,7 +65,7 @@
                             <p class="text-muted small"> <%= user.getEmail() %></p>
                         </li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="../my-profile">
+                        <li><a class="dropdown-item" href="../user-profile">
                             <i class="bi bi-person me-2"></i>Trang cá nhân
                         </a></li>
                         <li><a class="dropdown-item text-danger" href="../logout">

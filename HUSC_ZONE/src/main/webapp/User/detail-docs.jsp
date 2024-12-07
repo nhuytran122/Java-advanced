@@ -52,7 +52,10 @@
                             <p class="card-text"><%=dtlDocs.getDesription() %></p>
                             <p><strong>Ngành học:</strong> <%= dtlDocs.getCategoryName() %></p>
                             <p><strong>Loại tài liệu:</strong> <%= dtlDocs.getMaterialName() %></p>
-                            <p><strong>Tải lên bởi:</strong> <%= dtlDocs.getName() %></p>
+                            <p><strong>Tải lên bởi:</strong> 
+                            						<a href="../user-profile?userId=<%= dtlDocs.getUploadedBy() %>" class="text-decoration-none">
+									                    <%= dtlDocs.getName() %>
+									                </a></p>
                             <p><strong>Ngày tải lên:</strong> <%= formattedDate %></p>
 
                             <div class="d-flex align-items-center">

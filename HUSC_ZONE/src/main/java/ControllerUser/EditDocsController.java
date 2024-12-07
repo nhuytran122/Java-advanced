@@ -51,7 +51,7 @@ public class EditDocsController extends HttpServlet {
 
             if (request.getParameter("btnUpdateDoc") != null) {
                 request.setAttribute("doc", docBo.getDocumentByID(docID));
-                RequestDispatcher rd = request.getRequestDispatcher("User/update_docs.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("User/update-docs.jsp");
                 rd.forward(request, response);
                 return;
             }

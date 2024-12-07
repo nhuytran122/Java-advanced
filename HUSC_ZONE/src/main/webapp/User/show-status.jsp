@@ -68,7 +68,7 @@
 	                            </div>
 	                            <div class="modal-body">
 	                                <div class="mb-3">
-	                                    <textarea class="form-control" rows="5" placeholder="Như Ý ơi, bạn muốn chia sẻ gì nào?"
+	                                    <textarea class="form-control" rows="5" placeholder="<%= user.getName() %> ơi, bạn muốn chia sẻ gì nào?"
 		                                    name="txtContent" required></textarea>
 	                                </div>
 	                                <div class="card mb-3" style="width: 465px; margin: auto; border: 1px solid #ddd; border-radius: 8px;">
@@ -109,13 +109,22 @@
                 <div class="card no-hover mb-3">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { %>
-						        <img src="../images/default-avt.jpg" style="width: 50px; height: 50px;" alt="Default" class="rounded-circle me-3">
-						    <% } else { %>
-					        	<img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 50px; height: 50px" alt="Avatar" class="rounded-circle me-3">
-					    	<% } %>
+                             <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { 
+                             %>
+					            <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
+					                <img src="../images/default-avt.jpg" style="width: 50px; height: 50px;" alt="Default" class="rounded-circle me-3">
+					            </a>
+					        <% } else { %>
+					            <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
+					                <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 50px; height: 50px" alt="Avatar" class="rounded-circle me-3">
+					            </a>
+					        <% } %>
                             <div>
-                                <h6 class="mb-0"><%= stt.getName() %></h6>
+                                <h6 class="mb-0">
+					                <a href="../user-profile?userId=<%= stt.getUploadedBy() %>" class="text-decoration-none">
+					                    <%= stt.getName() %>
+					                </a>
+					            </h6>
                                 <small class="text-muted"><%=  MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
                             </div>
                         </div>

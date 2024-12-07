@@ -115,7 +115,7 @@ public class SaveProfileController extends HttpServlet {
 						}
 					}
 					session.setAttribute("user", userBo.getUserByID(user.getUserID()));
-					response.sendRedirect("my-profile");
+					response.sendRedirect("user-profile");
 					return;
 				}
 			}

@@ -84,7 +84,7 @@
         
         
                                     <div class="text-center">
-		                                <a href="../my-profile" class="btn btn-cancel-edit-inf me-2">
+		                                <a href="../user-profile" class="btn btn-cancel-edit-inf me-2">
 		                                    Hủy
 		                                </a>
 		                                <button type="submit" name="btn-save-pw" class="btn btn-save-edit-inf">

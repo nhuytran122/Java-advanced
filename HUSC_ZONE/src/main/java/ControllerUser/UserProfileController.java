@@ -12,16 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import UserModal.User;
+import UserModal.UserBo;
 import V_DetailsDocModal.DetailsDoc;
 import V_DetailsDocModal.DetailsDocBo;
 import V_DetailsPostModal.DetailsPost;
 import V_DetailsPostModal.DetailsPostBo;
 
-@WebServlet("/my-profile")
-public class MyProfileController extends HttpServlet {
+@WebServlet("/user-profile")
+public class UserProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MyProfileController() {
+    public UserProfileController() {
         super();
     }
 
@@ -36,7 +37,20 @@ public class MyProfileController extends HttpServlet {
                 return;
             }
             
-            User user = (User)session.getAttribute("user");
+            User user = null;
+            Long userID = 0L;
+            UserBo userBo = new UserBo();
+            boolean isGuest = false;
+            
+            if(request.getParameter("userId") != null) {
+            	userID = Long.parseLong(request.getParameter("userId"));
+            	user = userBo.getUserByID(userID);
+            	isGuest = true;
+            }
+            else {
+            	user = (User)session.getAttribute("user");
+            }
+            
             DetailsPostBo dtSttBo = new DetailsPostBo();
             DetailsDocBo dtDocBo = new DetailsDocBo();
             
@@ -63,8 +77,15 @@ public class MyProfileController extends HttpServlet {
             request.setAttribute("currentPagePosts", currentPagePosts);
 
             request.setAttribute("dsDocs", dsDocs);
-
-            RequestDispatcher rd = request.getRequestDispatcher("User/my-profile.jsp");
+            
+            RequestDispatcher rd = null;
+            
+            if(isGuest) {
+            	rd = request.getRequestDispatcher("User/user-profile.jsp");
+            	request.setAttribute("targetUser", user);
+            }
+            else 
+            	rd = request.getRequestDispatcher("User/my-profile.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
