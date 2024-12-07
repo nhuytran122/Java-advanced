@@ -68,8 +68,6 @@ public class IndexController extends HttpServlet {
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
             request.setAttribute("searchKeyword", searchValue);
-            request.setAttribute("cateID", cateID);
-            request.setAttribute("mateID", mateID);
 
             RequestDispatcher rd = request.getRequestDispatcher("User/index.jsp");
             rd.forward(request, response);

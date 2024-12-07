@@ -31,6 +31,10 @@ public class Constants {
     public static final Long DUPLICATE_PASSWORD = -1L;
     public static final Long CHANGE_PASSWORD_SUCCESS = 1L;
     
-    public static final String IMG_POST_FOLDER_PATH = "images/status_images";
-    public static final String IMG_AVT_USER_FOLDER_PATH = "images/avt_users";
+    public static final String IMG_POST_FOLDER_PATH = "/images/status_images/";
+    public static final String IMG_AVT_USER_FOLDER_PATH = "/images/avt_users/";
+    public static final String DOCS_FOLDER_PATH = "/docs/";
+    
+    public static final Long SEARCH_USER = 1L;
+    public static final Long SEARCH_POST = 2L;
 }

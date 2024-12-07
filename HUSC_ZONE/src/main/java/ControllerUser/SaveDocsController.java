@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import CommonModal.Constants;
 import CommonModal.MethodCommon;
 import DocumentModal.Document;
 import DocumentModal.DocumentBo;
@@ -79,7 +80,7 @@ public class SaveDocsController extends HttpServlet {
                     }
                 } else if (!fileItem.getName().isEmpty()) {
                 	uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
-                	fileName = "/docs/" + uniqueName; 
+                	fileName = Constants.DOCS_FOLDER_PATH + uniqueName; 
                 	isUploaded = true;
                 }
             }
@@ -109,7 +110,7 @@ public class SaveDocsController extends HttpServlet {
             	if(isUploaded) {
 	                for (FileItem fileItem : fileItems) {
 	                    if (!fileItem.isFormField() && !fileItem.getName().equals("")) {
-	                    	String folderPath = request.getServletContext().getRealPath("") +  File.separator + "docs";
+	                    	String folderPath = request.getServletContext().getRealPath("") + Constants.DOCS_FOLDER_PATH;
 	                        File dir = new File(folderPath);
 	                        if (!dir.exists()) 
 	                        	dir.mkdir();
@@ -120,7 +121,7 @@ public class SaveDocsController extends HttpServlet {
 	
 	                        // Xóa file cũ nếu có khi update và có upload file mới
 	                        if (isUpdate && !oldFileName.isEmpty()) {
-	                        	String oldFilePath = request.getServletContext().getRealPath("") + File.separator + oldFileName;
+	                        	String oldFilePath = request.getServletContext().getRealPath("") + oldFileName;
 	                            File oldFile = new File(oldFilePath);
 	                            if (oldFile.exists()) 
 	                            	oldFile.delete();

@@ -21,7 +21,6 @@
     <fullyQualifiedTypeName name="CategoryModal.Category"/>
     <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
     <fullyQualifiedTypeName name="MaterialModal.Material"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
@@ -45,7 +44,6 @@
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
     <fullyQualifiedTypeName name="CommonModal.FileUploadUtil"/>
     <fullyQualifiedTypeName name="java.nio.file.Paths"/>
-    <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="StatusPostModal.StatusPostBo"/>
     <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
@@ -58,6 +56,8 @@
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="UserModal.UserBo"/>
 </qualifiedTypeNameHistroy>

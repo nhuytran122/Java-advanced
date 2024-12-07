@@ -1,6 +1,7 @@
 <%@page import="CommonModal.MethodCommon"%>
 <%@page import="V_DetailsPostModal.DetailsPost"%>
 <%@page import="StatusPostModal.StatusPost"%>
+<%@page import="UserModal.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,28 +13,28 @@
     <%@ include file="layout/import.jsp" %>
     
     <style>
-		.btn-like,
-		.btn-comment {
-		    color: #6c757d; 
-		    border-color: #6c757d;
-		}
-			
-		.btn-comment:hover {
-		    background-color: #74b9ff; 
-		}
-		    
-		.btn-like:hover {
-		    background-color: #ff4d4d;     
-		}
+        .btn-like,
+        .btn-comment {
+            color: #6c757d; 
+            border-color: #6c757d;
+        }
+            
+        .btn-comment:hover {
+            background-color: #74b9ff; 
+        }
+            
+        .btn-like:hover {
+            background-color: #ff4d4d;     
+        }
     </style>
     
 </head>
 <%
-    ArrayList<DetailsPost> ds = (ArrayList<DetailsPost>) request.getAttribute("ds");
+    ArrayList<DetailsPost> dsPosts = (ArrayList<DetailsPost>) request.getAttribute("dsPosts");
+    ArrayList<User> dsUsers = (ArrayList<User>) request.getAttribute("dsUsers");
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
     String searchKeyword = request.getParameter("txtSearch");
-    
 %>
 <body class="bg-light">
     <%@ include file="layout/navbar_for_Post.jsp" %>
@@ -93,48 +94,40 @@
 	                    </form>
                     </div>
                 </div>
-                
+
                 <% 
-                          int n = ds.size();
-                          if (n == 0) {
-                        %>
-                            <div class="alert alert-warning">
-							  Không tìm thấy bài đăng nào.
-							</div>
-                        <% 
-                          } else { 
-                            for (int i = 0; i < n; i++) {
-                              DetailsPost stt = ds.get(i);
-                        %>
-                <div class="card no-hover mb-3">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                             <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { 
-                             %>
-					            <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
-					                <img src="../images/default-avt.jpg" style="width: 50px; height: 50px;" alt="Default" class="rounded-circle me-3">
-					            </a>
-					        <% } else { %>
-					            <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
-					                <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 50px; height: 50px" alt="Avatar" class="rounded-circle me-3">
-					            </a>
-					        <% } %>
+                    if (dsPosts != null && !dsPosts.isEmpty()) {
+                        for (DetailsPost stt : dsPosts) {
+                %>
+                    <div class="card no-hover mb-3">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                 <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { 
+                                 %>
+                                    <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
+                                        <img src="../images/default-avt.jpg" style="width: 60px; height: 60px;" alt="Default" class="rounded-circle me-3">
+                                    </a>
+                                <% } else { %>
+                                    <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
+                                        <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 60px; height: 60px" alt="Avatar" class="rounded-circle me-3">
+                                    </a>
+                                <% } %>
                             <div>
                                 <h6 class="mb-0">
-					                <a href="../user-profile?userId=<%= stt.getUploadedBy() %>" class="text-decoration-none">
-					                    <%= stt.getName() %>
-					                </a>
-					            </h6>
-                                <small class="text-muted"><%=  MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
+                                    <a href="../user-profile?userId=<%= stt.getUploadedBy() %>" class="text-decoration-none">
+                                        <%= stt.getName() %>
+                                    </a>
+                                </h6>
+                                <small class="text-muted"><%= MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
                             </div>
                         </div>
                         <p>
-                        	<%= stt.getPostContent() %>
+                            <%= stt.getPostContent() %>
                         </p>
                         <div>
                             <% if (stt.getImagePath() != null) { %>
-						    	<img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 300px;">
-						    <% } %>
+                                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 300px;">
+                            <% } %>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
@@ -180,8 +173,54 @@
                         </div>
                     </div>
                 </div>
-                <% } 
-						}%>
+                <% 
+                        }
+                    } else if (dsUsers != null && !dsUsers.isEmpty()) {
+                        for (User u : dsUsers) {
+                %>
+                    <div class="card no-hover mb-3">
+					    <div class="card-body">
+					        <div class="d-flex align-items-center mb-3">
+					            <% if (u.getAvatar() == null || u.getAvatar().isBlank()) { 
+					             %>
+					                <a href="../user-profile?userId=<%= u.getUserID() %>">
+					                    <img src="../images/default-avt.jpg" style="width: 60px; height: 60px;" alt="Default" class="rounded-circle me-3">
+					                </a>
+					            <% } else { %>
+					                <a href="../user-profile?userId=<%= u.getUserID() %>">
+					                    <img src="<%= request.getContextPath() %><%= u.getAvatar() %>" style="width: 60px; height: 60px" alt="Avatar" class="rounded-circle me-3">
+					                </a>
+					            <% } %>
+					            <div>
+					                <a href="../user-profile?userId=<%= u.getUserID() %>" class="text-dark fs-5 text-decoration-none" style="font-weight: bold;">
+					                    <%= u.getName() %>
+					                </a>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+
+                <% 
+                        }
+                    } else {
+                        if (searchKeyword != null && !searchKeyword.isEmpty()) {
+                            if (dsPosts == null || dsPosts.isEmpty()) {
+                                %>
+                                <div class="alert alert-warning">
+                                    Không tìm thấy bài đăng nào với từ khóa <b>"<%= searchKeyword %>".</b>
+                                </div>
+                                <%
+                            }
+                            else {
+                                %>
+                                <div class="alert alert-warning">
+                                    Không tìm thấy người dùng nào với từ khóa <b>"<%= searchKeyword %>".</b>
+                                </div>
+                                <%
+                            }
+                        } 
+                    }
+                %>
             </main>
         </div>
     </div>
@@ -217,5 +256,5 @@
                 button.innerHTML = '<i class="bi bi-chat"></i> Bình luận';
             }
         }
-    </script>
+</script>
 </html>

@@ -1,3 +1,4 @@
+<%@page import="CommonModal.Constants"%>
 <%@page import="UserModal.User"%>
 <%@page import="MaterialModal.Material"%>
 <%@page import="CategoryModal.Category"%>
@@ -6,6 +7,7 @@
     pageEncoding="UTF-8"%>
 <%
     User user = (User)session.getAttribute("user");
+	Long typeSearchID = request.getParameter("typeSearchID") != null ? Long.parseLong(request.getParameter("typeSearchID")) : 0L;
 %>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary-custom py-2">
@@ -16,8 +18,15 @@
         <div class="collapse navbar-collapse">
             <form class="d-flex mx-auto align-items-center"
 				action="../status-post" method="post">
+				<select name="typeSearchID" class="form-select form-select-sm py-2 me-3" style="margin-left: 220px; width: 200px;">
+				    <option value="<%= Constants.SEARCH_POST %>" 
+				        <%= typeSearchID == Constants.SEARCH_POST ? "selected" : "" %>>Bài đăng</option>
+				    <option value="<%= Constants.SEARCH_USER %>" 
+				        <%= typeSearchID == Constants.SEARCH_USER ? "selected" : "" %>>Người dùng</option>
+				</select>
+
                 <input class="form-control form-control-sm me-2 py-2" 
-                    style="width: 400px; margin-left: 300px;"  
+                    style="width: 300px;"  
                     placeholder="Tìm kiếm bài đăng, người dùng..." 
                     autofocus
 					name="txtSearch"

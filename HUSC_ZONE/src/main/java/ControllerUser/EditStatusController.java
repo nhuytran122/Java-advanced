@@ -77,7 +77,7 @@ public class EditStatusController extends HttpServlet {
                     }
                 } else if (!fileItem.getName().isEmpty()) {
                 	uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
-                	imgName = "../images/status_images/" + uniqueName;
+                	imgName = Constants.IMG_POST_FOLDER_PATH + uniqueName;
                 	isUploaded = true;
                 }
             }

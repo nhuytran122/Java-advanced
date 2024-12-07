@@ -72,7 +72,7 @@ public class SaveProfileController extends HttpServlet {
 					}
 				} else if (!fileItem.getName().isEmpty()) {
 					uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
-                    imgName = "/images/avt_users/" + uniqueName;  // Đảm bảo là đường dẫn URL tương đối
+                    imgName = Constants.IMG_AVT_USER_FOLDER_PATH + uniqueName;  // Đảm bảo là đường dẫn URL tương đối
                     isUploaded = true;
 				}
 			}

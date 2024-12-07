@@ -14,6 +14,10 @@ public class UserBo {
 		return userDao.getListUsers();
 	}
 	
+	public ArrayList<User> getListUserByCondition(int page, int pageSize, String searchValue) throws Exception {
+		return userDao.getListUserByCondition(page, pageSize, searchValue);
+	}
+	
 	public User getUserByID(Long userID) throws Exception {
 		return userDao.getUserByID(userID);
 	}
@@ -42,6 +46,10 @@ public class UserBo {
 	
 	public int countUsers() throws Exception {
 		return userDao.countUsers();
+	}
+	
+	public int countUsersByCondition(String searchValue) throws Exception {
+		return userDao.countUsersByCondition(searchValue);
 	}
 	
 	public int updateUser(Long userID, String name, String gender, 

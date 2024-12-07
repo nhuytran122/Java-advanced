@@ -8,10 +8,11 @@
     ArrayList<Category> listCates = (ArrayList<Category>)request.getAttribute("listCates");
     ArrayList<Material> listMates = (ArrayList<Material>)request.getAttribute("listMates");
     
-    Long cateID = (request.getAttribute("cateID") != null) ? (Long)request.getAttribute("cateID") : 0L;
-    Long mateID = (request.getAttribute("mateID") != null) ? (Long)request.getAttribute("mateID") : 0L;
+    Long cateID = request.getParameter("cateID") != null ? Long.parseLong(request.getParameter("cateID")) : 0L;
+    Long mateID = request.getParameter("mateID") != null ? Long.parseLong(request.getParameter("mateID")) : 0L;
     
     User user = (User)session.getAttribute("user");
+    String keyWord = request.getParameter("txtSearch");
 %>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary-custom py-2">
@@ -58,8 +59,8 @@
                     placeholder="Tìm kiếm tài liệu..." 
                     autofocus
                     name="txtSearch"
-	                value="<%= request.getParameter("txtSearch") != null 
-	                	? request.getParameter("txtSearch") : "" %>">
+	                value="<%= keyWord != null 
+	                	? keyWord : "" %>">
 
                 <button type="submit" name="btn-search" value = "search" class="btn btn-primary-custom btn-sm py-2">
                     <i class="bi bi-search"></i>

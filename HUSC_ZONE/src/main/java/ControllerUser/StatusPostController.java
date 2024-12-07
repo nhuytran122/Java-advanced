@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import CommonModal.Constants;
+import UserModal.User;
+import UserModal.UserBo;
 import V_DetailsPostModal.DetailsPost;
 import V_DetailsPostModal.DetailsPostBo;
 
@@ -33,10 +36,12 @@ public class StatusPostController extends HttpServlet {
                 return;
             }
             
-            DetailsPostBo sttBo = new DetailsPostBo();
             int page = 1;
             int pageSize = 9;
             String searchValue = "";
+            int rowCount = 0;
+            
+            Long typeSearchID = Constants.SEARCH_POST;
 
             if (request.getParameter("page") != null) {
                 page = Integer.parseInt(request.getParameter("page"));
@@ -45,17 +50,31 @@ public class StatusPostController extends HttpServlet {
             if (request.getParameter("txtSearch") != null) {
                 searchValue = request.getParameter("txtSearch");
             }
-
-            ArrayList<DetailsPost> ds = sttBo.getPostsByConditions(page, pageSize, searchValue);
-
-            int rowCount = sttBo.getCountPostsByConditions(searchValue);
             
+            if (request.getParameter("typeSearchID") != null) {
+            	typeSearchID = Long.parseLong(request.getParameter("typeSearchID"));
+            }
+            
+            DetailsPostBo sttBo = new DetailsPostBo();
+            UserBo userBo = new UserBo();
+            
+            ArrayList<DetailsPost> dsPosts = null;
+            ArrayList<User> dsUsers = null;
+            if(typeSearchID == Constants.SEARCH_POST) {
+            	dsPosts = sttBo.getPostsByConditions(page, pageSize, searchValue);
+            	rowCount = sttBo.getCountPostsByConditions(searchValue);
+            }
+            else {
+            	dsUsers = userBo.getListUserByCondition(page, pageSize, searchValue);
+            	rowCount = userBo.countUsersByCondition(searchValue);
+            }
             int pageCount = rowCount / pageSize;
             if (rowCount % pageSize > 0) {
                 pageCount += 1;
             }
-
-            request.setAttribute("ds", ds);
+            
+            request.setAttribute("dsPosts", dsPosts);
+            request.setAttribute("dsUsers", dsUsers);
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
             request.setAttribute("searchKeyword", searchValue);

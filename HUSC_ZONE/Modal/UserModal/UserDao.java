@@ -26,6 +26,37 @@ public class UserDao {
         return ds;
     }
 	
+	public ArrayList<User> getListUserByCondition(int page, int pageSize, String searchValue) throws Exception {
+	    ArrayList<User> ds = new ArrayList<User>();
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+
+	    String sql = "SELECT * " +
+	            "FROM tbl_Users " +
+	            "WHERE Name LIKE ? OR Email = ? " +
+	            "ORDER BY CreatedAt DESC " +
+	            "OFFSET (? - 1) * ? ROWS " +
+	            "FETCH NEXT ? ROWS ONLY";
+
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, "%" + searchValue + "%");
+	    cmd.setString(2, searchValue);
+	    cmd.setInt(3, page);
+	    cmd.setInt(4, pageSize);
+	    cmd.setInt(5, pageSize);
+
+	    ResultSet rs = cmd.executeQuery();
+	    while (rs.next()) {
+	        ds.add(mapUser(rs));
+	    }
+
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+
+	    return ds;
+	}
+	
 	public User getUserByID(Long userID) throws Exception {
         User user = null;
         KetNoi kn = new KetNoi();
@@ -106,6 +137,33 @@ public class UserDao {
 	    kn.cn.close();
 	    return count;
 	}
+	
+	public int countUsersByCondition(String searchValue) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+
+	    String sql = "SELECT COUNT(UserID) " +
+	            "FROM tbl_Users " +
+	            "WHERE Name LIKE ? OR Email = ?";
+
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	    cmd.setString(1, "%" + searchValue + "%");
+	    cmd.setString(2, searchValue);
+
+	    ResultSet rs = cmd.executeQuery();
+
+	    int count = 0;
+	    if (rs.next()) {
+	        count = rs.getInt(1);
+	    }
+
+	    rs.close();
+	    cmd.close();
+	    kn.cn.close();
+
+	    return count;
+	}
+
 	
 	public int updateUser(Long userID, String name, String gender, 
 			String phone, boolean status, Long roleID, String avatar) throws Exception {
