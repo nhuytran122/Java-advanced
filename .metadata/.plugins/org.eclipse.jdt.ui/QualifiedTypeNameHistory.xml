@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="ConstantModal.Constants"/>
-    <fullyQualifiedTypeName name="UserModal.UserDao"/>
-    <fullyQualifiedTypeName name="at.favre.lib.crypto.bcrypt.BCrypt"/>
-    <fullyQualifiedTypeName name="org.mindrot.jbcrypt.BCrypt"/>
     <fullyQualifiedTypeName name="CategoryModal.CategoryDao"/>
     <fullyQualifiedTypeName name="MaterialModal.MaterialDao"/>
     <fullyQualifiedTypeName name="DocumentModal.DocumentDao"/>
@@ -25,7 +21,6 @@
     <fullyQualifiedTypeName name="CategoryModal.Category"/>
     <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
     <fullyQualifiedTypeName name="MaterialModal.Material"/>
-    <fullyQualifiedTypeName name="DocumentModal.Document"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
@@ -33,17 +28,13 @@
     <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDocDao"/>
     <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-    <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDocBo"/>
-    <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDoc"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.servlet.ServletFileUpload"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.disk.DiskFileItemFactory"/>
     <fullyQualifiedTypeName name="StatusPostModal.StatusPost"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.text.ParseException"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="hoadonmodal.hoadon"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
@@ -53,11 +44,20 @@
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
     <fullyQualifiedTypeName name="CommonModal.FileUploadUtil"/>
-    <fullyQualifiedTypeName name="UserModal.User"/>
-    <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="java.nio.file.Paths"/>
     <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="StatusPostModal.StatusPostBo"/>
     <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
+    <fullyQualifiedTypeName name="DocumentModal.Document"/>
+    <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDocBo"/>
+    <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDoc"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostDao"/>
+    <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDocBo"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="UserModal.UserBo"/>
+    <fullyQualifiedTypeName name="UserModal.User"/>
 </qualifiedTypeNameHistroy>

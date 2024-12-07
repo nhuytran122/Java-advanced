@@ -50,6 +50,30 @@ public class DetailsDocDao {
 
 		return ds;
 	}
+	
+	public int getCountDocsByUserID(Long userID) throws Exception {
+		int count = 0;
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT COUNT(*) " +
+				"FROM V_Details_Docs " +
+				"WHERE (UploadedBy = ? ) ";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, userID);
+
+		ResultSet rs = cmd.executeQuery();
+		if (rs.next()) {
+			count = rs.getInt(1);
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return count;
+	}
 
 	public int getCountDocsByConditions(String searchValue, Long categoryID, Long materialID) throws Exception {
 		int count = 0;
@@ -84,7 +108,7 @@ public class DetailsDocDao {
 		return count;
 	}
 
-	public ArrayList<DetailsDoc> getDocsByUserID(int page, int pageSize, Long userID) throws Exception {
+	public ArrayList<DetailsDoc> getDocsByUserIDPagination(int page, int pageSize, Long userID) throws Exception {
 		ArrayList<DetailsDoc> ds = new ArrayList<DetailsDoc>();
 		KetNoi kn = new KetNoi();
 		kn.ketnoi();
@@ -140,6 +164,31 @@ public class DetailsDocDao {
 		cmd.setInt(7, page);
 		cmd.setInt(8, pageSize);
 		cmd.setInt(9, pageSize);
+
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			ds.add(mapDetailsDoc(rs));
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return ds;
+	}
+	
+	public ArrayList<DetailsDoc> getListDocsByUserID(Long userID) throws Exception {
+		ArrayList<DetailsDoc> ds = new ArrayList<DetailsDoc>();
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT * " +
+				"FROM V_Details_Docs " +
+				"WHERE UploadedBy = ? " +
+				"ORDER BY CreatedAt DESC ";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, userID);
 
 		ResultSet rs = cmd.executeQuery();
 		while (rs.next()) {

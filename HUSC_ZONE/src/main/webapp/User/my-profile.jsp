@@ -1,3 +1,4 @@
+<%@page import="V_DetailsDocModal.DetailsDoc"%>
 <%@page import="CommonModal.MethodCommon"%>
 <%@page import="V_DetailsPostModal.DetailsPost"%>
 <%@page import="DocumentModal.Document"%>
@@ -19,9 +20,7 @@
     int pageCountPosts = (Integer) request.getAttribute("pageCountPosts");
     int currentPagePosts = (Integer) request.getAttribute("currentPagePosts");
     
-    ArrayList<Document> dsDocs = (ArrayList<Document>) request.getAttribute("dsDocs");
-    int pageCountDocs = (Integer) request.getAttribute("pageCountDocs");
-    int currentPageDocs = (Integer) request.getAttribute("currentPageDocs");
+    ArrayList<DetailsDoc> dsDocs = (ArrayList<DetailsDoc>) request.getAttribute("dsDocs");
 %>
     
     <%@ include file="layout/navbar_for_Post.jsp" %>
@@ -147,18 +146,28 @@
 
                     <!-- Tab: Tài liệu của tôi -->
                     <div class="tab-pane fade" id="my-docs" role="tabpanel">
-                        <div class="card no-hover">
-                            <div class="card-body">
-                                <h5 class="card-title">Tài liệu của tôi</h5>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-file-earmark-text me-2"></i> Slide Lập trình Web</li>
-                                    <li><i class="bi bi-file-earmark-text me-2"></i> Bài tập Cơ sở dữ liệu</li>
-                                    <li><i class="bi bi-file-earmark-text me-2"></i> Đồ án Hệ thống thông tin</li>
-                                </ul>
-                                <a href="#" class="btn btn-primary-custom btn-sm">Xem tất cả</a>
-                            </div>
-                        </div>
-                    </div> 
+					    <div class="card no-hover">
+					        <div class="card-body">
+					            <h5 class="card-title">Tài liệu của tôi</h5>
+					            <% if (dsDocs.size() == 0) { %>
+					                <div class="alert alert-warning" role="alert">
+					                    Bạn chưa có tài liệu nào.
+					                </div>
+					            <% } else { %>
+					                <ul class="list-unstyled">
+					                    <% for (DetailsDoc doc : dsDocs) { %>
+					                        <li>
+					                            <a href="../details?docsID=<%= doc.getDocumentID() %>" class="text-dark text-decoration-none fw-medium">
+					                                <i class="bi bi-file-earmark-text me-2"></i> <%= doc.getTitle() %>
+					                            </a>
+					                        </li>
+					                    <% } %>
+					                </ul>
+					                <a href="../docs-of-user?posterID=<%= user.getUserID() %>" class="btn btn-primary-custom btn-sm">Xem tất cả</a>
+					            <% } %>
+					        </div>
+					    </div>
+					</div>
                     
                 </div>
             </div>

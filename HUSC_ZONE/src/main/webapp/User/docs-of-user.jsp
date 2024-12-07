@@ -16,7 +16,8 @@
     ArrayList<DetailsDoc> ds = (ArrayList<DetailsDoc>) request.getAttribute("ds");
     int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
-    String searchKeyword = request.getParameter("txtSearch");
+    String namePoster = (String) request.getAttribute("namePoster");
+    Long IDPoster = (long)request.getAttribute("IDPoster");
 %>
   
 <body class="bg-light">
@@ -28,7 +29,7 @@
             <%@ include file="layout/sidebar.jsp" %>
 	        <main class="col-md-9 my-4">
 		        <div class="d-flex justify-content-between align-items-center mb-3">
-	            	<h4 class="fw-bold">Danh sách Tài liệu</h4>
+	            	<h4 class="fw-bold">Danh sách Tài liệu của <%= namePoster %></h4>
 	            	<form method="post" action="../edit-docs">
 		                 <button type="submit" name="btnAddDoc" value="btnAddDoc" class="btn btn-success">
 		                 	<i class="bi bi-plus-circle"></i> Tải lên tài liệu
@@ -65,7 +66,7 @@
 					                <a href="#" class="btn btn-outline-success btn-sm" style="float: left;">
 					                    <i class="bi bi-download"></i> Download
 					                </a>
-					                <% if (user != null && docs.getUploadedBy() == (user.getUserID())) { %>
+					                <% if (user != null && IDPoster == (user.getUserID())) { %>
 					                	<form method="post" action="../edit-docs">
 						                	<input type="hidden" name="docID" value="<%= docs.getDocumentID() %>">
 						                	<button type="submit" name="btnDeleteDoc" value="btnDeleteDoc" class="btn btn-outline-danger btn-sm" style="float: right; ">
@@ -89,32 +90,33 @@
 						}%>
 				</div>
 				<% if (n > 0) { %>
-					<nav>
-					    <ul class="pagination justify-content-center mt-4">
-					        <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
-					            <a class="page-link" href="<%= currentPage > 1 ? "../home?page=" + (currentPage - 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" tabindex="-1" aria-disabled="true">
-					                <i class="bi bi-chevron-left"></i>
-					            </a>
-					        </li>
-					        
-					        <% for (int p = 1; p <= pageCount; p++) { %>
-			                  <li class="page-item <%= p == currentPage ? "active" : "" %>">
-			                    <a class="page-link" href="../home?page=<%= p %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %>">
-			                      <%= p %>
-			                    </a>
-			                  </li>
-			                <% } %>
-					        <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
-					            <a class="page-link" href="<%= currentPage < pageCount ? "../home?page=" + (currentPage + 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>">
-					                 <i class="bi bi-chevron-right"></i>
-					            </a>
-					        </li>
-					    </ul>
-					</nav>
+				    <nav>
+				        <ul class="pagination justify-content-center mt-4">
+				            <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
+				                <a class="page-link" href="<%= currentPage > 1 ? "../docs-of-user?posterID=" + user.getUserID() + "&page=" + (currentPage - 1) : "#" %>" tabindex="-1" aria-disabled="true">
+				                    <i class="bi bi-chevron-left"></i>
+				                </a>
+				            </li>
+				            
+				            <% for (int p = 1; p <= pageCount; p++) { %>
+				                <li class="page-item <%= p == currentPage ? "active" : "" %>">
+				                    <a class="page-link" href="../docs-of-user?posterID=<%= user.getUserID() %>&page=<%= p %>">
+				                        <%= p %>
+				                    </a>
+				                </li>
+				            <% } %>
+				            
+				            <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
+				                <a class="page-link" href="<%= currentPage < pageCount ? "../docs-of-user?posterID=" + user.getUserID() + "&page=" + (currentPage + 1) : "#" %>">
+				                    <i class="bi bi-chevron-right"></i>
+				                </a>
+				            </li>
+				        </ul>
+				    </nav>
 				<% } %>
+
         	</main>
      	</div>
-
 
     </div>
 
