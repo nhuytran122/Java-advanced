@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="BookmarkModal.Bookmark"/>
     <fullyQualifiedTypeName name="BookmarkModal.BookmarkDao"/>
     <fullyQualifiedTypeName name="LikeModal.Like"/>
     <fullyQualifiedTypeName name="LikeModal.LikeDao"/>
@@ -51,7 +50,6 @@
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="UserModal.UserBo"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmarkDao"/>
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmarkBo"/>
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmark"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
 </qualifiedTypeNameHistroy>
