@@ -168,22 +168,29 @@
 							
 							            <p><%= stt.getPostContent() %></p>
 							            <% if (stt.getImagePath() != null) { %>
-							                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
+								            <a href="../details?postID=<%= stt.getPostID() %>">
+								                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
+								            </a>
 							            <% } %>
 							        </div>
+							        
 							        <div class="card-footer d-flex justify-content-between">
-							            <div>
-							                <a class="btn btn-outline-primary btn-sm btn-like">
-							                    <i class="bi bi-heart-fill text-danger"></i> Thích
-							                </a>
-							            </div>
-							
-							            <div class="ms-auto">
-							                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
-							                    <i class="bi bi-flag"></i> Báo cáo
-							                </a>
-							            </div>
-							        </div>
+									    <div class="d-flex align-items-center">
+									        <a class="btn btn-outline-primary btn-sm btn-like me-2">
+									            <i class="bi bi-heart-fill text-danger"></i> <%= stt.getCountLikes() %>
+									        </a>
+									        <span class="text-muted mx-2">
+									            <i class="bi bi-chat-dots-fill me-1"></i> <%= stt.getCountComments() %> bình luận
+									        </span>
+									    </div>
+									
+									    <div class="ms-auto">
+									        <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
+									            <i class="bi bi-flag"></i> Báo cáo
+									        </a>
+									    </div>
+									</div>
+
 							        
 							        <div class="modal fade" id="deleteModal<%= stt.getPostID() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
 			                          <div class="modal-dialog">
@@ -208,6 +215,7 @@
 			                          </div>
 			                        </div>
 							    </div>
+							    
 							<% } %>
 
 						<% } %>

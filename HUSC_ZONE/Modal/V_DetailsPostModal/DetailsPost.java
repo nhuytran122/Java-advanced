@@ -12,12 +12,14 @@ public class DetailsPost {
 	private String Name;
 	private String Avatar;
 	private Long CountLikes;
+	private Long CountComments;
+	
 	public DetailsPost() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public DetailsPost(Long postID, String postContent, Long uploadedBy, Date createdAt, Date updatedAt,
-			String imagePath, String name, String avatar, Long countLikes) {
+			String imagePath, String name, String avatar, Long countLikes, Long countComments) {
 		super();
 		PostID = postID;
 		PostContent = postContent;
@@ -28,6 +30,7 @@ public class DetailsPost {
 		Name = name;
 		Avatar = avatar;
 		CountLikes = countLikes;
+		CountComments = countComments;
 	}
 	public Long getPostID() {
 		return PostID;
@@ -82,5 +85,11 @@ public class DetailsPost {
 	}
 	public void setCountLikes(Long countLikes) {
 		CountLikes = countLikes;
+	}
+	public Long getCountComments() {
+		return CountComments;
+	}
+	public void setCountComments(Long countComments) {
+		CountComments = countComments;
 	}
 }

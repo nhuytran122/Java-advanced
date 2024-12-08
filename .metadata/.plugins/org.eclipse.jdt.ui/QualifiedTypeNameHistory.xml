@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="BookmarkModal.BookmarkDao"/>
-    <fullyQualifiedTypeName name="LikeModal.Like"/>
-    <fullyQualifiedTypeName name="LikeModal.LikeDao"/>
-    <fullyQualifiedTypeName name="ReportModal.Report"/>
-    <fullyQualifiedTypeName name="ReportModal.ReportDao"/>
-    <fullyQualifiedTypeName name="CommentModal.Comment"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="CommentModal.CommentDao"/>
     <fullyQualifiedTypeName name="StatusPostModal.StatusPostDao"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
@@ -47,10 +40,7 @@
     <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDoc"/>
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostDao"/>
     <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDocBo"/>
-    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
-    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
@@ -60,4 +50,14 @@
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmark"/>
     <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
+    <fullyQualifiedTypeName name="CommentModal.Comment"/>
+    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailCommentDao"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailCommentBo"/>
+    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
+    <fullyQualifiedTypeName name="LikeModal.LikeBo"/>
+    <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
+    <fullyQualifiedTypeName name="CommentModal.CommentBo"/>
 </qualifiedTypeNameHistroy>

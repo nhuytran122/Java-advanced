@@ -13,8 +13,8 @@ public class LikeBo {
 		return likeDao.addLike(postID, userID);
 	}
 	
-	public int unLike(Long LikeID) throws Exception {
-		return likeDao.unLike(LikeID);
+	public int unLike(Long postID, Long userID) throws Exception {
+		return likeDao.unLike(postID, userID);
 	}
 	
 	public boolean hasUserLikedPost(Long userID, Long postID) throws Exception {

@@ -58,24 +58,33 @@ body {
 }
 
 .post-content {
-    font-size: 0.9rem;
+    font-size: 18px;
     padding: 12px;
     color: var(--color-text-dark);
 }
 
 .interaction-bar {
     border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
     padding: 8px 0;
 }
 
 .interaction-button {
     color: var(--color-text-light);
     text-decoration: none;
-    padding: 8px;
-    flex: 1;
+    padding: 10px 20px; 
     text-align: center;
     transition: background-color 0.3s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;         
+    align-items: center;   
+    justify-content: center;
+    width: 100%;           
+    border-radius: 4px;
 }
+
 
 .interaction-button:hover {
     background-color: var(--color-background-light);
@@ -161,22 +170,33 @@ body {
     background-color: var(--color-primary-hover);
 }
 
-.exit-button {
-    z-index: 1000;
-    width: 40px;
-    height: 40px;
+.image-section {
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
+    align-items: center;
+    position: relative;
+    height: 100%;
 }
 
-.exit-button:hover {
-    background-color: #ccc;
+.post-image {
+    max-height: 700px;
+    max-width: 100%;
+    height: auto;
+    width: auto;
 }
 
-.exit-button i {
-    font-size: 1.5rem;
+.comment-button {
+    border: none;
+    background: none;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
 }
+
+.interaction-button i {
+    margin-right: 8px;
+}
+
+
+

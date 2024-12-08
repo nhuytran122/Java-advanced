@@ -47,6 +47,11 @@ public class UserProfileController extends HttpServlet {
             	user = userBo.getUserByID(userID);
             	isGuest = true;
             }
+            else if(request.getAttribute("userId") != null) {
+            	userID = (Long)request.getAttribute("userId");
+            	user = userBo.getUserByID(userID);
+            	isGuest = true;
+            }
             else {
             	user = currentUser;
             }
@@ -91,7 +96,7 @@ public class UserProfileController extends HttpServlet {
             }
             else 
             	rd = request.getRequestDispatcher("User/my-profile.jsp");
-            rd.forward(request, response);
+            	rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }

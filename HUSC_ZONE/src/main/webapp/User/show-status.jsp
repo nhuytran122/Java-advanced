@@ -127,10 +127,16 @@
                             <%= stt.getPostContent() %>
                         </p>
                         <div>
-                            <% if (stt.getImagePath() != null) { %>
-                                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 300px;">
-                            <% } %>
-                        </div>
+						    <% if (stt.getImagePath() != null) { %>
+						        <a href="../details?postID=<%= stt.getPostID() %>">
+						            <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" 
+						                 alt="Post Image" 
+						                 class="img-fluid rounded" 
+						                 style="width: 300px;">
+						        </a>
+						    <% } %>
+						</div>
+
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <div>

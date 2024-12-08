@@ -38,7 +38,7 @@ public class LikeDao {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
         String sql = "INSERT INTO tbl_Likes (PostID, LikedAt, LikedBy) " +
-                "VALUES (?, ?, GETDATE())";
+                "VALUES (?, GETDATE(), ?)";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
         cmd.setLong(1, postID);
         cmd.setLong(2, userID);
@@ -49,12 +49,13 @@ public class LikeDao {
     }
 
 
-    public int unLike(Long LikeID) throws Exception {
+    public int unLike(Long postID, Long userID) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
-        String sql = "DELETE FROM tbl_Likes WHERE LikeID = ?";
+        String sql = "DELETE FROM tbl_Likes WHERE PostID = ? AND LikedBy = ? ";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, LikeID);
+        cmd.setLong(1, postID);
+        cmd.setLong(2, userID);
         int result = cmd.executeUpdate();
         cmd.close();
         kn.cn.close();

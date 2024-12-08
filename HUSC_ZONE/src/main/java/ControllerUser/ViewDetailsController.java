@@ -13,9 +13,14 @@ import javax.servlet.http.HttpSession;
 
 import BookmarkModal.BookmarkBo;
 import CommonModal.MethodCommon;
+import LikeModal.LikeBo;
 import UserModal.User;
+import V_DetailsCommentModal.DetailCommentBo;
+import V_DetailsCommentModal.DetailsComment;
 import V_DetailsDocModal.DetailsDoc;
 import V_DetailsDocModal.DetailsDocBo;
+import V_DetailsPostModal.DetailsPost;
+import V_DetailsPostModal.DetailsPostBo;
 
 @WebServlet("/details")
 public class ViewDetailsController extends HttpServlet {
@@ -35,11 +40,12 @@ public class ViewDetailsController extends HttpServlet {
 	        request.setAttribute("listMates", MethodCommon.getListMates());
 	        
 			User user = null;
-			Boolean isMarked = false;
-			
-	        if(session.getAttribute("user") != null) 
+			Long userID = null;
+	        if(session.getAttribute("user") != null) {
 	        	user = (User)(session.getAttribute("user"));
-	        
+	        	userID = user.getUserID();
+	        }
+	       
 	        if(request.getParameter("docsID") != null) {
 	        	Long docID = Long.parseLong(request.getParameter("docsID"));
 	        	
@@ -48,12 +54,12 @@ public class ViewDetailsController extends HttpServlet {
 	        	DetailsDoc dtlDocs = dtdocsBo.getDetailsDocByID(docID);
 	        	if(dtlDocs != null) {
 		        	BookmarkBo bmkBo = new BookmarkBo();
+		        	boolean isMarked = false;
 		        	
 		        	ArrayList<DetailsDoc> lstDocsSuggest = dtdocsBo.getListDocsSuggest(docID, dtlDocs.getCategoryID());
 		        	if(user != null) {
-		        		isMarked = bmkBo.hasUserMarkedDocs(user.getUserID(), docID);
+		        		isMarked = bmkBo.hasUserMarkedDocs(userID, docID);
 		        	}
-		        	
 		        	
 	        		request.setAttribute("dtlDocs", dtlDocs);
 	        		request.setAttribute("lstDocsSuggest", lstDocsSuggest);
@@ -64,6 +70,39 @@ public class ViewDetailsController extends HttpServlet {
 	                return;
 	        	}
 	        }
+	        else if(request.getParameter("postID") != null || request.getAttribute("postID") != null) {
+	        	if(session.getAttribute("user") == null) {
+	        		response.sendRedirect("login");
+	                return;
+	        	}
+	        	Long postID = null;
+	        	if(request.getParameter("postID") != null)
+	        		postID = Long.parseLong(request.getParameter("postID"));
+	        	else
+	        		postID = (Long)request.getAttribute("postID");
+
+	        	DetailsPostBo dtdocsBo = new DetailsPostBo();
+	        	DetailCommentBo dtCmtBo = new DetailCommentBo();
+	        	boolean isLiked = false;
+	        	
+	        	DetailsPost dtlPost = dtdocsBo.getDetailsPostByID(postID);
+	        	if(dtlPost != null) {
+		        	LikeBo likeBo = new LikeBo();
+		        	isLiked = likeBo.hasUserLikedPost(userID, postID);
+		        	
+		        	ArrayList<DetailsComment>  listCmts = dtCmtBo.getCommentsByPostID(postID);
+		        	
+	        		request.setAttribute("dtlPost", dtlPost);
+	        		request.setAttribute("listCmts", listCmts);
+	        		request.setAttribute("isLiked", isLiked);
+	        		
+	        		RequestDispatcher rd = request.getRequestDispatcher("User/detail-post.jsp");
+	                rd.forward(request, response);
+	                return;
+	        	}
+	        }
+	        else
+	        	response.sendRedirect("home");
 	        
 		} catch (Exception e) {
 			e.printStackTrace();

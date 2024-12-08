@@ -1,3 +1,4 @@
+<%@page import="CommonModal.MethodCommon"%>
 <%@page import="V_DetailsDocModal.DetailsDoc"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="MaterialModal.MaterialBo"%>
@@ -7,11 +8,9 @@
 <% DetailsDoc dtlDocs = (DetailsDoc)request.getAttribute("dtlDocs"); 
 	User uploadedBy = (User)request.getAttribute("uploadedBy");
 	ArrayList<DetailsDoc> lstDocsSuggest = (ArrayList<DetailsDoc>)request.getAttribute("lstDocsSuggest");
-	Boolean isMarked = (Boolean)request.getAttribute("isMarked");
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	String formattedDate = dtlDocs.getCreatedAt() != null ? sdf.format(dtlDocs.getCreatedAt()) : "";
+	boolean isMarked = (boolean)request.getAttribute("isMarked");
 %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,12 +62,14 @@
 									<%= dtlDocs.getName() %>
 								</a>
 							</p>
-                            <p><strong>Ngày tải lên:</strong> <%= formattedDate %></p>
+                            <p><strong>Ngày tải lên:</strong> 
+                            	<%= dtlDocs.getUpdatedAt() == null ? MethodCommon.convertDateToString(dtlDocs.getCreatedAt()) 
+															  : "Đã chỉnh sửa " + MethodCommon.convertDateToString(dtlDocs.getUpdatedAt()) %></p>
 
                             <div class="d-flex align-items-center">
 							    <form action="../interact" method="POST" class="me-2">
 							        <input type="hidden" name="docsID" value="<%= dtlDocs.getDocumentID()%>">
-							        <% if (isMarked != null && isMarked) { %>
+							        <% if (isMarked) { %>
 							            <button type="submit" name="btn-mark" value="unmark" class="btn btn-warning p-2 mt-0">
 							                <i class="bi bi-bookmark-heart-fill"></i> Đã Yêu thích
 							            </button>

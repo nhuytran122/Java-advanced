@@ -1,49 +1,72 @@
+<%@page import="V_DetailsCommentModal.DetailsComment"%>
+<%@page import="CommonModal.MethodCommon"%>
+<%@page import="CommentModal.Comment"%>
+<%@page import="V_DetailsPostModal.DetailsPost"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+DetailsPost dtlPost = (DetailsPost)request.getAttribute("dtlPost");
+ArrayList<DetailsComment> listCmts = (ArrayList<DetailsComment>)request.getAttribute("listCmts");
+boolean isLiked = (boolean)request.getAttribute("isLiked");
+
+%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook Post - Fullscreen</title>
+    <title>Chi tiết bài viết - HUSCZone</title>
     <%@ include file="layout/import.jsp" %>
     <link rel="stylesheet" href="css/detail-post-style.css">
 </head>
 <body>
-    <!-- Top Navigation -->
     <%@ include file="layout/navbar_for_Post.jsp" %>
 
     <!-- Main Content -->
     <div class="main-container">
-        <!-- Left Section - Image -->
-        <div class="image-section">
-        	<button class="btn btn-link position-absolute top-0 start-0 m-3 exit-button">
-                <i class="bi bi-arrow-left text-white fs-4"></i>
-            </button>
-            <img src="/placeholder.svg" alt="Concert Seating Map" class="post-image">
-        </div>
+        <div class="image-section d-flex justify-content-center align-items-center">
+		    <% if (dtlPost.getImagePath() != null) { %>
+		        <img src="<%= request.getContextPath() %><%= dtlPost.getImagePath() %>" 
+		             alt="Post Image" 
+		             class="img-fluid rounded post-image">
+		    <% } %>
+		</div>
+
 
         <!-- Right Section - Content -->
         <div class="content-section">
             <!-- Post Header -->
             <div class="post-header d-flex align-items-center">
-                <img src="/placeholder.svg" alt="Profile" class="profile-image me-2">
+                <% if (dtlPost.getAvatar() == null || dtlPost.getAvatar().isBlank()) { 
+                %>
+                    <a href="../user-profile?userId=<%= dtlPost.getUploadedBy() %>">
+                        <img src="../images/default-avt.jpg" style="width: 60px; height: 60px;" alt="Default" class="profile-image me-2">
+                    </a>
+                <% } else { %>
+                    <a href="../user-profile?userId=<%= dtlPost.getUploadedBy() %>">
+                        <img src="<%= request.getContextPath() %><%= dtlPost.getAvatar() %>" style="width: 60px; height: 60px" alt="Avatar" class="rounded-circle me-3">
+                    </a>
+                <% } %>
                 <div class="flex-grow-1">
                     <div class="d-flex align-items-center">
-                        <h6 class="mb-0">Anh Trai Vuot Ngan Chong Gai</h6>
+                        <h6 class="mb-0">
+	                        <a href="../user-profile?userId=<%= dtlPost.getUploadedBy() %>" class="text-decoration-none">
+	                         	<%= dtlPost.getName() %>
+	                        </a>
+	                    </h6>
                         <i class="fas fa-check-circle verified-badge ms-1"></i>
                     </div>
-                    <span class="post-time">12 tháng 11 lúc 10:54 · <i class="fas fa-globe"></i></span>
+                    <span class="post-time">
+                    	<%= dtlPost.getUpdatedAt() == null ? MethodCommon.convertDateToString(dtlPost.getCreatedAt()) 
+							: "Đã chỉnh sửa " + MethodCommon.convertDateToString(dtlPost.getUpdatedAt()) %> · 
+						<i class="fas fa-globe"></i>
+					</span>
                 </div>
                 <button class="btn text-white"><i class="fas fa-ellipsis-h"></i></button>
             </div>
 
-            <!-- Post Content -->
             <div class="post-content">
-                <p>
-                    ĐÃ SOLD OUT TOÀN BỘ VÉ!<br><br>
-                    Chân thành cảm ơn sự ủng hộ của quý khán giả!!<br>
-                    Vì sự yêu thương quá lớn nên lượng chờ mua hơn 150k làm trải nghiệm mua vé bị gián đoạn bởi tình trạng không đăng nhập vào được web<br><br>
-                    Ban tổ chức gửi lời xin lỗi vì sự bất tiện này đồng thời gửi lời cảm ơn đến các bạn khán giả đã cùng nhau làm nên kì tích tuyệt vời của chúng ta ❤️❤️❤️<br><br>
+                <p><%= dtlPost.getPostContent() %><br><br>
                 </p>
             </div>
 
@@ -51,58 +74,127 @@
             <div class="px-3 py-2">
                 <div class="d-flex align-items-center">
                     <div class="reaction-icons">
-                        <img src="/placeholder.svg" alt="Like" width="18">
-                        <img src="/placeholder.svg" alt="Love" width="18">
+                        <i class="bi bi-heart-fill text-danger me-2"></i>
                     </div>
-                    <span class="reaction-count ms-2">45K</span>
-                    <span class="reaction-count ms-auto">19K comments</span>
+                    <span class="reaction-count ms-2"><%= dtlPost.getCountLikes() %></span>
+                    <span class="reaction-count ms-auto"><%= dtlPost.getCountComments() %> comments</span>
                 </div>
             </div>
 
             <!-- Interaction Bar -->
             <div class="interaction-bar d-flex justify-content-between px-3">
-                <a href="#" class="interaction-button like-button">
-                    <i class="bi bi-heart-fill text-danger me-2"></i>Like
-                </a>
-                <a href="#" class="interaction-button comment-button">
+            	<form method="post" action="../interact">
+				    <input type="hidden" name="postID" value="<%= dtlPost.getPostID() %>">
+				    <% if (isLiked) { %>
+				        <button type="submit" name="btn-like" value="unlike" 
+				        	class="interaction-button like-button px-5"
+				        	style="color: #FE5C5C;">
+				            <i class="bi bi-heart-fill text-danger me-2"></i>Liked
+				        </button>
+				    <% } else { %>
+				        <button type="submit" name="btn-like" value="like" 
+				        	class="interaction-button like-button px-5">
+						    <i class="bi bi-heart me-2"></i>Like
+						</button>
+				    <% } %>
+				</form>
+                <button class="interaction-button comment-button" id="commentButton">
                     <i class="bi bi-chat me-2 text-primary"></i>Comment
-                </a>
-                <a href="#" class="interaction-button report-button">
-                    <i class="bi bi-flag me-2 text-danger"></i>Report
-                </a>
+                </button>
+                <button class="interaction-button report-button px-2" data-bs-toggle="modal" data-bs-target="#reportModal">
+				    <i class="bi bi-flag me-2 text-danger"></i>Báo cáo
+				</button>
             </div>
 
             <!-- Comments List -->
-            <div class="comments-list">
-                <!-- Sample Comment -->
-                <div class="comment">
-                    <img src="/placeholder.svg" alt="User" class="profile-image me-2">
-                    <div class="comment-content">
-                        <h6 class="mb-0">User Name</h6>
-                        <p>This is a sample comment. Great post!</p>
-                        <div class="comment-actions">
-                            <a href="#" class="me-2">Like</a>
-                            <a href="#" class="me-2">Reply</a>
-                            <span class="text-muted">2h</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add more comments as needed -->
-            </div>
+			<div class="comments-list">
+			    <% 
+			        if (listCmts == null || listCmts.isEmpty()) { 
+			    %>
+			        <p class="text-center text-muted">Chưa có bình luận.</p>
+			    <% 
+			        } else { 
+			            for (DetailsComment cmt : listCmts) { 
+			    %>
+			        <div class="comment">
+			            <img src="<%= cmt.getAvatar() == null || cmt.getAvatar().isBlank() 
+			                         ? request.getContextPath() + "/images/default-avt.jpg" 
+			                         : request.getContextPath() + cmt.getAvatar() %>" 
+			                 alt="User" class="profile-image me-2">
+			            <div class="comment-content">
+			                <h6 class="mb-0">
+			                	<a href="../user-profile?userId=<%= cmt.getCommentedBy() %>" class="text-decoration-none">
+                                        <%= cmt.getName() %>
+                                </a>
+                            </h6>
+			                <p><%= cmt.getCommentContent() %></p>
+			                <div class="comment-actions">
+			                    <span class="text-muted">
+			                    	<%= cmt.getUpdatedAt() == null ? MethodCommon.convertDateToString(cmt.getCommentedAt()) 
+										: "Đã chỉnh sửa " + MethodCommon.convertDateToString(cmt.getUpdatedAt()) %>
+								</span>
+			                </div>
+			            </div>
+			        </div>
+			    <% 
+			            } 
+			        } 
+			    %>
+			</div>
 
-            <!-- Comment Input Section -->
             <div class="p-3 border-top">
                 <div class="d-flex align-items-center">
-                    <img src="/placeholder.svg" alt="User" class="profile-image me-2">
-                    <div class="flex-grow-1 d-flex">
-                        <input type="text" class="form-control comment-input rounded-pill me-2" placeholder="Write a comment...">
-                        <button class="btn rounded-circle send-comment-button">
-                            <i class="bi bi-send"></i>
-                        </button>
-                    </div>
+                    <% if (user.getAvatar() == null || user.getAvatar().isBlank()) { %>
+				        <img src="../images/default-avt.jpg" class="profile-image me-2">
+				    <% } else { %>
+			        	<img src="<%= request.getContextPath() %><%= user.getAvatar() %>" class="profile-image me-2">
+			    	<% } %>
+                    <div class="flex-grow-1 d-flex align-items-center">
+					    <form action="../interact" method="post" class="d-flex w-100">
+					    	<input type="hidden" name="postID" value="<%= dtlPost.getPostID() %>">
+					    	<input type="hidden" name="cmtInDetail" value="cmtInDetail">
+					        <input name="txtContentCmt" type="text" class="form-control comment-input rounded-pill me-2" 
+					               placeholder="Viết bình luận..." 
+					               autofocus 
+					               id="commentInput">
+					        <button type="submit" name="btn-cmt" value="btn-cmt" class="btn rounded-circle send-comment-button d-flex align-items-center justify-content-center">
+					            <i class="bi bi-send"></i>
+					        </button>
+					    </form>
+					</div>
+
                 </div>
             </div>
         </div>
+        
+         <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+	        <div class="modal-dialog">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <h5 class="modal-title" id="reportModalLabel">Báo cáo bài viết</h5>
+	                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	                </div>
+	                <form method="post" action="../interact">
+	                	<input type="hidden" name="reportInDetail" value="reportInDetail">
+		                <div class="modal-body">
+		                    <textarea name="txtContentReport" class="form-control" rows="3" placeholder="Mô tả lý do báo cáo bài viết này..." required></textarea>
+		                </div>
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+		                    <button type="submit" name="btn-report" value="<%= dtlPost.getPostID()  %>" class="btn btn-danger">Gửi</button>
+		                </div>
+	                </form>
+	        </div>
+        </div>
     </div>
+    </div>
+    
+    <script>
+	    document.getElementById('commentButton').addEventListener('click', function() {
+	        // auto focus vào input khi nhấn comment
+	        document.getElementById('commentInput').focus();
+	    });
+	</script>
+    
 </body>
 </html>

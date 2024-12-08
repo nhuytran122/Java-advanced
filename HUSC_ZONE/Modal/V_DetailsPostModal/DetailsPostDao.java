@@ -144,8 +144,9 @@ public class DetailsPostDao {
 		String name = rs.getString("Name");
 		String avatar = rs.getString("Avatar");
 		Long countLikes = rs.getLong("CountLikes");
+		Long countComments = rs.getLong("CountComments");
 
 		return new DetailsPost(postID, postContent, uploadedBy, createdAt,
-				updatedAt, imagePath, name, avatar, countLikes);
+				updatedAt, imagePath, name, avatar, countLikes, countComments);
 	}
 }
