@@ -8,8 +8,10 @@
     ArrayList<Category> listCates = (ArrayList<Category>)request.getAttribute("listCates");
     ArrayList<Material> listMates = (ArrayList<Material>)request.getAttribute("listMates");
     
-    Long cateID = request.getParameter("cateID") != null ? Long.parseLong(request.getParameter("cateID")) : 0L;
-    Long mateID = request.getParameter("mateID") != null ? Long.parseLong(request.getParameter("mateID")) : 0L;
+    Long cateID = request.getParameter("cateID") != null ? 
+    				Long.parseLong(request.getParameter("cateID")) : 0L;
+    Long mateID = request.getParameter("mateID") != null ? 
+    				Long.parseLong(request.getParameter("mateID")) : 0L;
     
     User user = (User)session.getAttribute("user");
     String searchKeyword = request.getParameter("txtSearch");

@@ -3,27 +3,25 @@
 <%@page import="MaterialModal.MaterialBo"%>
 <%@page import="CategoryModal.CategoryBo"%>
 <%@page import="DocumentModal.Document"%>
+
+<% DetailsDoc dtlDocs = (DetailsDoc)request.getAttribute("dtlDocs"); 
+	User uploadedBy = (User)request.getAttribute("uploadedBy");
+	ArrayList<DetailsDoc> lstDocsSuggest = (ArrayList<DetailsDoc>)request.getAttribute("lstDocsSuggest");
+	Boolean isMarked = (Boolean)request.getAttribute("isMarked");
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	String formattedDate = dtlDocs.getCreatedAt() != null ? sdf.format(dtlDocs.getCreatedAt()) : "";
+%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết Tài liệu</title>
+    <title><%= dtlDocs.getTitle() %> - Chi tiết Tài liệu</title>
     <%@ include file="layout/import.jsp" %>
 </head>
-<%
 
-
-	DetailsDoc dtlDocs = (DetailsDoc)request.getAttribute("dtlDocs");
-	User uploadedBy = (User)request.getAttribute("uploadedBy");
-	ArrayList<DetailsDoc> lstDocsSuggest = (ArrayList<DetailsDoc>)request.getAttribute("lstDocsSuggest");
-	Boolean isMarked = (Boolean)request.getAttribute("isMarked");
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    String formattedDate = dtlDocs.getCreatedAt() != null ? sdf.format(dtlDocs.getCreatedAt()) : "";
-
-%>
 <body class="bg-light">
 <%@ include file="layout/navbar.jsp" %>
 
@@ -50,12 +48,21 @@
                         <div class="card-body">
                             <h4 class="card-title mb-3"><%=dtlDocs.getTitle() %></h4>
                             <p class="card-text"><%=dtlDocs.getDesription() %></p>
-                            <p><strong>Ngành học:</strong> <%= dtlDocs.getCategoryName() %></p>
-                            <p><strong>Loại tài liệu:</strong> <%= dtlDocs.getMaterialName() %></p>
+                            <p><strong>Ngành học: </strong> 
+                            	<a href="../home?cateID=<%= dtlDocs.getCategoryID()%>" class="badge bg-info text-white text-decoration-none" style="font-size: 16px;">
+                            		<%= dtlDocs.getCategoryName() %>
+                            	</a>
+                           	</p>
+                            <p><strong>Loại tài liệu:</strong>
+                            	<a href="../home?mateID=<%= dtlDocs.getMaterialID()%>" class="badge bg-success text-white text-decoration-none" style="font-size: 16px;">
+                            		<%= dtlDocs.getMaterialName() %>
+                            	</a>
+                           	</p>
                             <p><strong>Tải lên bởi:</strong> 
-                            						<a href="../user-profile?userId=<%= dtlDocs.getUploadedBy() %>" class="text-decoration-none">
-									                    <%= dtlDocs.getName() %>
-									                </a></p>
+                            	<a href="../user-profile?userId=<%= dtlDocs.getUploadedBy() %>" class="text-decoration-none">
+									<%= dtlDocs.getName() %>
+								</a>
+							</p>
                             <p><strong>Ngày tải lên:</strong> <%= formattedDate %></p>
 
                             <div class="d-flex align-items-center">
@@ -71,17 +78,10 @@
 							            </button>
 							        <% } %>
 							    </form>
-							    <a href="#" class="btn btn-outline-success p-2">
+							    <a href="<%= request.getContextPath() %><%= dtlDocs.getFilePath() %>" class="btn btn-outline-success p-2">
 							        <i class="bi bi-download"></i> Download
 							    </a>
 							</div>
-
-
-
-                            <div class="mt-3">
-                                <a href="#" class="badge bg-info text-white text-decoration-none"><%= dtlDocs.getCategoryName() %></a>
-                                <a href="#" class="badge bg-success text-white text-decoration-none"><%= dtlDocs.getMaterialName() %></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,10 +106,13 @@
 				                <div class="card-body">
 				                    <h6 class="card-title"><%= doc.getTitle() %></h6>
 				                    <div class="pb-2">
-				                        <span class="badge bg-info text-white"><%= doc.getCategoryName() %></span>
-				                        <span class="badge bg-success text-white"><%= doc.getMaterialName() %></span>
+					                    <a href="../home?cateID=<%= doc.getCategoryID()%>" class="badge bg-info text-white text-decoration-none">
+					                    	<%= doc.getCategoryName() %>
+					                    </a>
+					                    <a href="../home?mateID=<%= doc.getMaterialID()%>" class="badge bg-success text-white text-decoration-none">
+					                    	<%= doc.getMaterialName() %>
+					                    </a>
 				                    </div>
-				                    <p class="text-muted"><%= doc.getDesription() %></p>
 				                </div>
 				            </div>
 				        </a>

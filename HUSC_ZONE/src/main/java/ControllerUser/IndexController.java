@@ -41,18 +41,18 @@ public class IndexController extends HttpServlet {
                 page = Integer.parseInt(request.getParameter("page"));
             }
             
+            if (request.getParameter("cateID") != null) {
+                cateID = Long.parseLong(request.getParameter("cateID"));
+            }
+
+            if (request.getParameter("mateID") != null) {
+                mateID = Long.parseLong(request.getParameter("mateID"));
+            }
+            
             if(request.getParameter("btn-search") != null) {
 
 	            if (request.getParameter("txtSearch") != null) {
 	                searchValue = request.getParameter("txtSearch");
-	            }
-	
-	            if (request.getParameter("cateID") != null) {
-	                cateID = Long.parseLong(request.getParameter("cateID"));
-	            }
-	
-	            if (request.getParameter("mateID") != null) {
-	                mateID = Long.parseLong(request.getParameter("mateID"));
 	            }
             }
             ArrayList<DetailsDoc> ds = dtdocBo.getDocsByConditions(page, pageSize, searchValue, cateID, mateID);

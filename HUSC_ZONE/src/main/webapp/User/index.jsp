@@ -55,12 +55,16 @@
 					            <div class="card-body">
 					                <h6 class="card-title text-truncate"><%= docs.getTitle() %></h6>
 					                <div>
-					                    <span class="badge bg-info text-white"><%= docs.getCategoryName() %></span>
-					                    <span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
+					                    <a href="../home?cateID=<%= docs.getCategoryID()%>">
+					                    	<span class="badge bg-info text-white"><%= docs.getCategoryName() %></span>
+					                    </a>
+					                    <a href="../home?mateID=<%= docs.getMaterialID()%>">
+					                    	<span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
+					                    </a>
 					                </div>
 					            </div>
 					            <div class="card-footer">
-					                <a href="#" class="btn btn-outline-success btn-sm" style="float: left;">
+					                <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm" style="float: left;">
 					                    <i class="bi bi-download"></i> Download
 					                </a>
 					                <% if (user != null && docs.getUploadedBy() == (user.getUserID())) { %>
