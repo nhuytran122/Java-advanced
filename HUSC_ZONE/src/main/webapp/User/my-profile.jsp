@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUSCZone - My Profile</title>
+    <title>My Profile - HUSCZone</title>
     <%@ include file="layout/import.jsp" %>
 </head>
 <body>
@@ -78,7 +78,7 @@
 
                         <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
 		                    <div class="modal-dialog">
-			                    <form action="../edit-status" method="post" enctype="multipart/form-data">
+			                    <form action="../save-post" method="post" enctype="multipart/form-data">
 			                        <div class="modal-content">
 			                            <div class="modal-header">
 			                                <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>
@@ -120,42 +120,96 @@
 	                        <% for (DetailsPost stt : dsStt) { %>
 							    <div class="card no-hover mb-3">
 							        <div class="card-body">
-							            <div class="d-flex align-items-center mb-3">
-							                <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { 
-				                             %>
-									            <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
-									                <img src="../images/default-avt.jpg" style="width: 50px; height: 50px;" alt="Default" class="rounded-circle me-3">
-									            </a>
-									        <% } else { %>
-									            <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
-									                <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 50px; height: 50px" alt="Avatar" class="rounded-circle me-3">
-									            </a>
-									        <% } %>
-				                            <div>
-				                                <h6 class="mb-0">
-									                <a href="../user-profile?userId=<%= stt.getUploadedBy() %>" class="text-decoration-none">
-									                    <%= stt.getName() %>
-									                </a>
-									            </h6>
-							                    <small class="text-muted"><%= MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
+							            <div class="d-flex align-items-center justify-content-between mb-3">
+							                <div class="d-flex align-items-center">
+							                    <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { %>
+							                        <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
+							                            <img src="../images/default-avt.jpg" style="width: 50px; height: 50px;" alt="Default" class="rounded-circle me-3">
+							                        </a>
+							                    <% } else { %>
+							                        <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
+							                            <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 50px; height: 50px;" alt="Avatar" class="rounded-circle me-3">
+							                        </a>
+							                    <% } %>
+							                    <div>
+							                        <h6 class="mb-0">
+							                            <a href="../user-profile?userId=<%= stt.getUploadedBy() %>" class="text-decoration-none">
+							                                <%= stt.getName() %>
+							                            </a>
+							                        </h6>
+							                        <small class="text-muted">
+													  <%= stt.getUpdatedAt() == null ? MethodCommon.convertDateToString(stt.getCreatedAt()) 
+															  : "Đã chỉnh sửa " + MethodCommon.convertDateToString(stt.getUpdatedAt()) %>
+													</small>
+
+							                    </div>
+							                </div>
+							
+							                <!-- Dropdown menu -->
+							                <div class="dropdown">
+							                    <button class="btn btn-link text-dark p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+							                        <i class="bi bi-three-dots"></i>
+							                    </button>
+							                    <ul class="dropdown-menu dropdown-menu-end">
+							                        <li><a class="dropdown-item" href="../edit-status?editStt=true&sttID=<%= stt.getPostID() %>">Chỉnh sửa bài viết</a></li>
+							                        <li>
+								                        <button 
+									                    type="button" 
+									                    class="btn btn-outline-danger btn-sm" 
+									                    data-bs-toggle="modal" 
+									                    data-bs-target="#deleteModal<%= stt.getPostID() %>" 
+									                    title="Xóa">
+									                    <i class="bi bi-trash"></i> Xóa bài viết
+										                </button>
+									                </li>
+							                    </ul>
 							                </div>
 							            </div>
+							
 							            <p><%= stt.getPostContent() %></p>
 							            <% if (stt.getImagePath() != null) { %>
 							                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
 							            <% } %>
 							        </div>
 							        <div class="card-footer d-flex justify-content-between">
-				                        <div>
-				                            <a class="btn btn-outline-primary btn-sm btn-like">
-				                                <i class="bi bi-heart-fill text-danger"></i> Thích
-				                            </a>
-				                            <span class="ms-2"><%= stt.getCountLikes() %> lượt thích</span>
-				                        </div>
-				                    </div>
-				                    
+							            <div>
+							                <a class="btn btn-outline-primary btn-sm btn-like">
+							                    <i class="bi bi-heart-fill text-danger"></i> Thích
+							                </a>
+							            </div>
+							
+							            <div class="ms-auto">
+							                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
+							                    <i class="bi bi-flag"></i> Báo cáo
+							                </a>
+							            </div>
+							        </div>
+							        
+							        <div class="modal fade" id="deleteModal<%= stt.getPostID() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+			                          <div class="modal-dialog">
+			                            <div class="modal-content">
+			                              <div class="modal-header">
+			                                <h5 class="modal-title text-danger" id="deleteModalLabel<%= stt.getPostID() %>">
+			                                	<i class="bi bi-exclamation-triangle-fill me-2"></i>
+			                                	Xác nhận xóa bài viết
+			                                </h5>
+			                              </div>
+			                              <div class="modal-body">
+			                                Bạn có chắc chắn muốn xóa bài viết này không?
+			                              </div>
+			                              <div class="modal-footer">
+			                                <form method="post" action="../edit-status">
+			                                  <input type="hidden" name="sttID" value="<%= stt.getPostID() %>">
+			                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+			                                  <button type="submit" name="btnDeleteStt" value="<%= stt.getPostID() %>" class="btn btn-danger">Xóa</button>
+			                                </form>
+			                              </div>
+			                            </div>
+			                          </div>
+			                        </div>
 							    </div>
 							<% } %>
+
 						<% } %>
                     </div>
                     

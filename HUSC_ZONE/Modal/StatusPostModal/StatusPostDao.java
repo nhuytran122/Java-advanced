@@ -34,49 +34,49 @@ public class StatusPostDao {
         return result;
     }
 
-    public int updateStatusPost(Long StatusPostID, String postContent, String imgPath) throws Exception {
+    public int updateStatusPost(Long PostID, String postContent, String imgPath) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
         String sql = "UPDATE tbl_StatusPosts " +
                 "SET PostContent = ?, ImagePath = ?, UpdatedAt = GETDATE() " +
-                "WHERE StatusPostID = ?";
+                "WHERE PostID = ?";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
         cmd.setString(1, postContent);
         cmd.setString(2, imgPath);
-        cmd.setLong(3, StatusPostID);
+        cmd.setLong(3, PostID);
         int result = cmd.executeUpdate();
         cmd.close();
         kn.cn.close();
         return result;
     }
 
-    public int deleteStatusPost(Long StatusPostID) throws Exception {
+    public int deleteStatusPost(Long PostID) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
 
         try {
             String sqlDltLikes = "DELETE FROM tbl_Likes WHERE PostID = ?";
             PreparedStatement cmdDltLikes = kn.cn.prepareStatement(sqlDltLikes);
-            cmdDltLikes.setLong(1, StatusPostID);
+            cmdDltLikes.setLong(1, PostID);
             cmdDltLikes.executeUpdate();
             cmdDltLikes.close();
 
             String sqlDltCmts = "DELETE FROM tbl_Comments WHERE PostID = ?";
             PreparedStatement cmdDltCmts = kn.cn.prepareStatement(sqlDltCmts);
-            cmdDltCmts.setLong(1, StatusPostID);
+            cmdDltCmts.setLong(1, PostID);
             cmdDltCmts.executeUpdate();
             cmdDltCmts.close();
 
             String sqlDltRpts = "DELETE FROM tbl_Reports WHERE PostID = ?";
             PreparedStatement cmdDltRpts = kn.cn.prepareStatement(sqlDltRpts);
-            cmdDltRpts.setLong(1, StatusPostID);
+            cmdDltRpts.setLong(1, PostID);
             cmdDltRpts.executeUpdate();
             cmdDltRpts.close();
 
             // Xóa bài viết
             String sqlDeletePost = "DELETE FROM tbl_StatusPosts WHERE PostID = ?";
             PreparedStatement cmdDeletePost = kn.cn.prepareStatement(sqlDeletePost);
-            cmdDeletePost.setLong(1, StatusPostID);
+            cmdDeletePost.setLong(1, PostID);
             int result = cmdDeletePost.executeUpdate();
             cmdDeletePost.close();
 
@@ -86,12 +86,12 @@ public class StatusPostDao {
         }
     }
 
-    public StatusPost getStatusPostByID(Long StatusPostID) throws Exception {
+    public StatusPost getStatusPostByID(Long PostID) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
-        String sql = "SELECT * FROM tbl_StatusPosts WHERE StatusPostID = ?";
+        String sql = "SELECT * FROM tbl_StatusPosts WHERE PostID = ?";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, StatusPostID);
+        cmd.setLong(1, PostID);
         ResultSet rs = cmd.executeQuery();
 
         if (rs.next()) {

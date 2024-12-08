@@ -67,22 +67,10 @@
 					                <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm" style="float: left;">
 					                    <i class="bi bi-download"></i> Download
 					                </a>
-					                <% if (user != null && docs.getUploadedBy() == (user.getUserID())) { %>
-					                	<form method="post" action="../edit-docs">
-						                	<input type="hidden" name="docID" value="<%= docs.getDocumentID() %>">
-						                	<button type="submit" name="btnDeleteDoc" value="btnDeleteDoc" class="btn btn-outline-danger btn-sm" style="float: right; ">
-									            <i class="bi bi-trash"></i> Xóa
-									        </button>
-									        <button type="submit" name="btnUpdateDoc" value="btnUpdateDoc" class="btn btn-outline-warning btn-sm" style="float: right; margin-right: 5px;">
-									            <i class="bi bi-pencil"></i> Sửa
-									        </button>
-									    </form>
-								        
-								    <% } else { %>
-								        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal" style="float: right;">
-								            <i class="bi bi-flag"></i> Báo cáo
-								        </button>
-								    <% } %>
+								    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal" style="float: right;">
+								      	<i class="bi bi-flag"></i> Báo cáo
+								    </button>
+								    
 					            </div>
 					        </div>
 					    </a>

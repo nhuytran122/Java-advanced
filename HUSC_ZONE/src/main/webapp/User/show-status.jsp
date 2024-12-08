@@ -117,7 +117,10 @@
                                         <%= stt.getName() %>
                                     </a>
                                 </h6>
-                                <small class="text-muted"><%= MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
+                                <small class="text-muted">
+									<%= stt.getUpdatedAt() == null ? MethodCommon.convertDateToString(stt.getCreatedAt()) 
+										: "Đã chỉnh sửa " + MethodCommon.convertDateToString(stt.getUpdatedAt()) %>
+								</small>
                             </div>
                         </div>
                         <p>

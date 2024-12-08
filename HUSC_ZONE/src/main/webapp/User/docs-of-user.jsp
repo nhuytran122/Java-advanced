@@ -111,7 +111,7 @@
                                 <form method="post" action="../edit-docs">
                                   <input type="hidden" name="docID" value="<%= docs.getDocumentID() %>">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                  <button type="submit" name="btnDeleteSach" value="<%= docs.getDocumentID() %>" class="btn btn-danger">Xóa</button>
+                                  <button type="submit" name="btnDeleteDoc" value="<%= docs.getDocumentID() %>" class="btn btn-danger">Xóa</button>
                                 </form>
                               </div>
                             </div>

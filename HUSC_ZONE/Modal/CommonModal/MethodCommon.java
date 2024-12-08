@@ -22,8 +22,8 @@ public class MethodCommon {
     }
 	
 	public static String convertDateToString(Date d) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		String strDay = sdf.format(d);
-		return strDay;
+	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+	    return sdf.format(d);
 	}
+
 }
