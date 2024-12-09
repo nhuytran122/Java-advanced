@@ -66,15 +66,12 @@
 					                    </a>
 					                </div>
 					            </div>
-					            <div class="card-footer">
-					                <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm" style="float: left;">
-					                    <i class="bi bi-download"></i> Download
-					                </a>
-								    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal" style="float: right;">
-								      	<i class="bi bi-flag"></i> Báo cáo
-								    </button>
-								    
-					            </div>
+					            <div class="card-footer" style="text-align: center;">
+								    <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm">
+								        <i class="bi bi-download"></i> Download
+								    </a>
+								</div>
+
 					        </div>
 					    </a>
 					</div>

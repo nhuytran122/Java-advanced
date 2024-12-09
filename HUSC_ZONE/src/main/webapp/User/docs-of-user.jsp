@@ -64,13 +64,13 @@
 					                    <span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
 					                </div>
 					            </div>
-					            <div class="card-footer d-flex justify-content-between align-items-center">
-								    <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm" style="float: left;">
-					                    <i class="bi bi-download"></i> Download
-					                </a>
+					            <div class="card-footer d-flex justify-content-between align-items-center" style="text-align: center;">
+								    <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm" style="flex-grow: 1; text-align: center;">
+								        <i class="bi bi-download"></i> Download
+								    </a>
 								
 								    <% if (user != null && IDPoster == (user.getUserID())) { %>
-								        <div class="d-flex">
+								        <div class="d-flex justify-content-center" style="flex-grow: 1;">
 								            <form method="post" action="../edit-docs" class="d-inline-flex">
 								                <input type="hidden" name="docID" value="<%= docs.getDocumentID() %>">
 								                <button type="submit" name="btnUpdateDoc" value="btnUpdateDoc" class="btn btn-outline-warning btn-sm mx-2">
@@ -87,12 +87,9 @@
 								                </button>
 								            </form>
 								        </div>
-								    <% } else { %>
-								        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
-								            <i class="bi bi-flag"></i> Báo cáo
-								        </button>
 								    <% } %>
 								</div>
+
 
 					        </div>
 					    </a>

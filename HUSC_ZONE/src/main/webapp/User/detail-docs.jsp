@@ -32,9 +32,6 @@
         <main class="col-md-9 my-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h4 class="fw-bold">Chi tiết Tài liệu</h4>
-                <a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#reportModal">
-                    <i class="bi bi-flag"></i> Báo cáo
-                </a>
             </div>
 
             <div class="row">
@@ -89,6 +86,28 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+	        <div class="modal-dialog">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <h5 class="modal-title" id="reportModalLabel">Báo cáo tài liệu</h5>
+	                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	                </div>
+	                <form method="post" action="../interact">
+	                	<input type="hidden" name="docsID" value="<%= dtlDocs.getDocumentID() %>">
+	                	<input type="hidden" name="reportInDetail" value="reportInDetail">
+		                <div class="modal-body">
+		                    <textarea name="txtContentReport" class="form-control" rows="3" placeholder="Mô tả lý do báo cáo bài viết này..." required></textarea>
+		                </div>
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+		                    <button type="submit" name="btn-report" value="<%= dtlDocs.getDocumentID()  %>" class="btn btn-danger">Gửi</button>
+		                </div>
+	                </form>
+	        </div>
+        </div>
+    </div>
 
             <!-- Suggested Documents -->
 			<div class="mt-5">
