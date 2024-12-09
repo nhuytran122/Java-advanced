@@ -6,7 +6,11 @@ import java.sql.ResultSet;
 import CommonModal.KetNoi;
 
 public class BookmarkDao {
-    public int addBookmark(Long documentID, Long userID) throws Exception {
+	public int addBookmark(Long documentID, Long userID) throws Exception {
+        if (hasUserMarkedDocs(userID, documentID)) {
+            return 0; 
+        }
+
         KetNoi kn = new KetNoi();
         kn.ketnoi();
         String sql = "INSERT INTO tbl_Bookmarks (DocumentID, MarkedBy, MarkedAt) " +

@@ -54,6 +54,9 @@
 					    <a href="../details?docsID=<%=docs.getDocumentID() %>" class="card-link" style="display: block; text-decoration: none;">
 					        <div class="card" title="Click để xem chi tiết">
 					            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
+					            <span class="badge bg-warning text-white position-absolute top-0 end-0 m-2 p-2" style="font-size: 15px">
+				                    <i class="bi bi-bookmark-fill"></i> <%= docs.getCountBookmarks() %>
+				                </span>
 					            <div class="card-body">
 					                <h6 class="card-title text-truncate"><%= docs.getTitle() %></h6>
 					                <div>

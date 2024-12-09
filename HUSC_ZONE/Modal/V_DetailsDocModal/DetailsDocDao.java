@@ -215,8 +215,9 @@ public class DetailsDocDao {
 		String categoryName = rs.getString("CategoryName");
 		String materialName = rs.getString("MaterialName");
 		String name = rs.getString("Name");
+		Long countBookmarks = rs.getLong("CountBookmarks");
 
 		return new DetailsDoc(DocumentID, title, description, createdAt, updatedAt, filePath, catID, matID, uploadedBy,
-				categoryName, materialName, name);
+				categoryName, materialName, name, countBookmarks);
 	}
 }

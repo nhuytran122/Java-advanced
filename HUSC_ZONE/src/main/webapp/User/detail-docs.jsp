@@ -46,7 +46,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h4 class="card-title mb-3"><%=dtlDocs.getTitle() %></h4>
-                            <p class="card-text"><%=dtlDocs.getDesription() %></p>
+                            <p class="card-text"><%=dtlDocs.getDescription() %></p>
                             <p><strong>Ngành học: </strong> 
                             	<a href="../home?cateID=<%= dtlDocs.getCategoryID()%>" class="badge bg-info text-white text-decoration-none" style="font-size: 16px;">
                             		<%= dtlDocs.getCategoryName() %>
@@ -65,7 +65,9 @@
                             <p><strong>Ngày tải lên:</strong> 
                             	<%= dtlDocs.getUpdatedAt() == null ? MethodCommon.convertDateToString(dtlDocs.getCreatedAt()) 
 															  : "Đã chỉnh sửa " + MethodCommon.convertDateToString(dtlDocs.getUpdatedAt()) %></p>
-
+							<p><strong>Lượt yêu thích: </strong> 
+                            	<%= dtlDocs.getCountBookmarks() %>
+                           	</p>
                             <div class="d-flex align-items-center">
 							    <form action="../interact" method="POST" class="me-2">
 							        <input type="hidden" name="docsID" value="<%= dtlDocs.getDocumentID()%>">

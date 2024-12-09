@@ -7,7 +7,11 @@ import CommonModal.KetNoi;
 
 public class LikeDao {
 	
+	
     public int addLike(Long postID, Long userID) throws Exception {
+    	if (hasUserLikedPost(userID, postID)) {
+            return 0; 
+        }
         KetNoi kn = new KetNoi();
         kn.ketnoi();
         String sql = "INSERT INTO tbl_Likes (PostID, LikedAt, LikedBy) " +
