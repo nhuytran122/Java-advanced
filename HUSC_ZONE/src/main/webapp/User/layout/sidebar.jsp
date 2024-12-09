@@ -9,7 +9,7 @@
             <a href="../liked-docs" class="list-group-item bg-light text-dark fw-bold py-3 d-flex align-items-center">
                 <i class="bi bi-bookmark-heart-fill me-2 text-warning"></i> Tài liệu yêu thích
             </a>
-            <a href="/liked-status.html" class="list-group-item bg-light text-dark fw-bold py-3 d-flex align-items-center">
+            <a href="../activity-history" class="list-group-item bg-light text-dark fw-bold py-3 d-flex align-items-center">
                 <i class="bi bi-heart-fill me-2 text-danger"></i> Bài viết đã thích
             </a>
         <% } else { %>

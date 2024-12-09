@@ -93,6 +93,13 @@
 	                    </form>
                     </div>
                 </div>
+                <%
+				    int n = 0;
+				    if (dsPosts != null && !dsPosts.isEmpty()) {
+				        n = dsPosts.size();
+				    } else 
+				        n = dsUsers.size();
+				%>
 
                 <% 
                     if (dsPosts != null && !dsPosts.isEmpty()) {
@@ -224,6 +231,31 @@
                         } 
                     }
                 %>
+                
+                <% if (n > 0) { %>
+					<nav>
+					    <ul class="pagination justify-content-center mt-4">
+					        <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
+					            <a class="page-link" href="<%= currentPage > 1 ? "../status-post?page=" + (currentPage - 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" tabindex="-1" aria-disabled="true">
+					                <i class="bi bi-chevron-left"></i>
+					            </a>
+					        </li>
+					        
+					        <% for (int p = 1; p <= pageCount; p++) { %>
+			                  <li class="page-item <%= p == currentPage ? "active" : "" %>">
+			                    <a class="page-link" href="../status-post?page=<%= p %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %>">
+			                      <%= p %>
+			                    </a>
+			                  </li>
+			                <% } %>
+					        <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
+					            <a class="page-link" href="<%= currentPage < pageCount ? "../status-post?page=" + (currentPage + 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>">
+					                 <i class="bi bi-chevron-right"></i>
+					            </a>
+					        </li>
+					    </ul>
+					</nav>
+				<% } %>
             </main>
         </div>
     </div>

@@ -117,14 +117,14 @@ boolean isLiked = (boolean)request.getAttribute("isLiked");
 			            for (DetailsComment cmt : listCmts) { 
 			    %>
 			        <div class="comment">
-			            <img src="<%= cmt.getAvatar() == null || cmt.getAvatar().isBlank() 
+			            <img src="<%= cmt.getCommentedByAvatar() == null || cmt.getCommentedByAvatar().isBlank() 
 			                         ? request.getContextPath() + "/images/default-avt.jpg" 
-			                         : request.getContextPath() + cmt.getAvatar() %>" 
+			                         : request.getContextPath() + cmt.getCommentedByAvatar() %>" 
 			                 alt="User" class="profile-image me-2">
 			            <div class="comment-content">
 			                <h6 class="mb-0">
 			                	<a href="../user-profile?userId=<%= cmt.getCommentedBy() %>" class="text-decoration-none">
-                                        <%= cmt.getName() %>
+                                        <%= cmt.getCommentedByName() %>
                                 </a>
                             </h6>
 			                <p><%= cmt.getCommentContent() %></p>

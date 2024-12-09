@@ -37,4 +37,7 @@ public class Constants {
     
     public static final Long SEARCH_USER = 1L;
     public static final Long SEARCH_POST = 2L;
+    
+    public static final Long FILTER_LIKED = 1L;
+    public static final Long FILTER_COMMENTED = 2L;
 }

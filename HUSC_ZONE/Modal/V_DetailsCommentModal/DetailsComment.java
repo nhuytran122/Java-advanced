@@ -9,14 +9,19 @@ public class DetailsComment {
 	private Long CommentedBy;
 	private Date CommentedAt;
 	private Date UpdatedAt;
-	private String Name;
-	private String Avatar;
+	private String CommentedByName;
+	private String CommentedByAvatar;
+	private String PosterName;
+	private String PosterAvatar;
+	private Long PosterID;
+	private String ImagePath;
 	public DetailsComment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public DetailsComment(Long commentID, String commentContent, Long postID, Long commentedBy, Date commentedAt,
-			Date updatedAt, String name, String avatar) {
+			Date updatedAt, String commentedByName, String commentedByAvatar, 
+			String posterName, String posterAvatar, Long posterID, String imagePath) {
 		super();
 		CommentID = commentID;
 		CommentContent = commentContent;
@@ -24,8 +29,12 @@ public class DetailsComment {
 		CommentedBy = commentedBy;
 		CommentedAt = commentedAt;
 		UpdatedAt = updatedAt;
-		Name = name;
-		Avatar = avatar;
+		CommentedByName = commentedByName;
+		CommentedByAvatar = commentedByAvatar;
+		PosterName = posterName;
+		PosterAvatar = posterAvatar;
+		PosterID = posterID;
+		ImagePath = imagePath;
 	}
 	public Long getCommentID() {
 		return CommentID;
@@ -63,16 +72,40 @@ public class DetailsComment {
 	public void setUpdatedAt(Date updatedAt) {
 		UpdatedAt = updatedAt;
 	}
-	public String getName() {
-		return Name;
+	public String getCommentedByName() {
+		return CommentedByName;
 	}
-	public void setName(String name) {
-		Name = name;
+	public void setCommentedByName(String commentedByName) {
+		CommentedByName = commentedByName;
 	}
-	public String getAvatar() {
-		return Avatar;
+	public String getCommentedByAvatar() {
+		return CommentedByAvatar;
 	}
-	public void setAvatar(String avatar) {
-		Avatar = avatar;
+	public void setCommentedByAvatar(String commentedByAvatar) {
+		CommentedByAvatar = commentedByAvatar;
+	}
+	public String getPosterName() {
+		return PosterName;
+	}
+	public void setPosterName(String posterName) {
+		PosterName = posterName;
+	}
+	public String getPosterAvatar() {
+		return PosterAvatar;
+	}
+	public void setPosterAvatar(String posterAvatar) {
+		PosterAvatar = posterAvatar;
+	}
+	public Long getPosterID() {
+		return PosterID;
+	}
+	public void setPosterID(Long posterID) {
+		PosterID = posterID;
+	}
+	public String getImagePath() {
+		return ImagePath;
+	}
+	public void setImagePath(String imagePath) {
+		ImagePath = imagePath;
 	}
 }

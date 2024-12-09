@@ -15,7 +15,7 @@ import BookmarkModal.BookmarkBo;
 import CommonModal.MethodCommon;
 import LikeModal.LikeBo;
 import UserModal.User;
-import V_DetailsCommentModal.DetailCommentBo;
+import V_DetailsCommentModal.DetailsCommentBo;
 import V_DetailsCommentModal.DetailsComment;
 import V_DetailsDocModal.DetailsDoc;
 import V_DetailsDocModal.DetailsDocBo;
@@ -82,7 +82,7 @@ public class ViewDetailsController extends HttpServlet {
 	        		postID = (Long)request.getAttribute("postID");
 
 	        	DetailsPostBo dtdocsBo = new DetailsPostBo();
-	        	DetailCommentBo dtCmtBo = new DetailCommentBo();
+	        	DetailsCommentBo dtCmtBo = new DetailsCommentBo();
 	        	boolean isLiked = false;
 	        	
 	        	DetailsPost dtlPost = dtdocsBo.getDetailsPostByID(postID);
