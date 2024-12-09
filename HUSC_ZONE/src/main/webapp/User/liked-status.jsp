@@ -84,6 +84,24 @@ a {
 				                        </a>
 				                        <div class="d-flex align-items-center">
 				                            <small class="text-muted me-3"><%= MethodCommon.convertDateToString(like.getLikedAt()) %></small>
+				                            <div class="dropdown">
+			                                    <button class="btn btn-link p-0" data-bs-toggle="dropdown" aria-expanded="false">
+			                                        <i class="bi bi-three-dots-vertical"></i>
+			                                    </button>
+			                                    <ul class="dropdown-menu dropdown-menu-end">
+			                                        <li>
+			                                        	<form action="../interact" method="POST" class="mb-0">
+													        <input type="hidden" name="postID" value="<%= like.getPostID() %>">
+													        <input type="hidden" name="unLikeInList" value="true">
+													        <button type="submit" 
+													                name="btn-like" value="true" 
+													                class="dropdown-item">
+													            <i class="bi bi-heartbreak me-2"></i>Bỏ thích
+													        </button>
+													    </form>
+			                                        </li>
+			                                    </ul>
+			                                </div>
 				                        </div>
 				                    </div>
 				                    <div class="body my-2">
@@ -124,6 +142,24 @@ a {
 				                    </a>
 				                        <div class="d-flex align-items-center">
 				                            <small class="text-muted me-3"><%= MethodCommon.convertDateToString(cmt.getCommentedAt()) %></small>
+				                            <div class="dropdown">
+			                                    <button class="btn btn-link p-0" data-bs-toggle="dropdown" aria-expanded="false">
+			                                        <i class="bi bi-three-dots-vertical"></i>
+			                                    </button>
+			                                    <ul class="dropdown-menu dropdown-menu-end">
+			                                        <li>
+			                                        	<form action="../interact" method="POST" class="mb-0">
+													        <input type="hidden" name="postID" value="<%= cmt.getPostID() %>">
+													        <input type="hidden" name="deleteInList" value="true">
+													        <button type="submit" 
+													                name="btnDeleteCmt" value="<%= cmt.getCommentID() %>" 
+													                class="dropdown-item">
+													            <i class="bi bi-trash3 me-2"></i>Xóa
+													        </button>
+													    </form>
+			                                        </li>
+			                                    </ul>
+			                                </div>
 				                        </div>
 				                    </div>
 				                    <div class="body my-2">

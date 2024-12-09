@@ -151,15 +151,19 @@
 							                        <i class="bi bi-three-dots"></i>
 							                    </button>
 							                    <ul class="dropdown-menu dropdown-menu-end">
-							                        <li><a class="dropdown-item" href="../edit-status?editStt=true&sttID=<%= stt.getPostID() %>">Chỉnh sửa bài viết</a></li>
+							                        <li>
+							                        	<a class="dropdown-item" href="../edit-status?editStt=true&sttID=<%= stt.getPostID() %>">
+							                        		<i class="bi bi-pencil me-2"></i> Chỉnh sửa bài viết
+							                        	</a>
+							                        </li>
 							                        <li>
 								                        <button 
 									                    type="button" 
-									                    class="btn btn-outline-danger btn-sm" 
+									                    class="dropdown-item"
 									                    data-bs-toggle="modal" 
 									                    data-bs-target="#deleteModal<%= stt.getPostID() %>" 
 									                    title="Xóa">
-									                    <i class="bi bi-trash"></i> Xóa bài viết
+									                    <i class="bi bi-trash me-2"></i> Xóa bài viết
 										                </button>
 									                </li>
 							                    </ul>

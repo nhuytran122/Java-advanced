@@ -20,13 +20,13 @@ import V_DetailsLikedModal.DetailsLikedBo;
 
 @WebServlet("/activity-history")
 public class ActivityHistoryController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     public ActivityHistoryController() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
@@ -51,6 +51,9 @@ public class ActivityHistoryController extends HttpServlet {
             
             if (request.getParameter("filterID") != null) {
             	filterID = Long.parseLong(request.getParameter("filterID"));
+            }
+            else if(request.getAttribute("filterID") != null) {
+            	filterID = (Long)(request.getAttribute("filterID"));
             }
             
             DetailsLikedBo dtLBo = new DetailsLikedBo();
@@ -83,8 +86,9 @@ public class ActivityHistoryController extends HttpServlet {
         }
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import BookmarkModal.BookmarkBo;
 import CommentModal.CommentBo;
+import CommonModal.Constants;
 import LikeModal.LikeBo;
 import ReportModal.ReportBo;
 import UserModal.User;
@@ -78,7 +79,7 @@ public class InteractionController extends HttpServlet {
 	                request.setAttribute("postID", postID);
 	                
 	                if(request.getParameter("unLikeInList") != null) {
-	                	response.sendRedirect("liked-status");
+	                	response.sendRedirect("activity-history");
 	                    return;
 	                }
 	                //C1: response.sendRedirect("details?postID=" + postID);
@@ -123,8 +124,26 @@ public class InteractionController extends HttpServlet {
 	            	response.sendRedirect("status-post");
 	                return;
 	            }
+	            
+	            if(request.getParameter("btnDeleteCmt") != null) {
+	            	Long cmtID = Long.parseLong(request.getParameter("btnDeleteCmt"));
+	            	CommentBo cmtBo = new CommentBo();
+	            	cmtBo.deleteComment(cmtID);
+	            	if(request.getParameter("deleteInList") != null) {
+	            		request.setAttribute("filterID", Constants.FILTER_COMMENTED);
+	            		RequestDispatcher rd = request.getRequestDispatcher("activity-history");
+	            		rd.forward(request, response); 
+		                return;
+	                }
+	            	else {
+		            	request.setAttribute("postID", postID);
+		        		RequestDispatcher rd = request.getRequestDispatcher("details");
+		        		rd.forward(request, response); 
+		                return;
+	            	}
+	                
+	            }
             }
-            
             response.sendRedirect("home");
             
         } catch (Exception e) {
