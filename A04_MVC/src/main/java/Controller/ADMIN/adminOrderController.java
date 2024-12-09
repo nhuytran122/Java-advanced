@@ -59,7 +59,6 @@ public class adminOrderController extends HttpServlet {
             request.setAttribute("ds", ds);
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
-            request.setAttribute("searchKeyword", searchValue); 
 
             RequestDispatcher rd = request.getRequestDispatcher("ADMIN/show_orders.jsp");
             rd.forward(request, response);

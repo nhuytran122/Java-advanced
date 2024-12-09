@@ -113,8 +113,16 @@
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Ảnh</label>
                       <div class="col-sm-10">
-                        <input type="file" class="form-control" name="fileAnh" accept="image/*" required>
+                        <input type="file" class="form-control" name="fileAnh" accept="image/*" required id="fileInput">
                       </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                      <label class="control-label col-sm-2">Preview Ảnh</label>
+						<div class="col-sm-10">
+						  <!-- Hiển thị ảnh nếu có -->
+						  <img id="imagePreview" alt="Image Preview" style="max-height: 250px; display: none "/>
+						</div>
                     </div>
 
                     <div class="form-group row">
@@ -142,9 +150,8 @@
   <script src="ADMIN/js/settings.js"></script>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
-  <script>
+    <script>
     $(document).ready(function () {
-        // Đảm bảo mã JavaScript này được chạy sau khi trang được tải xong
         $('.number-separator').inputmask({
             alias: "numeric",
             groupSeparator: ",",       // Dấu phẩy phân cách phần nghìn
@@ -153,7 +160,20 @@
             rightAlign: false,
             removeMaskOnSubmit: true   // Loại bỏ ký tự phân cách phần nghìn khi submit form
         });
-    })
-</script>
+
+        // Hiển thị ảnh preview khi người dùng chọn ảnh mới
+        $('#fileInput').change(function (e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imagePreview').attr('src', e.target.result);
+                $('#imagePreview').show();
+            };
+
+            reader.readAsDataURL(file);
+        });
+    });
+  </script>
 </body>
 </html>

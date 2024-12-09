@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="lichsumodal.lichsu"/>
     <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
     <fullyQualifiedTypeName name="lichsumodal.lichsubo"/>
     <fullyQualifiedTypeName name="CategoryModal.CategoryBo"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
     <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLiked"/>
     <fullyQualifiedTypeName name="CommonModal.Constants"/>
+    <fullyQualifiedTypeName name="java.util.Enumeration"/>
 </qualifiedTypeNameHistroy>

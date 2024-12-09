@@ -13,8 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import loaimodal.loai;
 import loaimodal.loaibo;
-import sachmodal.sach;
-import sachmodal.sachbo;
 
 @WebServlet("/adminLoaiController")
 public class adminLoaiController extends HttpServlet {
@@ -61,7 +59,6 @@ public class adminLoaiController extends HttpServlet {
             request.setAttribute("ds", ds);
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
-            request.setAttribute("searchKeyword", searchValue); 
 
             RequestDispatcher rd = request.getRequestDispatcher("ADMIN/show_loai.jsp");
             rd.forward(request, response);

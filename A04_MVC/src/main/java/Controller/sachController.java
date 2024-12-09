@@ -56,7 +56,6 @@ public class sachController extends HttpServlet {
             request.setAttribute("ds", ds);
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
-            request.setAttribute("searchKeyword", searchValue); 
 
             RequestDispatcher rd = request.getRequestDispatcher("tc.jsp");
             rd.forward(request, response);

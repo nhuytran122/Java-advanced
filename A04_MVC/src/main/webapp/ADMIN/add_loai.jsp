@@ -22,8 +22,8 @@
 <body>
 
 <%
-  String maLoai = (String)request.getAttribute("maLoai");
-  String tenLoai = (String)request.getAttribute("tenLoai");
+  String maLoai = (String)request.getParameter("txtMaLoai");
+  String tenLoai = (String)request.getParameter("txtTenLoai");
   Boolean isInvalid = (Boolean) request.getAttribute("isInvalid");
     
 %>

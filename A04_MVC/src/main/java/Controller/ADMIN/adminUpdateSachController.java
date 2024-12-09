@@ -53,19 +53,19 @@ public class adminUpdateSachController extends HttpServlet {
             }
 
             if (request.getParameter("btnDeleteSach") != null) {
-                String anh = sbo.getSach(ms).getAnh();
+                String oldAnh = sbo.getSach(ms).getAnh();
                 sbo.deleteSach(ms);
 
                 // Lấy đường dẫn thư mục gốc của ứng dụng và kết hợp với thư mục chứa ảnh
                 // String appPath =
                 // "D:/HK7/JAVA_NANGCAO/Java-advanced/A04_MVC/src/main/webapp/";
-                String appPath = request.getServletContext().getRealPath("") + File.separator + anh;
-                File imageFile = new File(appPath);
+                String imgPath = request.getServletContext().getRealPath("") + File.separator + oldAnh;
+                File imageFile = new File(imgPath);
                 System.out.println("Path of image: " + imageFile.getAbsolutePath());
                 if (imageFile.exists()) {
                     boolean isImageDeleted = imageFile.delete(); // Xóa ảnh
                     if (!isImageDeleted) {
-                        System.out.println("Không thể xóa ảnh: " + anh);
+                        System.out.println("Không thể xóa ảnh: " + oldAnh);
                     }
                 }
                 response.sendRedirect("adminSachController");

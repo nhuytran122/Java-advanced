@@ -60,7 +60,6 @@ public class adminSachController extends HttpServlet {
             request.setAttribute("ds", ds);
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
-            request.setAttribute("searchKeyword", searchValue); 
 
             RequestDispatcher rd = request.getRequestDispatcher("ADMIN/show_books.jsp");
             rd.forward(request, response);

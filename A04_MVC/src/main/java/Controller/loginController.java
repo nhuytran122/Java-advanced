@@ -47,7 +47,6 @@ public class loginController extends HttpServlet {
 						isWrong = true;
 				}
 			}
-			request.setAttribute("loginId", txtLoginId);
 			request.setAttribute("isInvalid", isInvalid);
 			request.setAttribute("isWrong", isWrong);
 			  

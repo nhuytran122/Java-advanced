@@ -22,10 +22,10 @@
 </head>
 <body>
 <%
-int cntKH = (Integer) request.getAttribute("cntKH");
-int cntSach = (Integer) request.getAttribute("cntSach");
-int cntHD = (Integer) request.getAttribute("cntHD");
-int cntHDPaid = (Integer) request.getAttribute("cntHDPaid");
+	int cntKH = (Integer) request.getAttribute("cntKH");
+	int cntSach = (Integer) request.getAttribute("cntSach");
+	int cntHD = (Integer) request.getAttribute("cntHD");
+	int cntHDPaid = (Integer) request.getAttribute("cntHDPaid");
 %>
   <div class="container-scroller">
     <%@ include file="layoutAdmin/navbar.jsp" %>

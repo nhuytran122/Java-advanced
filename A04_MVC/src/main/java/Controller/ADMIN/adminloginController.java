@@ -65,7 +65,6 @@ public class adminloginController extends HttpServlet {
                 }
             }
 
-            request.setAttribute("loginId", txtLoginId);
             request.setAttribute("isInvalid", isInvalid);
 
             RequestDispatcher rd = request.getRequestDispatcher("adminLogin.jsp");

@@ -42,7 +42,7 @@
           <li class="nav-item nav-search d-none d-lg-block" style="display: flex; align-items: center;">
             <form action="adminOrderController" method="get" class="d-flex" style="width: 100%; justify-content: center; align-items: center;">
               <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm đơn hàng theo tên khách hàng" name="txtSearch" aria-label="search"
-                     value="<%= request.getParameter("txtSearch") != null ? request.getParameter("txtSearch") : "" %>"
+                     value="<%= searchKeyword != null ? searchKeyword : "" %>"
                      style="width: 400px; font-size: 14px; margin-right: 10px;">
               <button type="submit" class="btn btn-primary btn-sm p-2">
                 <i class="bi bi-search"></i>

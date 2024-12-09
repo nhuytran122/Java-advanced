@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%
-  String loginId = (String)request.getAttribute("loginId");
+  String loginId = (String)request.getParameter("txtLoginId");
   boolean isInvalid = (boolean)request.getAttribute("isInvalid");
   boolean isWrong = (boolean)request.getAttribute("isWrong"); 
 

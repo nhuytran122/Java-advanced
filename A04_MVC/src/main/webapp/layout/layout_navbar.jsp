@@ -27,11 +27,12 @@ pageEncoding="UTF-8"%>
       </ul>
       
       <ul class="navbar-nav ms-auto">
-        <% if (kh != null) { %>
+        
         <li class="nav-item d-flex align-items-center">
           <i class="bi bi-cart4" style="color: white; "></i>
           <a class="nav-link" href="giohangController">Giỏ hàng (<%= cntPrs %>)</a>
         </li>
+        <% if (kh != null) { %>
         <li class="nav-item d-flex align-items-center">
           <span class="nav-link">Xin chào, <%= kh.getHoten() %></span>
         </li>

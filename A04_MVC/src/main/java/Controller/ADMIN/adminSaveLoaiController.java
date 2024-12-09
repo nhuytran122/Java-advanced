@@ -27,7 +27,6 @@ public class adminSaveLoaiController extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            // Kiểm tra xem người dùng đã đăng nhập chưa
             if(session.getAttribute("ad") == null) {
                 response.sendRedirect("adminloginController");
                 return;
@@ -54,8 +53,6 @@ public class adminSaveLoaiController extends HttpServlet {
             else 
             	isInvalid = true;
 
-            request.setAttribute("maLoai", maloai);
-            request.setAttribute("tenLoai", tenloai);
             request.setAttribute("isInvalid", isInvalid); 
 
             RequestDispatcher rd = request.getRequestDispatcher("ADMIN/add_loai.jsp");

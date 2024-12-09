@@ -40,7 +40,7 @@
           <li class="nav-item nav-search d-none d-lg-block" style="display: flex; align-items: center;">
             <form action="adminSachController" method="get" class="d-flex" style="width: 100%; justify-content: center; align-items: center;">
               <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm sách..." name="txtSearch" aria-label="search"
-                     value="<%= request.getParameter("txtSearch") != null ? request.getParameter("txtSearch") : "" %>"
+                     value="<%= searchKeyword != null ? searchKeyword : "" %>"
                      style="width: 400px; font-size: 14px; margin-right: 10px;">
               <button type="submit" class="btn btn-primary btn-sm p-2">
                 <i class="bi bi-search"></i>
@@ -71,7 +71,7 @@
                           <th style="max-width: 200px;">Tên sách</th>
                           <th>Số lượng</th>
                           <th>Giá</th>
-                          <th>Loại sách</th>
+                          <!--  <th>Loại sách</th>-->
                           <th>Tác giả</th>
                           <th>Thao tác</th>
                         </tr>
@@ -100,7 +100,6 @@
                           </td>
                           <td><%= s.getSoluong() %></td>
                           <td><%= nf.format(s.getGia()) %></td>
-                          <td><%= s.getMaloai() %></td>
                           <td>
 	                          <div style="max-width: 200px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.5;">
 	                              <%= s.getTacgia() %>

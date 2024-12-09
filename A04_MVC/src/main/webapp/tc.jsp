@@ -16,12 +16,12 @@
 </head>
 <body>
 <%
-ArrayList<sach> ds = (ArrayList<sach>)request.getAttribute("ds"); 
-int pageCount = (Integer)request.getAttribute("pageCount");
-int currentPage = (Integer)request.getAttribute("currentPage");
-String searchKeyword = request.getParameter("txtSearch");
-NumberFormat nf = NumberFormat.getInstance();
-nf.setGroupingUsed(true);
+	ArrayList<sach> ds = (ArrayList<sach>)request.getAttribute("ds"); 
+	int pageCount = (Integer)request.getAttribute("pageCount");
+	int currentPage = (Integer)request.getAttribute("currentPage");
+	String searchKeyword = request.getParameter("txtSearch");
+	NumberFormat nf = NumberFormat.getInstance();
+	nf.setGroupingUsed(true);
 %>
 
     <%@ include file="layout/layout_navbar.jsp" %>
