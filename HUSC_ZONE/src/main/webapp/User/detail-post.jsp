@@ -71,6 +71,7 @@ boolean isLiked = (boolean)request.getAttribute("isLiked");
             </div>
 
             <!-- Reaction Bar -->
+            <% if(dtlPost.getUploadedBy() == user.getUserID()){ %>
             <div class="px-3 py-2">
                 <div class="d-flex align-items-center">
                     <div class="reaction-icons">
@@ -80,6 +81,7 @@ boolean isLiked = (boolean)request.getAttribute("isLiked");
                     <span class="reaction-count ms-auto"><%= dtlPost.getCountComments() %> comments</span>
                 </div>
             </div>
+            <%} %>
 
             <!-- Interaction Bar -->
             <div class="interaction-bar d-flex justify-content-between px-3">

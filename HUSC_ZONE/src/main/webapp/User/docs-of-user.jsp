@@ -65,9 +65,9 @@
 					                </div>
 					            </div>
 					            <div class="card-footer d-flex justify-content-between align-items-center">
-								    <a href="#" class="btn btn-outline-success btn-sm">
-								        <i class="bi bi-download"></i> Download
-								    </a>
+								    <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm" style="float: left;">
+					                    <i class="bi bi-download"></i> Download
+					                </a>
 								
 								    <% if (user != null && IDPoster == (user.getUserID())) { %>
 								        <div class="d-flex">

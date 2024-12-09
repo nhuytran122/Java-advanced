@@ -106,6 +106,9 @@
 			        	<a href="../details?docsID=<%=doc.getDocumentID() %>" class="card-link" style="display: block; text-decoration: none;">
 				            <div class="card h-100">
 				                <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
+				                <span class="badge bg-warning text-white position-absolute top-0 end-0 m-2 p-2" style="font-size: 15px">
+				                    <i class="bi bi-bookmark-fill"></i> <%= doc.getCountBookmarks() %>
+				                </span>
 				                <div class="card-body">
 				                    <h6 class="card-title"><%= doc.getTitle() %></h6>
 				                    <div class="pb-2">

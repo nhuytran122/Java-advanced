@@ -40,8 +40,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Mô tả</label>
                                 <textarea class="form-control" rows="3" placeholder="Nhập mô tả ngắn gọn về tài liệu" 
-	                                name="txtMoTa" 
-	                                value="<%= doc.getDesription() %>" ></textarea>
+	                                name="txtMoTa" ><%= doc.getDesription() %></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Ngành học</label>
