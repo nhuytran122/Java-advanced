@@ -44,7 +44,6 @@
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmarkDao"/>
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmarkBo"/>
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmark"/>
-    <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsCommentBo"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
     <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLiked"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
 </qualifiedTypeNameHistroy>

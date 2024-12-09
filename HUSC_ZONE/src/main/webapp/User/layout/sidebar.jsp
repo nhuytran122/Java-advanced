@@ -10,7 +10,7 @@
                 <i class="bi bi-bookmark-heart-fill me-2 text-warning"></i> Tài liệu yêu thích
             </a>
             <a href="../activity-history" class="list-group-item bg-light text-dark fw-bold py-3 d-flex align-items-center">
-                <i class="bi bi-heart-fill me-2 text-danger"></i> Bài viết đã thích
+                <i class="bi bi-heart-fill me-2 text-danger"></i> Nhật ký hoạt động
             </a>
         <% } else { %>
             <div class="list-group-item bg-light text-center py-4">

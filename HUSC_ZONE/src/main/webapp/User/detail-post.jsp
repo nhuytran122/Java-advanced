@@ -108,39 +108,95 @@ boolean isLiked = (boolean)request.getAttribute("isLiked");
 
             <!-- Comments List -->
 			<div class="comments-list">
-			    <% 
-			        if (listCmts == null || listCmts.isEmpty()) { 
-			    %>
-			        <p class="text-center text-muted">Chưa có bình luận.</p>
-			    <% 
-			        } else { 
-			            for (DetailsComment cmt : listCmts) { 
-			    %>
-			        <div class="comment">
-			            <img src="<%= cmt.getCommentedByAvatar() == null || cmt.getCommentedByAvatar().isBlank() 
-			                         ? request.getContextPath() + "/images/default-avt.jpg" 
-			                         : request.getContextPath() + cmt.getCommentedByAvatar() %>" 
-			                 alt="User" class="profile-image me-2">
-			            <div class="comment-content">
-			                <h6 class="mb-0">
-			                	<a href="../user-profile?userId=<%= cmt.getCommentedBy() %>" class="text-decoration-none">
-                                        <%= cmt.getCommentedByName() %>
-                                </a>
-                            </h6>
-			                <p><%= cmt.getCommentContent() %></p>
-			                <div class="comment-actions">
-			                    <span class="text-muted">
-			                    	<%= cmt.getUpdatedAt() == null ? MethodCommon.convertDateToString(cmt.getCommentedAt()) 
-										: "Đã chỉnh sửa " + MethodCommon.convertDateToString(cmt.getUpdatedAt()) %>
-								</span>
-			                </div>
-			            </div>
-			        </div>
-			    <% 
-			            } 
-			        } 
-			    %>
-			</div>
+		    <% 
+		        if (listCmts == null || listCmts.isEmpty()) { 
+		    %>
+		        <p class="text-center text-muted">Chưa có bình luận.</p>
+		    <% 
+		        } else { 
+		            for (DetailsComment cmt : listCmts) { 
+		    %>
+		        <div class="comment d-flex align-items-start">
+		            <img src="<%= cmt.getCommentedByAvatar() == null || cmt.getCommentedByAvatar().isBlank() 
+		                         ? request.getContextPath() + "/images/default-avt.jpg" 
+		                         : request.getContextPath() + cmt.getCommentedByAvatar() %>" 
+		                 alt="User" class="profile-image me-2">
+		            <div class="comment-content flex-grow-1">
+		                <h6 class="mb-0">
+		                    <a href="../user-profile?userId=<%= cmt.getCommentedBy() %>" class="text-decoration-none">
+		                        <%= cmt.getCommentedByName() %>
+		                    </a>
+		                </h6>
+		                <p class="mt-2"><%= cmt.getCommentContent() %></p>
+		                <div class="comment-actions d-flex justify-content-between">
+		                    <span class="text-muted">
+		                        <%= cmt.getUpdatedAt() == null ? MethodCommon.convertDateToString(cmt.getCommentedAt()) 
+		                            : "Đã chỉnh sửa " + MethodCommon.convertDateToString(cmt.getUpdatedAt()) %>
+		                    </span>
+		                    <% if (cmt.getCommentedBy().equals(user.getUserID())) { %>
+		                        <div class="dropdown">
+		                            <button class="btn btn-sm" type="button" id="dropdownMenuButton<%= cmt.getCommentID() %>" data-bs-toggle="dropdown" aria-expanded="false">
+		                                <i class="bi bi-three-dots"></i>
+		                            </button>
+		                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= cmt.getCommentID() %>">
+		                                <li>
+		                                    <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCommentModal<%= cmt.getCommentID() %>">Chỉnh sửa</button>
+		                                </li>
+		                                <li>
+		                                    <form action="../interact" method="post">
+		                                    	<input type="hidden" name="postID" value="<%= cmt.getPostID() %>">
+		                                        <button type="submit" name="btnDeleteCmt" value="<%= cmt.getCommentID() %>" class="dropdown-item text-danger">Xóa</button>
+		                                    </form>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    <% } %>
+		                    
+		                    <% if (dtlPost.getUploadedBy() == user.getUserID() && !cmt.getCommentedBy().equals(user.getUserID())) { %>
+		                        <div class="dropdown">
+		                            <button class="btn btn-sm" type="button" id="dropdownMenuButton<%= cmt.getCommentID() %>" data-bs-toggle="dropdown" aria-expanded="false">
+		                                <i class="bi bi-three-dots"></i>
+		                            </button>
+		                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton<%= cmt.getCommentID() %>">
+		                                <li>
+		                                    <form action="../interact" method="post">
+		                                    	<input type="hidden" name="postID" value="<%= cmt.getPostID() %>">
+		                                        <button type="submit" name="btnDeleteCmt" value="<%= cmt.getCommentID() %>" class="dropdown-item text-danger">Xóa</button>
+		                                    </form>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    <% } %>
+		                </div>
+		            </div>
+		        </div>
+		
+		        <!-- Modal chỉnh sửa bình luận -->
+		        <div class="modal fade" id="editCommentModal<%= cmt.getCommentID() %>" tabindex="-1" aria-labelledby="editCommentModalLabel<%= cmt.getCommentID() %>" aria-hidden="true">
+		            <div class="modal-dialog">
+		                <div class="modal-content">
+		                    <div class="modal-header">
+		                        <h5 class="modal-title" id="editCommentModalLabel<%= cmt.getCommentID() %>">Chỉnh sửa bình luận</h5>
+		                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		                    </div>
+		                    <form action="../interact" method="post">
+		                    	<input type="hidden" name="postID" value="<%= dtlPost.getPostID() %>">
+		                        <div class="modal-body">
+		                            <textarea name="txtEditContentCmt" class="form-control" rows="3" required><%= cmt.getCommentContent() %></textarea>
+		                        </div>
+		                        <div class="modal-footer">
+		                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+		                            <button type="submit" name="btnEditCmt" value="<%= cmt.getCommentID() %>" class="btn btn-primary">Lưu</button>
+		                        </div>
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+		    <% 
+		            } 
+		        } 
+		    %>
+		</div>
 
             <div class="p-3 border-top">
                 <div class="d-flex align-items-center">
@@ -175,6 +231,7 @@ boolean isLiked = (boolean)request.getAttribute("isLiked");
 	                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	                </div>
 	                <form method="post" action="../interact">
+	                	<input type="hidden" name="postID" value="<%= dtlPost.getPostID() %>">
 	                	<input type="hidden" name="reportInDetail" value="reportInDetail">
 		                <div class="modal-body">
 		                    <textarea name="txtContentReport" class="form-control" rows="3" placeholder="Mô tả lý do báo cáo bài viết này..." required></textarea>

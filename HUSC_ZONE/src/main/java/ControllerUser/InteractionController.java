@@ -136,12 +136,21 @@ public class InteractionController extends HttpServlet {
 		                return;
 	                }
 	            	else {
-		            	request.setAttribute("postID", postID);
 		        		RequestDispatcher rd = request.getRequestDispatcher("details");
 		        		rd.forward(request, response); 
 		                return;
 	            	}
-	                
+	            }
+	            
+	            if(request.getParameter("btnEditCmt") != null) {
+	            	Long cmtID = Long.parseLong(request.getParameter("btnEditCmt"));
+	            	CommentBo cmtBo = new CommentBo();
+	            	String contentEdit = request.getParameter("txtEditContentCmt");
+	            	cmtBo.updateComment(cmtID, contentEdit);
+	            	request.setAttribute("postID", postID);
+		        	RequestDispatcher rd = request.getRequestDispatcher("details");
+		        	rd.forward(request, response); 
+		            return;
 	            }
             }
             response.sendRedirect("home");
