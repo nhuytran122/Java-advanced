@@ -52,7 +52,7 @@ public class SaveStatusController extends HttpServlet {
 			String content = "", imgName = "", 
 					oldImgName = "";
 			String uniqueName = ""; // Tên file ảnh sau khi xử lý
-			boolean isUpdate = false, isUploaded = false;
+			boolean isUpdate = false, isUploaded = false, addInPage = false;
             int done = 0;
             StatusPostBo sttBo = new StatusPostBo();
             ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
@@ -64,6 +64,9 @@ public class SaveStatusController extends HttpServlet {
                     String fieldName = fileItem.getFieldName();
                     String fieldValue = fileItem.getString("UTF-8");
                     switch (fieldName) {
+                    	case "btnPostInPage":
+                    		addInPage = true;
+                    		break;
                         case "sttID": 
                         	if (fieldValue != null && !fieldValue.isEmpty()) {
                         		sttID = Long.parseLong(fieldValue);
@@ -123,6 +126,10 @@ public class SaveStatusController extends HttpServlet {
 	                        break;
 	                    }
 	                }
+            	}
+            	if(addInPage) {
+            		response.sendRedirect("status-post");
+            		return;
             	}
             	response.sendRedirect("user-profile");
                 return;

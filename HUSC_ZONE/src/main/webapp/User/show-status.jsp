@@ -60,7 +60,7 @@
                 
                 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-	                    <form action="../edit-status" method="post" enctype="multipart/form-data">
+	                    <form action="../save-post" method="post" enctype="multipart/form-data">
 	                        <div class="modal-content">
 	                            <div class="modal-header">
 	                                <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>
@@ -87,7 +87,7 @@
 	                            <div class="modal-footer">
 	                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
 	                                <button type="submit" 
-                                	name="btnAdd" value="add" class="btn btn-success">Đăng bài</button>
+                                	name=btnPostInPage value="true" class="btn btn-success">Đăng bài</button>
 	                            </div>
 	                        </div>
 	                    </form>
