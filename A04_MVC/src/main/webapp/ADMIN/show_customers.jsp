@@ -64,7 +64,7 @@
                           <th>Địa chỉ</th>
                           <th>Số điện thoại</th>
                           <th>Email</th>
-                          <th>Thao tác</th>
+                          <!--  <th>Thao tác</th>-->
                         </tr>
                       </thead>
                       <tbody>
@@ -94,7 +94,7 @@
 							  <td><%= kh.getSodt() %></td>
 							  <td><%= kh.getEmail() %></td>
 							  <td>
-							    <div class="btn-group" role="group">
+							    <!-- <div class="btn-group" role="group">
 							      <form method="post" action="adminUpdateKHController">
 							        <input type="hidden" name="idKH" value="<%= kh.getMakh() %>">
 							        <button type="submit" name="btnDetailSach" class="btn btn-success btn-sm" title="Xem chi tiết">
@@ -109,7 +109,7 @@
 							      </form>
 							    </div>
 							  </td>
-							</tr>
+							</tr>-->
 
 
                         <!-- Modal xác nhận xóa thông thường -->

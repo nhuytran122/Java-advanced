@@ -24,6 +24,11 @@ public class sachbo {
 			Long soluong, Long gia, String anh, String maloai, String sotap) throws Exception {
 		return sdao.updateSach(masach, tensach, tacgia, soluong, gia, anh, maloai, sotap);
 	}
+	
+	public int updateSachWithoutUpload(String masach, String tensach, String tacgia, Long soluong,
+			Long gia, String maloai, String sotap) throws Exception {
+		return sdao.updateSachWithoutUpload(masach, tensach, tacgia, soluong, gia, maloai, sotap);
+	}
 
 	public int deleteSach(String masach) throws Exception {
 		return sdao.deleteSach(masach);

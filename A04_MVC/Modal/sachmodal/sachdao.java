@@ -153,6 +153,30 @@ public class sachdao {
 		int kq = cmd.executeUpdate();
 		return kq;
 	}
+	
+	public int updateSachWithoutUpload(String masach, String tensach, String tacgia, Long soluong,
+			Long gia, String maloai, String sotap) throws Exception {
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "UPDATE sach " +
+				"SET tensach = ?, tacgia = ?, soluong = ?, gia = ?, " +
+				"maloai = ?, sotap = ? " +
+				"WHERE masach = ?";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+
+		cmd.setString(1, tensach);
+		cmd.setString(2, tacgia);
+		cmd.setLong(3, soluong);
+		cmd.setLong(4, gia);
+		cmd.setString(5, maloai);
+		cmd.setString(6, sotap);
+		// cmd.setDate(8, new java.sql.Date(ngaynhap.getTime()));
+		cmd.setString(7, masach);
+
+		int kq = cmd.executeUpdate();
+		return kq;
+	}
 
 	public int deleteSach(String masach) throws Exception {
 		KetNoi kn = new KetNoi();

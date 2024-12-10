@@ -89,21 +89,14 @@ public class adminSaveSachController extends HttpServlet {
                 }
             }
 
-            // Lấy thông tin ảnh sách cũ nếu update
-            if (isUpdate && !masach.isEmpty()) {
-                sach sachCu = sbo.getSach(masach);
-                if (sachCu != null) {
-                    if (isUploaded)
-                        oldAnh = sachCu.getAnh(); // Lấy ảnh cũ để xóa
-                    else
-                        anh = sachCu.getAnh(); // không upload thì lấy lại data cũ
-                }
-
-            }
             // Thêm hoặc cập nhật sách
             if (isUpdate) {
-                done = sbo.updateSach(masach, tensach, tacgia, Long.parseLong(soluong),
+            	if (isUploaded)
+            		done = sbo.updateSach(masach, tensach, tacgia, Long.parseLong(soluong),
                         Long.parseLong(gia), anh, maloai, sotap);
+            	else
+            		done = sbo.updateSachWithoutUpload(masach, tensach, tacgia, Long.parseLong(soluong),
+                        Long.parseLong(gia), maloai, sotap);
             } else {
                 done = sbo.addSach(masach, tensach, tacgia, Long.parseLong(soluong),
                         Long.parseLong(gia), anh, maloai, sotap);

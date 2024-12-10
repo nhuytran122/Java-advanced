@@ -43,6 +43,8 @@ a {
 			                    <%= filterID == Constants.FILTER_LIKED ? "selected" : "" %>>Lượt thích</option>
 			                <option value="<%= Constants.FILTER_COMMENTED %>" 
 			                    <%= filterID == Constants.FILTER_COMMENTED ? "selected" : "" %>>Bình luận</option>
+			                    <option value="<%= Constants.FILTER_REPORT %>" 
+			                    <%= filterID == Constants.FILTER_REPORT ? "selected" : "" %>>Báo cáo</option>
 			            </select>
 			            <button type="submit" name="btn-filter-ah" value="true" class="btn btn-primary-custom p-2">
 			                <i class="bi bi-search"></i>
