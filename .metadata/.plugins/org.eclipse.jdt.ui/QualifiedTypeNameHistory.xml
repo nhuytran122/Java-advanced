@@ -33,8 +33,6 @@
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostDao"/>
     <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDocBo"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="UserModal.User"/>
-    <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmarkDao"/>
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmarkBo"/>
@@ -52,7 +50,6 @@
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsCommentBo"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
     <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLiked"/>
-    <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="java.util.Enumeration"/>
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportDao"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReport"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="UserModal.UserBo"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
+    <fullyQualifiedTypeName name="UserModal.User"/>
 </qualifiedTypeNameHistroy>

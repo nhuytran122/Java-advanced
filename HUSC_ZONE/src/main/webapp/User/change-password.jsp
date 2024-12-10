@@ -5,10 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUSCZone - Đổi mật khẩu</title>
+    <title>Đổi mật khẩu - HUSCZone</title>
     <%@ include file="layout/import.jsp" %>
     <link rel="stylesheet" href="css/login-style.css">
 </head>
+
+<% 
+    String message = (String) request.getAttribute("message");
+    String messageType = (String) request.getAttribute("messageType");
+    String currentPass = (String) request.getAttribute("txtCurrPw");
+    String newPass = (String) request.getAttribute("txtNewPw");
+    String confirmPass = (String) request.getAttribute("txtConfNewPw");
+%>
 
 <style>
 .form-container .form-horizontal .btn-save-edit-inf, 
@@ -63,26 +71,36 @@
                 <div class="form-bg">
                 	<div class="form-container">
                             <h3 class="title text-center">Đổi mật khẩu</h3>
-                            <form action="../save-profile" method="post" class="form-horizontal">
+                            <form action="../change-password" method="post" class="form-horizontal">
                                     <div class="mb-3 form-group">
                                         <label>Mật khẩu hiện tại</label> <span class="text-danger">*</span>
                                         <input class="form-control mt-2" type="password" 
-                                        	name="txtCurrPw" required/>
+							               name="txtCurrPw" 
+							               value="<%= currentPass != null ? currentPass : "" %>" 
+							               required/>
                                     </div>
         
                                     <div class="mb-3 form-group">
                                         <label class="form-label">Mật khẩu mới</label> <span class="text-danger">*</span>
                                         <input type="password" class="form-control" 
-                                        	name="txtNewPw" required>
+							               name="txtNewPw" 
+							               value="<%= newPass != null ? newPass : "" %>" 
+							               required>
                                     </div>
         
                                     <div class="mb-3 form-group">
                                         <label class="form-label">Xác nhận mật khẩu mới</label> <span class="text-danger">*</span>
                                         <input type="password" class="form-control" 
-                                        	name="txtConfNewPw" required/>
+							               name="txtConfNewPw" 
+							               value="<%= confirmPass != null ? confirmPass : "" %>" 
+							               required/>
                                     </div>
-        
-        
+                                    <% if (message != null && messageType != null) { %>
+									    <div class="alert alert-<%= messageType %> text-center">
+									        <%= message %>
+									    </div>
+									<% } %>
+        							 <% if (request.getAttribute("isPasswordChanged") == null) { %>
                                     <div class="text-center">
 		                                <a href="../user-profile" class="btn btn-cancel-edit-inf me-2">
 		                                    Hủy
@@ -91,6 +109,7 @@
 		                                     Đổi mật khẩu
 		                                </button>
 		                            </div>
+		                            <%} %>
                                 </form>
                             </div>
                         </div>
