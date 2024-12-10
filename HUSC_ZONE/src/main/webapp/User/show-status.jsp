@@ -155,11 +155,35 @@
                             </button>
                         </div>
                         <div class="ms-auto">
-                            <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
-                                <i class="bi bi-flag"></i> Báo cáo
-                            </a>
+                            <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal<%= stt.getPostID() %>">
+							    <i class="bi bi-flag"></i> Báo cáo
+							</a>
+
                         </div>
                     </div>
+                    
+					<div class="modal fade" id="reportModal<%= stt.getPostID() %>" tabindex="-1" aria-labelledby="reportModalLabel<%= stt.getPostID() %>" aria-hidden="true">
+					    <div class="modal-dialog">
+					        <div class="modal-content">
+					            <div class="modal-header">
+					                <h5 class="modal-title" id="reportModalLabel<%= stt.getPostID() %>">Báo cáo bài viết</h5>
+					                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					            </div>
+					            <form method="post" action="../interact">
+					                <input type="hidden" name="postID" value="<%= stt.getPostID() %>">
+					                <input type="hidden" name="sttOf" value="<%= stt.getUploadedBy()%>">
+					                <div class="modal-body">
+					                    <textarea name="txtContentReport" class="form-control" rows="3" placeholder="Mô tả lý do báo cáo bài viết này..." required></textarea>
+					                </div>
+					                <div class="modal-footer">
+					                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+					                    <button type="submit" name="btn-report" value="<%= stt.getPostID() %>" class="btn btn-danger">Gửi</button>
+					                </div>
+					            </form>
+					        </div>
+					    </div>
+					</div>
+					
                      <!-- Show bình luận dưới bài viết -->
                     <div class="comments-section m-3 d-none">
                         <div class="d-flex align-items-center mb-3">
@@ -260,23 +284,6 @@
         </div>
     </div>
 
-    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="reportModalLabel">Báo cáo bài viết</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <textarea class="form-control" rows="3" placeholder="Mô tả lý do báo cáo bài viết này..."></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger">Gửi</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 
 <script>

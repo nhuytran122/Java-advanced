@@ -1,6 +1,6 @@
 package ReportModal;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Report {
 	private Long ReportID;
@@ -9,11 +9,11 @@ public class Report {
 	private Long CreatedBy;
 	private Long PostID;
 	private Long StatusID;
+	private Date SolvedAt;
 	public Report() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Report(Long reportID, String reason, Date createdAt, Long createdBy, Long postID, Long statusID) {
+	public Report(Long reportID, String reason, Date createdAt, Long createdBy, Long postID, Long statusID, Date solvedAt) {
 		super();
 		ReportID = reportID;
 		Reason = reason;
@@ -21,6 +21,7 @@ public class Report {
 		CreatedBy = createdBy;
 		PostID = postID;
 		StatusID = statusID;
+		SolvedAt = solvedAt;
 	}
 	public Long getReportID() {
 		return ReportID;
@@ -57,5 +58,11 @@ public class Report {
 	}
 	public void setStatusID(Long statusID) {
 		StatusID = statusID;
+	}
+	public Date getSolvedAt() {
+		return SolvedAt;
+	}
+	public void setSolvedAt(Date solvedAt) {
+		SolvedAt = solvedAt;
 	}
 }

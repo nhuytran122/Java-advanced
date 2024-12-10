@@ -1,6 +1,6 @@
 package V_DetailsReportModal;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import CommonModal.KetNoi;
 
 public class DetailsReportDao {
-	public ArrayList<DetailsReport> getListReportsByUserID(int page, int pageSize, Long userID) throws Exception {
+    public ArrayList<DetailsReport> getListReportsByUserID(int page, int pageSize, Long userID) throws Exception {
         ArrayList<DetailsReport> ds = new ArrayList<DetailsReport>();
         KetNoi kn = new KetNoi();
         kn.ketnoi();
@@ -58,8 +58,9 @@ public class DetailsReportDao {
 
         return count;
     }
+
     private DetailsReport mapDetailsReport(ResultSet rs) throws Exception {
-    	Long reportID = rs.getLong("ReportID");
+        Long reportID = rs.getLong("ReportID");
         String reason = rs.getString("Reason");
         Date createdAt = rs.getDate("CreatedAt");
         Long createdBy = rs.getLong("CreatedBy");
@@ -71,8 +72,9 @@ public class DetailsReportDao {
         String posterName = rs.getString("PosterName");
         String posterAvatar = rs.getString("PosterAvatar");
         Long posterID = rs.getLong("PosterID");
+        Date solvedAt = rs.getDate("SolvedAt");
 
-        return new DetailsReport(reportID, reason, createdAt, createdBy, 
-        		postID, statusID, posterID, posterName, posterAvatar, postContent, imagePath, description);
+        return new DetailsReport(reportID, reason, createdAt, createdBy,
+                postID, statusID, posterID, posterName, posterAvatar, postContent, imagePath, description, solvedAt);
     }
 }

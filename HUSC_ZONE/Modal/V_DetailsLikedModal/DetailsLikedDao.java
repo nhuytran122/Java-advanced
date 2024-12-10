@@ -1,6 +1,6 @@
 package V_DetailsLikedModal;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -71,7 +71,7 @@ public class DetailsLikedDao {
         String avatar = rs.getString("PosterAvatar");
         Long posterID = rs.getLong("PosterID");
 
-        return new DetailsLiked(likeID, postID, likedAt, likedBy, postContent, 
-        		imagePath, posterName, avatar, posterID);
+        return new DetailsLiked(likeID, postID, likedAt, likedBy, postContent,
+                imagePath, posterName, avatar, posterID);
     }
 }

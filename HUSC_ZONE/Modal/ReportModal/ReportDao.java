@@ -1,9 +1,8 @@
 package ReportModal;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import CommonModal.Constants;
 import CommonModal.KetNoi;
@@ -66,7 +65,8 @@ public class ReportDao {
         Long createdBy = rs.getLong("CreatedBy");
         Long postID = rs.getLong("PostID");
         Long statusID = rs.getLong("StatusID");
+        Date solvedAt = rs.getDate("SolvedAt");
         
-        return new Report(ReportID, reason, createdAt, createdBy, postID, statusID);
+        return new Report(ReportID, reason, createdAt, createdBy, postID, statusID, solvedAt);
     }
 }

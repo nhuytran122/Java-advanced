@@ -5,7 +5,6 @@
     <fullyQualifiedTypeName name="MaterialModal.Material"/>
     <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDocDao"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -49,7 +48,6 @@
     <fullyQualifiedTypeName name="LikeModal.LikeBo"/>
     <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
     <fullyQualifiedTypeName name="CommentModal.CommentBo"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLikedBo"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsCommentBo"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportBo"/>
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReport"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

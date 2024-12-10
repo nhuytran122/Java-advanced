@@ -1,6 +1,6 @@
 package V_DetailsReportModal;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class DetailsReport {
 	private Long ReportID;
@@ -15,10 +15,11 @@ public class DetailsReport {
 	private String PostContent;
 	private String ImagePath;
 	private String Description;
+	private Date SolvedAt;
 	
 	public DetailsReport(Long reportID, String reason, Date createdAt, Long createdBy, Long postID, Long statusID,
 			Long posterID, String posterName, String posterAvatar, String postContent, String imagePath,
-			String description) {
+			String description, Date solvedAt) {
 		super();
 		ReportID = reportID;
 		Reason = reason;
@@ -32,6 +33,7 @@ public class DetailsReport {
 		PostContent = postContent;
 		ImagePath = imagePath;
 		Description = description;
+		SolvedAt = solvedAt;
 	}
 	public DetailsReport() {
 		super();
@@ -108,5 +110,11 @@ public class DetailsReport {
 	}
 	public void setDescription(String description) {
 		Description = description;
+	}
+	public Date getSolvedAt() {
+		return SolvedAt;
+	}
+	public void setSolvedAt(Date solvedAt) {
+		SolvedAt = solvedAt;
 	}
 }
