@@ -88,6 +88,17 @@ public class adminSaveSachController extends HttpServlet {
                     isUploaded = true;
                 }
             }
+            
+            if (isUpdate && !masach.isEmpty()) {
+                sach sachCu = sbo.getSach(masach);
+                if (sachCu != null) {
+                    if (isUploaded)
+                        oldAnh = sachCu.getAnh(); // Lấy ảnh cũ để xóa
+                    else
+                        anh = sachCu.getAnh(); // không upload thì lấy lại data cũ
+                }
+
+            }
 
             // Thêm hoặc cập nhật sách
             if (isUpdate) {
