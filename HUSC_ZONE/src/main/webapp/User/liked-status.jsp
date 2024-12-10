@@ -1,3 +1,4 @@
+<%@page import="V_DetailsReportModal.DetailsReport"%>
 <%@page import="CommonModal.MethodCommon"%>
 <%@page import="V_DetailsLikedModal.DetailsLiked"%>
 <%@page import="V_DetailsCommentModal.DetailsComment"%>
@@ -8,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài viết đã thích - HUSCZone</title>
+    <title>Nhật ký hoạt động - HUSCZone</title>
     <%@ include file="layout/import.jsp" %>
 </head>
 <style>
@@ -20,11 +21,14 @@ a {
 <% 
 	Long filterID = request.getParameter("filterID") != null 
 			? Long.parseLong(request.getParameter("filterID")) : 0L;
-	ArrayList<DetailsComment> dsCmts = (ArrayList<DetailsComment>) request.getAttribute("dsCmts");
-	ArrayList<DetailsLiked> dsLikes = (ArrayList<DetailsLiked>) request.getAttribute("dsLikes");
+	ArrayList<DetailsComment> dsCmts = request.getAttribute("dsCmts") != null 
+			? (ArrayList<DetailsComment>)request.getAttribute("dsCmts") : null;
+	ArrayList<DetailsLiked> dsLikes = request.getAttribute("dsLikes") != null 
+			?(ArrayList<DetailsLiked>) request.getAttribute("dsLikes") : null;
+	ArrayList<DetailsReport> dsRpts = (ArrayList<DetailsReport>) request.getAttribute("dsRpts") != null
+			? (ArrayList) request.getAttribute("dsRpts") : null;
 	int pageCount = (Integer) request.getAttribute("pageCount");
     int currentPage = (Integer) request.getAttribute("currentPage");
-
 %>
 
 <body class="bg-light">
@@ -53,129 +57,27 @@ a {
 			    </div>
                 <%
 				    int n = 0;
-				    if (dsLikes != null && !dsLikes.isEmpty()) {
+				    if (dsLikes != null) 
 				        n = dsLikes.size();
-				    } else if (dsCmts != null && !dsCmts.isEmpty())
+				    else if (dsCmts != null)
 				        n = dsCmts.size();
+				    else if(dsRpts != null)
+				    	n = dsRpts.size();
+				    
 				%>
-				 <%
-				    if (dsLikes != null) {
-				%>
-				    <% if (dsLikes.size() == 0) { %>
-				        <p class="text-center text-muted">Hiện bạn chưa thích bài viết nào.</p>
-				    <% } else { 
-				        for (DetailsLiked like : dsLikes) { %>
-				            <div class="d-flex mb-3 p-3 border rounded-3 bg-white shadow-sm">
-				                <% if (like.getImagePath() != null || like.getImagePath().isBlank()) { %>
-					            <img src="<%= request.getContextPath() %><%= like.getImagePath() %>" alt="Img" class="rounded-circle me-3" width="60" height="60">
-						        <% } else { %>
-						            <% if (like.getPosterAvatar() == null || like.getPosterAvatar().isBlank()) { %>
-						                <a href="../user-profile?userId=<%= like.getPosterID() %>">
-						                    <img src="../images/default-avt.jpg" style="width: 60px; height: 60px;" alt="Default" class="rounded-circle me-3">
-						                </a>
-						            <% } else { %>
-						                <a href="../user-profile?userId=<%= like.getPosterID() %>">
-						                    <img src="<%= request.getContextPath() %><%= like.getPosterAvatar() %>" style="width: 60px; height: 60px" alt="Avatar" class="rounded-circle me-3">
-						                </a>
-						            <% } %>
-						        <% } %>
-				                <div class="flex-grow-1">
-				                    <div class="d-flex justify-content-between align-items-center">
-				                    	<a href="../user-profile?userId=<%= user.getUserID() %>">
-				                        	<h6 class="m-0"><%= user.getName() %></h6>
-				                        </a>
-				                        <div class="d-flex align-items-center">
-				                            <small class="text-muted me-3"><%= MethodCommon.convertDateToString(like.getLikedAt()) %></small>
-				                            <div class="dropdown">
-			                                    <button class="btn btn-link p-0" data-bs-toggle="dropdown" aria-expanded="false">
-			                                        <i class="bi bi-three-dots-vertical"></i>
-			                                    </button>
-			                                    <ul class="dropdown-menu dropdown-menu-end">
-			                                        <li>
-			                                        	<form action="../interact" method="POST" class="mb-0">
-													        <input type="hidden" name="postID" value="<%= like.getPostID() %>">
-													        <input type="hidden" name="unLikeInList" value="true">
-													        <button type="submit" 
-													                name="btn-like" value="true" 
-													                class="dropdown-item">
-													            <i class="bi bi-heartbreak me-2"></i>Bỏ thích
-													        </button>
-													    </form>
-			                                        </li>
-			                                    </ul>
-			                                </div>
-				                        </div>
-				                    </div>
-				                    <div class="body my-2">
-				                        <p>Đã thích bài viết của <b><a href="../user-profile?userId=<%= like.getPosterID() %>"><%= like.getPosterName() %></a></b> </p>
-				                        <p><%= like.getPostContent() %></p>
-				                        <a href="../details?postID=<%= like.getPostID() %>" class="text-primary">Xem thêm...</a>
-				                    </div>
-				                </div>
-				            </div>
-				        <% } %>
-				    <% } %>
-				<%
-				    } else {
-				%>
-				    <!-- Hiển thị danh sách bình luận -->
-				    <% if (dsCmts == null || dsCmts.size() == 0) { %>
-				        <p class="text-center text-muted">Hiện bạn chưa có bình luận nào.</p>
-				    <% } else { 
-				        for (DetailsComment cmt : dsCmts) { %>
-				            <div class="d-flex mb-3 p-3 border rounded-3 bg-white shadow-sm">
-				                <% if (cmt.getImagePath() != null || cmt.getImagePath().isBlank()) { %>
-					            <img src="<%= request.getContextPath() %><%= cmt.getImagePath() %>" alt="Img" class="rounded-circle me-3" width="60" height="60">
-						        <% } else { %>
-						            <% if (cmt.getPosterAvatar() == null || cmt.getPosterAvatar().isBlank()) { %>
-						                <a href="../user-profile?userId=<%= cmt.getPosterID() %>">
-						                    <img src="../images/default-avt.jpg" width="60" height="60" alt="Default" class="rounded-circle me-3">
-						                </a>
-						            <% } else { %>
-						                <a href="../user-profile?userId=<%= cmt.getPosterID() %>">
-						                    <img src="<%= request.getContextPath() %><%= cmt.getPosterAvatar() %>" width="60" height="60" alt="Avatar" class="rounded-circle me-3">
-						                </a>
-						            <% } %>
-						        <% } %>
-				                <div class="flex-grow-1">
-				                    <div class="d-flex justify-content-between align-items-center">
-				                    <a href="../user-profile?userId=<%= user.getUserID() %>">
-				                        <h6 class="m-0"><%= cmt.getCommentedByName() %></h6>
-				                    </a>
-				                        <div class="d-flex align-items-center">
-				                            <small class="text-muted me-3"><%= MethodCommon.convertDateToString(cmt.getCommentedAt()) %></small>
-				                            <div class="dropdown">
-			                                    <button class="btn btn-link p-0" data-bs-toggle="dropdown" aria-expanded="false">
-			                                        <i class="bi bi-three-dots-vertical"></i>
-			                                    </button>
-			                                    <ul class="dropdown-menu dropdown-menu-end">
-			                                        <li>
-			                                        	<form action="../interact" method="POST" class="mb-0">
-													        <input type="hidden" name="postID" value="<%= cmt.getPostID() %>">
-													        <input type="hidden" name="deleteInList" value="true">
-													        <button type="submit" 
-													                name="btnDeleteCmt" value="<%= cmt.getCommentID() %>" 
-													                class="dropdown-item">
-													            <i class="bi bi-trash3 me-2"></i>Xóa
-													        </button>
-													    </form>
-			                                        </li>
-			                                    </ul>
-			                                </div>
-				                        </div>
-				                    </div>
-				                    <div class="body my-2">
-				                        <p>Đã bình luận về bài viết của <b><a href="../user-profile?userId=<%= cmt.getPosterID() %>"><%= cmt.getPosterName() %></a></b> </p>
-				                        <p><%= cmt.getCommentContent() %></p>
-				                        <a href="../details?postID=<%= cmt.getPostID() %>" class="text-primary">Xem thêm...</a>
-				                    </div>
-				                </div>
-				            </div>
-				        <% } %>
-				    <% } %>
-				<%
-				    }
-				%>
+
+				<% if (dsCmts != null) { %>
+				    <%@ include file="section/show-comments.jsp" %>
+				<% } %>
+				
+				<% if (dsLikes != null) { %>
+				    <%@ include file="section/show-likes.jsp" %>
+				<% } %>
+
+				<% if (dsRpts != null) { %>
+				    <%@ include file="section/show-reports.jsp" %>
+				<% } %>
+
 
 		    
 		    <% if (n > 0) { %>

@@ -66,10 +66,10 @@
                         <div class="card no-hover" style="margin-bottom: 20px;">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
-                                    <% if (user.getAvatar() == null || user.getAvatar().isBlank()) { %>
-								        <img src="../images/default-avt.jpg" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                                    <% if (user.getAvatar() == null && !user.getAvatar().isBlank()) { %>
+										<img src="<%= request.getContextPath() %><%= user.getAvatar() %>" class="rounded-circle me-3" style="width: 50px; height: 50px;">
 								    <% } else { %>
-							        	<img src="<%= request.getContextPath() %><%= user.getAvatar() %>" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+							        	<img src="../images/default-avt.jpg" class="rounded-circle me-3" style="width: 50px; height: 50px;">
 							    	<% } %>
                                     <input class="form-control rounded-pill" placeholder="<%= user.getName() %> ơi, bạn muốn chia sẻ gì nào?" style="background-color: #f8f9fa;" data-bs-toggle="modal" data-bs-target="#postModal" readonly>
                                 </div>
@@ -171,7 +171,7 @@
 							            </div>
 							
 							            <p><%= stt.getPostContent() %></p>
-							            <% if (stt.getImagePath() != null) { %>
+							            <% if (stt.getImagePath() != null && !stt.getImagePath().isBlank()) { %>
 								            <a href="../details?postID=<%= stt.getPostID() %>">
 								                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
 								            </a>

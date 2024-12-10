@@ -111,7 +111,7 @@
 							                </div>
 							            </div>
 							            <p><%= stt.getPostContent() %></p>
-							            <% if (stt.getImagePath() != null) { %>
+							            <% if (stt.getImagePath() != null && !stt.getImagePath().isBlank()) { %>
 							                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
 							            <% } %>
 							        </div>

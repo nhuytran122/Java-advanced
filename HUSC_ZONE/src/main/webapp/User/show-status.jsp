@@ -134,7 +134,7 @@
                             <%= stt.getPostContent() %>
                         </p>
                         <div>
-						    <% if (stt.getImagePath() != null) { %>
+						    <% if (stt.getImagePath() != null && !stt.getImagePath().isBlank()) { %>
 						        <a href="../details?postID=<%= stt.getPostID() %>">
 						            <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" 
 						                 alt="Post Image" 

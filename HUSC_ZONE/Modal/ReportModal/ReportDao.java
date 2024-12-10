@@ -10,28 +10,6 @@ import CommonModal.KetNoi;
 
 public class ReportDao {
     
-    public ArrayList<Report> getListReportsByUserID(Long userID) throws Exception {
-        ArrayList<Report> ds = new ArrayList<Report>();
-
-        KetNoi kn = new KetNoi();
-        kn.ketnoi();
-        String sql = "SELECT * FROM tbl_Reports WHERE CreatedBy = ?";
-
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, userID);
-        ResultSet rs = cmd.executeQuery();
-
-        while (rs.next()) {
-            ds.add(mapReport(rs));
-        }
-
-        rs.close();
-        cmd.close();
-        kn.cn.close();
-
-        return ds;
-    }
-
     public int addReport(Long postID, Long userID, String reason) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();

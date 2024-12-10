@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="hoadonmodal.hoadonbo"/>
-    <fullyQualifiedTypeName name="lichsumodal.lichsubo"/>
-    <fullyQualifiedTypeName name="CategoryModal.CategoryBo"/>
     <fullyQualifiedTypeName name="CategoryModal.Category"/>
     <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
     <fullyQualifiedTypeName name="MaterialModal.Material"/>
@@ -48,7 +45,6 @@
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
     <fullyQualifiedTypeName name="CommentModal.Comment"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailCommentDao"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailCommentBo"/>
     <fullyQualifiedTypeName name="LikeModal.LikeBo"/>
     <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLiked"/>
     <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="java.util.Enumeration"/>
+    <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportDao"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportBo"/>
+    <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReport"/>
 </qualifiedTypeNameHistroy>
