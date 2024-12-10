@@ -28,7 +28,8 @@ public class ActivityHistoryController extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
@@ -53,28 +54,28 @@ public class ActivityHistoryController extends HttpServlet {
                 filterID = Long.parseLong(request.getParameter("filterID"));
             }
             // cho trường hợp controller interact (action xóa) truyền filterID sang
-            else if(request.getAttribute("filterID") != null) {
-            	filterID = (Long)(request.getAttribute("filterID"));
+            else if (request.getAttribute("filterID") != null) {
+                filterID = (Long) (request.getAttribute("filterID"));
             }
             int rowCount = 0;
 
             // Lấy dữ liệu theo bộ lọc
             if (filterID == Constants.FILTER_LIKED) {
-            	ArrayList<DetailsLiked> dsLikes = null;
+                ArrayList<DetailsLiked> dsLikes = null;
                 DetailsLikedBo dtLBo = new DetailsLikedBo();
                 dsLikes = dtLBo.getListLikesByUserID(page, pageSize, userID);
                 rowCount = dtLBo.getCountLikesByUserID(userID);
                 request.setAttribute("dsLikes", dsLikes);
-                
+
             } else if (filterID == Constants.FILTER_COMMENTED) {
-            	ArrayList<DetailsComment> dsCmts = null;
+                ArrayList<DetailsComment> dsCmts = null;
                 DetailsCommentBo dtCBo = new DetailsCommentBo();
                 dsCmts = dtCBo.getCommentsByUserID(page, pageSize, userID);
                 rowCount = dtCBo.getCountCommentsByUserID(userID);
                 request.setAttribute("dsCmts", dsCmts);
-                
+
             } else if (filterID == Constants.FILTER_REPORT) {
-            	ArrayList<DetailsReport> dsRpts = null;
+                ArrayList<DetailsReport> dsRpts = null;
                 DetailsReportBo dtRBo = new DetailsReportBo();
                 dsRpts = dtRBo.getListReportsByUserID(page, pageSize, userID);
                 rowCount = dtRBo.getCountReportsByUserID(userID);
@@ -90,7 +91,7 @@ public class ActivityHistoryController extends HttpServlet {
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
 
-            RequestDispatcher rd = request.getRequestDispatcher("User/liked-status.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("User/activity-history.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,7 +99,8 @@ public class ActivityHistoryController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         doGet(request, response);
     }
 }

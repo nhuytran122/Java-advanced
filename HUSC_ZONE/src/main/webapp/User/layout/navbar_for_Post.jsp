@@ -57,19 +57,20 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <% if (user.getAvatar() == null || user.getAvatar().isBlank()) { %>
-						        <img src="../images/default-avt.jpg" alt="Default" class="rounded-circle me-2" style="width: 30px; height: 30px">
+                        <% if (user.getAvatar() != null && !user.getAvatar().isBlank()) { %>
+                            	<img src="<%= request.getContextPath() %><%= user.getAvatar() %>" alt="Avatar" class="rounded-circle me-2" width="30" height="30">
 						<% } else { %>
-						        <img src="<%= request.getContextPath() %><%= user.getAvatar() %>" alt="Avatar" class="rounded-circle me-2" style="width: 30px; height: 30px">
+						        <img src="../images/default-avt.jpg" width="30" height="30" alt="Default" class="rounded-circle me-2">
 						<% } %>
                         <span>Hi, <%= user.getName() %></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li class="text-center p-3">
-                            <% if (user.getAvatar() == null || user.getAvatar().isBlank()) { %>
-						        <img src="../images/default-avt.jpg" style="width: 80px; height: 80px" alt="Default" class="rounded-circle mb-3">
+                            <% if (user.getAvatar() != null && !user.getAvatar().isBlank()) { %>
+                            	<img src="<%= request.getContextPath() %><%= user.getAvatar() %>" alt="Avatar" class="rounded-circle me-2" width="80" height="80">
+						        
 						    <% } else { %>
-						        <img src="<%= request.getContextPath() %><%= user.getAvatar() %>" alt="Avatar" class="rounded-circle mb-3" style="width: 80px; height: 80px">
+						        <img src="../images/default-avt.jpg" width="80" height="80" alt="Default" class="rounded-circle me-2">
 						    <% } %>
                             <h6 class="fw-bold mb-0"><%= user.getName() %></h6>
                             <p class="text-muted small"> <%= user.getEmail() %></p>

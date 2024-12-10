@@ -66,7 +66,7 @@
                         <div class="card no-hover" style="margin-bottom: 20px;">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
-                                    <% if (user.getAvatar() == null && !user.getAvatar().isBlank()) { %>
+                                    <% if (user.getAvatar() != null && !user.getAvatar().isBlank()) { %>
 										<img src="<%= request.getContextPath() %><%= user.getAvatar() %>" class="rounded-circle me-3" style="width: 50px; height: 50px;">
 								    <% } else { %>
 							        	<img src="../images/default-avt.jpg" class="rounded-circle me-3" style="width: 50px; height: 50px;">
@@ -122,13 +122,13 @@
 							        <div class="card-body">
 							            <div class="d-flex align-items-center justify-content-between mb-3">
 							                <div class="d-flex align-items-center">
-							                    <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { %>
+							                    <% if (stt.getAvatar() != null && !stt.getAvatar().isBlank()) { %>
 							                        <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
-							                            <img src="../images/default-avt.jpg" style="width: 50px; height: 50px;" alt="Default" class="rounded-circle me-3">
+							                            <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 50px; height: 50px;" alt="Avatar" class="rounded-circle me-3">
 							                        </a>
 							                    <% } else { %>
 							                        <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
-							                            <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 50px; height: 50px;" alt="Avatar" class="rounded-circle me-3">
+							                            <img src="../images/default-avt.jpg" style="width: 50px; height: 50px;" alt="Default" class="rounded-circle me-3">
 							                        </a>
 							                    <% } %>
 							                    <div>

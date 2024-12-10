@@ -152,6 +152,18 @@ public class InteractionController extends HttpServlet {
 		        	rd.forward(request, response); 
 		            return;
 	            }
+	            
+	            if(request.getParameter("btnDeleteReport") != null) {
+	            	Long reportID = Long.parseLong(request.getParameter("btnDeleteReport"));
+	            	ReportBo rpBo = new ReportBo();
+	            	rpBo.deleteReport(reportID);
+	            	if(request.getParameter("deleteInList") != null) {
+	            		request.setAttribute("filterID", Constants.FILTER_REPORT);
+	            		RequestDispatcher rd = request.getRequestDispatcher("activity-history");
+	            		rd.forward(request, response); 
+		                return;
+	            	}
+	            }
             }
             response.sendRedirect("home");
             

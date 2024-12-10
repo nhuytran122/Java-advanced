@@ -19,8 +19,8 @@ a {
 }
 </style>
 <% 
-	Long filterID = request.getParameter("filterID") != null 
-			? Long.parseLong(request.getParameter("filterID")) : 0L;
+	Long filterID = request.getAttribute("filterID") != null 
+			? (Long)(request.getAttribute("filterID")) : 0L;
 	ArrayList<DetailsComment> dsCmts = request.getAttribute("dsCmts") != null 
 			? (ArrayList<DetailsComment>)request.getAttribute("dsCmts") : null;
 	ArrayList<DetailsLiked> dsLikes = request.getAttribute("dsLikes") != null 

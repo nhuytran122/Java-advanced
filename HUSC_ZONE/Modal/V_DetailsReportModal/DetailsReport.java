@@ -103,7 +103,7 @@ public class DetailsReport {
 	public void setImagePath(String imagePath) {
 		ImagePath = imagePath;
 	}
-	public String getDescription() {
+	public String getDescriptionStatus() {
 		return Description;
 	}
 	public void setDescription(String description) {
