@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Welcome</title>
+	</head>
+	<body>
+		Giá trị của biến tbmodel <p th:text="${tbmodel}"></p>
+		Giá trị trong mảng dsmodel:
+		
+		<table class="table">
+			<tr th:each="sv : ${dsmodel}">	
+				<td th:utext="${sv.getMasv()}"> </td>		
+				<td th:utext="${sv.getHoten()}"> </td>		
+			</tr>		
+		</table>		
+		Giá trị session: <text th:text="${session.mysession}"> </text>		
+		
+		<div th:each="svlogin : ${session.mysession}">		
+			<text th:text=${svlogin.getHoten()}></text>		
+		</div>		
+		<a href="hello"> test</a>
+	
+	</body>
+</html>
