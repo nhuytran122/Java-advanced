@@ -1,5 +1,5 @@
+// ! use
 package BookmarkModal;
-
 
 public class BookmarkBo {
 	BookmarkDao bDao = new BookmarkDao();

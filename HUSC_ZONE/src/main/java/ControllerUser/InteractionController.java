@@ -14,7 +14,10 @@ import BookmarkModal.BookmarkBo;
 import CommentModal.CommentBo;
 import CommonModal.Constants;
 import LikeModal.LikeBo;
+import NotificationModal.NotificationBo;
 import ReportModal.ReportBo;
+import StatusPostModal.StatusPost;
+import StatusPostModal.StatusPostBo;
 import UserModal.User;
 
 @WebServlet("/interact")
@@ -40,6 +43,7 @@ public class InteractionController extends HttpServlet {
                 user = (User) session.getAttribute("user");
                 userID = user.getUserID();
             }
+            NotificationBo notiBo = new NotificationBo();
 
             if (request.getParameter("docsID") != null) {
                 Long docsID = Long.parseLong(request.getParameter("docsID"));
@@ -48,7 +52,7 @@ public class InteractionController extends HttpServlet {
 	            if (request.getParameter("btn-mark") != null) {
 	                String bmark = request.getParameter("btn-mark");
 	                if (bmark.equals("mark")) {
-	                    bmkBo.addBookmark(docsID, userID);  
+	                    bmkBo.addBookmark(docsID, userID); 
 	                } else {
 	                    bmkBo.deleteBookmark(docsID, userID);  
 	                }
@@ -68,11 +72,13 @@ public class InteractionController extends HttpServlet {
             if (request.getParameter("postID") != null) {
             	LikeBo likeBo = new LikeBo();
             	Long postID = Long.parseLong(request.getParameter("postID"));
+            	StatusPostBo sttBo = new StatusPostBo();
+                StatusPost stt = sttBo.getStatusPostByID(postID);
             
 	            if (request.getParameter("btn-like") != null) {
 	                String blike = request.getParameter("btn-like");
 	                if (blike.equals("like")) {
-	                    likeBo.addLike(postID, userID);  
+	                    likeBo.addLike(postID, userID);
 	                } else {
 	                	likeBo.unLike(postID, userID);  
 	                }
@@ -91,7 +97,9 @@ public class InteractionController extends HttpServlet {
 	            if(request.getParameter("btn-report") != null) {
 	            	ReportBo rpBo = new ReportBo();
 	            	String contentRp = request.getParameter("txtContentReport");
-	            	rpBo.addReport(postID, userID, contentRp);
+	            	Long reportID = rpBo.addReport(postID, userID, contentRp);
+	            	if(stt.getUploadBy() != userID)
+	            		notiBo.createNotiRelatedToReportPost(stt.getUploadBy(), reportID, userID);
 	            	
 	            	if(request.getParameter("reportInDetail") != null) {
 	            		request.setAttribute("postID", postID);
@@ -113,7 +121,9 @@ public class InteractionController extends HttpServlet {
 	            if(request.getParameter("btn-cmt") != null) {
 	            	CommentBo cmtBo = new CommentBo();
 	            	String contentCmt = request.getParameter("txtContentCmt");
-	            	cmtBo.addComment(postID, userID, contentCmt);
+	            	Long cmtID = cmtBo.addComment(postID, userID, contentCmt);
+	            	if(stt.getUploadBy() != userID)
+	            		notiBo.createNotiRelatedToCmtPost(stt.getUploadBy(), cmtID, userID);
 	            	
 	            	if(request.getParameter("cmtInDetail") != null) {
 	            		request.setAttribute("postID", postID);
@@ -175,5 +185,4 @@ public class InteractionController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
 }

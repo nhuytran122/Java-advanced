@@ -49,7 +49,7 @@
                             <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
                             <!-- Thêm data-bs-toggle và data-bs-target -->
                             <input class="form-control rounded-pill" 
-                                   placeholder="Như Ý ơi, bạn muốn chia sẻ gì nào?" 
+                                   placeholder="<%=user.getName() %> ơi, bạn muốn chia sẻ gì nào?" 
                                    style="background-color: #f8f9fa;" 
                                    data-bs-toggle="modal" 
                                    data-bs-target="#postModal" 

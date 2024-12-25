@@ -13,7 +13,7 @@ public class CommentBo {
 		return cmtDao.getListCommentsByPostID(postID);
 	}
 	
-	public int addComment(Long postID, Long userID, String content) throws Exception {
+	public Long addComment(Long postID, Long userID, String content) throws Exception {
 		return cmtDao.addComment(postID, userID, content);
 	}
 	

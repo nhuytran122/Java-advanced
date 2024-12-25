@@ -4,7 +4,7 @@ public class ReportBo {
 
 	ReportDao rpDao = new ReportDao();
 	
-	public int addReport(Long postID, Long userID, String reason) throws Exception {
+	public Long addReport(Long postID, Long userID, String reason) throws Exception {
 		return rpDao.addReport(postID, userID, reason);
 	}
 	

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
     <fullyQualifiedTypeName name="CommonModal.FileUploadUtil"/>
     <fullyQualifiedTypeName name="java.nio.file.Paths"/>
@@ -32,20 +31,16 @@
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportBo"/>
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReport"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="NotificationModal.NotificationDao"/>
     <fullyQualifiedTypeName name="javax.management.Notification"/>
     <fullyQualifiedTypeName name="NotificationModal.NotificationBo"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-    <fullyQualifiedTypeName name="NotificationModal.Notification"/>
-    <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
     <fullyQualifiedTypeName name="DocumentModal.Document"/>
     <fullyQualifiedTypeName name="StatusPostModal.StatusPostBo"/>
     <fullyQualifiedTypeName name="StatusPostModal.StatusPost"/>
-    <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotification"/>
     <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotificationDao"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
+    <fullyQualifiedTypeName name="NotificationModal.Notification"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotification"/>
+    <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotificationBo"/>
 </qualifiedTypeNameHistroy>

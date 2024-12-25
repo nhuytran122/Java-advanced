@@ -15,15 +15,9 @@ public class Constants {
     public static final Long REPORT_PENDING = 0L;
     public static final Long REPORT_ACCEPTED = 1L;
 
-    // Notifications - Documents
-    public static final Long NOTI_DOCS_DELETED = -4L;
-    public static final Long NOTI_DOCS_REPORTED = -3L;
-    public static final Long NOTI_DOCS_MARKED = 1L;
-
     // Notifications - Posts
     public static final Long NOTI_POST_DELETED = -2L;
     public static final Long NOTI_POST_REPORTED = -1L;
-    public static final Long NOTI_POST_LIKED = 2L;
     public static final Long NOTI_POST_COMMENTED = 3L;
     
     // Error - Change Password
@@ -41,4 +35,7 @@ public class Constants {
     public static final Long FILTER_LIKED = 1L;
     public static final Long FILTER_COMMENTED = 2L;
     public static final Long FILTER_REPORT = 3L;
+    
+    public static final Long ACTIVITY_COMMENT = 1L;
+    public static final Long ACTIVITY_REPORT = 2L;
 }

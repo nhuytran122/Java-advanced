@@ -60,20 +60,27 @@ public class CommentDao {
         return new Comment(commentID, content, postID, commentedBy, commentedAt, updatedAt);
     }
 	
-    public int addComment(Long postID, Long userID, String content) throws Exception {
-        KetNoi kn = new KetNoi();
-        kn.ketnoi();
-        String sql = "INSERT INTO tbl_Comments (PostID, CommentedBy, CommentContent, CommentedAt) " +
-                "VALUES (?, ?, ?, GETDATE())";
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, postID);
-        cmd.setLong(2, userID);
-        cmd.setString(3, content);
-        int result = cmd.executeUpdate();
-        cmd.close();
-        kn.cn.close();
-        return result;
-    }
+	public Long addComment(Long postID, Long userID, String content) throws Exception {
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+	    String sql = "INSERT INTO tbl_Comments (PostID, CommentedBy, CommentContent, CommentedAt) " +
+	            "VALUES (?, ?, ?, GETDATE())";
+	    PreparedStatement cmd = kn.cn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+	    cmd.setLong(1, postID);
+	    cmd.setLong(2, userID);
+	    cmd.setString(3, content);
+	    cmd.executeUpdate();
+
+	    ResultSet generatedKeys = cmd.getGeneratedKeys();
+	    Long commentID = null;
+	    if (generatedKeys.next()) {
+	        commentID = generatedKeys.getLong(1);
+	    }
+	    generatedKeys.close();
+	    cmd.close();
+	    kn.cn.close();
+	    return commentID;
+	}
     
     public int updateComment(Long commentID, String content) throws Exception {
         KetNoi kn = new KetNoi();

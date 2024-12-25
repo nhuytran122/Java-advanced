@@ -1,3 +1,5 @@
+<%@page import="V_DetailsNotificationModal.DetailsNotification"%>
+<%@page import="NotificationModal.Notification"%>
 <%@page import="UserModal.User"%>
 <%@page import="MaterialModal.Material"%>
 <%@page import="CategoryModal.Category"%>
@@ -15,6 +17,8 @@
     
     User user = (User)session.getAttribute("user");
     String searchKeyword = request.getParameter("txtSearch");
+    
+    ArrayList<DetailsNotification> listNoti = (ArrayList<DetailsNotification>)request.getAttribute("listNoti");
 %>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary-custom py-2">
@@ -74,15 +78,20 @@
                 <li class="nav-item"><a class="nav-link text-white" href="../status-post">Bài đăng</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        Thông báo <span class="badge bg-danger">3</span>
+                        Thông báo
                     </a>
                     <ul class="dropdown-menu">
-                        <li><h6 class="dropdown-header">Thông báo mới</h6></li>
-                        <li><a class="dropdown-item" href="#">Bài chia sẻ đã được phê duyệt</a></li>
-                        <li><a class="dropdown-item" href="#">Bình luận mới trên tài liệu</a></li>
+
+                        <% if (listNoti != null) {
+				        	for(DetailsNotification noti : listNoti) {
+				    	%>
+                        <li><a class="dropdown-item" href="../details?postID=<%= noti.getPostID() %>"><%= noti.getNotificationMessage() %></a></li>
+                        <%} }%>
+                        <!-- <li><a class="dropdown-item" href="#">Bình luận mới trên tài liệu</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">Thông báo cũ</h6></li>
-                        <li><a class="dropdown-item" href="#">Tài liệu được xếp hạng cao</a></li>
+                        <li><a class="dropdown-item" href="#">Tài liệu được xếp hạng cao</a></li> 
+                        -->
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
