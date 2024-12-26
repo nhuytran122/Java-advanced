@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import UserModal.User;
 import V_DetailsDocModal.DetailsDoc;
 import V_DetailsDocModal.DetailsDocBo;
-import V_DetailsNotificationModal.DetailsNotificationBo;
 
 @WebServlet("/home")
 public class IndexController extends HttpServlet {
@@ -72,7 +71,6 @@ public class IndexController extends HttpServlet {
             request.setAttribute("ds", ds);
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
-            request.setAttribute("searchKeyword", searchValue);
 
             RequestDispatcher rd = request.getRequestDispatcher("User/index.jsp");
             rd.forward(request, response);

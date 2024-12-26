@@ -95,7 +95,7 @@
                 </div>
                 <%
 				    int n = 0;
-				    if (dsPosts != null && !dsPosts.isEmpty()) {
+				    if (dsPosts != null) {
 				        n = dsPosts.size();
 				    } else 
 				        n = dsUsers.size();
@@ -242,12 +242,12 @@
                 <% 
                         }
                     } else {
-                        if (searchKeyword != null && !searchKeyword.isEmpty()) {
-                            if (dsPosts == null || dsPosts.isEmpty()) {
+                        if (searchKeyword != null) {
+                            if (dsPosts != null && n == 0) {
                             %>
                                 <p class="text-center text-danger">Không tìm thấy bài đăng nào với từ khóa <b>"<%= searchKeyword %>".</b></p>
                                 
-                            <%}else {
+                            <%}else if (dsUsers != null && n == 0) {
                              %>
                                 <p class="text-center text-danger">Không tìm thấy người dùng nào với từ khóa <b>"<%= searchKeyword %>".</b></p>
                             <%

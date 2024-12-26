@@ -40,9 +40,7 @@
                           int n = ds.size();
                           if (n == 0) {
                         %>
-                            <div class="alert alert-warning">
-							  Không tìm thấy tài liệu nào.
-							</div>
+                            <p class="text-center text-danger">Không tìm thấy tài liệu nào với từ khóa <b>"<%= searchKeyword %>".</b></p>
                         <% 
                           } else { 
                             for (int i = 0; i < n; i++) {

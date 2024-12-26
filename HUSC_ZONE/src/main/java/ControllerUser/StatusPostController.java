@@ -75,7 +75,6 @@ public class StatusPostController extends HttpServlet {
             request.setAttribute("dsUsers", dsUsers);
             request.setAttribute("pageCount", pageCount);
             request.setAttribute("currentPage", page);
-            request.setAttribute("searchKeyword", searchValue);
 
             RequestDispatcher rd = request.getRequestDispatcher("User/show-status.jsp");
             rd.forward(request, response);
