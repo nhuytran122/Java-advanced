@@ -209,7 +209,7 @@ boolean isLiked = (boolean)request.getAttribute("isLiked");
                     <div class="flex-grow-1 d-flex align-items-center">
 					    <form action="../interact" method="post" class="d-flex w-100">
 					    	<input type="hidden" name="postID" value="<%= dtlPost.getPostID() %>">
-					    	<input type="hidden" name="cmtInDetail" value="cmtInDetail">
+					    	<!--<input type="hidden" name="cmtInDetail" value="cmtInDetail">-->
 					        <input name="txtContentCmt" type="text" class="form-control comment-input rounded-pill me-2" 
 					               placeholder="Viết bình luận..." 
 					               autofocus 
@@ -239,7 +239,7 @@ boolean isLiked = (boolean)request.getAttribute("isLiked");
 		                </div>
 		                <div class="modal-footer">
 		                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-		                    <button type="submit" name="btn-report" value="<%= dtlPost.getPostID()  %>" class="btn btn-danger">Gửi</button>
+		                    <button type="submit" name="btn-report" value="btn-report" class="btn btn-danger">Gửi</button>
 		                </div>
 	                </form>
 	        </div>

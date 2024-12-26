@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import CommonModal.MethodCommon;
 import StatusPostModal.StatusPostBo;
-import UserModal.User;
 
 @WebServlet("/edit-status")
 public class EditStatusController extends HttpServlet {
@@ -28,15 +27,8 @@ public class EditStatusController extends HttpServlet {
             response.setContentType("text/html; charset=utf-8");
 
             HttpSession session = request.getSession();
-            User user = null;
             
-            if (session.getAttribute("user") == null) {
-                response.sendRedirect("login");
-                return;
-            }
-            else {
-				user = (User)(session.getAttribute("user"));
-			}
+            MethodCommon.ensureUserIsLoggedIn(session, response);
 
             StatusPostBo sttBo = new StatusPostBo();
             Long sttID = null;
@@ -68,13 +60,6 @@ public class EditStatusController extends HttpServlet {
                 response.sendRedirect("user-profile");
                 return;
             }
-
-//            if (request.getParameter("btnDetailStt") != null) {
-//                request.setAttribute("book", sttBo.getStatusPostByID(sttID));
-//                RequestDispatcher rd = request.getRequestDispatcher("ADMIN/detail_status.jsp");
-//                rd.forward(request, response);
-//                return;
-//            }
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.Double"/>
-    <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDocBo"/>
-    <fullyQualifiedTypeName name="V_DetailsDoc.DetailsDoc"/>
-    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostDao"/>
-    <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDocBo"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
-    <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmarkDao"/>
-    <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmarkBo"/>
     <fullyQualifiedTypeName name="V_DetailsBookmarkModal.DetailsBookmark"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
-    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
     <fullyQualifiedTypeName name="CommentModal.Comment"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailCommentDao"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailCommentBo"/>
     <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLikedBo"/>
-    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsCommentBo"/>
-    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
     <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLiked"/>
     <fullyQualifiedTypeName name="java.util.Enumeration"/>
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportDao"/>
@@ -26,7 +13,6 @@
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReport"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="UserModal.UserBo"/>
-    <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="NotificationModal.NotificationDao"/>
     <fullyQualifiedTypeName name="javax.management.Notification"/>
     <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
@@ -53,11 +39,25 @@
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebFilter"/>
     <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotificationBo"/>
     <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotification"/>
-    <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="CommentModal.CommentBo"/>
-    <fullyQualifiedTypeName name="LikeModal.LikeBo"/>
     <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="NotificationModal.NotificationBo"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="UserModal.User"/>
+    <fullyQualifiedTypeName name="LikeModal.LikeBo"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsCommentBo"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
+    <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDocBo"/>
+    <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDoc"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+    <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
 </qualifiedTypeNameHistroy>

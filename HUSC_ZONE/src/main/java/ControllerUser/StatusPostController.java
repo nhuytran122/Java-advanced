@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
+import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
 import V_DetailsPostModal.DetailsPost;
@@ -29,10 +30,7 @@ public class StatusPostController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
 
-            if (session.getAttribute("user") == null) {
-                response.sendRedirect("login");
-                return;
-            }
+            MethodCommon.ensureUserIsLoggedIn(session, response);
             
             int page = 1;
             int pageSize = 9;
@@ -66,10 +64,7 @@ public class StatusPostController extends HttpServlet {
             	dsUsers = userBo.getListUserByCondition(page, pageSize, searchValue);
             	rowCount = userBo.countUsersByCondition(searchValue);
             }
-            int pageCount = rowCount / pageSize;
-            if (rowCount % pageSize > 0) {
-                pageCount += 1;
-            }
+            int pageCount = MethodCommon.calculatePageCount(rowCount, pageSize);
             
             request.setAttribute("dsPosts", dsPosts);
             request.setAttribute("dsUsers", dsUsers);

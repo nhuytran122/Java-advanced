@@ -11,14 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import BookmarkModal.BookmarkBo;
 import CommonModal.MethodCommon;
 import UserModal.User;
-import UserModal.UserBo;
 import V_DetailsBookmarkModal.DetailsBookmark;
 import V_DetailsBookmarkModal.DetailsBookmarkBo;
-import V_DetailsDocModal.DetailsDoc;
-import V_DetailsDocModal.DetailsDocBo;
 
 @WebServlet("/liked-docs")
 public class LikedDocsController extends HttpServlet {
@@ -32,13 +28,7 @@ public class LikedDocsController extends HttpServlet {
 		try {
             HttpSession session = request.getSession();
             
-            User currentUser = null;
-            if (session.getAttribute("user") == null) {
-                response.sendRedirect("login");
-                return;
-            }
-            else
-            	currentUser = (User)session.getAttribute("user");
+            User currentUser = MethodCommon.getUserFromSession(session, response);
 
             DetailsBookmarkBo dtBmBo = new DetailsBookmarkBo();
             
@@ -53,10 +43,7 @@ public class LikedDocsController extends HttpServlet {
             		
             int rowCount = dtBmBo.getCountBookmarksByUserID(currentUser.getUserID());
             
-            int pageCount = rowCount / pageSize;
-            if (rowCount % pageSize > 0) {
-                pageCount += 1;
-            }
+            int pageCount = MethodCommon.calculatePageCount(rowCount, pageSize);
 
             request.setAttribute("ds", ds);
             request.setAttribute("pageCount", pageCount);

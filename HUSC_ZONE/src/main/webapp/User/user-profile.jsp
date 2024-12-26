@@ -15,21 +15,7 @@
     <%@ include file="layout/import.jsp" %>
 </head>
 
-<style>
-		.btn-like,
-		.btn-comment {
-		    color: #6c757d; 
-		    border-color: #6c757d;
-		}
-			
-		.btn-comment:hover {
-		    background-color: #74b9ff; 
-		}
-		    
-		.btn-like:hover {
-		    background-color: #ff4d4d;     
-		}
-		
+<style>		
 		a {
 		    text-decoration: none !important;
 		}
@@ -146,7 +132,7 @@
 							                    </div>
 							                    <div class="modal-footer">
 							                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-							                        <button type="submit" name="btn-report" value="<%= stt.getPostID() %>" class="btn btn-danger">Gửi</button>
+							                        <button type="submit" name="btn-report" value="btn-report" class="btn btn-danger">Gửi</button>
 							                    </div>
 							                </form>
 							            </div>

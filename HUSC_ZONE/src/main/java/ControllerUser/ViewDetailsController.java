@@ -24,89 +24,99 @@ import V_DetailsPostModal.DetailsPostBo;
 
 @WebServlet("/details")
 public class ViewDetailsController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     public ViewDetailsController() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			request.setCharacterEncoding("utf-8");
-	        response.setCharacterEncoding("utf-8");
-	        HttpSession session = request.getSession();
-			User user = null;
-			Long userID = null;
-	        if(session.getAttribute("user") != null) {
-	        	user = (User)(session.getAttribute("user"));
-	        	userID = user.getUserID();
-	        }
-	       
-	        if(request.getParameter("docsID") != null) {
-	        	Long docID = Long.parseLong(request.getParameter("docsID"));
-	        	
-	        	DetailsDocBo dtdocsBo = new DetailsDocBo();
-	        	
-	        	DetailsDoc dtlDocs = dtdocsBo.getDetailsDocByID(docID);
-	        	if(dtlDocs != null) {
-		        	BookmarkBo bmkBo = new BookmarkBo();
-		        	boolean isMarked = false;
-		        	
-		        	ArrayList<DetailsDoc> lstDocsSuggest = dtdocsBo.getListDocsSuggest(docID, dtlDocs.getCategoryID());
-		        	if(user != null) {
-		        		isMarked = bmkBo.hasUserMarkedDocs(userID, docID);
-		        	}
-		        	
-	        		request.setAttribute("dtlDocs", dtlDocs);
-	        		request.setAttribute("lstDocsSuggest", lstDocsSuggest);
-	        		request.setAttribute("isMarked", isMarked);
-	        		
-	        		RequestDispatcher rd = request.getRequestDispatcher("User/detail-docs.jsp");
-	                rd.forward(request, response);
-	                return;
-	        	}
-	        }
-	        else if(request.getParameter("postID") != null || request.getAttribute("postID") != null) {
-	        	if(session.getAttribute("user") == null) {
-	        		response.sendRedirect("login");
-	                return;
-	        	}
-	        	Long postID = null;
-	        	if(request.getParameter("postID") != null)
-	        		postID = Long.parseLong(request.getParameter("postID"));
-	        	else
-	        		postID = (Long)request.getAttribute("postID");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            request.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
+            HttpSession session = request.getSession();
+            User user = MethodCommon.getUserFromSession(session, response);
+            
+            if (request.getParameter("docsID") != null) {
+                handleDocumentDetails(request, response, user);
+            } else if (request.getParameter("postID") != null || request.getAttribute("postID") != null) {
+            	if (user == null) {
+                	response.sendRedirect("login");
+                	return;
+                }
+            	handlePostDetails(request, response, user);
+            } else {
+                response.sendRedirect("home");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	        	DetailsPostBo dtdocsBo = new DetailsPostBo();
-	        	DetailsCommentBo dtCmtBo = new DetailsCommentBo();
-	        	boolean isLiked = false;
-	        	
-	        	DetailsPost dtlPost = dtdocsBo.getDetailsPostByID(postID);
-	        	if(dtlPost != null) {
-		        	LikeBo likeBo = new LikeBo();
-		        	isLiked = likeBo.hasUserLikedPost(userID, postID);
-		        	
-		        	ArrayList<DetailsComment>  listCmts = dtCmtBo.getCommentsByPostID(postID);
-		        	
-	        		request.setAttribute("dtlPost", dtlPost);
-	        		request.setAttribute("listCmts", listCmts);
-	        		request.setAttribute("isLiked", isLiked);
-	        		
-	        		RequestDispatcher rd = request.getRequestDispatcher("User/detail-post.jsp");
-	                rd.forward(request, response);
-	                return;
-	        	}
-	        }
-	        else
-	        	response.sendRedirect("home");
-	        
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+    
+    private void handleDocumentDetails(HttpServletRequest request, HttpServletResponse response, User user) throws Exception {
+        Long docID = Long.parseLong(request.getParameter("docsID"));
+        DetailsDocBo dtdocsBo = new DetailsDocBo();
+        DetailsDoc dtlDocs = dtdocsBo.getDetailsDocByID(docID);
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+        if (dtlDocs != null) {
+            boolean isMarked = checkIfDocumentIsBookmarked(user, docID);
 
+            ArrayList<DetailsDoc> lstDocsSuggest = dtdocsBo.getListDocsSuggest(docID, dtlDocs.getCategoryID());
+            request.setAttribute("dtlDocs", dtlDocs);
+            request.setAttribute("lstDocsSuggest", lstDocsSuggest);
+            request.setAttribute("isMarked", isMarked);
+
+            RequestDispatcher rd = request.getRequestDispatcher("User/detail-docs.jsp");
+            rd.forward(request, response);
+        }
+    }
+
+    private boolean checkIfDocumentIsBookmarked(User user, Long docID) throws Exception {
+        if (user != null) {
+            BookmarkBo bmkBo = new BookmarkBo();
+            return bmkBo.hasUserMarkedDocs(user.getUserID(), docID);
+        }
+        return false;
+    }
+
+    private void handlePostDetails(HttpServletRequest request, HttpServletResponse response, User user) throws Exception {
+        if (user == null) {
+            response.sendRedirect("login");
+            return;
+        }
+
+        Long postID = getPostID(request);
+        DetailsPostBo dtdocsBo = new DetailsPostBo();
+        DetailsPost dtlPost = dtdocsBo.getDetailsPostByID(postID);
+
+        if (dtlPost != null) {
+            boolean isLiked = checkIfPostIsLiked(user, postID);
+            DetailsCommentBo dtCmtBo = new DetailsCommentBo();
+            ArrayList<DetailsComment> listCmts = dtCmtBo.getCommentsByPostID(postID);
+
+            request.setAttribute("dtlPost", dtlPost);
+            request.setAttribute("listCmts", listCmts);
+            request.setAttribute("isLiked", isLiked);
+
+            RequestDispatcher rd = request.getRequestDispatcher("User/detail-post.jsp");
+            rd.forward(request, response);
+        }
+    }
+
+    private Long getPostID(HttpServletRequest request) {
+        if (request.getParameter("postID") != null) {
+            return Long.parseLong(request.getParameter("postID"));
+        } else {
+            return (Long) request.getAttribute("postID");
+        }
+    }
+
+    private boolean checkIfPostIsLiked(User user, Long postID) throws Exception {
+        LikeBo likeBo = new LikeBo();
+        return likeBo.hasUserLikedPost(user.getUserID(), postID);
+    }
 }

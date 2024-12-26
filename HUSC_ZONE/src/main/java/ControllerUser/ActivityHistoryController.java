@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
+import CommonModal.MethodCommon;
 import UserModal.User;
 import V_DetailsCommentModal.DetailsComment;
 import V_DetailsCommentModal.DetailsCommentBo;
@@ -33,57 +34,27 @@ public class ActivityHistoryController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
 
-            if (session.getAttribute("user") == null) {
+            User user = MethodCommon.getUserFromSession(session, response);
+
+            if (user == null) {
                 response.sendRedirect("login");
                 return;
             }
-
-            User user = (User) session.getAttribute("user");
             Long userID = user.getUserID();
 
-            int page = 1;
-            int pageSize = 9;
-            if (request.getParameter("page") != null) {
-                page = Integer.parseInt(request.getParameter("page"));
-            }
-
-            Long filterID = Constants.FILTER_LIKED;
-            if (request.getParameter("filterID") != null) {
-                filterID = Long.parseLong(request.getParameter("filterID"));
-            }
-            // cho trường hợp controller interact (action xóa) truyền filterID sang
-            else if (request.getAttribute("filterID") != null) {
-                filterID = (Long) (request.getAttribute("filterID"));
-            }
+            int page = getPageParameter(request);
+            Long filterID = getFilterIDParameter(request);
             int rowCount = 0;
 
-            // Lấy dữ liệu theo bộ lọc
             if (filterID == Constants.FILTER_LIKED) {
-                ArrayList<DetailsLiked> dsLikes = null;
-                DetailsLikedBo dtLBo = new DetailsLikedBo();
-                dsLikes = dtLBo.getListLikesByUserID(page, pageSize, userID);
-                rowCount = dtLBo.getCountLikesByUserID(userID);
-                request.setAttribute("dsLikes", dsLikes);
-
+                rowCount = handleLikedFilter(request, userID, page);
             } else if (filterID == Constants.FILTER_COMMENTED) {
-                ArrayList<DetailsComment> dsCmts = null;
-                DetailsCommentBo dtCBo = new DetailsCommentBo();
-                dsCmts = dtCBo.getCommentsByUserID(page, pageSize, userID);
-                rowCount = dtCBo.getCountCommentsByUserID(userID);
-                request.setAttribute("dsCmts", dsCmts);
-
+                rowCount = handleCommentedFilter(request, userID, page);
             } else if (filterID == Constants.FILTER_REPORT) {
-                ArrayList<DetailsReport> dsRpts = null;
-                DetailsReportBo dtRBo = new DetailsReportBo();
-                dsRpts = dtRBo.getListReportsByUserID(page, pageSize, userID);
-                rowCount = dtRBo.getCountReportsByUserID(userID);
-                request.setAttribute("dsRpts", dsRpts);
+                rowCount = handleReportFilter(request, userID, page);
             }
 
-            int pageCount = rowCount / pageSize;
-            if (rowCount % pageSize > 0) {
-                pageCount += 1;
-            }
+            int pageCount = MethodCommon.calculatePageCount(rowCount, 9);
 
             request.setAttribute("filterID", filterID);
             request.setAttribute("pageCount", pageCount);
@@ -100,5 +71,41 @@ public class ActivityHistoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
+    }
+
+    private int getPageParameter(HttpServletRequest request) {
+        String pageParam = request.getParameter("page");
+        return (pageParam != null) ? Integer.parseInt(pageParam) : 1;
+    }
+
+    private Long getFilterIDParameter(HttpServletRequest request) {
+        String filterParam = request.getParameter("filterID");
+        if (filterParam != null) {
+            return Long.parseLong(filterParam);
+        }
+
+        Object filterAttr = request.getAttribute("filterID");
+        return (filterAttr != null) ? (Long) filterAttr : Constants.FILTER_LIKED;
+    }
+
+    private int handleLikedFilter(HttpServletRequest request, Long userID, int page) throws Exception {
+        DetailsLikedBo likedBo = new DetailsLikedBo();
+        ArrayList<DetailsLiked> dsLikes = likedBo.getListLikesByUserID(page, 9, userID);
+        request.setAttribute("dsLikes", dsLikes);
+        return likedBo.getCountLikesByUserID(userID);
+    }
+
+    private int handleCommentedFilter(HttpServletRequest request, Long userID, int page) throws Exception {
+        DetailsCommentBo commentBo = new DetailsCommentBo();
+        ArrayList<DetailsComment> dsCmts = commentBo.getCommentsByUserID(page, 9, userID);
+        request.setAttribute("dsCmts", dsCmts);
+        return commentBo.getCountCommentsByUserID(userID);
+    }
+
+    private int handleReportFilter(HttpServletRequest request, Long userID, int page) throws Exception {
+        DetailsReportBo reportBo = new DetailsReportBo();
+        ArrayList<DetailsReport> dsRpts = reportBo.getListReportsByUserID(page, 9, userID);
+        request.setAttribute("dsRpts", dsRpts);
+        return reportBo.getCountReportsByUserID(userID);
     }
 }

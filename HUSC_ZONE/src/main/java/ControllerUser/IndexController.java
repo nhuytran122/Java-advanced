@@ -9,9 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import UserModal.User;
+import CommonModal.MethodCommon;
 import V_DetailsDocModal.DetailsDoc;
 import V_DetailsDocModal.DetailsDocBo;
 
@@ -54,10 +53,7 @@ public class IndexController extends HttpServlet {
 
             int rowCount = dtdocBo.getCountDocsByConditions(searchValue, cateID, mateID);
             
-            int pageCount = rowCount / pageSize;
-            if (rowCount % pageSize > 0) {
-                pageCount += 1;
-            }
+            int pageCount = MethodCommon.calculatePageCount(rowCount, pageSize);
             
             request.setAttribute("ds", ds);
             request.setAttribute("pageCount", pageCount);

@@ -17,7 +17,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import CommonModal.Constants;
-import CommonModal.MethodCommon;
 import DocumentModal.Document;
 import DocumentModal.DocumentBo;
 import UserModal.User;

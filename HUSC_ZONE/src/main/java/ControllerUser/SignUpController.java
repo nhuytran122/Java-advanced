@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import CommonModal.Constants;
-import CommonModal.MethodCommon;
 import UserModal.UserBo;
 
 @WebServlet("/signup")
@@ -50,11 +49,6 @@ public class SignUpController extends HttpServlet {
 		            }
 	            }
             }
-            request.setAttribute("loginId", txtLoginId);
-            request.setAttribute("hoten", txtHoten);
-            request.setAttribute("sdt", txtSdt);
-            request.setAttribute("gioitinh", txtGioiTinh);
-            request.setAttribute("password", txtPassword);
             request.setAttribute("isInvalid", isInvalid);
             request.setAttribute("isDuplicate", isDuplicate);
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
 import V_DetailsDocModal.DetailsDoc;
@@ -20,59 +21,55 @@ import V_DetailsPostModal.DetailsPostBo;
 
 @WebServlet("/user-profile")
 public class UserProfileController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     public UserProfileController() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
             HttpSession session = request.getSession();
 
-            if (session.getAttribute("user") == null) {
-                response.sendRedirect("login");
-                return;
-            }
-            User currentUser = (User)session.getAttribute("user");
+            MethodCommon.ensureUserIsLoggedIn(session, response);
+            User currentUser = (User) session.getAttribute("user");
             User user = null;
             Long userID = 0L;
             UserBo userBo = new UserBo();
             boolean isGuest = false;
-            
-            if(request.getParameter("userId") != null) {
-            	userID = Long.parseLong(request.getParameter("userId"));
-            	user = userBo.getUserByID(userID);
-            	isGuest = true;
+
+            if (request.getParameter("userId") != null) {
+                userID = Long.parseLong(request.getParameter("userId"));
+                user = userBo.getUserByID(userID);
+                isGuest = true;
+            } else if (request.getAttribute("userId") != null) {
+                userID = (Long) request.getAttribute("userId");
+                user = userBo.getUserByID(userID);
+                isGuest = true;
+            } else {
+                user = currentUser;
             }
-            else if(request.getAttribute("userId") != null) {
-            	userID = (Long)request.getAttribute("userId");
-            	user = userBo.getUserByID(userID);
-            	isGuest = true;
-            }
-            else {
-            	user = currentUser;
-            }
-            
+
             DetailsPostBo dtSttBo = new DetailsPostBo();
             DetailsDocBo dtDocBo = new DetailsDocBo();
-            
+
             int currentPagePosts = 1;
             int pageSize = 9;
 
             if (request.getParameter("pagePosts") != null) {
-            	currentPagePosts = Integer.parseInt(request.getParameter("pagePosts"));
+                currentPagePosts = Integer.parseInt(request.getParameter("pagePosts"));
             }
 
             ArrayList<DetailsPost> dsStt = dtSttBo.getPostsByUserID(currentPagePosts, pageSize, user.getUserID());
             ArrayList<DetailsDoc> dsDocs = dtDocBo.getListDocsByUserID(user.getUserID());
 
             int rowCountStt = dtSttBo.getCountPostsByConditions("");
-            
+
             int pageCountPosts = rowCountStt / pageSize;
-            
+
             if (rowCountStt % pageSize > 0) {
-            	pageCountPosts += 1;
+                pageCountPosts += 1;
             }
 
             request.setAttribute("dsStt", dsStt);
@@ -80,28 +77,27 @@ public class UserProfileController extends HttpServlet {
             request.setAttribute("currentPagePosts", currentPagePosts);
 
             request.setAttribute("dsDocs", dsDocs);
-            
+
             RequestDispatcher rd = null;
-            
-            if(isGuest) {
-            	if(user.getUserID() == currentUser.getUserID()) {
-            		rd = request.getRequestDispatcher("User/my-profile.jsp");
-            	}
-            	else {
-	            	rd = request.getRequestDispatcher("User/user-profile.jsp");
-	            	request.setAttribute("targetUser", user);
-            	}
-            }
-            else 
-            	rd = request.getRequestDispatcher("User/my-profile.jsp");
-            	rd.forward(request, response);
+
+            if (isGuest) {
+                if (user.getUserID() == currentUser.getUserID()) {
+                    rd = request.getRequestDispatcher("User/my-profile.jsp");
+                } else {
+                    rd = request.getRequestDispatcher("User/user-profile.jsp");
+                    request.setAttribute("targetUser", user);
+                }
+            } else
+                rd = request.getRequestDispatcher("User/my-profile.jsp");
+            rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
-	}
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

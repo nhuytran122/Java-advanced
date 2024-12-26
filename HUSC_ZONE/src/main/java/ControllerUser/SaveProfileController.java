@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import CommonModal.Constants;
+import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
 
@@ -35,10 +36,7 @@ public class SaveProfileController extends HttpServlet {
 			response.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();
 
-			if (session.getAttribute("user") == null) {
-				response.sendRedirect("login");
-				return;
-			}
+			MethodCommon.ensureUserIsLoggedIn(session, response);
 
 			UserBo userBo = new UserBo();
 			User user = (User) session.getAttribute("user");

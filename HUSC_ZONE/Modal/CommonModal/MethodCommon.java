@@ -1,13 +1,18 @@
 package CommonModal;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import CategoryModal.Category;
 import CategoryModal.CategoryBo;
 import MaterialModal.Material;
 import MaterialModal.MaterialBo;
+import UserModal.User;
 import V_DetailsNotificationModal.DetailsNotification;
 import V_DetailsNotificationModal.DetailsNotificationBo;
 
@@ -33,4 +38,26 @@ public class MethodCommon {
 		String strDay = sdf.format(d);
 		return strDay;
 	}
+	
+	public static int calculatePageCount(int rowCount, int pageSize) {
+    	int pageCount = rowCount / pageSize;
+        if (rowCount % pageSize > 0) {
+            pageCount += 1;
+        }
+        return pageCount;
+    }
+	
+	public static User getUserFromSession(HttpSession session, HttpServletResponse response) throws IOException {
+        if (session.getAttribute("user") == null) {
+            return null;
+        }
+        return (User) session.getAttribute("user");
+    }
+	
+	public static void ensureUserIsLoggedIn(HttpSession session, HttpServletResponse response) throws IOException {
+	    if (session.getAttribute("user") == null) {
+	        response.sendRedirect("login"); 
+	    }
+	}
+
 }

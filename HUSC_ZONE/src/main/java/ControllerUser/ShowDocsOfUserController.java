@@ -29,16 +29,9 @@ public class ShowDocsOfUserController extends HttpServlet {
 		try {
             HttpSession session = request.getSession();
             
-            User currentUser = null;
             Long posterID = 0L;
-            if (session.getAttribute("user") == null) {
-                response.sendRedirect("login");
-                return;
-            }
-            else {
-            	currentUser = (User)session.getAttribute("user");
-            	posterID = currentUser.getUserID();
-            }
+            User currentUser = MethodCommon.getUserFromSession(session, response);
+            posterID = currentUser.getUserID();
 
             DetailsDocBo dtdocBo = new DetailsDocBo();
             UserBo userBo = new UserBo();
@@ -58,10 +51,7 @@ public class ShowDocsOfUserController extends HttpServlet {
             		
             int rowCount = dtdocBo.getCountDocsByUserID(posterID);
             
-            int pageCount = rowCount / pageSize;
-            if (rowCount % pageSize > 0) {
-                pageCount += 1;
-            }
+            int pageCount = MethodCommon.calculatePageCount(rowCount, pageSize);
 
             request.setAttribute("ds", ds);
             request.setAttribute("pageCount", pageCount);

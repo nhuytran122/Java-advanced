@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-  String password = (String)request.getAttribute("password");
-  String hoten = (String)request.getAttribute("hoten");
-  String sdt = (String)request.getAttribute("sdt");
-  String email = (String)request.getAttribute("loginId");
-  String gioitinh = (String)request.getAttribute("gioitinh");
-  boolean isInvalid = (boolean)request.getAttribute("isInvalid");
-  boolean isDuplicate = (boolean)request.getAttribute("isDuplicate");
+	String hoten = request.getParameter("txtHoten");
+	String sdt = request.getParameter("txtSdt");
+	String email = request.getParameter("txtLoginId");
+	String gioitinh = request.getParameter("txtGioiTinh");
+	boolean isInvalid = (boolean)request.getAttribute("isInvalid");
+	boolean isDuplicate = (boolean)request.getAttribute("isDuplicate");
 %>
 
 <!DOCTYPE html>

@@ -28,10 +28,7 @@ public class EditDocsController extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            if (session.getAttribute("user") == null) {
-                response.sendRedirect("login");
-                return;
-            }
+            MethodCommon.ensureUserIsLoggedIn(session, response);
 
             DocumentBo docBo = new DocumentBo();
             Long docID = 0L;
@@ -52,21 +49,30 @@ public class EditDocsController extends HttpServlet {
             }
 
             if (request.getParameter("btnDeleteDoc") != null) {
-                String filePath = docBo.getDocumentByID(docID).getFilePath();
-                docBo.deleteDocument(docID);
-                
-                String appPath = request.getServletContext().getRealPath("") + filePath;
-                File fileDocs = new File(appPath);
-                System.out.println("Path of image: " + fileDocs.getAbsolutePath());
-                if (fileDocs.exists()) {
-                    boolean isImageDeleted = fileDocs.delete(); // Xóa file
-                    if (!isImageDeleted) {
-                        System.out.println("Không thể xóa file: " + filePath);
-                    }
-                }
-                response.sendRedirect("docs-of-user");
+            	handleDeleteDocument(request, response, docBo, docID);
                 return;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void handleDeleteDocument(HttpServletRequest request, HttpServletResponse response, DocumentBo docBo, Long docID)
+            throws IOException {
+        try {
+        	String filePath = docBo.getDocumentByID(docID).getFilePath();
+            docBo.deleteDocument(docID);
+            
+            String appPath = request.getServletContext().getRealPath("") + filePath;
+            File fileDocs = new File(appPath);
+            System.out.println("Path of image: " + fileDocs.getAbsolutePath());
+            if (fileDocs.exists()) {
+                boolean isImageDeleted = fileDocs.delete(); // Xóa file
+                if (!isImageDeleted) {
+                    System.out.println("Không thể xóa file: " + filePath);
+                }
+            }
+            response.sendRedirect("docs-of-user");
         } catch (Exception e) {
             e.printStackTrace();
         }
