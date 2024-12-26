@@ -22,20 +22,19 @@ boolean isLiked = (boolean)request.getAttribute("isLiked");
 <body>
     <%@ include file="layout/navbar_for_Post.jsp" %>
 
-    <!-- Main Content -->
     <div class="main-container">
-        <div class="image-section d-flex justify-content-center align-items-center">
-		    <% if (dtlPost.getImagePath() != null) { %>
-		        <img src="<%= request.getContextPath() %><%= dtlPost.getImagePath() %>" 
-		             alt="Post Image" 
-		             class="img-fluid rounded post-image">
-		    <% } %>
+        <div class="image-section d-flex justify-content-center align-items-center" 
+			<% if (dtlPost.getImagePath() == null || dtlPost.getImagePath().isEmpty()) { %>
+		         style="display: none; background-color: #ffffff;" 
+		     <% } else{ %>
+		>
+		    		<img src="<%= request.getContextPath() %><%= dtlPost.getImagePath() %>" 
+			         alt="Post Image" 
+			         class="img-fluid rounded post-image">
+		        <%} %>
 		</div>
 
-
-        <!-- Right Section - Content -->
         <div class="content-section">
-            <!-- Post Header -->
             <div class="post-header d-flex align-items-center">
                 <% if (dtlPost.getAvatar() == null || dtlPost.getAvatar().isBlank()) { 
                 %>

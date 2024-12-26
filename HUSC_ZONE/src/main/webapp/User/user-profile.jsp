@@ -29,6 +29,10 @@
 		.btn-like:hover {
 		    background-color: #ff4d4d;     
 		}
+		
+		a {
+		    text-decoration: none !important;
+		}
 </style>
 
 <body>
@@ -107,26 +111,21 @@
 							                            <%= stt.getName() %>
 							                        </a>
 							                    </h6>
-							                    <small class="text-muted"><%= MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
+							                    <a href="../details?postID=<%= stt.getPostID() %>">
+							                    	<small class="text-muted"><%= MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
+							                	</a>
 							                </div>
+							                
+							                <div class="ms-auto"> 
+								                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal<%= stt.getPostID() %>">
+								                    <i class="bi bi-flag"></i> Báo cáo
+								                </a>
+								            </div>
 							            </div>
 							            <p><%= stt.getPostContent() %></p>
 							            <% if (stt.getImagePath() != null && !stt.getImagePath().isBlank()) { %>
 							                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
 							            <% } %>
-							        </div>
-							        <div class="card-footer d-flex justify-content-between">
-							            <div>
-							                <a class="btn btn-outline-primary btn-sm btn-like">
-							                    <i class="bi bi-heart-fill text-danger"></i> Thích
-							                </a>
-							            </div>
-							            <div class="ms-auto">
-							                <!-- Nút kích hoạt modal -->
-							                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal<%= stt.getPostID() %>">
-							                    <i class="bi bi-flag"></i> Báo cáo
-							                </a>
-							            </div>
 							        </div>
 							    </div>
 							

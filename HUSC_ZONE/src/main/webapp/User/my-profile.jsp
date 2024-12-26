@@ -13,6 +13,11 @@
     <title>My Profile - HUSCZone</title>
     <%@ include file="layout/import.jsp" %>
 </head>
+<style>
+	a {
+		text-decoration: none !important;
+	}
+</style>
 <body>
 
 <%
@@ -137,10 +142,12 @@
 							                                <%= stt.getName() %>
 							                            </a>
 							                        </h6>
-							                        <small class="text-muted">
-													  <%= stt.getUpdatedAt() == null ? MethodCommon.convertDateToString(stt.getCreatedAt()) 
-															  : "Đã chỉnh sửa " + MethodCommon.convertDateToString(stt.getUpdatedAt()) %>
-													</small>
+							                        <a href="../details?postID=<%= stt.getPostID() %>">
+								                        <small class="text-muted">
+														  <%= stt.getUpdatedAt() == null ? MethodCommon.convertDateToString(stt.getCreatedAt()) 
+																  : "Đã chỉnh sửa " + MethodCommon.convertDateToString(stt.getUpdatedAt()) %>
+														</small>
+													</a>
 
 							                    </div>
 							                </div>
@@ -180,18 +187,12 @@
 							        
 							        <div class="card-footer d-flex justify-content-between">
 									    <div class="d-flex align-items-center">
-									        <a class="btn btn-outline-primary btn-sm btn-like me-2">
+									        <span class="text-muted me-2">
 									            <i class="bi bi-heart-fill text-danger"></i> <%= stt.getCountLikes() %>
-									        </a>
+									        </span>
 									        <span class="text-muted mx-2">
 									            <i class="bi bi-chat-dots-fill me-1"></i> <%= stt.getCountComments() %> bình luận
 									        </span>
-									    </div>
-									
-									    <div class="ms-auto">
-									        <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
-									            <i class="bi bi-flag"></i> Báo cáo
-									        </a>
 									    </div>
 									</div>
 

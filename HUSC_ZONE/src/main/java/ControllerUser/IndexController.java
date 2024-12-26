@@ -25,15 +25,6 @@ public class IndexController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            HttpSession session = request.getSession();
-            
-            User user = null;
-            Long userID = null;
-            if (session.getAttribute("user") != null) {
-                user = (User) session.getAttribute("user");
-                userID = user.getUserID();
-            }
-            
             DetailsDocBo dtdocBo = new DetailsDocBo();
             int page = 1;
             int pageSize = 9;

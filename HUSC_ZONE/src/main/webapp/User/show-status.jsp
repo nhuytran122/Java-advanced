@@ -26,6 +26,9 @@
         .btn-like:hover {
             background-color: #ff4d4d;     
         }
+        a {
+		    text-decoration: none !important;
+		}
     </style>
     
 </head>
@@ -106,61 +109,52 @@
                         for (DetailsPost stt : dsPosts) {
                 %>
                     <div class="card no-hover mb-3">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                 <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { 
-                                 %>
-                                    <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
-                                        <img src="../images/default-avt.jpg" style="width: 60px; height: 60px;" alt="Default" class="rounded-circle me-3">
-                                    </a>
-                                <% } else { %>
-                                    <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
-                                        <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 60px; height: 60px" alt="Avatar" class="rounded-circle me-3">
-                                    </a>
-                                <% } %>
-                            <div>
-                                <h6 class="mb-0">
-                                    <a href="../user-profile?userId=<%= stt.getUploadedBy() %>" class="text-decoration-none">
-                                        <%= stt.getName() %>
-                                    </a>
-                                </h6>
-                                <small class="text-muted">
-									<%= stt.getUpdatedAt() == null ? MethodCommon.convertDateToString(stt.getCreatedAt()) 
-										: "Đã chỉnh sửa " + MethodCommon.convertDateToString(stt.getUpdatedAt()) %>
-								</small>
-                            </div>
-                        </div>
-                        <p>
-                            <%= stt.getPostContent() %>
-                        </p>
-                        <div>
-						    <% if (stt.getImagePath() != null && !stt.getImagePath().isBlank()) { %>
-						        <a href="../details?postID=<%= stt.getPostID() %>">
-						            <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" 
-						                 alt="Post Image" 
-						                 class="img-fluid rounded" 
-						                 style="width: 300px;">
-						        </a>
-						    <% } %>
-						</div>
-
-                    </div>
-                    <div class="card-footer d-flex justify-content-between">
-                        <div>
-                            <a class="btn btn-outline-primary btn-sm btn-like">
-                                <i class="bi bi-heart-fill text-danger"></i> Thích
-                            </a>
-                            <button class="btn btn-outline-primary btn-sm btn-comment" onclick="toggleComments(this)">
-                                <i class="bi bi-chat"></i> Bình luận
-                            </button>
-                        </div>
-                        <div class="ms-auto">
-                            <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal<%= stt.getPostID() %>">
-							    <i class="bi bi-flag"></i> Báo cáo
-							</a>
-
-                        </div>
-                    </div>
+					    <div class="card-body">
+					        <div class="d-flex align-items-center mb-3">
+					            <% if (stt.getAvatar() == null || stt.getAvatar().isBlank()) { %>
+					                <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
+					                    <img src="../images/default-avt.jpg" style="width: 60px; height: 60px;" alt="Default" class="rounded-circle me-3">
+					                </a>
+					            <% } else { %>
+					                <a href="../user-profile?userId=<%= stt.getUploadedBy() %>">
+					                    <img src="<%= request.getContextPath() %><%= stt.getAvatar() %>" style="width: 60px; height: 60px" alt="Avatar" class="rounded-circle me-3">
+					                </a>
+					            <% } %>
+					            <div>
+					                <h6 class="mb-0">
+					                    <a href="../user-profile?userId=<%= stt.getUploadedBy() %>" class="text-decoration-none">
+					                        <%= stt.getName() %>
+					                    </a>
+					                </h6>
+					                <a href="../details?postID=<%= stt.getPostID() %>">
+						                <small class="text-muted">
+						                    <%= stt.getUpdatedAt() == null ? MethodCommon.convertDateToString(stt.getCreatedAt()) 
+						                        : "Đã chỉnh sửa " + MethodCommon.convertDateToString(stt.getUpdatedAt()) %>
+						                </small>
+					                </a>
+					            </div>
+					
+					            <div class="ms-auto"> 
+					                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal<%= stt.getPostID() %>">
+					                    <i class="bi bi-flag"></i> Báo cáo
+					                </a>
+					            </div>
+					        </div>
+					
+					        <p>
+					            <%= stt.getPostContent() %>
+					        </p>
+					        <div>
+					            <% if (stt.getImagePath() != null && !stt.getImagePath().isBlank()) { %>
+					                <a href="../details?postID=<%= stt.getPostID() %>">
+					                    <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" 
+					                         alt="Post Image" 
+					                         class="img-fluid rounded" 
+					                         style="width: 300px;">
+					                </a>
+					            <% } %>
+					        </div>
+					    </div>
                     
 					<div class="modal fade" id="reportModal<%= stt.getPostID() %>" tabindex="-1" aria-labelledby="reportModalLabel<%= stt.getPostID() %>" aria-hidden="true">
 					    <div class="modal-dialog">
@@ -184,33 +178,6 @@
 					    </div>
 					</div>
 					
-                     <!-- Show bình luận dưới bài viết -->
-                    <div class="comments-section m-3 d-none">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://via.placeholder.com/40" alt="User Avatar" class="rounded-circle me-2" style="width: 40px; height: 40px;">
-                            <input type="text" class="form-control rounded-pill" placeholder="Viết bình luận..." />
-                            <button class="btn btn-primary ms-2">Gửi</button>
-                        </div>
-
-                        <div class="comments-list">
-                            <div class="d-flex align-items-start mb-3">
-                                <img src="https://via.placeholder.com/40" alt="User Avatar" class="rounded-circle me-2" style="width: 40px; height: 40px;">
-                                <div>
-                                    <h6 class="mb-0">Nguyễn Văn A</h6>
-                                    <p class="mb-1">Bài viết thú vị quá, cảm ơn bạn đã chia sẻ!</p>
-                                    <small class="text-muted">10 phút trước</small>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-start mb-3">
-                                <img src="https://via.placeholder.com/40" alt="User Avatar" class="rounded-circle me-2" style="width: 40px; height: 40px;">
-                                <div>
-                                    <h6 class="mb-0">Trần Thị B</h6>
-                                    <p class="mb-1">Mình cũng thích phim này, diễn biến rất hấp dẫn.</p>
-                                    <small class="text-muted">15 phút trước</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <% 
                         }
@@ -286,17 +253,4 @@
 
 </body>
 
-<script>
-        // JS để bật/tắt hiển thị cmt dưới bài viết
-        function toggleComments(button) {
-            const commentsSection = button.closest('.card').querySelector('.comments-section');
-            if (commentsSection.classList.contains('d-none')) {
-                commentsSection.classList.remove('d-none');
-                button.innerHTML = '<i class="bi bi-chat"></i> Ẩn bình luận';
-            } else {
-                commentsSection.classList.add('d-none');
-                button.innerHTML = '<i class="bi bi-chat"></i> Bình luận';
-            }
-        }
-</script>
 </html>
