@@ -25,11 +25,6 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();  
-			request.setCharacterEncoding("utf-8");
-            response.setCharacterEncoding("utf-8");
-            
-            request.setAttribute("listCates", MethodCommon.getListCates());
-            request.setAttribute("listMates", MethodCommon.getListMates());
             
 			String txtLoginId = request.getParameter("txtLoginId");
 			String txtPassword = request.getParameter("txtPassword");

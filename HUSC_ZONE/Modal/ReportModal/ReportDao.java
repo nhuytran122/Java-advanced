@@ -1,5 +1,6 @@
 package ReportModal;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,6 +67,18 @@ public class ReportDao {
         return null;
     }
     
+    public int deleteReportsByPostID(Long postID) throws Exception {
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "DELETE FROM tbl_Reports WHERE PostID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, postID);
+        int result = cmd.executeUpdate();
+        cmd.close();
+        kn.cn.close();
+        return result;
+    }
+    
     private Report mapReport(ResultSet rs) throws Exception {
         Long ReportID = rs.getLong("ReportID");
         String reason = rs.getString("Reason");
@@ -77,4 +90,25 @@ public class ReportDao {
         
         return new Report(ReportID, reason, createdAt, createdBy, postID, statusID, solvedAt);
     }
+    
+    public ArrayList<Long> getReportIDsByPostID(Long postID) throws Exception {
+        ArrayList<Long> reportIDs = new ArrayList<Long>();
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+
+        String sql = "SELECT ReportID FROM tbl_Reports WHERE PostID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, postID);
+
+        ResultSet rs = cmd.executeQuery();
+        while (rs.next()) {
+            reportIDs.add(rs.getLong("ReportID"));
+        }
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+
+        return reportIDs;
+    }
+
 }

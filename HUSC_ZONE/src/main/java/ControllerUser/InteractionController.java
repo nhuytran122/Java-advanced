@@ -30,8 +30,6 @@ public class InteractionController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("utf-8");
-            response.setCharacterEncoding("utf-8");
             HttpSession session = request.getSession();
 
             User user = null;
@@ -99,7 +97,7 @@ public class InteractionController extends HttpServlet {
 	            	String contentRp = request.getParameter("txtContentReport");
 	            	Long reportID = rpBo.addReport(postID, userID, contentRp);
 	            	if(stt.getUploadBy() != userID)
-	            		notiBo.createNotiRelatedToReportPost(stt.getUploadBy(), reportID, userID);
+	            		notiBo.createNotiRelatedToReportPost(stt.getUploadBy(), reportID, userID, postID);
 	            	
 	            	if(request.getParameter("reportInDetail") != null) {
 	            		request.setAttribute("postID", postID);
@@ -123,7 +121,7 @@ public class InteractionController extends HttpServlet {
 	            	String contentCmt = request.getParameter("txtContentCmt");
 	            	Long cmtID = cmtBo.addComment(postID, userID, contentCmt);
 	            	if(stt.getUploadBy() != userID)
-	            		notiBo.createNotiRelatedToCmtPost(stt.getUploadBy(), cmtID, userID);
+	            		notiBo.createNotiRelatedToCmtPost(stt.getUploadBy(), cmtID, userID, postID);
 	            	
 	            	if(request.getParameter("cmtInDetail") != null) {
 	            		request.setAttribute("postID", postID);

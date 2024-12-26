@@ -1,5 +1,7 @@
 package StatusPostModal;
 
+import NotificationModal.NotificationBo;
+
 public class StatusPostBo {
 
 	StatusPostDao sttDao = new StatusPostDao();
@@ -13,7 +15,9 @@ public class StatusPostBo {
 	}
 
 	public int deleteStatusPost(Long PostID) throws Exception {
-		return sttDao.deleteStatusPost(PostID);
+	    new NotificationBo().deleteNotificationByPostID(PostID);
+
+	    return sttDao.deleteStatusPost(PostID);
 	}
 
 	public StatusPost getStatusPostByID(Long PostID) throws Exception {

@@ -35,10 +35,6 @@ public class ViewDetailsController extends HttpServlet {
 			request.setCharacterEncoding("utf-8");
 	        response.setCharacterEncoding("utf-8");
 	        HttpSession session = request.getSession();
-	        
-	        request.setAttribute("listCates", MethodCommon.getListCates());
-	        request.setAttribute("listMates", MethodCommon.getListMates());
-	        
 			User user = null;
 			Long userID = null;
 	        if(session.getAttribute("user") != null) {

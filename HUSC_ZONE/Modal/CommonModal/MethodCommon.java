@@ -8,6 +8,8 @@ import CategoryModal.Category;
 import CategoryModal.CategoryBo;
 import MaterialModal.Material;
 import MaterialModal.MaterialBo;
+import V_DetailsNotificationModal.DetailsNotification;
+import V_DetailsNotificationModal.DetailsNotificationBo;
 
 public class MethodCommon {
 
@@ -19,6 +21,11 @@ public class MethodCommon {
 	public static ArrayList<Material> getListMates() throws Exception {
         MaterialBo mateBo = new MaterialBo();
         return mateBo.getListMaterials();
+    }
+	
+	public static ArrayList<DetailsNotification> getListNotis(Long userID) throws Exception {
+        DetailsNotificationBo notiBo = new DetailsNotificationBo();
+        return notiBo.getNotificationsByUserID(userID);
     }
 	
 	public static String convertDateToString(Date d) {

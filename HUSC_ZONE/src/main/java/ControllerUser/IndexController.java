@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import CommonModal.MethodCommon;
 import UserModal.User;
 import V_DetailsDocModal.DetailsDoc;
 import V_DetailsDocModal.DetailsDocBo;
@@ -27,12 +26,6 @@ public class IndexController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("utf-8");
-            response.setCharacterEncoding("utf-8");
-            
-            request.setAttribute("listCates", MethodCommon.getListCates());
-            request.setAttribute("listMates", MethodCommon.getListMates());
-            
             HttpSession session = request.getSession();
             
             User user = null;
@@ -40,8 +33,6 @@ public class IndexController extends HttpServlet {
             if (session.getAttribute("user") != null) {
                 user = (User) session.getAttribute("user");
                 userID = user.getUserID();
-                DetailsNotificationBo notiBo = new DetailsNotificationBo();
-                request.setAttribute("listNoti", notiBo.getNotificationsByUserID(userID));
             }
             
             DetailsDocBo dtdocBo = new DetailsDocBo();

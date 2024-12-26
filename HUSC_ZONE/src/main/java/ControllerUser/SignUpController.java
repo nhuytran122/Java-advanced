@@ -21,13 +21,7 @@ public class SignUpController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            request.setAttribute("listCates", MethodCommon.getListCates());
-            request.setAttribute("listMates", MethodCommon.getListMates());
-            
-            request.setCharacterEncoding("utf-8");
-            response.setCharacterEncoding("utf-8");
-            
+        try {           
             String txtHoten = request.getParameter("txtHoten");
             String txtLoginId = request.getParameter("txtLoginId");
             String txtSdt = request.getParameter("txtSdt");

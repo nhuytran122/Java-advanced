@@ -44,20 +44,29 @@
                 <li class="nav-item"><a class="nav-link text-white" href="../home">Tài liệu</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="../status-post">Bài đăng</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        Thông báo <span class="badge bg-danger">3</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <% if (listNoti != null) {
-                            for(DetailsNotification noti : listNoti) { %>
-                            <li>
-                                <a class="dropdown-item" href="../details?postID=<%= noti.getPostID() %>">
-                                    <%= noti.getNotificationMessage() %>
-                                </a>
-                            </li>
-                        <% } } %>
-                    </ul>
-                </li>
+				    <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+				        Thông báo
+				    </a>
+				    <ul class="dropdown-menu" style="max-height: 300px; overflow-y: auto; width: 300px;">
+				        <% if (listNoti != null && !listNoti.isEmpty()) { %>
+				            <% for (DetailsNotification noti : listNoti) { %>
+				                <li class="p-2">
+				                    <a class="dropdown-item d-flex align-items-start" 
+				                       href="../details?postID=<%= noti.getPostID() %>" 
+				                       style="white-space: normal; word-wrap: break-word; word-break: break-word; overflow-wrap: break-word;">
+				                        <i class="bi bi-bell-fill me-2 text-primary"></i>
+				                        <span style="line-height: 1.5;"><%= noti.getNotificationMessage() %></span>
+				                    </a>
+				                </li>
+				            <% } %>
+				        <% } else { %>
+				            <li class="text-center p-3">
+				                <i class="bi bi-info-circle text-muted" style="font-size: 1.5rem;"></i>
+				                <p class="mb-0 text-muted">Bạn không có thông báo nào</p>
+				            </li>
+				        <% } %>
+				    </ul>
+				</li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <% if (user.getAvatar() != null && !user.getAvatar().isBlank()) { %>

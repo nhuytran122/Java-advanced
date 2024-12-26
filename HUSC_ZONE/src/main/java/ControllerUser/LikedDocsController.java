@@ -30,8 +30,6 @@ public class LikedDocsController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-            request.setCharacterEncoding("utf-8");
-            response.setCharacterEncoding("utf-8");
             HttpSession session = request.getSession();
             
             User currentUser = null;
@@ -41,9 +39,6 @@ public class LikedDocsController extends HttpServlet {
             }
             else
             	currentUser = (User)session.getAttribute("user");
-            
-            request.setAttribute("listCates", MethodCommon.getListCates());
-            request.setAttribute("listMates", MethodCommon.getListMates());
 
             DetailsBookmarkBo dtBmBo = new DetailsBookmarkBo();
             

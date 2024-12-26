@@ -66,11 +66,6 @@ public class DocumentDao {
 		KetNoi kn = new KetNoi();
 		kn.ketnoi();
 
-		String sqlDltBookmarks = "DELETE FROM tbl_Bookmarks WHERE DocumentID = ?";
-		PreparedStatement cmdDltBookmarks = kn.cn.prepareStatement(sqlDltBookmarks);
-		cmdDltBookmarks.setLong(1, documentID);
-		cmdDltBookmarks.executeUpdate();
-
 		String sql = "DELETE FROM tbl_Documents WHERE DocumentID = ?";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setLong(1, documentID);

@@ -25,11 +25,6 @@ public class EditDocsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("utf-8");
-            response.setCharacterEncoding("utf-8");
-
-            request.setAttribute("listCates", MethodCommon.getListCates());
-            request.setAttribute("listMates", MethodCommon.getListMates());
 
             HttpSession session = request.getSession();
 

@@ -11,12 +11,13 @@ public class Notification {
 	private Long ReportID;
 	private Long ActorID;
 	private Long ActivityTypeID;
+	private Long PostID;
 	public Notification() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Notification(Long notificationID, Long sendTo, Date createdAt, Long cmtID, Long reportID, Long actorID,
-			Long activityTypeID) {
+			Long activityTypeID, Long postID) {
 		super();
 		NotificationID = notificationID;
 		SendTo = sendTo;
@@ -25,6 +26,7 @@ public class Notification {
 		ReportID = reportID;
 		ActorID = actorID;
 		ActivityTypeID = activityTypeID;
+		PostID = postID;
 	}
 	public Long getNotificationID() {
 		return NotificationID;
@@ -67,5 +69,11 @@ public class Notification {
 	}
 	public void setActivityTypeID(Long activityTypeID) {
 		ActivityTypeID = activityTypeID;
+	}
+	public Long getPostID() {
+		return PostID;
+	}
+	public void setPostID(Long postID) {
+		PostID = postID;
 	}
 }

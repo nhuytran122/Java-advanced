@@ -27,8 +27,6 @@ public class ShowDocsOfUserController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-            request.setCharacterEncoding("utf-8");
-            response.setCharacterEncoding("utf-8");
             HttpSession session = request.getSession();
             
             User currentUser = null;
@@ -41,9 +39,6 @@ public class ShowDocsOfUserController extends HttpServlet {
             	currentUser = (User)session.getAttribute("user");
             	posterID = currentUser.getUserID();
             }
-            
-            request.setAttribute("listCates", MethodCommon.getListCates());
-            request.setAttribute("listMates", MethodCommon.getListMates());
 
             DetailsDocBo dtdocBo = new DetailsDocBo();
             UserBo userBo = new UserBo();

@@ -17,7 +17,7 @@ public class DetailsNotification {
         if (ActivityTypeID == 1) {
             return ActorName + " đã bình luận: \"" + ActivityContent + "\" trên bài viết \"" + StatusContent + "\".";
         } else if (ActivityTypeID == 2) {
-            return ActorName + " đã báo cáo bài viết \"" + StatusContent + "\" với lý do: \"" + ActivityContent + "\".";
+            return "Một người đã báo cáo bài viết \"" + StatusContent + "\" với lý do: \"" + ActivityContent + "\".";
         }
         return "Hoạt động không xác định.";
     }

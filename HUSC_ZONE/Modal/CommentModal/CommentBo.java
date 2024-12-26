@@ -2,6 +2,8 @@ package CommentModal;
 
 import java.util.ArrayList;
 
+import NotificationModal.NotificationBo;
+
 public class CommentBo {
 	CommentDao cmtDao = new CommentDao();
 	
@@ -22,6 +24,29 @@ public class CommentBo {
 	}
 	
 	public int deleteComment(Long CommentID) throws Exception {
+		NotificationBo notiBo = new NotificationBo();
+		notiBo.deleteNotificationsByCmtID(CommentID);
 		return cmtDao.deleteComment(CommentID);
 	}
+    
+    public ArrayList<Long> getCommentIDsByPostID(Long postID) throws Exception {
+    	return cmtDao.getCommentIDsByPostID(postID);
+    }
+    
+    public int deleteCommentsByPostID(Long postID) throws Exception {
+        NotificationBo notiBo = new NotificationBo();
+        CommentDao cmtDao = new CommentDao();
+
+        // Lấy danh sách CommentID liên quan PostID
+        ArrayList<Long> commentIDs = cmtDao.getCommentIDsByPostID(postID);
+
+        // Xóa noti liên quan đến từng comment
+        for (Long commentID : commentIDs) {
+            notiBo.deleteNotificationsByCmtID(commentID);
+        }
+
+        // Xóa các comment liên quan đến PostID
+        return cmtDao.deleteCommentsByPostID(postID);
+    }
+
 }

@@ -35,8 +35,6 @@ public class SaveDocsController extends HttpServlet {
 		try {
 			request.setCharacterEncoding("utf-8");
 			response.setCharacterEncoding("utf-8");
-			request.setAttribute("listCates", MethodCommon.getListCates());
-			request.setAttribute("listMates", MethodCommon.getListMates());
 
 			HttpSession session = request.getSession();
 			User user = null;
