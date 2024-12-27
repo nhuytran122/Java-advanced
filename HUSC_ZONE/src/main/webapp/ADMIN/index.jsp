@@ -4,7 +4,6 @@
 <html lang="en">
 
 <head>
-  <base href="/HUSC_ZONE/ADMIN/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>HUSC ZONE - ADMIN</title>

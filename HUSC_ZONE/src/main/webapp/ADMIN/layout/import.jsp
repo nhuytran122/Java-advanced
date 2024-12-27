@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <base href="/HUSC_ZONE/ADMIN/">
     
 	<link rel="stylesheet" href="vendors/feather/feather.css">
 	<link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -27,4 +28,4 @@
   	<script src="js/dashboard.js"></script>
   	<script src="js/Chart.roundedBarCharts.js"></script> 
   	  
-	<base href="/HUSC_ZONE/ADMIN/">
+	
