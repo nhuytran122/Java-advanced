@@ -1,6 +1,5 @@
 package ReportModal;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -91,24 +90,25 @@ public class ReportDao {
         return new Report(ReportID, reason, createdAt, createdBy, postID, statusID, solvedAt);
     }
     
-    public ArrayList<Long> getReportIDsByPostID(Long postID) throws Exception {
-        ArrayList<Long> reportIDs = new ArrayList<Long>();
+    public int getCountPendingReports() throws Exception {
+        int count = 0;
         KetNoi kn = new KetNoi();
         kn.ketnoi();
 
-        String sql = "SELECT ReportID FROM tbl_Reports WHERE PostID = ?";
+        String sql = "SELECT COUNT(*) FROM tbl_Reports WHERE StatusID = ?";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, postID);
+        cmd.setLong(1, Constants.REPORT_PENDING);
 
         ResultSet rs = cmd.executeQuery();
-        while (rs.next()) {
-            reportIDs.add(rs.getLong("ReportID"));
+        if (rs.next()) {
+            count = rs.getInt(1);
         }
+
         rs.close();
         cmd.close();
         kn.cn.close();
 
-        return reportIDs;
+        return count;
     }
 
 }

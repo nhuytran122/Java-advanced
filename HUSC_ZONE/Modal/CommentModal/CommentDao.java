@@ -108,38 +108,5 @@ public class CommentDao {
         kn.cn.close();
         return result;
     }
-    
-    public int deleteCommentsByPostID(Long postID) throws Exception {
-        KetNoi kn = new KetNoi();
-        kn.ketnoi();
-        String sql = "DELETE FROM tbl_Comments WHERE PostID = ?";
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, postID);
-        int result = cmd.executeUpdate();
-        cmd.close();
-        kn.cn.close();
-        return result;
-    }
-
-    public ArrayList<Long> getCommentIDsByPostID(Long postID) throws Exception {
-        ArrayList<Long> commentIDs = new ArrayList<>();
-        KetNoi kn = new KetNoi();
-        kn.ketnoi();
-
-        String sql = "SELECT CommentID FROM tbl_Comments WHERE PostID = ?";
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, postID);
-
-        ResultSet rs = cmd.executeQuery();
-        while (rs.next()) {
-            commentIDs.add(rs.getLong("CommentID"));
-        }
-        rs.close();
-        cmd.close();
-        kn.cn.close();
-
-        return commentIDs;
-    }
-
 }
 

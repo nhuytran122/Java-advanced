@@ -3,12 +3,12 @@ package NotificationModal;
 public class NotificationBo {
 	NotificationDao notiDao = new NotificationDao();
 	
-	public int createNotiRelatedToCmtPost(Long userID, Long cmtID, Long actorID, Long postID) throws Exception {
-		return notiDao.createNotiRelatedToCmtPost(userID, cmtID, actorID, postID);
+	public int createNotiRelatedToCmtPost(Long cmtID) throws Exception {
+		return notiDao.createNotiRelatedToCmtPost(cmtID);
 	}
 	
-	public int createNotiRelatedToReportPost(Long userID, Long reportID, Long actorID, Long postID) throws Exception {
-		return notiDao.createNotiRelatedToReportPost(userID, reportID, actorID, postID);
+	public int createNotiRelatedToReportPost(Long reportID) throws Exception {
+		return notiDao.createNotiRelatedToReportPost(reportID);
 	}
 	
 	public int deleteNotificationsByCmtID(Long cmtID) throws Exception {
@@ -19,11 +19,9 @@ public class NotificationBo {
 		return notiDao.deleteNotificationByReportID(reportID);
 	}
 	
-	public int deleteNotificationByLikeID(Long likeID) throws Exception {
-		return notiDao.deleteNotificationByLikeID(likeID);
-	}
-	
-	public int deleteNotificationByPostID(Long postID) throws Exception {
-		return notiDao.deleteNotificationByPostID(postID);
-	}
+	//Đã set Cascade
+//	public void deleteNotificationsByPostID(Long postID) throws Exception {
+//		notiDao.deleteNotificationsByPostIDFromComments(postID);
+//		notiDao.deleteNotificationsByPostIDFromReports(postID);
+//	}
 }

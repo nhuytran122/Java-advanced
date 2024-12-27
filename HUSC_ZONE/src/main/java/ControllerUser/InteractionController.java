@@ -112,7 +112,7 @@ public class InteractionController extends HttpServlet {
         String contentRp = request.getParameter("txtContentReport");
         Long reportID = rpBo.addReport(postID, userID, contentRp);
         if (!userID.equals(stt.getUploadBy())) {
-            notiBo.createNotiRelatedToReportPost(stt.getUploadBy(), reportID, userID, postID);
+            notiBo.createNotiRelatedToReportPost(reportID);
         }
 
         String redirectPage = request.getParameter("reportInDetail") != null ? "details" : "status-post";
@@ -130,7 +130,7 @@ public class InteractionController extends HttpServlet {
         String contentCmt = request.getParameter("txtContentCmt");
         Long cmtID = cmtBo.addComment(postID, userID, contentCmt);
         if (!userID.equals(stt.getUploadBy())) {
-            notiBo.createNotiRelatedToCmtPost(stt.getUploadBy(), cmtID, userID, postID);
+            notiBo.createNotiRelatedToCmtPost(cmtID);
         }
 
 //        String redirectPage = request.getParameter("cmtInDetail") != null ? "details" : "status-post";

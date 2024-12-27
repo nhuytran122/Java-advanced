@@ -1,6 +1,6 @@
 package StatusPostModal;
 
-import NotificationModal.NotificationBo;
+import ReportModal.ReportBo;
 
 public class StatusPostBo {
 
@@ -15,8 +15,12 @@ public class StatusPostBo {
 	}
 
 	public int deleteStatusPost(Long PostID) throws Exception {
-	    new NotificationBo().deleteNotificationByPostID(PostID);
-
+		//Đã set Cascade
+//	    new NotificationBo().deleteNotificationsByPostID(PostID);
+//	    new LikeBo().deleteLikesByPostID(PostID);
+//	    new CommentBo().deleteCommentsByPostID(PostID);
+		
+	    new ReportBo().deleteReportsByPostID(PostID);
 	    return sttDao.deleteStatusPost(PostID);
 	}
 

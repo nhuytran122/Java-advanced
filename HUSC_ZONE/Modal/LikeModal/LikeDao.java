@@ -2,7 +2,6 @@ package LikeModal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import CommonModal.KetNoi;
 
@@ -84,37 +83,16 @@ public class LikeDao {
 
         return count;
     }
-    
-    public int deleteLikesByPostID(Long postID) throws Exception {
-        KetNoi kn = new KetNoi();
-        kn.ketnoi();
-        String sql = "DELETE FROM tbl_Likes WHERE PostID = ?";
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, postID);
-        int result = cmd.executeUpdate();
-        cmd.close();
-        kn.cn.close();
-        return result;
-    }
-    
-    public ArrayList<Long> getLikeIDsByPostID(Long postID) throws Exception {
-        ArrayList<Long> likeIDs = new ArrayList<>();
-        KetNoi kn = new KetNoi();
-        kn.ketnoi();
-
-        String sql = "SELECT LikeID FROM tbl_Likes WHERE PostID = ?";
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, postID);
-
-        ResultSet rs = cmd.executeQuery();
-        while (rs.next()) {
-            likeIDs.add(rs.getLong("LikeID"));
-        }
-        rs.close();
-        cmd.close();
-        kn.cn.close();
-
-        return likeIDs;
-    }
-
+  //Đã set Cascade
+//    public int deleteLikesByPostID(Long postID) throws Exception {
+//        KetNoi kn = new KetNoi();
+//        kn.ketnoi();
+//        String sql = "DELETE FROM tbl_Likes WHERE PostID = ?";
+//        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+//        cmd.setLong(1, postID);
+//        int result = cmd.executeUpdate();
+//        cmd.close();
+//        kn.cn.close();
+//        return result;
+//    }
 }

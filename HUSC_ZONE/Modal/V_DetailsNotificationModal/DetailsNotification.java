@@ -5,7 +5,7 @@ import java.util.Date;
 public class DetailsNotification {
     private Long NotificationID;
     private Long SendTo;
-    private Date createdAt;
+    private Date CreatedAt;
     private Long PostID;
     private Long ActorID;
     private String ActorName;
@@ -27,7 +27,7 @@ public class DetailsNotification {
 		super();
 		NotificationID = notificationID;
 		SendTo = sendTo;
-		this.createdAt = createdAt;
+		this.CreatedAt = createdAt;
 		PostID = postID;
 		ActorID = actorID;
 		ActorName = actorName;
@@ -53,11 +53,11 @@ public class DetailsNotification {
 	}
 
 	public Date getCreatedAt() {
-		return createdAt;
+		return CreatedAt;
 	}
 
 	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
+		this.CreatedAt = createdAt;
 	}
 
 	public Long getPostID() {
