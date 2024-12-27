@@ -38,7 +38,7 @@
                 <div class="row g-0">
                     <div class="col-md-4">
                         <!-- Thumbnail -->
-                        <img src="https://via.placeholder.com/350x350" class="document-thumbnail" alt="Document Thumbnail">
+                        <img src="<%= request.getContextPath() %><%= dtlDocs.getCategoryImage() %>" class="document-thumbnail" alt="Document Thumbnail" height="350" width="350">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

@@ -12,7 +12,8 @@ public class CategoryDao {
         Long CategoryID = rs.getLong("CategoryID");
         String CategoryName = rs.getString("CategoryName");
         String Description = rs.getString("Description");
-        return new Category(CategoryID, CategoryName, Description);
+        String Image = rs.getString("Image");
+        return new Category(CategoryID, CategoryName, Description, Image);
     }
 
     public ArrayList<Category> getListCategories() throws Exception {

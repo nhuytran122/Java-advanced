@@ -16,12 +16,13 @@ public class DetailsDoc {
 	private String MaterialName;
 	private String Name;
 	private Long CountBookmarks;
+	private String CategoryImage;
 	public DetailsDoc() {
 		super();
 	}
 	public DetailsDoc(Long documentID, String title, String desription, Date createdAt, Date updatedAt, String filePath,
 			Long categoryID, Long materialID, Long uploadedBy, String categoryName, String materialName,
-			String name, Long countBookmarks) {
+			String name, Long countBookmarks, String categoryImage) {
 		super();
 		DocumentID = documentID;
 		Title = title;
@@ -36,6 +37,7 @@ public class DetailsDoc {
 		MaterialName = materialName;
 		Name = name;
 		CountBookmarks = countBookmarks;
+		CategoryImage = categoryImage;
 	}
 	public Long getDocumentID() {
 		return DocumentID;
@@ -114,5 +116,11 @@ public class DetailsDoc {
 	}
 	public void setCountBookmarks(Long countBookmarks) {
 		CountBookmarks = countBookmarks;
+	}
+	public String getCategoryImage() {
+		return CategoryImage;
+	}
+	public void setCategoryImage(String categoryImage) {
+		CategoryImage = categoryImage;
 	}
 }
