@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/ADMIN/index.jsp=UTF-8
+encoding//src/main/webapp/ADMIN/layout/footer.jsp=UTF-8
+encoding//src/main/webapp/ADMIN/layout/left_sidebar.jsp=UTF-8
 encoding//src/main/webapp/User/detail-post.jsp=UTF-8
 encoding//src/main/webapp/User/section/show-reports.jsp=UTF-8
 encoding//src/main/webapp/User/sign-up.jsp=UTF-8

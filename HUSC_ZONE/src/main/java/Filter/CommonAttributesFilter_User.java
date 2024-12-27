@@ -15,8 +15,8 @@ import UserModal.User;
 
 import java.io.IOException;
 
-@WebFilter("/*")
-public class CommonAttributesFilter implements Filter {
+@WebFilter("/*") 
+public class CommonAttributesFilter_User implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {}
 
@@ -25,21 +25,22 @@ public class CommonAttributesFilter implements Filter {
             throws IOException, ServletException {
         try {
             HttpServletRequest httpRequest = (HttpServletRequest) request;
-            httpRequest.setAttribute("listCates", MethodCommon.getListCates());
-            httpRequest.setAttribute("listMates", MethodCommon.getListMates());
+            String requestURI = httpRequest.getRequestURI();
             httpRequest.setCharacterEncoding("utf-8");
             httpRequest.setCharacterEncoding("utf-8");
-            
-         // Tránh tạo session mới nếu chưa tồn tại.
-//            Nếu session đã tồn tại, phương thức sẽ trả về session hiện tại.
-//            Nếu session chưa tồn tại, phương thức sẽ trả về null thay vì tạo một session mới
-            HttpSession session = httpRequest.getSession(false); 
-            if (session != null) {
-                User user = (User) session.getAttribute("user");
-                if (user != null) {
-                    Long userID = user.getUserID();
-                    if (userID != null) {
-                        httpRequest.setAttribute("listNoti", MethodCommon.getListNotis(userID));
+            // Bỏ qua các yêu cầu bắt đầu bằng /admin
+            if (!requestURI.startsWith("/admin")) {
+                httpRequest.setAttribute("listCates", MethodCommon.getListCates());
+                httpRequest.setAttribute("listMates", MethodCommon.getListMates());
+
+                HttpSession session = httpRequest.getSession(false); 
+                if (session != null) {
+                    User user = (User) session.getAttribute("user");
+                    if (user != null) {
+                        Long userID = user.getUserID();
+                        if (userID != null) {
+                            httpRequest.setAttribute("listNoti", MethodCommon.getListNotis(userID));
+                        }
                     }
                 }
             }

@@ -59,5 +59,18 @@ public class MethodCommon {
 	        response.sendRedirect("login"); 
 	    }
 	}
+	
+	public static User getAdminFromSession(HttpSession session, HttpServletResponse response) throws IOException {
+        if (session.getAttribute("admin") == null) {
+            return null;
+        }
+        return (User) session.getAttribute("admin");
+    }
+	
+	public static void ensureAdminIsLoggedIn(HttpSession session, HttpServletResponse response) throws IOException {
+	    if (session.getAttribute("admin") == null) {
+	        response.sendRedirect("login"); 
+	    }
+	}
 
 }
