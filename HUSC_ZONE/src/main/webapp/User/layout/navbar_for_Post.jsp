@@ -83,7 +83,7 @@
                             <% } else { %>
                                 <img src="../images/default-avt.jpg" width="80" height="80" alt="Default" class="rounded-circle me-2">
                             <% } %>
-                            <h6 class="fw-bold mb-0"><%= user.getName() %></h6>
+                            <h6 class="fw-bold mb-0 mt-3"><%= user.getName() %></h6>
                             <p class="text-muted small"><%= user.getEmail() %></p>
                         </li>
                         <li><hr class="dropdown-divider"></li>

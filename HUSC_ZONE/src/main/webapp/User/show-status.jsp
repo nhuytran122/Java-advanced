@@ -36,7 +36,11 @@
                 <div class="card no-hover mb-3">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+	                        <% if (user.getAvatar() != null && !user.getAvatar().isBlank()) { %>
+	                            <img src="<%= request.getContextPath() %><%= user.getAvatar() %>" alt="Avatar" class="rounded-circle me-3" width="50" height="50">
+	                        <% } else { %>
+	                            <img src="../images/default-avt.jpg" width="30" height="30" alt="Default" class="rounded-circle me-2">
+	                        <% } %>
                             <!-- Thêm data-bs-toggle và data-bs-target -->
                             <input class="form-control rounded-pill" 
                                    placeholder="<%=user.getName() %> ơi, bạn muốn chia sẻ gì nào?" 
@@ -120,12 +124,13 @@
 						                </small>
 					                </a>
 					            </div>
-					
-					            <div class="ms-auto"> 
-					                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal<%= stt.getPostID() %>">
-					                    <i class="bi bi-flag"></i> Báo cáo
-					                </a>
-					            </div>
+								<% if (user.getUserID() != stt.getUploadedBy()) {%>
+						            <div class="ms-auto"> 
+						                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal<%= stt.getPostID() %>">
+						                    <i class="bi bi-flag"></i> Báo cáo
+						                </a>
+						            </div>
+					            <%} %>
 					        </div>
 					
 					        <p>
