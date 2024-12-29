@@ -35,7 +35,7 @@ public class AdminController extends HttpServlet {
             request.setAttribute("cntPosts", (new DetailsPostBo().getCountPostsByConditions("")));
             request.setAttribute("cntPendingReports", (new ReportBo().getCountPendingReports()));
 
-            RequestDispatcher rd = request.getRequestDispatcher("ADMIN/index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/Admin/index.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();

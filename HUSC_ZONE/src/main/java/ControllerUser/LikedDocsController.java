@@ -27,7 +27,7 @@ public class LikedDocsController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             HttpSession session = request.getSession();
-            
+            MethodCommon.ensureUserIsLoggedIn(session, response);
             User currentUser = MethodCommon.getUserFromSession(session, response);
 
             DetailsBookmarkBo dtBmBo = new DetailsBookmarkBo();

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <base href="/HUSC_ZONE/ADMIN/">
+    <base href="/HUSC_ZONE/Admin/">
     
 	<link rel="stylesheet" href="vendors/feather/feather.css">
 	<link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">

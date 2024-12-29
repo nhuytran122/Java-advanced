@@ -45,7 +45,7 @@
 		            <div class="col-md-3 mb-4">
 					    <a href="../details?docsID=<%=docs.getDocumentID() %>" class="card-link" style="display: block; text-decoration: none;">
 					        <div class="card" title="Click để xem chi tiết">
-					            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
+					            <img src="<%= request.getContextPath() %><%= docs.getCategoryImage() %>" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
 					            <div class="card-body">
 					                <h6 class="card-title text-truncate"><%= docs.getTitle() %></h6>
 					                <div>

@@ -12,11 +12,12 @@ public class DetailsBookmark {
 	private String CategoryName;
 	private String MaterialName;
 	private Date MarkedAt;
+	private String CategoryImage;
 	public DetailsBookmark() {
 		super();
 	}
 	public DetailsBookmark(Long markedBy, Long documentID, Long bookmarkID, Long categoryID, Long materialID,
-			String title, String categoryName, String materialName, Date markedAt) {
+			String title, String categoryName, String materialName, Date markedAt, String categoryImage) {
 		super();
 		MarkedBy = markedBy;
 		DocumentID = documentID;
@@ -27,6 +28,7 @@ public class DetailsBookmark {
 		CategoryName = categoryName;
 		MaterialName = materialName;
 		MarkedAt = markedAt;
+		CategoryImage = categoryImage;
 	}
 	public Long getMarkedBy() {
 		return MarkedBy;
@@ -82,5 +84,10 @@ public class DetailsBookmark {
 	public void setMarkedAt(Date markedAt) {
 		MarkedAt = markedAt;
 	}
-	
+	public String getCategoryImage() {
+		return CategoryImage;
+	}
+	public void setCategoryImage(String categoryImage) {
+		CategoryImage = categoryImage;
+	}
 }

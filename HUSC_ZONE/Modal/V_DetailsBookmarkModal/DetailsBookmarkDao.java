@@ -69,8 +69,9 @@ public class DetailsBookmarkDao {
         String CategoryName = rs.getString("CategoryName");
         String MaterialName = rs.getString("MaterialName");
         Date MarkedAt = rs.getDate("MarkedAt");
+        String CategoryImage = rs.getString("CategoryImage");
 		
 		return new DetailsBookmark(MarkedBy, DocumentID, BookmarkID, CategoryID,
-				MaterialID, Title, CategoryName, MaterialName, MarkedAt);
+				MaterialID, Title, CategoryName, MaterialName, MarkedAt, CategoryImage);
 	}
 }

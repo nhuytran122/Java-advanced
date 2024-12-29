@@ -124,7 +124,7 @@
 			        <div class="col-md-3">
 			        	<a href="../details?docsID=<%=doc.getDocumentID() %>" class="card-link" style="display: block; text-decoration: none;">
 				            <div class="card h-100">
-				                <img src="https://via.placeholder.com/150x150" class="card-img-top" alt="Thumbnail">
+				                <img src="<%= request.getContextPath() %><%= doc.getCategoryImage() %>" class="card-img-top" alt="Thumbnail" style="height: 170px; object-fit: cover;">
 				                <span class="badge bg-warning text-white position-absolute top-0 end-0 m-2 p-2" style="font-size: 15px">
 				                    <i class="bi bi-bookmark-fill"></i> <%= doc.getCountBookmarks() %>
 				                </span>

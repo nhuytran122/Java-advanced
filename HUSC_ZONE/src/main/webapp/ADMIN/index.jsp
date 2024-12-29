@@ -72,7 +72,7 @@
 	                </a>
                 </div>
                 <div class="col-md-6 mb-4 stretch-card transparent">
-	                <a href="adminSachController" class="card card-tale text-decoration-none">
+	                <a href="../admin/docs" class="card card-tale text-decoration-none">
 	                  <div class="card card-dark-blue">
 	                    <div class="card-body">
 	                      <p class="mb-4">Số lượng Tài liệu</p>
