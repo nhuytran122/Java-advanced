@@ -46,33 +46,40 @@
                             for (int i = 0; i < n; i++) {
                             	DetailsDoc docs = ds.get(i);
                         %>
-		            <div class="col-md-3 mb-4">
+		            <div class="col-md-3 mb-4 d-flex">
 					    <a href="../details?docsID=<%=docs.getDocumentID() %>" class="card-link" style="display: block; text-decoration: none;">
-					        <div class="card" title="Click để xem chi tiết">
-					            <img src="<%= request.getContextPath() %><%= docs.getCategoryImage() %>" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
+					        <div class="card h-100" title="Click để xem chi tiết">
+					            <% if (docs.getCategoryImage() != null && !docs.getCategoryImage().isBlank()) { %>
+					                <img src="<%= request.getContextPath() %><%= docs.getCategoryImage() %>" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
+					            <% } else { %>
+					                <img src="../images/default-category.jpg" class="card-img-top" alt="Thumbnail" style="height: 150px; object-fit: cover;">
+					            <% } %>
+					
 					            <span class="badge bg-warning text-white position-absolute top-0 end-0 m-2 p-2" style="font-size: 15px">
-				                    <i class="bi bi-bookmark-fill"></i> <%= docs.getCountBookmarks() %>
-				                </span>
-					            <div class="card-body">
+					                <i class="bi bi-bookmark-fill"></i> <%= docs.getCountBookmarks() %>
+					            </span>
+					            
+					            <div class="card-body d-flex flex-column">
 					                <h6 class="card-title text-truncate"><%= docs.getTitle() %></h6>
 					                <div>
 					                    <a href="../home?cateID=<%= docs.getCategoryID()%>">
-					                    	<span class="badge bg-info text-white"><%= docs.getCategoryName() %></span>
+					                        <span class="badge bg-info text-white"><%= docs.getCategoryName() %></span>
 					                    </a>
 					                    <a href="../home?mateID=<%= docs.getMaterialID()%>">
-					                    	<span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
+					                        <span class="badge bg-success text-white"><%= docs.getMaterialName() %></span>
 					                    </a>
 					                </div>
 					            </div>
-					            <div class="card-footer" style="text-align: center;">
-								    <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm">
-								        <i class="bi bi-download"></i> Download
-								    </a>
-								</div>
-
+					            
+					            <div class="card-footer text-center">
+					                <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-outline-success btn-sm">
+					                    <i class="bi bi-download"></i> Download
+					                </a>
+					            </div>
 					        </div>
 					    </a>
 					</div>
+
 					<% } 
 						}%>
 				</div>

@@ -130,8 +130,7 @@ public class SaveDocsController extends HttpServlet {
 	                    }
 	                }
             	}
-            	RequestDispatcher rd = request.getRequestDispatcher("/admin/docs");
-                rd.forward(request, response);
+            	response.sendRedirect("docs");
                 return;
             }
 

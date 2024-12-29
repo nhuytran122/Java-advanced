@@ -38,7 +38,6 @@
     <fullyQualifiedTypeName name="NotificationModal.NotificationBo"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-    <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsCommentBo"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -52,7 +51,6 @@
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
     <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDocBo"/>
-    <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
     <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="LikeModal.LikeBo"/>
     <fullyQualifiedTypeName name="CommentModal.CommentBo"/>
     <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
+    <fullyQualifiedTypeName name="UserModal.User"/>
+    <fullyQualifiedTypeName name="UserModal.UserBo"/>
 </qualifiedTypeNameHistroy>

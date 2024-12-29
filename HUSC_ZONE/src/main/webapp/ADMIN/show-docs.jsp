@@ -11,7 +11,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Quản lý tài liệu - HUSC Zone</title>
+  <title>Quản lý tài liệu - HUSCZone</title>
   <%@ include file="layout/import.jsp" %>
 </head>
 
@@ -121,7 +121,7 @@
                             <div class="btn-group" role="group">
                               <form method="post" action="../admin/edit-docs">
                                 <input type="hidden" name="docID" value="<%= doc.getDocumentID() %>">
-                                <button type="submit" name="btnDetailSach" class="btn btn-success btn-sm" title="Xem chi tiết">
+                                <button type="submit" name="btnDetail" class="btn btn-success btn-sm" title="Xem chi tiết">
                                   <i class="bi bi-eye"></i>
                                 </button>
                                 <button type="submit" name="btnUpdateDoc" value="<%= doc.getDocumentID() %>" class="btn btn-warning btn-sm" title="Sửa">

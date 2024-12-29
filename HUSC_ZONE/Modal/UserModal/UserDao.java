@@ -96,15 +96,15 @@ public class UserDao {
     }
 	
 	public int addUser(String name, String password, String gender, String email, 
-			String phone, Long roleID, String avt) throws Exception {
+			String phone, Long roleID) throws Exception {
 		
 		if (getUserByEmail(email) != null) {
 	        return -1;
 	    }
         KetNoi kn = new KetNoi();
 		kn.ketnoi();
-        String sql = "INSERT INTO tbl_Users (Name, Password, Gender, Email, Phone, Status, CreatedAt, RoleID, Avatar) "
-        		+ "VALUES (?, ?, ?, ?, ?, ?, GETDATE(), ?, ?);";
+        String sql = "INSERT INTO tbl_Users (Name, Password, Gender, Email, Phone, IsUsing, CreatedAt, RoleID) "
+        		+ "VALUES (?, ?, ?, ?, ?, ?, GETDATE(), ?);";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
             
             cmd.setString(1, name);
@@ -114,7 +114,6 @@ public class UserDao {
             cmd.setString(5, phone);
             cmd.setBoolean(6, Constants.ACC_USING);
             cmd.setLong(7, roleID);
-            cmd.setString(8, avt);
         int kq = cmd.executeUpdate();
         kn.cn.close();
             
@@ -166,20 +165,33 @@ public class UserDao {
 
 	
 	public int updateUser(Long userID, String name, String gender, 
-			String phone, boolean status, Long roleID, String avatar) throws Exception {
+			String phone, String avatar) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
         String sql = "UPDATE tbl_Users SET Name = ?, Gender = ?, Phone = ?, "
-        		+ "Status = ?, UpdatedAt = GETDATE(), RoleID = ?, Avatar = ? WHERE UserID = ?";
+        		+ "UpdatedAt = GETDATE(), Avatar = ? WHERE UserID = ?";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
 
         cmd.setString(1, name);
         cmd.setString(2, gender);
         cmd.setString(3, phone);
-        cmd.setBoolean(4, status);
-        cmd.setLong(5, roleID);
-        cmd.setString(6, avatar);
-        cmd.setLong(7, userID);  
+        cmd.setString(4, avatar);
+        cmd.setLong(5, userID);  
+        int kq = cmd.executeUpdate();
+        kn.cn.close();
+        return kq;
+    }
+	
+	public int updateStatusAndRoleUser(Long userID, boolean status, Long roleID) throws Exception {
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "UPDATE tbl_Users SET IsUsing = ?, UpdatedAt = GETDATE(), RoleID = ?"
+        		+ " WHERE UserID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+
+        cmd.setBoolean(1, status);
+        cmd.setLong(2, roleID);
+        cmd.setLong(3, userID);  
         int kq = cmd.executeUpdate();
         kn.cn.close();
         return kq;
@@ -219,11 +231,11 @@ public class UserDao {
         String gender = rs.getString("Gender");
         String email = rs.getString("Email");
         String phone = rs.getString("Phone");
-        boolean status = rs.getBoolean("Status");
+        boolean isUsing = rs.getBoolean("IsUsing");
         Date createdAt = rs.getDate("CreatedAt");
         Date updatedAt = rs.getDate("UpdatedAt");
         Long roleID = rs.getLong("RoleID");
         String avatar = rs.getString("Avatar");
-        return new User(userID, name, password, gender, email, phone, status, createdAt, updatedAt, roleID, avatar);
+        return new User(userID, name, password, gender, email, phone, isUsing, createdAt, updatedAt, roleID, avatar);
     }
 }

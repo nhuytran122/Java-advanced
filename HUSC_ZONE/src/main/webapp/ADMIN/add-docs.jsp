@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Thêm tài liệu - HUSC Zone</title>
+  <title>Thêm tài liệu - HUSCZone</title>
   
   <%@ include file="layout/import.jsp" %>
 </head>
@@ -99,8 +99,8 @@
                     
                     <div class="form-group row">
                       <div class="col-sm-offset-2 col-sm-10 text-center">
+                      	<a href="../admin/docs" class="btn btn-secondary">Hủy</a>
                         <button type="submit" name="btnAdd" value="add" class="btn btn-primary">Tải lên tài liệu</button>
-                        <a href="../admin/docs" class="btn btn-secondary">Hủy</a>
                       </div>
                     </div>
                   </form>

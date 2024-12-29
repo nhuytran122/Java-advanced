@@ -88,8 +88,7 @@ public class SaveProfileController extends HttpServlet {
 				}
 			}
 
-			done = userBo.updateUser(user.getUserID(), name, gender, phone, Constants.ACC_USING, Constants.ROLE_USER,
-					imgName);
+			done = userBo.updateUser(user.getUserID(), name, gender, phone, imgName);
 
 			// Chỉ xử lý upload file mới nếu add/update thành công
 			if (done == 1) {

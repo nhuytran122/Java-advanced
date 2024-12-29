@@ -7,13 +7,6 @@
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../admin/users" aria-expanded="false">
-          <i class="bi bi-person menu-icon"></i>
-          <span class="menu-title">Người dùng</span>
-        </a>
-        
-      </li>
       
       <li class="nav-item">
 		  <a class="nav-link" data-toggle="collapse" data-target="#ui-basic" aria-controls="ui-basic">
@@ -29,12 +22,18 @@
 		    </ul>
 		  </div>
 		</li>
-
-      
+		
       <li class="nav-item">
         <a class="nav-link" href="../admin/posts" aria-expanded="false">
           <i class="bi bi-file-earmark-post menu-icon"></i>
           <span class="menu-title">Bài đăng</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="../admin/users" aria-expanded="false">
+          <i class="bi bi-person menu-icon"></i>
+          <span class="menu-title">Nguời dùng</span>
         </a>
       </li>
       

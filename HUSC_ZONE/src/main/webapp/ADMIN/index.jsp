@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>HUSC ZONE - ADMIN</title>
+  <title>HUSCZONE - ADMIN</title>
   
   <%@ include file="layout/import.jsp" %>
 </head>
@@ -62,7 +62,7 @@
             <div class="col-md-6 grid-margin transparent">
               <div class="row">
                 <div class="col-md-6 mb-4 stretch-card transparent">
-	                <a href="adminKHController" class="card card-tale text-decoration-none">
+	                <a href="../admin/users" class="card card-tale text-decoration-none">
 	                  <div class="card card-tale">
 	                    <div class="card-body">
 	                      <p class="mb-4">Số lượng User</p>

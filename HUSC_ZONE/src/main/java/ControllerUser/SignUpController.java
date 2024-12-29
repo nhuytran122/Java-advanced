@@ -39,7 +39,7 @@ public class SignUpController extends HttpServlet {
             	}
             	else {
 	            	int add = userBo.addUser(txtHoten, txtPassword, txtGioiTinh, txtLoginId, 
-	        			txtSdt, Constants.ROLE_USER, null);
+	        			txtSdt, Constants.ROLE_USER);
 		            if(add <= 0) {
 		            	isDuplicate = true;
 		            }

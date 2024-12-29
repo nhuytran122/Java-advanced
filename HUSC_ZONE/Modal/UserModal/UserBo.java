@@ -40,8 +40,8 @@ public class UserBo {
     }
 	
 	public int addUser(String name, String password, String gender, String email, 
-			String phone, Long roleID, String avt) throws Exception {
-		return userDao.addUser(name, hashPassword(password), gender, email, phone, roleID, avt);
+			String phone, Long roleID) throws Exception {
+		return userDao.addUser(name, hashPassword(password), gender, email, phone, roleID);
 	}
 	
 	public int countUsers() throws Exception {
@@ -53,8 +53,12 @@ public class UserBo {
 	}
 	
 	public int updateUser(Long userID, String name, String gender, 
-			String phone, boolean status, Long roleID, String avatar) throws Exception {
-		return userDao.updateUser(userID, name, gender, phone, status, roleID, avatar);
+			String phone, String avatar) throws Exception {
+		return userDao.updateUser(userID, name, gender, phone, avatar);
+	}
+	
+	public int updateStatusAndRoleUser(Long userID, boolean status, Long roleID) throws Exception {
+		return userDao.updateStatusAndRoleUser(userID, status, roleID);
 	}
 	
 	public Long changePassword(String email, String oldPassword, String newPassword) throws Exception {
@@ -72,7 +76,6 @@ public class UserBo {
         userDao.changePassword(user.getUserID(), hashedNewPassword);
         return Constants.CHANGE_PASSWORD_SUCCESS;
     }
-
 	
 	public int deleteUser(Long userID) throws Exception {
 		return userDao.deleteUser(userID);

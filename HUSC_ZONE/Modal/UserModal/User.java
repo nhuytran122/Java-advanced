@@ -9,7 +9,7 @@ public class User {
 	private String Gender;
 	private String Email;
 	private String Phone;
-	private boolean Status;
+	private boolean IsUsing;
 	private Date CreatedAt;
 	private Date UpdatedAt;
 	private Long RoleID;
@@ -19,7 +19,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	public User(Long userID, String name, String password, String gender, String email, String phone,
-			boolean status, Date createdAt, Date updatedAt, Long roleID, String avatar) {
+			boolean isUsing, Date createdAt, Date updatedAt, Long roleID, String avatar) {
 		super();
 		UserID = userID;
 		Name = name;
@@ -27,7 +27,7 @@ public class User {
 		Gender = gender;
 		Email = email;
 		Phone = phone;
-		Status = status;
+		IsUsing = isUsing;
 		CreatedAt = createdAt;
 		UpdatedAt = updatedAt;
 		RoleID = roleID;
@@ -69,11 +69,11 @@ public class User {
 	public void setPhone(String phone) {
 		Phone = phone;
 	}
-	public boolean isStatus() {
-		return Status;
+	public boolean isIsUsing() {
+		return IsUsing;
 	}
-	public void setStatus(boolean status) {
-		Status = status;
+	public void setIsUsing(boolean isUsing) {
+		IsUsing = isUsing;
 	}
 	public Date getCreatedAt() {
 		return CreatedAt;

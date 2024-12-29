@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import CommonModal.MethodCommon;
 import DocumentModal.DocumentBo;
+import V_DetailsDocModal.DetailsDocBo;
 
 @WebServlet("/admin/edit-docs")
 public class EditDocsController extends HttpServlet {
@@ -32,7 +33,13 @@ public class EditDocsController extends HttpServlet {
             Long docID = 0L;
             if (request.getParameter("docID") != null)
                 docID = Long.parseLong(request.getParameter("docID"));
-
+            
+            if (request.getParameter("btnDetail") != null) {
+                request.setAttribute("docs", new DetailsDocBo().getDetailsDocByID(docID));
+                RequestDispatcher rd = request.getRequestDispatcher("/Admin/detail-docs.jsp");
+                rd.forward(request, response);
+                return;
+            }
             if (request.getParameter("btnAddDoc") != null) {
                 RequestDispatcher rd = request.getRequestDispatcher("/Admin/add-docs.jsp");
                 rd.forward(request, response);
@@ -70,8 +77,8 @@ public class EditDocsController extends HttpServlet {
                     System.out.println("Không thể xóa file: " + filePath);
                 }
             }
-            RequestDispatcher rd = request.getRequestDispatcher("/admin/docs");
-            rd.forward(request, response);
+            response.sendRedirect("docs");
+            return;
         } catch (Exception e) {
             e.printStackTrace();
         }
