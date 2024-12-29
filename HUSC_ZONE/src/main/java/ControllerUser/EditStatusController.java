@@ -28,7 +28,10 @@ public class EditStatusController extends HttpServlet {
 
             HttpSession session = request.getSession();
             
-            MethodCommon.ensureUserIsLoggedIn(session, response);
+            if (MethodCommon.getUserFromSession(session, response) == null) {
+    	        response.sendRedirect("login"); 
+                return;
+    	    }
 
             StatusPostBo sttBo = new StatusPostBo();
             Long sttID = null;

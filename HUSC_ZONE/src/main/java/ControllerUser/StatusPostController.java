@@ -30,7 +30,10 @@ public class StatusPostController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
 
-            MethodCommon.ensureUserIsLoggedIn(session, response);
+            if (MethodCommon.getUserFromSession(session, response) == null) {
+    	        response.sendRedirect("login");
+    	        return;
+    	    }
             
             int page = 1;
             int pageSize = 9;

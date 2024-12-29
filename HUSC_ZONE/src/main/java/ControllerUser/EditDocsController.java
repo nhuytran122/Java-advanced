@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import CommonModal.MethodCommon;
 import DocumentModal.DocumentBo;
+import UserModal.User;
 
 @WebServlet("/edit-docs")
 public class EditDocsController extends HttpServlet {
@@ -27,8 +28,11 @@ public class EditDocsController extends HttpServlet {
         try {
 
             HttpSession session = request.getSession();
-
-            MethodCommon.ensureUserIsLoggedIn(session, response);
+            User currentUser = MethodCommon.getUserFromSession(session, response);
+            if (currentUser == null) {
+    	        response.sendRedirect("login"); 
+                return;
+    	    }
 
             DocumentBo docBo = new DocumentBo();
             Long docID = 0L;

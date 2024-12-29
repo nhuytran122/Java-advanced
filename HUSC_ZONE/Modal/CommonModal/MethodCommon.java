@@ -54,23 +54,11 @@ public class MethodCommon {
         return (User) session.getAttribute("user");
     }
 	
-	public static void ensureUserIsLoggedIn(HttpSession session, HttpServletResponse response) throws IOException {
-	    if (session.getAttribute("user") == null) {
-	        response.sendRedirect("login"); 
-	    }
-	}
-	
 	public static User getAdminFromSession(HttpSession session, HttpServletResponse response) throws IOException {
         if (session.getAttribute("admin") == null) {
             return null;
         }
         return (User) session.getAttribute("admin");
     }
-	
-	public static void ensureAdminIsLoggedIn(HttpSession session, HttpServletResponse response) throws IOException {
-	    if (session.getAttribute("admin") == null) {
-	        response.sendRedirect("login"); 
-	    }
-	}
 
 }

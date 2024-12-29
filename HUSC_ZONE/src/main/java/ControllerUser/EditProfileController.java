@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.MethodCommon;
+import UserModal.User;
 
 @WebServlet("/edit-profile")
 public class EditProfileController extends HttpServlet {
@@ -26,7 +27,10 @@ public class EditProfileController extends HttpServlet {
 	        response.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();
 	        
-	        MethodCommon.ensureUserIsLoggedIn(session, response);
+			if (MethodCommon.getUserFromSession(session, response) == null) {
+    	        response.sendRedirect("login"); 
+				return;
+    	    }
 
             if (request.getParameter("btnUpdateProfile") != null) {
                 RequestDispatcher rd = request.getRequestDispatcher("User/update-profile.jsp");

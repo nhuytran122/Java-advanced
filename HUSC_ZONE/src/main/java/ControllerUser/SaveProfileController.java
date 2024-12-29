@@ -36,10 +36,13 @@ public class SaveProfileController extends HttpServlet {
 			response.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();
 
-			MethodCommon.ensureUserIsLoggedIn(session, response);
+			User user = MethodCommon.getUserFromSession(session, response);
+			if (user == null) {
+    	        response.sendRedirect("login"); 
+				return;
+			}
 
 			UserBo userBo = new UserBo();
-			User user = (User) session.getAttribute("user");
 
 			response.setContentType("text/html; charset=utf-8");
 			String name = "", phone = "", gender = "", imgName = "",
