@@ -66,18 +66,6 @@ public class ReportDao {
         return null;
     }
     
-    public int deleteReportsByPostID(Long postID) throws Exception {
-        KetNoi kn = new KetNoi();
-        kn.ketnoi();
-        String sql = "DELETE FROM tbl_Reports WHERE PostID = ?";
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, postID);
-        int result = cmd.executeUpdate();
-        cmd.close();
-        kn.cn.close();
-        return result;
-    }
-    
     private Report mapReport(ResultSet rs) throws Exception {
         Long ReportID = rs.getLong("ReportID");
         String reason = rs.getString("Reason");
@@ -109,6 +97,20 @@ public class ReportDao {
         kn.cn.close();
 
         return count;
+    }
+    
+	public int updateReport(Long reportID, Long statusID) throws Exception {
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "UPDATE tbl_Reports SET StatusID = ?, SolvedAt = GETDATE() "
+        		+ "WHERE ReportID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+
+        cmd.setLong(1, statusID);
+        cmd.setLong(2, reportID);
+        int kq = cmd.executeUpdate();
+        kn.cn.close();
+        return kq;
     }
 
 }

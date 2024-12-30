@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 
+import CommonModal.Constants;
 import CommonModal.KetNoi;
 
 public class DetailsPostDao {
@@ -31,9 +32,11 @@ public class DetailsPostDao {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
 
-        String sql = "SELECT COUNT(*) FROM V_Details_Posts WHERE UploadedBy = ?";
+        String sql = "SELECT COUNT(*) FROM V_Details_Posts "
+        		+ "WHERE UploadedBy = ? AND PostVisibility = ?";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
         cmd.setLong(1, userID);
+        cmd.setString(2, Constants.POST_PUBLIC);
 
         ResultSet rs = cmd.executeQuery();
         if (rs.next()) {
@@ -80,16 +83,17 @@ public class DetailsPostDao {
 
 		String sql = "SELECT * " +
 				"FROM V_Details_Posts " +
-				"WHERE UploadedBy = ? " +
+				"WHERE UploadedBy = ?  AND PostVisibility = ? " +
 				"ORDER BY CreatedAt DESC " +
 				"OFFSET (? - 1) * ? ROWS " +
 				"FETCH NEXT ? ROWS ONLY";
 
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setLong(1, userID);
-		cmd.setInt(2, page);
-		cmd.setInt(3, pageSize);
+		cmd.setString(2, Constants.POST_PUBLIC);
+		cmd.setInt(3, page);
 		cmd.setInt(4, pageSize);
+		cmd.setInt(5, pageSize);
 
 		ResultSet rs = cmd.executeQuery();
 		while (rs.next()) {
@@ -109,18 +113,19 @@ public class DetailsPostDao {
 		kn.ketnoi();
 
 		String sql = "SELECT * FROM V_Details_Posts " +
-                "WHERE PostContent LIKE ? OR Name LIKE ? " + 
-                "ORDER BY CreatedAt DESC " +
-                "OFFSET (? - 1) * ? ROWS " +  
-                "FETCH NEXT ? ROWS ONLY";
+	             "WHERE (PostContent LIKE ? OR Name LIKE ?) AND PostVisibility = ? " + 
+	             "ORDER BY CreatedAt DESC " +
+	             "OFFSET (? - 1) * ? ROWS " +  
+	             "FETCH NEXT ? ROWS ONLY";
 
 	   searchValue = "%" + searchValue + "%";
 	   PreparedStatement cmd = kn.cn.prepareStatement(sql);
 	   cmd.setString(1, searchValue);
 	   cmd.setString(2, searchValue);
-	   cmd.setInt(3, page);
-	   cmd.setInt(4, pageSize);
+	   cmd.setString(3, Constants.POST_PUBLIC);
+	   cmd.setInt(4, page);
 	   cmd.setInt(5, pageSize);
+	   cmd.setInt(6, pageSize);
 
 		ResultSet rs = cmd.executeQuery();
 		while (rs.next()) {
@@ -145,8 +150,9 @@ public class DetailsPostDao {
 		String avatar = rs.getString("Avatar");
 		Long countLikes = rs.getLong("CountLikes");
 		Long countComments = rs.getLong("CountComments");
+		boolean postVisibility = rs.getBoolean("PostVisibility");
 
 		return new DetailsPost(postID, postContent, uploadedBy, createdAt,
-				updatedAt, imagePath, name, avatar, countLikes, countComments);
+				updatedAt, imagePath, name, avatar, countLikes, countComments, postVisibility);
 	}
 }

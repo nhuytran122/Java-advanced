@@ -1,3 +1,4 @@
+<%@page import="CommonModal.Constants"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -84,7 +85,7 @@
               </div>
               <div class="row">
                 <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-	                <a href="adminOrderController" class="card card-tale text-decoration-none">
+	                <a href="../admin/posts" class="card card-tale text-decoration-none">
 	                  <div class="card card-light-blue">
 	                    <div class="card-body">
 	                      <p class="mb-4">Số lượng bài viết</p>
@@ -94,7 +95,7 @@
 	                </a>
                 </div>
                 <div class="col-md-6 stretch-card transparent">
-	                <a href="adminOrderController" class="card card-tale text-decoration-none">
+	                <a href="../admin/reports?statusID=<%= Constants.REPORT_PENDING %>" class="card card-tale text-decoration-none">
 	                  <div class="card card-light-danger">
 	                    <div class="card-body">
 	                      <p class="mb-4">Số lượng báo cáo đang chờ</p>

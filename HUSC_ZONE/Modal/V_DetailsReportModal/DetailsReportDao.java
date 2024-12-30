@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import CommonModal.Constants;
 import CommonModal.KetNoi;
+import UserModal.User;
 
 public class DetailsReportDao {
     public ArrayList<DetailsReport> getListReportsByUserID(int page, int pageSize, Long userID) throws Exception {
@@ -58,6 +59,90 @@ public class DetailsReportDao {
         kn.cn.close();
 
         return count;
+    }
+    
+    public ArrayList<DetailsReport> getReportsByConditions(int page, int pageSize, String searchValue, Long statusID) throws Exception {
+		ArrayList<DetailsReport> ds = new ArrayList<DetailsReport>();
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT * FROM V_Details_Reports " +
+                "WHERE (PosterName LIKE ? OR PostContent LIKE ? OR Reason LIKE ?) " +
+                "AND (? = 0 OR StatusID = ?) " +
+                "ORDER BY CreatedAt DESC " +
+                "OFFSET (? - 1) * ? ROWS " +  
+                "FETCH NEXT ? ROWS ONLY";
+		
+	   searchValue = "%" + searchValue + "%";
+	   PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	   cmd.setString(1, searchValue);
+	   cmd.setString(2, searchValue);
+	   cmd.setString(3, searchValue);
+	   cmd.setLong(4, statusID);
+	   cmd.setLong(5, statusID);
+	   cmd.setInt(6, page);
+	   cmd.setInt(7, pageSize);
+	   cmd.setInt(8, pageSize);
+
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			ds.add(mapDetailsReport(rs));
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return ds;
+	}
+    
+    public int getCountReportsByConditions(String searchValue, Long statusID) throws Exception {
+		int count = 0;
+		searchValue = "%" + searchValue + "%";
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT COUNT(*) " +
+				"FROM V_Details_Reports " +
+				"WHERE (PosterName LIKE ? OR PostContent LIKE ? OR Reason LIKE ?) " +
+				"AND (? = 0 OR StatusID = ?)"; 
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, searchValue);
+		cmd.setString(2, searchValue);
+		cmd.setString(3, searchValue);
+		cmd.setLong(4, statusID);
+		cmd.setLong(5, statusID);
+
+		ResultSet rs = cmd.executeQuery();
+		if (rs.next()) {
+			count = rs.getInt(1);
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return count;
+	}
+    
+    public DetailsReport getReportByID(Long reportID) throws Exception {
+        DetailsReport report = null;
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "SELECT * FROM V_Details_Reports WHERE ReportID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, reportID);
+        ResultSet rs = cmd.executeQuery();
+
+        if (rs.next()) {
+        	report = mapDetailsReport(rs);
+        }
+
+        rs.close();
+        cmd.close();
+        kn.cn.close();
+        return report;
     }
 
     private DetailsReport mapDetailsReport(ResultSet rs) throws Exception {

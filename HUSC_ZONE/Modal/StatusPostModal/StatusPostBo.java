@@ -1,5 +1,6 @@
 package StatusPostModal;
 
+import NotificationModal.NotificationBo;
 import ReportModal.ReportBo;
 
 public class StatusPostBo {
@@ -17,14 +18,17 @@ public class StatusPostBo {
 	public int deleteStatusPost(Long PostID) throws Exception {
 		//Đã set Cascade
 //	    new NotificationBo().deleteNotificationsByPostID(PostID);
-//	    new LikeBo().deleteLikesByPostID(PostID);
 //	    new CommentBo().deleteCommentsByPostID(PostID);
 		
-	    new ReportBo().deleteReportsByPostID(PostID);
+	    new NotificationBo().deleteNotificationsByPostID(PostID);
 	    return sttDao.deleteStatusPost(PostID);
 	}
 
 	public StatusPost getStatusPostByID(Long PostID) throws Exception {
 		return sttDao.getStatusPostByID(PostID);
+	}
+	
+	public int updateVisibilityStatusPost(Long PostID, boolean status) throws Exception {
+		return sttDao.updateVisibilityStatusPost(PostID, status);
 	}
 }

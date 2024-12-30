@@ -19,9 +19,8 @@ public class NotificationBo {
 		return notiDao.deleteNotificationByReportID(reportID);
 	}
 	
-	//Đã set Cascade
-//	public void deleteNotificationsByPostID(Long postID) throws Exception {
-//		notiDao.deleteNotificationsByPostIDFromComments(postID);
-//		notiDao.deleteNotificationsByPostIDFromReports(postID);
-//	}
+	//Đã set Cascade với Comment
+	public void deleteNotificationsByPostID(Long postID) throws Exception {
+		notiDao.deleteNotificationsByPostIDFromReports(postID);
+	}
 }

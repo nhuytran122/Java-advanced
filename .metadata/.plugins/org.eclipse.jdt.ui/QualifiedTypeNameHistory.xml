@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="CommentModal.Comment"/>
-    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailCommentDao"/>
-    <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailCommentBo"/>
-    <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLikedBo"/>
-    <fullyQualifiedTypeName name="V_DetailsLikedModal.DetailsLiked"/>
     <fullyQualifiedTypeName name="java.util.Enumeration"/>
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportDao"/>
-    <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportBo"/>
-    <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReport"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="NotificationModal.NotificationDao"/>
     <fullyQualifiedTypeName name="javax.management.Notification"/>
     <fullyQualifiedTypeName name="DocumentModal.DocumentBo"/>
     <fullyQualifiedTypeName name="DocumentModal.Document"/>
-    <fullyQualifiedTypeName name="StatusPostModal.StatusPostBo"/>
     <fullyQualifiedTypeName name="StatusPostModal.StatusPost"/>
     <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotificationDao"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
@@ -35,14 +27,12 @@
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebFilter"/>
     <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotificationBo"/>
     <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotification"/>
-    <fullyQualifiedTypeName name="NotificationModal.NotificationBo"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsCommentBo"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
-    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
     <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDoc"/>
@@ -50,8 +40,6 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
-    <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDocBo"/>
-    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
     <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="CommonModal.Constants"/>
@@ -60,4 +48,16 @@
     <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="UserModal.UserBo"/>
+    <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDocBo"/>
+    <fullyQualifiedTypeName name="com.jhlabs.image.LightFilter.Material"/>
+    <fullyQualifiedTypeName name="MaterialModal.Material"/>
+    <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
+    <fullyQualifiedTypeName name="CategoryModal.CategoryBo"/>
+    <fullyQualifiedTypeName name="CategoryModal.Category"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
+    <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
+    <fullyQualifiedTypeName name="StatusPostModal.StatusPostBo"/>
+    <fullyQualifiedTypeName name="NotificationModal.NotificationBo"/>
+    <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportBo"/>
+    <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReport"/>
 </qualifiedTypeNameHistroy>

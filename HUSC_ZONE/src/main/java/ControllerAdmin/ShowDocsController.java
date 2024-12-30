@@ -15,10 +15,10 @@ import V_DetailsDocModal.DetailsDoc;
 import V_DetailsDocModal.DetailsDocBo;
 
 @WebServlet("/admin/docs")
-public class AdminDocsController extends HttpServlet {
+public class ShowDocsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
-    public AdminDocsController() {
+    public ShowDocsController() {
         super();
     }
 

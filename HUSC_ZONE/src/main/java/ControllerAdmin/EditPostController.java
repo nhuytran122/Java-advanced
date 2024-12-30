@@ -3,21 +3,19 @@ package ControllerAdmin;
 import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DocumentModal.DocumentBo;
-import UserModal.UserBo;
+import StatusPostModal.StatusPostBo;
 
-@WebServlet("/admin/edit-user")
-public class EditUserController extends HttpServlet {
+@WebServlet("/admin/edit-post")
+public class EditPostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public EditUserController() {
+    public EditPostController() {
         super();
     }
 
@@ -26,26 +24,13 @@ public class EditUserController extends HttpServlet {
 //          HttpSession session = request.getSession();
 //          MethodCommon.ensureUserIsLoggedIn(session, response);
 
-          UserBo userBo = new UserBo();
-          Long userID = 0L;
-          if (request.getParameter("userID") != null)
-        	  userID = Long.parseLong(request.getParameter("userID"));
+          StatusPostBo postBo = new StatusPostBo();
+          Long postID = 0L;
+          if (request.getParameter("postID") != null)
+        	  postID = Long.parseLong(request.getParameter("postID"));
           
-          if (request.getParameter("btnAddUser") != null) {
-              RequestDispatcher rd = request.getRequestDispatcher("/Admin/add-user.jsp");
-              rd.forward(request, response);
-              return;
-          }
-
-          if (request.getParameter("btnUpdateUser") != null) {
-              request.setAttribute("user", userBo.getUserByID(userID));
-              RequestDispatcher rd = request.getRequestDispatcher("/Admin/update-user.jsp");
-              rd.forward(request, response);
-              return;
-          }
-
-          if (request.getParameter("btnDeleteUser") != null) {
-        	  handleDeleteUser(request, response, userBo, userID);
+          if (request.getParameter("btnDeletePost") != null) {
+        	  handleDeletePost(request, response, postBo, postID);
               return;
           }
       } catch (Exception e) {
@@ -53,11 +38,11 @@ public class EditUserController extends HttpServlet {
       }
   }
   
-  private void handleDeleteUser(HttpServletRequest request, HttpServletResponse response, UserBo userBo, Long userID)
+  private void handleDeletePost(HttpServletRequest request, HttpServletResponse response, StatusPostBo postBo, Long postID)
           throws IOException {
       try {
-      	String filePath = userBo.getUserByID(userID).getAvatar();
-      	userBo.deleteUser(userID);
+      	String filePath = postBo.getStatusPostByID(postID).getImagePath();
+      	postBo.deleteStatusPost(postID);
           
           String appPath = request.getServletContext().getRealPath("") + filePath;
           File fileDocs = new File(appPath);
@@ -68,7 +53,7 @@ public class EditUserController extends HttpServlet {
                   System.out.println("Không thể xóa file: " + filePath);
               }
           }
-          response.sendRedirect("users");
+          response.sendRedirect("posts");
       } catch (Exception e) {
           e.printStackTrace();
       }

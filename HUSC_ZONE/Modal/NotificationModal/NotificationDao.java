@@ -57,22 +57,6 @@ public class NotificationDao {
         kn.cn.close();
         return result;
     }
-	/* Đã set Cascade
-	// Xóa tb liên quan đến bài viết qua Comments
-    public int deleteNotificationsByPostIDFromComments(Long postID) throws Exception {
-        KetNoi kn = new KetNoi();
-        kn.ketnoi();
-        String sql = "DELETE FROM tbl_Notifications " +
-                     "FROM tbl_StatusPosts as sp, tbl_Comments as c " +
-                     "WHERE sp.PostID = c.PostID AND c.PostID = ?";
-        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-        cmd.setLong(1, postID);
-        int result = cmd.executeUpdate();
-        cmd.close();
-        kn.cn.close();
-        return result;
-    }
-
     // Xóa tb liên quan đến bài viết qua Reports
     public int deleteNotificationsByPostIDFromReports(Long postID) throws Exception {
         KetNoi kn = new KetNoi();
@@ -87,5 +71,20 @@ public class NotificationDao {
         kn.cn.close();
         return result;
     }
-    */
+    
+    /* Đã set Cascade
+	// Xóa tb liên quan đến bài viết qua Comments
+    public int deleteNotificationsByPostIDFromComments(Long postID) throws Exception {
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "DELETE FROM tbl_Notifications " +
+                     "FROM tbl_StatusPosts as sp, tbl_Comments as c " +
+                     "WHERE sp.PostID = c.PostID AND c.PostID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, postID);
+        int result = cmd.executeUpdate();
+        cmd.close();
+        kn.cn.close();
+        return result;
+    }*/
 }

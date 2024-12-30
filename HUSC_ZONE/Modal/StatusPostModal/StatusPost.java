@@ -9,13 +9,14 @@ public class StatusPost {
 	private Date CreatedAt;
 	private Date UpdatedAt;
 	private String ImagePath;
+	private boolean IsPublic;
 
 	public StatusPost() {
 		super();
 	}
 
 	public StatusPost(Long postID, String postContent, Long uploadedBy, Date createdAt, Date updatedAt,
-			String imagePath) {
+			String imagePath, boolean isPublic) {
 		super();
 		PostID = postID;
 		PostContent = postContent;
@@ -23,6 +24,7 @@ public class StatusPost {
 		CreatedAt = createdAt;
 		UpdatedAt = updatedAt;
 		ImagePath = imagePath;
+		IsPublic = isPublic;
 	}
 
 	public Long getPostID() {
@@ -71,5 +73,13 @@ public class StatusPost {
 
 	public void setImagePath(String imagePath) {
 		ImagePath = imagePath;
+	}
+
+	public boolean isIsPublic() {
+		return IsPublic;
+	}
+
+	public void setIsPublic(boolean isPublic) {
+		IsPublic = isPublic;
 	}
 }

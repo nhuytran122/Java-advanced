@@ -103,6 +103,7 @@
                           } else { 
                             for (int i = 0; i < n; i++) {
                               DetailsDoc doc = ds.get(i);
+                              Long docID = doc.getDocumentID();
                         %>
                         <tr>
                           <td>
@@ -120,14 +121,14 @@
                           <td>
                             <div class="btn-group" role="group">
                               <form method="post" action="../admin/edit-docs">
-                                <input type="hidden" name="docID" value="<%= doc.getDocumentID() %>">
-                                <button type="submit" name="btnDetail" class="btn btn-success btn-sm" title="Xem chi tiết">
-                                  <i class="bi bi-eye"></i>
-                                </button>
-                                <button type="submit" name="btnUpdateDoc" value="<%= doc.getDocumentID() %>" class="btn btn-warning btn-sm" title="Sửa">
+                                <a href="../admin/details?docID=<%= docID %>" class="btn btn-success btn-sm" title="Xem chi tiết">
+									  <i class="bi bi-eye"></i>
+								</a>
+                                <input type="hidden" name="docID" value="<%= docID %>">
+                                <button type="submit" name="btnUpdateDoc" value="update" class="btn btn-warning btn-sm" title="Sửa">
                                   <i class="bi bi-pencil"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= doc.getDocumentID() %>" title="Xóa">
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= docID %>" title="Xóa">
                                   <i class="bi bi-trash"></i>
                                 </button>
                               </form>
@@ -136,11 +137,11 @@
                         </tr>
 
                         <!-- Modal xác nhận xóa thông thường -->
-                        <div class="modal fade" id="deleteModal<%= doc.getDocumentID() %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteModal<%= docID %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title text-danger" id="deleteModalLabel<%= doc.getDocumentID() %>">
+                                <h5 class="modal-title text-danger" id="deleteModalLabel<%= docID %>">
                                 	<i class="bi bi-exclamation-triangle-fill me-2"></i>
                                 	Xác nhận xóa Tài liệu
                                 </h5>
@@ -153,9 +154,9 @@
                               </div>
                               <div class="modal-footer">
                                 <form method="post" action="../admin/edit-docs">
-                                  <input type="hidden" name="docID" value="<%= doc.getDocumentID() %>">
+                                  <input type="hidden" name="docID" value="<%= docID %>">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                  <button type="submit" name="btnDeleteDoc" value="<%= doc.getDocumentID() %>" class="btn btn-danger">Xóa</button>
+                                  <button type="submit" name="btnDeleteDoc" value="<%= docID %>" class="btn btn-danger">Xóa</button>
                                 </form>
                               </div>
                             </div>

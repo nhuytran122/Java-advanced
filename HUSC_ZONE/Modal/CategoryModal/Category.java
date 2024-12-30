@@ -3,17 +3,15 @@ package CategoryModal;
 public class Category {
 	private Long CategoryID;
 	private String CategoryName;
-	private String Description;
 	private String Image;
 	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Category(Long categoryID, String categoryName, String description, String image) {
+	public Category(Long categoryID, String categoryName, String image) {
 		super();
 		CategoryID = categoryID;
 		CategoryName = categoryName;
-		Description = description;
 		Image = image;
 	}
 	public Long getCategoryID() {
@@ -27,12 +25,6 @@ public class Category {
 	}
 	public void setCategoryName(String categoryName) {
 		CategoryName = categoryName;
-	}
-	public String getDescription() {
-		return Description;
-	}
-	public void setDescription(String description) {
-		Description = description;
 	}
 	public String getImage() {
 		return Image;

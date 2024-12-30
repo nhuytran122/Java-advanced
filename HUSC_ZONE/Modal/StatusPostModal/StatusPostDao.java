@@ -15,15 +15,17 @@ public class StatusPostDao {
         Long uploadedBy = rs.getLong("UploadedBy");
         Date createdAt = rs.getDate("CreatedAt");
         Date updatedAt = rs.getDate("UpdatedAt");
+        boolean isPublic = rs.getBoolean("IsPublic");
 
-        return new StatusPost(postID, postContent, uploadedBy, createdAt, updatedAt, imagePath);
+        return new StatusPost(postID, postContent, uploadedBy, createdAt,
+        		updatedAt, imagePath, isPublic);
     }
 
     public int addStatusPost(String content, Long userID, String imgPath) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();
-        String sql = "INSERT INTO tbl_StatusPosts (PostContent, UploadedBy, CreatedAt, ImagePath) "
-                + "VALUES (?, ?, GETDATE(), ?)";
+        String sql = "INSERT INTO tbl_StatusPosts (PostContent, UploadedBy, CreatedAt, ImagePath, IsPublic) "
+                + "VALUES (?, ?, GETDATE(), ?, 1)";
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
         cmd.setString(1, content);
         cmd.setLong(2, userID);
@@ -69,16 +71,28 @@ public class StatusPostDao {
         PreparedStatement cmd = kn.cn.prepareStatement(sql);
         cmd.setLong(1, PostID);
         ResultSet rs = cmd.executeQuery();
-
         if (rs.next()) {
             return mapStatusPost(rs);
         }
-
         rs.close();
         cmd.close();
         kn.cn.close();
-
         return null;
+    }
+    
+    public int updateVisibilityStatusPost(Long PostID, boolean status) throws Exception {
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "UPDATE tbl_StatusPosts " +
+                "SET IsPublic = ? " +
+                "WHERE PostID = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setBoolean(1, status);
+        cmd.setLong(2, PostID);
+        int result = cmd.executeUpdate();
+        cmd.close();
+        kn.cn.close();
+        return result;
     }
 
 }

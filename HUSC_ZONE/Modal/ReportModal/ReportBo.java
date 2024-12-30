@@ -16,12 +16,11 @@ public class ReportBo {
 		return rpDao.deleteReport(ReportID);
 	}
 	
-	public int deleteReportsByPostID(Long postID) throws Exception {
-	    return rpDao.deleteReportsByPostID(postID);
-	}
-	
 	public int getCountPendingReports() throws Exception {
 		return rpDao.getCountPendingReports();
 	}
-
+	
+	public int updateReport(Long reportID, Long statusID) throws Exception {
+		return rpDao.updateReport(reportID, statusID);
+	}
 }
