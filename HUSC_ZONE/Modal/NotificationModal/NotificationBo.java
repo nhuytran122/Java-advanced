@@ -11,6 +11,10 @@ public class NotificationBo {
 		return notiDao.createNotiRelatedToReportPost(reportID);
 	}
 	
+	public int createNotiRelatedToHandleReport(Long reportID, Long actiTypeID) throws Exception {
+		return notiDao.createNotiRelatedToHandleReport(reportID, actiTypeID);
+	}
+	
 	public int deleteNotificationsByCmtID(Long cmtID) throws Exception {
 		return notiDao.deleteNotificationByCmtID(cmtID);
 	}

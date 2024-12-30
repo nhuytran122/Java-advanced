@@ -98,7 +98,10 @@
 							                        </a>
 							                    </h6>
 							                    <a href="../details?postID=<%= stt.getPostID() %>">
-							                    	<small class="text-muted"><%= MethodCommon.convertDateToString(stt.getCreatedAt()) %></small>
+							                    	<small class="text-muted">
+														 <%= stt.getUpdatedAt() == null ? MethodCommon.convertDateToString(stt.getCreatedAt()) 
+																 : "Đã chỉnh sửa " + MethodCommon.convertDateToString(stt.getUpdatedAt()) %>
+													</small>
 							                	</a>
 							                </div>
 							                
@@ -110,7 +113,9 @@
 							            </div>
 							            <p><%= stt.getPostContent() %></p>
 							            <% if (stt.getImagePath() != null && !stt.getImagePath().isBlank()) { %>
-							                <img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
+							            	<a href="../details?postID=<%= stt.getPostID() %>">
+							                	<img src="<%= request.getContextPath() %><%= stt.getImagePath() %>" alt="Post Image" class="img-fluid rounded" style="width: 400px; height: 400px;">
+							            	</a>
 							            <% } %>
 							        </div>
 							    </div>

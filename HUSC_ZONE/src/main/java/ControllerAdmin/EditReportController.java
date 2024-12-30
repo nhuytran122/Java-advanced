@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import CommonModal.Constants;
+import NotificationModal.NotificationBo;
 import ReportModal.ReportBo;
 import StatusPostModal.StatusPostBo;
 import V_DetailsReportModal.DetailsReportBo;
@@ -33,11 +34,12 @@ public class EditReportController extends HttpServlet {
                 return;
             }
             ReportBo rpBo = new ReportBo();
-
+            NotificationBo notiBo = new NotificationBo();
+            
             if (request.getParameter("btnApproveReport") != null) {
-                handleApproveReport(reportID, request, rpBo);
+                handleApproveReport(reportID, request, rpBo, notiBo);
             } else if (request.getParameter("btnRejectReport") != null) {
-                handleRejectReport(reportID);
+                handleRejectReport(reportID, notiBo);
             } else if (request.getParameter("btnDeleteReport") != null) {
                 handleDeleteReport(reportID, response, rpBo);
                 return; 
@@ -48,16 +50,19 @@ public class EditReportController extends HttpServlet {
         }
     }
 
-    private void handleApproveReport(Long reportID, HttpServletRequest request, ReportBo rpBo) throws Exception {
+    private void handleApproveReport(Long reportID, HttpServletRequest 
+    		request, ReportBo rpBo, NotificationBo notiBo) throws Exception {
         StatusPostBo postBo = new StatusPostBo();
         rpBo.updateReport(reportID, Constants.REPORT_ACCEPTED);
         Long postID = Long.parseLong(request.getParameter("btnApproveReport"));
         postBo.updateVisibilityStatusPost(postID, Constants.POST_LOCKED);
+        notiBo.createNotiRelatedToHandleReport(reportID, Constants.ACTIVITY_ACCEPTED_REPORT);
     }
 
-    private void handleRejectReport(Long reportID) throws Exception {
+    private void handleRejectReport(Long reportID, NotificationBo notiBo) throws Exception {
         ReportBo rpBo = new ReportBo();
         rpBo.updateReport(reportID, Constants.REPORT_REJECTED);
+        notiBo.createNotiRelatedToHandleReport(reportID, Constants.ACTIVITY_REJECTED_REPORT);
     }
 
     private void handleDeleteReport(Long reportID, HttpServletResponse response, ReportBo rpBo) throws Exception {

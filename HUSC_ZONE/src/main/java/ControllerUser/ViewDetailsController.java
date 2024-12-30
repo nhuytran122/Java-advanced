@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import BookmarkModal.BookmarkBo;
+import CommonModal.Constants;
 import CommonModal.MethodCommon;
 import LikeModal.LikeBo;
 import UserModal.User;
@@ -92,7 +93,12 @@ public class ViewDetailsController extends HttpServlet {
         Long postID = getPostID(request);
         DetailsPostBo dtdocsBo = new DetailsPostBo();
         DetailsPost dtlPost = dtdocsBo.getDetailsPostByID(postID);
-
+        
+        if(dtlPost.getPostVisibility().equals(Constants.POST_PRIVATE)) {
+        	RequestDispatcher rd = request.getRequestDispatcher("User/locked-post.jsp");
+            rd.forward(request, response);
+            return;
+        }
         if (dtlPost != null) {
             boolean isLiked = checkIfPostIsLiked(user, postID);
             DetailsCommentBo dtCmtBo = new DetailsCommentBo();

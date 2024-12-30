@@ -150,7 +150,7 @@ public class DetailsPostDao {
 		String avatar = rs.getString("Avatar");
 		Long countLikes = rs.getLong("CountLikes");
 		Long countComments = rs.getLong("CountComments");
-		boolean postVisibility = rs.getBoolean("PostVisibility");
+		String postVisibility = rs.getString("PostVisibility");
 
 		return new DetailsPost(postID, postContent, uploadedBy, createdAt,
 				updatedAt, imagePath, name, avatar, countLikes, countComments, postVisibility);

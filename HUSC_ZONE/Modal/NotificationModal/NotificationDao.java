@@ -34,6 +34,20 @@ public class NotificationDao {
 		return result;
 	}
 	
+	public int createNotiRelatedToHandleReport(Long reportID, Long actiTypeID) throws Exception {
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+		String sql = "INSERT INTO tbl_Notifications (CreatedAt, ReportID, ActivityTypeID) "
+				+ "VALUES (GETDATE(), ?, ?)";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setLong(1, reportID);
+		cmd.setLong(2, actiTypeID);
+		int result = cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+		return result;
+	}
+	
 	public int deleteNotificationByCmtID(Long cmtID) throws Exception {
         KetNoi kn = new KetNoi();
         kn.ketnoi();

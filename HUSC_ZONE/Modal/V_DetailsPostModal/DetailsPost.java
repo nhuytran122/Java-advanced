@@ -13,14 +13,14 @@ public class DetailsPost {
 	private String Avatar;
 	private Long CountLikes;
 	private Long CountComments;
-	private boolean PostVisibility;
+	private String PostVisibility;
 	
 	public DetailsPost() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public DetailsPost(Long postID, String postContent, Long uploadedBy, Date createdAt, Date updatedAt,
-			String imagePath, String name, String avatar, Long countLikes, Long countComments, boolean postVisibility) {
+			String imagePath, String name, String avatar, Long countLikes, Long countComments, String postVisibility) {
 		super();
 		PostID = postID;
 		PostContent = postContent;
@@ -94,10 +94,10 @@ public class DetailsPost {
 	public void setCountComments(Long countComments) {
 		CountComments = countComments;
 	}
-	public boolean isPostVisibility() {
+	public String getPostVisibility() {
 		return PostVisibility;
 	}
-	public void setPostVisibility(boolean postVisibility) {
+	public void setPostVisibility(String postVisibility) {
 		PostVisibility = postVisibility;
 	}
 }
