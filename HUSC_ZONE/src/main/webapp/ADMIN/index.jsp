@@ -13,6 +13,7 @@
 </head>
 <body>
 <%
+	User user = (User)session.getAttribute("user"); 
 	int cntDocs = (Integer) request.getAttribute("cntDocs");
 	int cntUsers = (Integer) request.getAttribute("cntUsers");
 	int cntPosts = (Integer) request.getAttribute("cntPosts");
@@ -31,7 +32,7 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Welcome Như Ý</h3>
+                  <h3 class="font-weight-bold">Welcome <%= user.getName() %></h3>
                 </div>
                 <div class="col-12 col-xl-4">
                  <div class="justify-content-end d-flex">

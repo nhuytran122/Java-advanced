@@ -42,6 +42,11 @@ public class ChangePasswordController extends HttpServlet {
 	        String message = null;
 	        String messageType = null;
 	        String redirectPage = "User/change-password.jsp";
+	        if(currentUser.getRoleID() == Constants.ROLE_ADMIN) {
+	        	if(request.getParameter("changePwWithAd")!= null)
+	        		redirectPage= "/Admin/change-password.jsp";
+	        }
+	       
 	        if (!newPassword.equals(confirmNewPassword)) {
                 message = "Mật khẩu xác nhận không khớp!";
                 request.setAttribute("message", message);

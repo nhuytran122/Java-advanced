@@ -30,7 +30,6 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="card-title">Chi tiết báo cáo</h4>
-                    
                     <%-- Chỉ khi trạng thái là REPORT_PENDING --%>
                     <%
                       if (report.getStatusID() == Constants.REPORT_PENDING) { // Trạng thái đang chờ xử lý
@@ -82,7 +81,10 @@
                           <p class="card-text"><strong>Ngày xử lý:</strong> <%= report.getSolvedAt() != null ? MethodCommon.convertDateToString(report.getSolvedAt()) : "Chưa xử lý" %></p>
                           <p class="card-text"><strong>Trạng thái:</strong> <%= report.getDescriptionStatus() %></p>
                           <p class="card-text"><strong>Người đăng bài:</strong> <%= report.getPosterName() %></p>
-                          <p class="card-text"><strong>Nội dung bài viết:</strong> <%= report.getPostContent() %></p>
+                          <p class="card-text"><strong>Nội dung bài viết:</strong> 
+	                          <a href="../details?postID=<%= report.getPostID() %>" class="btn btn-info btn-sm mx-2" title="Xem chi tiết">
+						        <i class="bi bi-eye"></i> Xem chi tiết
+						      </a>
                         </div>
                       </div>
 

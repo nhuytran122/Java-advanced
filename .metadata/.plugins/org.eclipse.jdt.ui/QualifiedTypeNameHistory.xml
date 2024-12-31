@@ -54,10 +54,10 @@
     <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
     <fullyQualifiedTypeName name="NotificationModal.NotificationBo"/>
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
-    <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="UserModal.User"/>
     <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="CommonModal.Constants"/>
 </qualifiedTypeNameHistroy>

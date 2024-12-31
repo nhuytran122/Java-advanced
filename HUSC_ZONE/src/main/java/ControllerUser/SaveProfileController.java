@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +33,6 @@ public class SaveProfileController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			request.setCharacterEncoding("utf-8");
-			response.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();
 
 			User user = MethodCommon.getUserFromSession(session, response);
@@ -114,7 +113,15 @@ public class SaveProfileController extends HttpServlet {
 							break;
 						}
 					}
-					session.setAttribute("user", userBo.getUserByID(user.getUserID()));
+					User currentUser = userBo.getUserByID(user.getUserID());
+					session.setAttribute("user", currentUser);
+					
+					if(user.getRoleID() == Constants.ROLE_ADMIN) {
+						RequestDispatcher rd = request.getRequestDispatcher("/Admin/my-profile.jsp");
+		                rd.forward(request, response);
+		                return;
+					}
+					
 					response.sendRedirect("user-profile");
 					return;
 				}

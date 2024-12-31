@@ -16,6 +16,8 @@
 		} else {
 		   	d = 0;
 		}
+	boolean isLocked = request.getAttribute("isLocked")!= null ? (
+		boolean)request.getAttribute("isLocked") : false;
 	
 %>
 <!DOCTYPE html>
@@ -78,6 +80,10 @@
 				            <% if (isInvalidCapcha) { %>
 				              <span class="text-danger">Mã capcha không chính xác!</span>
 				            <% } %>
+				            
+				            <% if (isLocked) { %>
+							    <span class="text-danger">Tài khoản của bạn đã bị khóa.</span>
+							<% } %>
                             <button name="btn-login" type="submit" class="btn btn-default mt-3">Đăng nhập</button>
                         </form>
                         <p class="mt-4 text-center">

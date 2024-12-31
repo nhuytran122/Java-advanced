@@ -45,6 +45,7 @@ public class LoginController extends HttpServlet {
 			boolean isInvalid = false;
 			boolean isWrong = false;
 			boolean isInvalidCapcha = false;
+			boolean isLocked = false;
 
 			if (btnLogin != null) {
 				if (txtLoginId.trim().isEmpty() || txtPassword.trim().isEmpty()) {
@@ -63,14 +64,22 @@ public class LoginController extends HttpServlet {
                 if (!isInvalidCapcha) {
                     User user = userBo.checkLogin(txtLoginId, txtPassword);
                     if (user != null) {
-                        session.removeAttribute("dem");
-                        session.setAttribute("user", user);
-                        if (user.getRoleID() == Constants.ROLE_ADMIN) {
-                            response.sendRedirect("admin");
-                            return;
+                    	if (!user.isIsUsing()) { 
+                            isLocked = true;
+                            request.setAttribute("isLocked", isLocked);
+                            RequestDispatcher rd = request.getRequestDispatcher("User/login.jsp");
+                			rd.forward(request, response);
                         }
-                        response.sendRedirect("home");
-                        return;
+                    	else {
+	                        session.removeAttribute("dem");
+	                        session.setAttribute("user", user);
+	                        if (user.getRoleID() == Constants.ROLE_ADMIN) {
+	                            response.sendRedirect("admin");
+	                            return;
+	                        }
+	                        response.sendRedirect("home");
+	                        return;
+	                    }
                     } else {
                         if (session.getAttribute("dem") == null) {
                             session.setAttribute("dem", 0);

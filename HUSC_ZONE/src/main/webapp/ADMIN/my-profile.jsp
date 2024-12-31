@@ -11,10 +11,7 @@
   <title>My Profile - HUSCZone</title>
   <%@ include file="layout/import.jsp" %>
 </head>
-
-<%
-	User user = (User)session.getAttribute("user");
-%>
+<% User user = (User)session.getAttribute("user"); %>
 
 <body>
   <div class="container-scroller">
@@ -52,19 +49,27 @@
                         	<p class="card-text"><strong>Ngày tham gia:</strong> <%= MethodCommon.convertDateToString(user.getCreatedAt()) %></p>
                         </div>
                       </div>
+					<form action="../admin/edit-profile" method="post">
+					  <div class="row">
+					    <div class="col-md-6 mb-3">
+					      <button type="submit"
+					              name="btnUpdateProfile" 
+					              value="btnUpdateProfile" 
+					              class="btn btn-primary btn-sm w-100">
+					        <i class="bi bi-pencil"></i> Chỉnh sửa thông tin
+					      </button>
+					    </div>
+					    <div class="col-md-6">
+					      <button type="submit" 
+					              name="btnChangePW" 
+					              value="btnChangePW" 
+					              class="btn btn-warning btn-sm w-100">
+					        <i class="bi bi-lock"></i> Đổi mật khẩu
+					      </button>
+					    </div>
+					  </div>
+					</form>
 
-                      <div class="row">
-                        <div class="col-md-6 mb-3">
-                          <button type="button" class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-                            <i class="bi bi-pencil"></i> Chỉnh sửa thông tin
-                          </button>
-                        </div>
-                        <div class="col-md-6">
-                          <a href="../user/change-password" class="btn btn-warning btn-sm w-100">
-                            <i class="bi bi-lock"></i> Đổi mật khẩu
-                          </a>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>

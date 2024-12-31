@@ -65,7 +65,7 @@
                       <input disabled type="text" class="form-control" value="<%= user.getGender() %>">
                     </div>
                     
-                    <div class="form-group mb-3 mx-4">
+                    <div class="form-group mb-3">
 						<input type="checkbox" name="isUsing" value="true" <%= user.isIsUsing() ? "checked" : "" %>>
 						<label class="form-check-label" for="isUsing">Tài khoản đang sử dụng?</label>
 					  </div>

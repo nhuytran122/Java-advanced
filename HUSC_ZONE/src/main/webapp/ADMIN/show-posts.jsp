@@ -31,7 +31,7 @@
         <ul class="navbar-nav mr-lg-2 my-4" style="display: flex; justify-content: center; width: 100%;">
           <li class="nav-item nav-search d-none d-lg-block" style="display: flex; align-items: center;">
             <form action="../admin/posts" method="get" class="d-flex" style="width: 100%; justify-content: center; align-items: center;">
-              <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm nguời dùng..." name="txtSearch" aria-label="search"
+              <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm bài đăng..." name="txtSearch" aria-label="search"
                      value="<%= searchKeyword != null ? searchKeyword : "" %>"
                      style="width: 400px; font-size: 14px; margin-right: 10px;">
               <button type="submit" class="btn btn-primary btn-sm p-2">
@@ -100,15 +100,12 @@
 							  <td><%= MethodCommon.convertDateToString(post.getCreatedAt()) %></td>
 							  <td>
 							    <div class="btn-group" role="group">
-							      <form method="post" action="../admin/edit-post">
-							        <input type="hidden" name="postID" value="<%= postID %>">
-							        <button type="submit" name="btnDetail" class="btn btn-success btn-sm" title="Xem chi tiết">
+							        <a href="../details?postID=<%= postID%>" class="btn btn-success btn-sm" title="Xem chi tiết">
 							          <i class="bi bi-eye"></i>
-							        </button>
+							        </a>
 							        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<%= postID %>" title="Xóa">
 							          <i class="bi bi-trash"></i>
 							        </button>
-							      </form>
 							    </div>
 							  </td>
 							</tr>
