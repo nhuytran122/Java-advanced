@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import CommonModal.MethodCommon;
 import V_DetailsDocModal.DetailsDoc;
@@ -24,8 +25,10 @@ public class ShowDocsController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-//          HttpSession session = request.getSession();
-//          MethodCommon.ensureAdminIsLoggedIn(session, response);  
+			HttpSession session = request.getSession();
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            } 
 			DetailsDocBo dtdocBo = new DetailsDocBo();
             int page = 1;
             int pageSize = 9;

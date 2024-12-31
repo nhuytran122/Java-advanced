@@ -29,11 +29,9 @@ public class ShowUserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             HttpSession session = request.getSession();
-//TODO
-//            if (MethodCommon.getAdminFromSession(session, response) == null) {
-//    	        response.sendRedirect("login");
-//    	        return;
-//    	    }
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            }
             
             int page = 1;
             int pageSize = 9;

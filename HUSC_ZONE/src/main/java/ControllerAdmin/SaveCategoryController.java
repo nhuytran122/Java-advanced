@@ -18,6 +18,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import CategoryModal.Category;
 import CategoryModal.CategoryBo;
 import CommonModal.Constants;
+import CommonModal.MethodCommon;
 
 @WebServlet("/admin/save-category")
 public class SaveCategoryController extends HttpServlet {
@@ -29,16 +30,10 @@ public class SaveCategoryController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-//			HttpSession session = request.getSession();
-//			User user = null;
-//
-//			if(session.getAttribute("user") == null) {
-//            	response.sendRedirect("login");
-//            	return;
-//            }
-//			else {
-//				user = (User)(session.getAttribute("user"));
-//			}
+			HttpSession session = request.getSession();
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            }
 
 			response.setContentType("text/html; charset=utf-8");
 			Long cateID = null;

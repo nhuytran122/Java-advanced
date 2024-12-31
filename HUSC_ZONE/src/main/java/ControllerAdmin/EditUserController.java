@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import CommonModal.MethodCommon;
 import DocumentModal.DocumentBo;
 import UserModal.UserBo;
 
@@ -23,8 +25,10 @@ public class EditUserController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-//          HttpSession session = request.getSession();
-//          MethodCommon.ensureUserIsLoggedIn(session, response);
+			HttpSession session = request.getSession();
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            }
 
           UserBo userBo = new UserBo();
           Long userID = 0L;

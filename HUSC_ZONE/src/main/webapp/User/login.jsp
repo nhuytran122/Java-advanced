@@ -2,8 +2,20 @@
     pageEncoding="UTF-8"%>
 <%
 	String loginId = (String)request.getAttribute("loginId");
-	boolean isWrong = (boolean)request.getAttribute("isWrong"); 
-	boolean isInvalid = (boolean)request.getAttribute("isInvalid"); 
+	boolean isWrong = request.getAttribute("isWrong")!= null ? (
+			boolean)request.getAttribute("isWrong") : false;
+	
+	boolean isInvalid = request.getAttribute("isInvalid")!= null ? (
+			boolean)request.getAttribute("isInvalid") : false;
+	
+	boolean isInvalidCapcha = request.getAttribute("isInvalidCapcha")!= null ? (
+			boolean)request.getAttribute("isInvalidCapcha") : false;
+	int d = 0;
+	  if (session.getAttribute("dem") != null) {
+		   	d = (Integer) session.getAttribute("dem");
+		} else {
+		   	d = 0;
+		}
 	
 %>
 <!DOCTYPE html>
@@ -39,12 +51,32 @@
                                 <label>Password</label>
                                 <input name ="txtPassword" class="form-control mt-2" type="password" placeholder="Mật khẩu">
                             </div>
+                            
+                            <% if (d >= 3) { %>
+						  <div class="form-group">
+							  <label>Captcha</label>
+							  <div class="d-flex align-items-center">
+							    <img src="../simpleCaptcha.jpg" class="me-3 border border-2" style="height: 50px; width: auto;" alt="Captcha" />
+							    <input
+							      type="text"
+							      class="form-control w-50"
+							      name="answerCapcha"
+							      placeholder="Nhập mã captcha"
+							    />
+							  </div>
+							</div>
+			
+						<% } %>
                             <% if (isWrong) { %>
 				              <span class="text-danger">Thông tin đăng nhập không đúng!</span>
 				            <% } %>
 				            
 				            <% if (isInvalid) { %>
 				              <span class="text-danger">Vui lòng nhập đầy đủ thông tin đăng nhập!</span>
+				            <% } %>
+				            
+				            <% if (isInvalidCapcha) { %>
+				              <span class="text-danger">Mã capcha không chính xác!</span>
 				            <% } %>
                             <button name="btn-login" type="submit" class="btn btn-default mt-3">Đăng nhập</button>
                         </form>

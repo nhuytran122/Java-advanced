@@ -45,7 +45,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#auth" aria-expanded="false" aria-controls="auth">
+        <a class="nav-link" href="../admin/details?profile=me" aria-expanded="false" aria-controls="auth">
           <i class="bi bi-person-circle menu-icon"></i>
           <span class="menu-title">Tài khoản của tôi</span>
         </a>

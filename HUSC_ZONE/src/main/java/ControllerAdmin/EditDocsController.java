@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import CommonModal.MethodCommon;
 import DocumentModal.DocumentBo;
-import V_DetailsDocModal.DetailsDocBo;
 
 @WebServlet("/admin/edit-docs")
 public class EditDocsController extends HttpServlet {
@@ -26,8 +25,10 @@ public class EditDocsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-//            HttpSession session = request.getSession();
-//            MethodCommon.ensureUserIsLoggedIn(session, response);
+        	HttpSession session = request.getSession();
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            }
 
             DocumentBo docBo = new DocumentBo();
             Long docID = 0L;

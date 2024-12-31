@@ -17,6 +17,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import CommonModal.Constants;
+import CommonModal.MethodCommon;
 import DocumentModal.Document;
 import DocumentModal.DocumentBo;
 import UserModal.User;
@@ -32,19 +33,10 @@ public class SaveDocsController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			request.setCharacterEncoding("utf-8");
-			response.setCharacterEncoding("utf-8");
-//TODO: Làm auth
-//			HttpSession session = request.getSession();
-//			User user = null;
-//
-//			if(session.getAttribute("user") == null) {
-//            	response.sendRedirect("login");
-//            	return;
-//            }
-//			else {
-//				user = (User)(session.getAttribute("user"));
-//			}
+			HttpSession session = request.getSession();
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            }
 
 			response.setContentType("text/html; charset=utf-8");
 			Long docID = null;

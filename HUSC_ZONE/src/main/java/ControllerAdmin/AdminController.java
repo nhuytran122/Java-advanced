@@ -26,9 +26,10 @@ public class AdminController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-//            HttpSession session = request.getSession();
-           
-//            MethodCommon.ensureAdminIsLoggedIn(session, response);           
+            HttpSession session = request.getSession();
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            }
             
             request.setAttribute("cntDocs", (new DetailsDocBo().getCountDocsByConditions("", 0L, 0L)));
             request.setAttribute("cntUsers", (new UserBo().countUsersByCondition("")));

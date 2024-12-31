@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.MethodCommon;
-import UserModal.User;
 import UserModal.UserBo;
 import V_DetailsDocModal.DetailsDocBo;
-import V_DetailsPostModal.DetailsPost;
 import V_DetailsPostModal.DetailsPostBo;
 import V_DetailsReportModal.DetailsReportBo;
 
@@ -28,6 +26,10 @@ public class ViewDetailsController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			HttpSession session = request.getSession();
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            }
 			if (request.getParameter("docID") != null) {
                 Long docID = Long.parseLong(request.getParameter("docID"));
                 request.setAttribute("docs", new DetailsDocBo().getDetailsDocByID(docID));
@@ -58,6 +60,11 @@ public class ViewDetailsController extends HttpServlet {
                 rd.forward(request, response);
                 return;
 			}
+            else if(request.getParameter("profile") != null){
+            	RequestDispatcher rd = request.getRequestDispatcher("/Admin/my-profile.jsp");
+                rd.forward(request, response);
+                return;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
+import CommonModal.MethodCommon;
 import NotificationModal.NotificationBo;
 import ReportModal.ReportBo;
 import StatusPostModal.StatusPostBo;
@@ -26,6 +28,10 @@ public class EditReportController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+        	HttpSession session = request.getSession();
+            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+                return; 
+            }
         	Long reportID = null;
         	if (request.getParameter("reportID") != null) 
         		reportID =  Long.parseLong(request.getParameter("reportID"));

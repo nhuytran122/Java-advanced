@@ -46,7 +46,9 @@ public class ViewDetailsController extends HttpServlet {
                 	return;
                 }
             	handlePostDetails(request, response, user);
-            } else {
+            	return;
+            }            
+            else {
                 response.sendRedirect("home");
             }
         } catch (Exception e) {

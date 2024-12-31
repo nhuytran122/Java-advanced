@@ -44,7 +44,7 @@
                           <h5 class="card-title mb-3"><%= user.getName() %></h5>
                           <p class="card-text"><strong>ID:</strong> <%= user.getUserID() %></p>
                           <p class="card-text"><strong>Email:</strong> <%= user.getEmail() %></p>
-                          <p class="card-text"><strong>Số điện thoại:</strong> <%= user.getPhone() != null ? user.getPhone() : "Chưa cập nhật" %></p>
+                          <p class="card-text"><strong>Số điện thoại:</strong> <%= user.getPhone()%></p>
                           <p class="card-text"><strong>Giới tính:</strong> <%= user.getGender() %></p>
                           <p class="card-text"><strong>Trạng thái:</strong> <%= user.isIsUsing() ? "Đang hoạt động" : "Bị khóa" %></p>
                           <p class="card-text"><strong>Vai trò:</strong> <%= user.getRoleID() == Constants.ROLE_ADMIN ? "ADMIN" : "USER" %></p>
