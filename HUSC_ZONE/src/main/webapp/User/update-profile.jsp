@@ -51,8 +51,8 @@
                         <p class="mt-3"><strong>Email:</strong> <%= user.getEmail() %></p>
                         <p><strong>Số điện thoại:</strong> <%= user.getPhone() %></p>
                         <p><strong>Giới tính:</strong> <%= user.getGender() %></p>
-                        <form action="../edit-profile" method="post">
-                        	<button type="submit" name="btnChangePW" value="btnUpdateProfile" class="btn btn-primary-custom">Đổi mật khẩu</button>
+                        <form action="../edit" method="post">
+                        	<button type="submit" name="btnChangePW" value="btnChangePW" class="btn btn-primary-custom">Đổi mật khẩu</button>
                         </form>
                     </div>
                 </div>
@@ -121,21 +121,6 @@
         </div>
     
     
-    <script>
-	    $(document).ready(function () {
-	        // Hiển thị ảnh preview khi người dùng chọn ảnh mới
-	        $('#fileInput').change(function (e) {
-	            var file = e.target.files[0];
-	            var reader = new FileReader();
-	
-	            reader.onload = function (e) {
-	                $('#imagePreview').attr('src', e.target.result);
-	                $('#imagePreview').show();
-	            };
-	
-	            reader.readAsDataURL(file);
-	        });
-	    });
-  </script>
+<%@ include file="layout/script_preview_image.jsp" %>
 </body>
 </html>

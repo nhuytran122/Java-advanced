@@ -54,7 +54,7 @@
                 
                 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-	                    <form action="../save-post" method="post" enctype="multipart/form-data">
+	                    <form action="../edit-post" method="post" enctype="multipart/form-data">
 	                        <div class="modal-content">
 	                            <div class="modal-header">
 	                                <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>
@@ -215,28 +215,29 @@
                     }
                 %>
                 
-                <% if (n > 0) { %>
+                <% if (pageCount > 1) { %>
 					<nav>
 					    <ul class="pagination justify-content-center mt-4">
-					        <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
-					            <a class="page-link" href="<%= currentPage > 1 ? "../status-post?page=" + (currentPage - 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" tabindex="-1" aria-disabled="true">
-					                <i class="bi bi-chevron-left"></i>
-					            </a>
-					        </li>
-					        
-					        <% for (int p = 1; p <= pageCount; p++) { %>
-			                  <li class="page-item <%= p == currentPage ? "active" : "" %>">
-			                    <a class="page-link" href="../status-post?page=<%= p %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %>">
-			                      <%= p %>
-			                    </a>
-			                  </li>
-			                <% } %>
-					        <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
-					            <a class="page-link" href="<%= currentPage < pageCount ? "../status-post?page=" + (currentPage + 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>">
-					                 <i class="bi bi-chevron-right"></i>
-					            </a>
-					        </li>
-					    </ul>
+						    <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
+						        <a class="page-link" href="<%= currentPage > 1 ? "../status-post?page=" + (currentPage - 1) + "&typeSearchID=" + typeSearchID + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" tabindex="-1" aria-disabled="true">
+						            <i class="bi bi-chevron-left"></i>
+						        </a>
+						    </li>
+						    
+						    <% for (int p = 1; p <= pageCount; p++) { %>
+						        <li class="page-item <%= p == currentPage ? "active" : "" %>">
+						            <a class="page-link" href="../status-post?page=<%= p %>&typeSearchID=<%= typeSearchID %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %>">
+						                <%= p %>
+						            </a>
+						        </li>
+						    <% } %>
+						    
+						    <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
+						        <a class="page-link" href="<%= currentPage < pageCount ? "../status-post?page=" + (currentPage + 1) + "&typeSearchID=" + typeSearchID + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>">
+						            <i class="bi bi-chevron-right"></i>
+						        </a>
+						    </li>
+						</ul>
 					</nav>
 				<% } %>
             </main>

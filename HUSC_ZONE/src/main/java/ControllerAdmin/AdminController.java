@@ -2,7 +2,6 @@ package ControllerAdmin;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import ReportModal.ReportBo;
 import UserModal.UserBo;
@@ -36,8 +36,7 @@ public class AdminController extends HttpServlet {
             request.setAttribute("cntPosts", (new DetailsPostBo().getCountPostsByConditions("")));
             request.setAttribute("cntPendingReports", (new ReportBo().getCountPendingReports()));
 
-            RequestDispatcher rd = request.getRequestDispatcher("/Admin/index.jsp");
-            rd.forward(request, response);
+            ControllerUtils.forwardRequest(request, response, "/Admin/index.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

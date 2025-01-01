@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
@@ -31,11 +33,11 @@ public class UserProfileController extends HttpServlet {
             throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
+            if (!MethodCommon.ensureUserLogin(session, response, request)) {
+				return;
+			}
             User currentUser = MethodCommon.getUserFromSession(session, response);
-			if (currentUser == null) {
-    	        response.sendRedirect("login"); 
-                return;
-            }
+            
             User user = null;
             Long userID = 0L;
             UserBo userBo = new UserBo();
@@ -56,28 +58,17 @@ public class UserProfileController extends HttpServlet {
             DetailsPostBo dtSttBo = new DetailsPostBo();
             DetailsDocBo dtDocBo = new DetailsDocBo();
 
-            int currentPagePosts = 1;
-            int pageSize = 9;
-
-            if (request.getParameter("pagePosts") != null) {
-                currentPagePosts = Integer.parseInt(request.getParameter("pagePosts"));
-            }
-
-            ArrayList<DetailsPost> dsStt = dtSttBo.getPostsByUserID(currentPagePosts, pageSize, user.getUserID());
+            int page = ControllerUtils.getPage(request);
+            
+            ArrayList<DetailsPost> dsStt = dtSttBo.getPostsByUserID(page, Constants.PAGE_SIZE, user.getUserID());
             ArrayList<DetailsDoc> dsDocs = dtDocBo.getListDocsByUserID(user.getUserID());
 
             int rowCountStt = dtSttBo.getCountPostsByConditions("");
 
-            int pageCountPosts = rowCountStt / pageSize;
-
-            if (rowCountStt % pageSize > 0) {
-                pageCountPosts += 1;
-            }
+            int pageCountPosts = MethodCommon.calculatePageCount(rowCountStt, Constants.PAGE_SIZE);
 
             request.setAttribute("dsStt", dsStt);
-            request.setAttribute("pageCountPosts", pageCountPosts);
-            request.setAttribute("currentPagePosts", currentPagePosts);
-
+            ControllerUtils.setPaginationAttributes(request, page, pageCountPosts);
             request.setAttribute("dsDocs", dsDocs);
 
             RequestDispatcher rd = null;
@@ -87,6 +78,7 @@ public class UserProfileController extends HttpServlet {
                     rd = request.getRequestDispatcher("User/my-profile.jsp");
                 } else {
                     rd = request.getRequestDispatcher("User/user-profile.jsp");
+                    
                     request.setAttribute("targetUser", user);
                 }
             } else

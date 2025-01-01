@@ -3,13 +3,14 @@ package ControllerUser;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import V_DetailsDocModal.DetailsDoc;
 import V_DetailsDocModal.DetailsDocBo;
@@ -24,43 +25,23 @@ public class IndexController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            DetailsDocBo dtdocBo = new DetailsDocBo();
-            int page = 1;
-            int pageSize = 9;
-            String searchValue = "";
-            Long cateID = 0L; 
-            Long mateID = 0L; 
+        	DetailsDocBo dtdocBo = new DetailsDocBo();
+            int page = ControllerUtils.getPage(request);
+            String searchValue = ControllerUtils.getSearchValue(request);
+            Long cateID = (request.getParameter("cateID") != null) 
+                    ? Long.parseLong(request.getParameter("cateID")) : 0L;
 
-            if (request.getParameter("page") != null) {
-                page = Integer.parseInt(request.getParameter("page"));
-            }
+            Long mateID = (request.getParameter("mateID") != null) 
+                    ? Long.parseLong(request.getParameter("mateID")) : 0L;
             
-            if (request.getParameter("cateID") != null) {
-                cateID = Long.parseLong(request.getParameter("cateID"));
-            }
-
-            if (request.getParameter("mateID") != null) {
-                mateID = Long.parseLong(request.getParameter("mateID"));
-            }
-            
-            if(request.getParameter("btn-search") != null) {
-
-	            if (request.getParameter("txtSearch") != null) {
-	                searchValue = request.getParameter("txtSearch");
-	            }
-            }
-            ArrayList<DetailsDoc> ds = dtdocBo.getDocsByConditions(page, pageSize, searchValue, cateID, mateID);
+            ArrayList<DetailsDoc> ds = dtdocBo.getDocsByConditions(page, Constants.PAGE_SIZE, searchValue, cateID, mateID);
 
             int rowCount = dtdocBo.getCountDocsByConditions(searchValue, cateID, mateID);
-            
-            int pageCount = MethodCommon.calculatePageCount(rowCount, pageSize);
+            int pageCount = MethodCommon.calculatePageCount(rowCount, Constants.PAGE_SIZE);
             
             request.setAttribute("ds", ds);
-            request.setAttribute("pageCount", pageCount);
-            request.setAttribute("currentPage", page);
-
-            RequestDispatcher rd = request.getRequestDispatcher("User/index.jsp");
-            rd.forward(request, response);
+            ControllerUtils.setPaginationAttributes(request, page, pageCount);
+            ControllerUtils.forwardRequest(request, response, "User/index.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

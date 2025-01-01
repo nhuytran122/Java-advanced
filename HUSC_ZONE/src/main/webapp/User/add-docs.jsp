@@ -35,7 +35,7 @@
                     <h4 class="mb-0 p-3 text-center">Tải lên Tài liệu</h4>
                     
                     <div class="card-body">
-                        <form action="../save-docs" method="post" enctype="multipart/form-data">
+                        <form action="../edit-docs" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
 							    <label class="form-label">Tiêu đề</label>
 							    <input type="text" class="form-control" placeholder="Nhập tiêu đề tài liệu" 

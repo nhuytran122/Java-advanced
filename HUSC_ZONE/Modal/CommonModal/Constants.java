@@ -1,7 +1,8 @@
 package CommonModal;
 
 public class Constants {
-
+	
+	public static final int PAGE_SIZE = 8;
     // User Roles
     public static final Long ROLE_USER = 1L; 
     public static final Long ROLE_ADMIN = 2L;

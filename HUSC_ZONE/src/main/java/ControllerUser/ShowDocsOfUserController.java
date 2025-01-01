@@ -3,7 +3,6 @@ package ControllerUser;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
@@ -28,7 +29,6 @@ public class ShowDocsOfUserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             HttpSession session = request.getSession();
-            
             Long posterID = 0L;
             User currentUser = MethodCommon.getUserFromSession(session, response);
             posterID = currentUser.getUserID();
@@ -36,31 +36,22 @@ public class ShowDocsOfUserController extends HttpServlet {
             DetailsDocBo dtdocBo = new DetailsDocBo();
             UserBo userBo = new UserBo();
             
-            int page = 1;
-            int pageSize = 9;
-
-            if (request.getParameter("page") != null) {
-                page = Integer.parseInt(request.getParameter("page"));
-            }
+            int page = ControllerUtils.getPage(request);
             if (request.getParameter("posterID") != null) {
             	posterID = Long.parseLong(request.getParameter("posterID"));
             }
             
-            ArrayList<DetailsDoc> ds = dtdocBo.getDocsByUserIDPagination(page, pageSize, posterID);
+            ArrayList<DetailsDoc> ds = dtdocBo.getDocsByUserIDPagination(page, Constants.PAGE_SIZE, posterID);
             User poster = userBo.getUserByID(posterID);
             		
             int rowCount = dtdocBo.getCountDocsByUserID(posterID);
-            
-            int pageCount = MethodCommon.calculatePageCount(rowCount, pageSize);
+            int pageCount = MethodCommon.calculatePageCount(rowCount, Constants.PAGE_SIZE);
 
             request.setAttribute("ds", ds);
-            request.setAttribute("pageCount", pageCount);
-            request.setAttribute("currentPage", page);
+            ControllerUtils.setPaginationAttributes(request, page, pageCount);
             request.setAttribute("namePoster", poster.getName());
             request.setAttribute("IDPoster", poster.getUserID());
-
-            RequestDispatcher rd = request.getRequestDispatcher("User/docs-of-user.jsp");
-            rd.forward(request, response);
+            ControllerUtils.forwardRequest(request, response, "User/docs-of-user.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -3,7 +3,6 @@ package ControllerUser;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
@@ -29,27 +29,15 @@ public class StatusPostController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-
-            if (MethodCommon.getUserFromSession(session, response) == null) {
-    	        response.sendRedirect("login");
+            if (!MethodCommon.ensureUserLogin(session, response, request)) {
     	        return;
     	    }
             
-            int page = 1;
-            int pageSize = 9;
-            String searchValue = "";
+            int page = ControllerUtils.getPage(request);
+            String searchValue = ControllerUtils.getSearchValue(request);
             int rowCount = 0;
             
             Long typeSearchID = Constants.SEARCH_POST;
-
-            if (request.getParameter("page") != null) {
-                page = Integer.parseInt(request.getParameter("page"));
-            }
-
-            if (request.getParameter("txtSearch") != null) {
-                searchValue = request.getParameter("txtSearch");
-            }
-            
             if (request.getParameter("typeSearchID") != null) {
             	typeSearchID = Long.parseLong(request.getParameter("typeSearchID"));
             }
@@ -60,22 +48,20 @@ public class StatusPostController extends HttpServlet {
             ArrayList<DetailsPost> dsPosts = null;
             ArrayList<User> dsUsers = null;
             if(typeSearchID == Constants.SEARCH_POST) {
-            	dsPosts = sttBo.getPostsByConditions(page, pageSize, searchValue);
+            	dsPosts = sttBo.getPostsByConditions(page, Constants.PAGE_SIZE, searchValue);
             	rowCount = sttBo.getCountPostsByConditions(searchValue);
             }
             else {
-            	dsUsers = userBo.getListUserByCondition(page, pageSize, searchValue);
+            	dsUsers = userBo.getListUserByCondition(page, Constants.PAGE_SIZE, searchValue);
             	rowCount = userBo.countUsersByCondition(searchValue);
             }
-            int pageCount = MethodCommon.calculatePageCount(rowCount, pageSize);
+            int pageCount = MethodCommon.calculatePageCount(rowCount, Constants.PAGE_SIZE);
             
             request.setAttribute("dsPosts", dsPosts);
             request.setAttribute("dsUsers", dsUsers);
-            request.setAttribute("pageCount", pageCount);
-            request.setAttribute("currentPage", page);
-
-            RequestDispatcher rd = request.getRequestDispatcher("User/show-status.jsp");
-            rd.forward(request, response);
+            ControllerUtils.setPaginationAttributes(request, page, pageCount);
+            
+            ControllerUtils.forwardRequest(request, response, "User/show-status.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

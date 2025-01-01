@@ -3,7 +3,6 @@ package ControllerUser;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import BookmarkModal.BookmarkBo;
 import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import LikeModal.LikeBo;
 import UserModal.User;
@@ -33,14 +33,12 @@ public class ViewDetailsController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("utf-8");
-            response.setCharacterEncoding("utf-8");
             HttpSession session = request.getSession();
             User user = MethodCommon.getUserFromSession(session, response);
             
             if (request.getParameter("docsID") != null) {
                 handleDocumentDetails(request, response, user);
-            } else if (request.getParameter("postID") != null || request.getAttribute("postID") != null) {
+            } else if (getPostID(request) != null) {
             	if (user == null) {
                 	response.sendRedirect("login");
                 	return;
@@ -72,9 +70,7 @@ public class ViewDetailsController extends HttpServlet {
             request.setAttribute("dtlDocs", dtlDocs);
             request.setAttribute("lstDocsSuggest", lstDocsSuggest);
             request.setAttribute("isMarked", isMarked);
-
-            RequestDispatcher rd = request.getRequestDispatcher("User/detail-docs.jsp");
-            rd.forward(request, response);
+            ControllerUtils.forwardRequest(request, response, "User/detail-docs.jsp");
         }
     }
 
@@ -87,18 +83,12 @@ public class ViewDetailsController extends HttpServlet {
     }
 
     private void handlePostDetails(HttpServletRequest request, HttpServletResponse response, User user) throws Exception {
-        if (user == null) {
-            response.sendRedirect("login");
-            return;
-        }
-
         Long postID = getPostID(request);
         DetailsPostBo dtdocsBo = new DetailsPostBo();
         DetailsPost dtlPost = dtdocsBo.getDetailsPostByID(postID);
         
         if(dtlPost.getPostVisibility().equals(Constants.POST_PRIVATE)) {
-        	RequestDispatcher rd = request.getRequestDispatcher("User/locked-post.jsp");
-            rd.forward(request, response);
+        	ControllerUtils.forwardRequest(request, response, "User/locked-post.jsp");
             return;
         }
         if (dtlPost != null) {
@@ -109,9 +99,7 @@ public class ViewDetailsController extends HttpServlet {
             request.setAttribute("dtlPost", dtlPost);
             request.setAttribute("listCmts", listCmts);
             request.setAttribute("isLiked", isLiked);
-
-            RequestDispatcher rd = request.getRequestDispatcher("User/detail-post.jsp");
-            rd.forward(request, response);
+            ControllerUtils.forwardRequest(request, response, "User/detail-post.jsp");
         }
     }
 

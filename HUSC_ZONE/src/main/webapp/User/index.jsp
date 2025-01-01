@@ -28,7 +28,7 @@
 	        <main class="col-md-9 my-4">
 		        <div class="d-flex justify-content-between align-items-center mb-3">
 	            	<h4 class="fw-bold">Danh sách Tài liệu</h4>
-	            	<form method="post" action="../edit-docs">
+	            	<form method="post" action="../edit">
 		                 <button type="submit" name="btnAddDoc" value="btnAddDoc" class="btn btn-success">
 		                 	<i class="bi bi-plus-circle"></i> Tải lên tài liệu
 	                 	</button>
@@ -40,7 +40,7 @@
                           int n = ds.size();
                           if (n == 0) {
                         %>
-                            <p class="text-center text-danger">Không tìm thấy tài liệu nào với từ khóa <b>"<%= searchKeyword %>".</b></p>
+                            <p class="text-center text-danger">Không tìm thấy tài liệu nào phù hợp</p>
                         <% 
                           } else { 
                             for (int i = 0; i < n; i++) {
@@ -83,28 +83,29 @@
 					<% } 
 						}%>
 				</div>
-				<% if (n > 0) { %>
+				<% if (pageCount > 1) { %>
 					<nav>
 					    <ul class="pagination justify-content-center mt-4">
-					        <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
-					            <a class="page-link" href="<%= currentPage > 1 ? "../home?page=" + (currentPage - 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" tabindex="-1" aria-disabled="true">
-					                <i class="bi bi-chevron-left"></i>
-					            </a>
-					        </li>
-					        
-					        <% for (int p = 1; p <= pageCount; p++) { %>
-			                  <li class="page-item <%= p == currentPage ? "active" : "" %>">
-			                    <a class="page-link" href="../home?page=<%= p %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %>">
-			                      <%= p %>
-			                    </a>
-			                  </li>
-			                <% } %>
-					        <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
-					            <a class="page-link" href="<%= currentPage < pageCount ? "../home?page=" + (currentPage + 1) + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>">
-					                 <i class="bi bi-chevron-right"></i>
-					            </a>
-					        </li>
-					    </ul>
+						    <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
+						        <a class="page-link" href="<%= currentPage > 1 ? "../home?page=" + (currentPage - 1) + "&cateID=" + cateID + "&mateID=" + mateID + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>" tabindex="-1" aria-disabled="true">
+						            <i class="bi bi-chevron-left"></i>
+						        </a>
+						    </li>
+						    
+						    <% for (int p = 1; p <= pageCount; p++) { %>
+						        <li class="page-item <%= p == currentPage ? "active" : "" %>">
+						            <a class="page-link" href="../home?page=<%= p %>&cateID=<%= cateID %>&mateID=<%= mateID %><%= searchKeyword != null ? "&txtSearch=" + searchKeyword : "" %>">
+						                <%= p %>
+						            </a>
+						        </li>
+						    <% } %>
+						    
+						    <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
+						        <a class="page-link" href="<%= currentPage < pageCount ? "../home?page=" + (currentPage + 1) + "&cateID=" + cateID + "&mateID=" + mateID + (searchKeyword != null ? "&txtSearch=" + searchKeyword : "") : "#" %>">
+						            <i class="bi bi-chevron-right"></i>
+						        </a>
+						    </li>
+						</ul>
 					</nav>
 				<% } %>
         	</main>

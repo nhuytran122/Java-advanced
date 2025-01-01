@@ -55,7 +55,7 @@
                         <p class="mt-3"><strong>Email:</strong> <%= user.getEmail() %></p>
                         <p><strong>Số điện thoại:</strong> <%= user.getPhone() %></p>
                         <p><strong>Giới tính:</strong> <%= user.getGender() %></p>
-                        <form action="../edit-profile" method="post">
+                        <form action="../edit" method="post">
                         <button type="submit" name="btnUpdateProfile" value="btnUpdateProfile" class="btn btn-primary-custom me-2">Chỉnh sửa thông tin</button>
                         	<button type="submit" name="btnChangePW" value="btnChangePW" class="btn btn-primary-custom">Đổi mật khẩu</button>
                         </form>
@@ -68,7 +68,7 @@
                 <div class="form-bg">
                 	<div class="form-container">
                             <h3 class="title text-center">Chỉnh sửa bài viết</h3>
-                            <form action="../save-post" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            <form action="../edit-post" method="post" class="form-horizontal" enctype="multipart/form-data">
                             <input type="hidden" name="sttID" value="<%= stt.getPostID()%>">
                                     <div class="mb-3 form-group">
                                         <label>Nội dung</label> <span class="text-danger">*</span>
@@ -106,21 +106,6 @@
         </div>
     
     
-    <script>
-	    $(document).ready(function () {
-	        // Hiển thị ảnh preview khi người dùng chọn ảnh mới
-	        $('#fileInput').change(function (e) {
-	            var file = e.target.files[0];
-	            var reader = new FileReader();
-	
-	            reader.onload = function (e) {
-	                $('#imagePreview').attr('src', e.target.result);
-	                $('#imagePreview').show();
-	            };
-	
-	            reader.readAsDataURL(file);
-	        });
-	    });
-  </script>
+<%@ include file="layout/script_preview_image.jsp" %>
 </body>
 </html>

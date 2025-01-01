@@ -35,6 +35,7 @@ public class SavePostController extends HttpServlet {
             if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
                 return; 
             }
+            User user = MethodCommon.getUserFromSession(session, response);
 
 			response.setContentType("text/html; charset=utf-8");
 			Long sttID = null;
@@ -85,9 +86,7 @@ public class SavePostController extends HttpServlet {
             if (isUpdate) {
                 done = sttBo.updateStatusPost(sttID, content, imgName);
             } else {
-            	//TODO
-//                done = sttBo.addStatusPost(content, user.getUserID(), imgName);
-            	done = sttBo.addStatusPost(content, 7L, imgName);
+                done = sttBo.addStatusPost(content, user.getUserID(), imgName);
             }
             
          // Chỉ xử lý upload file mới nếu add/update thành công

@@ -25,8 +25,8 @@
 
 <%
     ArrayList<DetailsPost> dsStt = (ArrayList<DetailsPost>) request.getAttribute("dsStt");
-    int pageCountPosts = (Integer) request.getAttribute("pageCountPosts");
-    int currentPagePosts = (Integer) request.getAttribute("currentPagePosts");
+	int pageCount = (Integer) request.getAttribute("pageCount");
+	int currentPage = (Integer) request.getAttribute("currentPage");
     
     ArrayList<DetailsDoc> dsDocs = (ArrayList<DetailsDoc>) request.getAttribute("dsDocs");
 %>
@@ -143,6 +143,33 @@
 							            </div>
 							        </div>
 							    </div>
+							<% } %>
+							
+							<% if (pageCount > 1) { %>
+							    <nav>
+								    <ul class="pagination justify-content-center mt-4">
+								        <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
+								            <a class="page-link" href="<%= currentPage > 1 ? "../user-profile?userID=" + targetUser.getUserID() + "&page=" + (currentPage - 1) : "#" %>" tabindex="-1" aria-disabled="true">
+								                <i class="bi bi-chevron-left"></i>
+								            </a>
+								        </li>
+								
+								        <% for (int p = 1; p <= pageCount; p++) { %>
+								            <li class="page-item <%= p == currentPage ? "active" : "" %>">
+								                <a class="page-link" href="../user-profile?userID=<%= targetUser.getUserID() %>&page=<%= p %>">
+								                    <%= p %>
+								                </a>
+								            </li>
+								        <% } %>
+								
+								        <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
+								            <a class="page-link" href="<%= currentPage < pageCount ? "../user-profile?userID=" + targetUser.getUserID() + "&page=" + (currentPage + 1) : "#" %>">
+								                <i class="bi bi-chevron-right"></i>
+								            </a>
+								        </li>
+								    </ul>
+								</nav>
+
 							<% } %>
 
 						<% } %>

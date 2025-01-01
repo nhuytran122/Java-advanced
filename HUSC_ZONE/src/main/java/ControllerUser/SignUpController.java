@@ -2,7 +2,6 @@ package ControllerUser;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import UserModal.UserBo;
 
 @WebServlet("/signup")
@@ -51,10 +51,7 @@ public class SignUpController extends HttpServlet {
             }
             request.setAttribute("isInvalid", isInvalid);
             request.setAttribute("isDuplicate", isDuplicate);
-
-            RequestDispatcher rd = request.getRequestDispatcher("User/sign-up.jsp");
-    		rd.forward(request, response);
-
+            ControllerUtils.forwardRequest(request, response, "User/sign-up.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

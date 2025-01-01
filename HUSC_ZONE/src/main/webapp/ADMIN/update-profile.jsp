@@ -28,6 +28,7 @@
                   <h4 class="card-title mb-4 text-center">Chỉnh sửa người dùng</h4>
                   <form class="form-horizontal" action="../save-profile" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="userID" value="<%= user.getUserID()%>" />
+                    <input type="hidden" name="editInAdminPage" value="true" />
                     <div class="form-group mb-3">
                       <label class="form-label">Tên người dùng <span class="text-danger">*</span></label>
                       <input type="text" class="form-control" name="txtHoten" value="<%= user.getName() %>" required>

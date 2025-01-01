@@ -80,12 +80,12 @@ a {
 
 
 		    
-		    <% if (n > 0) { %>
+				<% if (pageCount > 1) { %>
 					<nav>
 					    <ul class="pagination justify-content-center mt-4">
 					        <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
 					            <a class="page-link" 
-								   href="<%= currentPage > 1 ? "../activity-history?page=" + (currentPage - 1) : "#" %>" 
+								   href="<%= currentPage > 1 ? "../activity-history?page=" + (currentPage - 1) : "#" %>&filterID=<%=filterID%>" 
 								   tabindex="-1" 
 								   aria-disabled="true">
 								    <i class="bi bi-chevron-left"></i>
@@ -95,14 +95,14 @@ a {
 					        
 					        <% for (int p = 1; p <= pageCount; p++) { %>
 			                  <li class="page-item <%= p == currentPage ? "active" : "" %>">
-			                    <a class="page-link" href="../activity-history?page=<%= p %>">
+			                    <a class="page-link" href="../activity-history?page=<%= p %>&filterID=<%=filterID%>">
 			                      <%= p %>
 			                    </a>
 			                  </li>
 			                <% } %>
 					        <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
 					            <a class="page-link" 
-					            	href="<%= currentPage < pageCount ? "../activity-history?page=" + (currentPage + 1) : "#" %>">
+					            	href="<%= currentPage < pageCount ? "../activity-history?page=" + (currentPage + 1) : "#" %>&filterID=<%=filterID%>">
 					                 <i class="bi bi-chevron-right"></i>
 					            </a>
 					        </li>

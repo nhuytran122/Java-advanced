@@ -35,7 +35,7 @@
                     value="<%= searchKeyword != null 
                         ? searchKeyword : "" %>">
 
-                <button type="submit" class="btn btn-primary-custom p-2">
+                <button type="submit" name="btn-search" value="search" class="btn btn-primary-custom p-2">
                     <i class="bi bi-search"></i>
                 </button>
             </form>

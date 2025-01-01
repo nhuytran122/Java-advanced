@@ -1,7 +1,6 @@
 package ControllerUser;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import BookmarkModal.BookmarkBo;
 import CommentModal.CommentBo;
 import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import LikeModal.LikeBo;
 import NotificationModal.NotificationBo;
@@ -31,17 +31,18 @@ public class InteractionController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            User user = MethodCommon.getUserFromSession(session, response);
-            if (user == null) {
-            	response.sendRedirect("login");
+            if (!MethodCommon.ensureUserLogin(session, response, request)) {
             	return;
             }
+            User user = MethodCommon.getUserFromSession(session, response);
 
             Long userID = user.getUserID();
             if (request.getParameter("docsID") != null) {
                 handleBookmark(request, response, userID);
+                return;
             } else if (request.getParameter("postID") != null) {
                 handlePost(request, response, userID);
+                return;
             } else {
                 response.sendRedirect("home");
             }
@@ -63,8 +64,7 @@ public class InteractionController extends HttpServlet {
             }
             String redirectPage = request.getParameter("unMarkInList") != null ? "liked-docs" : "details";
             request.setAttribute("docsID", docsID);
-            RequestDispatcher rd = request.getRequestDispatcher(redirectPage);
-            rd.forward(request, response);
+            ControllerUtils.forwardRequest(request, response, redirectPage);
         }
     }
 
@@ -99,8 +99,7 @@ public class InteractionController extends HttpServlet {
 
         String redirectPage = request.getParameter("unLikeInList") != null ? "activity-history" : "details";
         request.setAttribute("postID", postID);
-        RequestDispatcher rd = request.getRequestDispatcher(redirectPage);
-        rd.forward(request, response);
+        ControllerUtils.forwardRequest(request, response, redirectPage);
     }
 
     private void handleReport(HttpServletRequest request, HttpServletResponse response, Long postID, Long userID) throws Exception {
@@ -117,8 +116,7 @@ public class InteractionController extends HttpServlet {
 
         String redirectPage = request.getParameter("reportInDetail") != null ? "details" : "status-post";
         request.setAttribute("postID", postID);
-        RequestDispatcher rd = request.getRequestDispatcher(redirectPage);
-        rd.forward(request, response);
+        ControllerUtils.forwardRequest(request, response, redirectPage);
     }
 
     private void handleComment(HttpServletRequest request, HttpServletResponse response, Long postID, Long userID) throws Exception {
@@ -135,8 +133,7 @@ public class InteractionController extends HttpServlet {
 
 //        String redirectPage = request.getParameter("cmtInDetail") != null ? "details" : "status-post";
         request.setAttribute("postID", postID);
-        RequestDispatcher rd = request.getRequestDispatcher("details");
-        rd.forward(request, response);
+        ControllerUtils.forwardRequest(request, response, "details");
     }
 
     private void handleDeleteComment(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -146,8 +143,7 @@ public class InteractionController extends HttpServlet {
 
         String redirectPage = request.getParameter("deleteInList") != null ? "activity-history" : "details";
         request.setAttribute("filterID", Constants.FILTER_COMMENTED);
-        RequestDispatcher rd = request.getRequestDispatcher(redirectPage);
-        rd.forward(request, response);
+        ControllerUtils.forwardRequest(request, response, redirectPage);
     }
 
     private void handleEditComment(HttpServletRequest request, HttpServletResponse response, Long postID) throws Exception {
@@ -157,8 +153,7 @@ public class InteractionController extends HttpServlet {
         cmtBo.updateComment(cmtID, contentEdit);
 
         request.setAttribute("postID", postID);
-        RequestDispatcher rd = request.getRequestDispatcher("details");
-        rd.forward(request, response);
+        ControllerUtils.forwardRequest(request, response, "details");
     }
 
     private void handleDeleteReport(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -168,8 +163,7 @@ public class InteractionController extends HttpServlet {
 
         String redirectPage = request.getParameter("deleteInList") != null ? "activity-history" : "home";
         request.setAttribute("filterID", Constants.FILTER_REPORT);
-        RequestDispatcher rd = request.getRequestDispatcher(redirectPage);
-        rd.forward(request, response);
+        ControllerUtils.forwardRequest(request, response, redirectPage);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

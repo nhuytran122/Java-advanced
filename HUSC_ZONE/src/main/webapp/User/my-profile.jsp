@@ -22,8 +22,8 @@
 
 <%
     ArrayList<DetailsPost> dsStt = (ArrayList<DetailsPost>) request.getAttribute("dsStt");
-    int pageCountPosts = (Integer) request.getAttribute("pageCountPosts");
-    int currentPagePosts = (Integer) request.getAttribute("currentPagePosts");
+    int pageCount = (Integer) request.getAttribute("pageCount");
+    int currentPage = (Integer) request.getAttribute("currentPage");
     
     ArrayList<DetailsDoc> dsDocs = (ArrayList<DetailsDoc>) request.getAttribute("dsDocs");
 %>
@@ -43,7 +43,7 @@
                         <p><strong>Số điện thoại:</strong> <%= user.getPhone() %></p>
                         <p><strong>Giới tính:</strong> <%= user.getGender() %></p>
 	                        <div class="d-flex">
-	                        <form action="../edit-profile" method="post">
+	                        <form action="../edit" method="post">
 	                            <button type="submit" name="btnUpdateProfile" value="btnUpdateProfile" class="btn btn-primary-custom me-2">Chỉnh sửa thông tin</button>
 	                            <button type="submit" name="btnChangePW" value="btnUpdateProfile" class="btn btn-primary-custom">Đổi mật khẩu</button>
 	                        </form>
@@ -83,7 +83,7 @@
 
                         <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
 		                    <div class="modal-dialog">
-			                    <form action="../save-post" method="post" enctype="multipart/form-data">
+			                    <form action="../edit-post" method="post" enctype="multipart/form-data">
 			                        <div class="modal-content">
 			                            <div class="modal-header">
 			                                <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>
@@ -159,7 +159,7 @@
 							                    </button>
 							                    <ul class="dropdown-menu dropdown-menu-end">
 							                        <li>
-							                        	<a class="dropdown-item" href="../edit-status?editStt=true&sttID=<%= stt.getPostID() %>">
+							                        	<a class="dropdown-item" href="../edit?editStt=true&sttID=<%= stt.getPostID() %>">
 							                        		<i class="bi bi-pencil me-2"></i> Chỉnh sửa bài viết
 							                        	</a>
 							                        </li>
@@ -222,7 +222,32 @@
 							    </div>
 							    
 							<% } %>
-
+							
+							<% if (pageCount > 1) { %>
+							    <nav>
+								    <ul class="pagination justify-content-center mt-4">
+									    <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">
+									        <a class="page-link" href="<%= currentPage > 1 ? "../user-profile?page=" + (currentPage - 1) : "#" %>" tabindex="-1" aria-disabled="true">
+											    <i class="bi bi-chevron-left"></i>
+											</a>
+									    </li>
+									    
+									    <% for (int p = 1; p <= pageCount; p++) { %>
+									        <li class="page-item <%= p == currentPage ? "active" : "" %>">
+									            <a class="page-link" href="../user-profile?page=<%= p %>">
+									                <%= p %>
+									            </a>
+									        </li>
+									    <% } %>
+									    
+									    <li class="page-item <%= currentPage < pageCount ? "" : "disabled" %>">
+									        <a class="page-link" href="<%= currentPage < pageCount ? "../user-profile?page=" + (currentPage + 1) : "#" %>">
+									            <i class="bi bi-chevron-right"></i>
+									        </a>
+									    </li>
+									</ul>
+								</nav>
+							<% } %>
 						<% } %>
                     </div>
                     

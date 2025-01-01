@@ -59,7 +59,7 @@
                         <p class="mt-3"><strong>Email:</strong> <%= user.getEmail() %></p>
                         <p><strong>Số điện thoại:</strong> <%= user.getPhone() %></p>
                         <p><strong>Giới tính:</strong> <%= user.getGender() %></p>
-                        <form action="../edit-profile" method="post">
+                        <form action="../edit" method="post">
                         	<button type="submit" name="btnUpdateProfile" value="btnUpdateProfile" class="btn btn-primary-custom">Chỉnh sửa thông tin</button>
                         </form>
                     </div>

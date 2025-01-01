@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
+import CommonModal.ControllerUtils;
+import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
 
@@ -25,12 +27,10 @@ public class ChangePasswordController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			
+			if (!MethodCommon.ensureUserLogin(session, response, request)) {
+    	        return;
+    	    }
 			User currentUser = (User) session.getAttribute("user");
-			if (currentUser == null) {
-	            response.sendRedirect("login");
-	            return;
-	        }
 	        String currentPassword = request.getParameter("txtCurrPw");
 	        String newPassword = request.getParameter("txtNewPw");
 	        String confirmNewPassword = request.getParameter("txtConfNewPw");
@@ -76,9 +76,7 @@ public class ChangePasswordController extends HttpServlet {
             }
             request.setAttribute("messageType", messageType);
             request.setAttribute("message", message);
-            RequestDispatcher rd = request.getRequestDispatcher(redirectPage);
-            rd.forward(request, response);
-            
+            ControllerUtils.forwardRequest(request, response, redirectPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -74,7 +74,7 @@
 					<% } 
 						}%>
 				</div>
-				<% if (n > 0) { %>
+				<% if (pageCount > 1) { %>
 				    <nav>
 				        <ul class="pagination justify-content-center mt-4">
 				            <li class="page-item <%= currentPage > 1 ? "" : "disabled" %>">

@@ -2,7 +2,6 @@ package ControllerUser;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import UserModal.User;
 import V_DetailsCommentModal.DetailsComment;
@@ -36,13 +36,12 @@ public class ActivityHistoryController extends HttpServlet {
 
             User user = MethodCommon.getUserFromSession(session, response);
 
-            if (user == null) {
-                response.sendRedirect("login");
-                return;
-            }
+            if (!MethodCommon.ensureUserLogin(session, response, request)) {
+    	        return;
+    	    }
             Long userID = user.getUserID();
 
-            int page = getPageParameter(request);
+            int page = ControllerUtils.getPage(request);
             Long filterID = getFilterIDParameter(request);
             int rowCount = 0;
 
@@ -53,15 +52,11 @@ public class ActivityHistoryController extends HttpServlet {
             } else if (filterID == Constants.FILTER_REPORT) {
                 rowCount = handleReportFilter(request, userID, page);
             }
-
             int pageCount = MethodCommon.calculatePageCount(rowCount, 9);
 
             request.setAttribute("filterID", filterID);
-            request.setAttribute("pageCount", pageCount);
-            request.setAttribute("currentPage", page);
-
-            RequestDispatcher rd = request.getRequestDispatcher("User/activity-history.jsp");
-            rd.forward(request, response);
+            ControllerUtils.setPaginationAttributes(request, page, pageCount);
+            ControllerUtils.forwardRequest(request, response, "User/activity-history.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,19 +68,15 @@ public class ActivityHistoryController extends HttpServlet {
         doGet(request, response);
     }
 
-    private int getPageParameter(HttpServletRequest request) {
-        String pageParam = request.getParameter("page");
-        return (pageParam != null) ? Integer.parseInt(pageParam) : 1;
-    }
-
     private Long getFilterIDParameter(HttpServletRequest request) {
         String filterParam = request.getParameter("filterID");
         if (filterParam != null) {
             return Long.parseLong(filterParam);
         }
 
-        Object filterAttr = request.getAttribute("filterID");
-        return (filterAttr != null) ? (Long) filterAttr : Constants.FILTER_LIKED;
+        return (request.getAttribute("filterID") != null) 
+        		? (Long)(request.getAttribute("filterID")) 
+        				: Constants.FILTER_LIKED;
     }
 
     private int handleLikedFilter(HttpServletRequest request, Long userID, int page) throws Exception {

@@ -1,4 +1,4 @@
-package ControllerUser;
+package Controller;
 
 import java.io.IOException;
 
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
@@ -97,8 +98,7 @@ public class LoginController extends HttpServlet {
 			request.setAttribute("isInvalidCapcha", isInvalidCapcha);
 			request.setAttribute("isWrong", isWrong);
 
-			RequestDispatcher rd = request.getRequestDispatcher("User/login.jsp");
-			rd.forward(request, response);
+            ControllerUtils.forwardRequest(request, response, "User/login.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -29,7 +29,7 @@
                     <h4 class="mb-0 p-3 text-center">Chỉnh sửa Tài liệu</h4>
                     
                     <div class="card-body">
-                        <form action="../save-docs" method="post" enctype="multipart/form-data">
+                        <form action="../edit-docs" method="post" enctype="multipart/form-data">
                         	<input type="hidden" name="txtDocID" value="<%= doc.getDocumentID()%>" >
                             <div class="mb-3">
                                 <label class="form-label">Tiêu đề</label> <span class="text-danger">*</span></label>
@@ -72,18 +72,24 @@
                             </div>
                             <div class="mb-3">
 							    <label class="form-label">Tải lên tài liệu</label> <span class="text-danger">*</span></label>
+							    <%
+		                          String filePath = request.getContextPath() + doc.getFilePath();
+		                          if (filePath != null && !filePath.isEmpty()) {
+		                            String fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
+		                        %>
+		                          <div>
+		                            <p class="my-2"><strong>File hiện tại:</strong> 
+		                              <a href="<%= filePath %>" target="_blank"><%= fileName %></a>
+		                            </p>
+		                          </div>
+		                        <%
+		                          }
+		                        %>
 							    <input type="file" class="form-control" name="fileDocs" 
 							           accept="image/*,application/pdf,.doc,.docx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation" 
 							           
 							           value="<%= request.getContextPath() %><%= doc.getFilePath()%>">
 							</div>
-							<div class="mb-3">
-                                        <label class="form-label">Preview File</label>
-										<div class="col-sm-10">
-										  <!-- Hiển thị ảnh nếu có -->
-										  <img id="imagePreview" src="<%= request.getContextPath() %><%= doc.getFilePath() != null ?  doc.getFilePath() : "" %>" alt="Image Preview" style="max-height: 250px; display: <%= doc.getFilePath() != null ? "block" : "none" %>;"/>
-										</div>
-                            </div>
 
                             <div class="text-end">
                                 <a href="../docs-of-user" class="btn btn-danger mt-2 py-2 px-3 pb-2 me-2">
@@ -100,22 +106,5 @@
             </main>
         </div>
     </div>
-    
-    <script>
-	    $(document).ready(function () {
-	        // Hiển thị ảnh preview khi người dùng chọn ảnh mới
-	        $('#fileInput').change(function (e) {
-	            var file = e.target.files[0];
-	            var reader = new FileReader();
-	
-	            reader.onload = function (e) {
-	                $('#imagePreview').attr('src', e.target.result);
-	                $('#imagePreview').show();
-	            };
-	
-	            reader.readAsDataURL(file);
-	        });
-	    });
-  </script>
 </body>
 </html>

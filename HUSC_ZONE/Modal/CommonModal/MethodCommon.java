@@ -57,6 +57,15 @@ public class MethodCommon {
         return (User) session.getAttribute("user");
     }
 	
+	public static boolean ensureUserLogin(HttpSession session, HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
+	    if (getUserFromSession(session, response) == null) {
+	        RequestDispatcher rd = request.getRequestDispatcher("/User/login.jsp");
+	        rd.forward(request, response);
+	        return false; 
+	    }
+	    return true;
+	}
+	
 	public static boolean checkAdminAccess(User user, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException, ServletException {
 	    if (user != null) {
 	        if (user.getRoleID() != Constants.ROLE_ADMIN) {
