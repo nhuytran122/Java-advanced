@@ -62,7 +62,10 @@ public class ActionsCommonUtils {
                         break;
                 }
             } else if (!fileItem.getName().isEmpty()) {
-                uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
+            	String originalFileName = fileItem.getName();
+                String sanitizedFileName = MethodCommon.normalizeFileName(originalFileName);
+                
+                uniqueName = System.currentTimeMillis() + "_" + sanitizedFileName;
                 fileName = Constants.DOCS_FOLDER_PATH + uniqueName; 
                 isUploaded = true;
             }
@@ -152,7 +155,10 @@ public class ActionsCommonUtils {
                     	break;
                 }
         	}else if (!fileItem.getName().isEmpty()) {
-            	uniqueName = System.currentTimeMillis() + "_" + fileItem.getName();
+        		String originalFileName = fileItem.getName();
+        	    String sanitizedFileName = MethodCommon.normalizeFileName(originalFileName);
+        	    uniqueName = System.currentTimeMillis() + "_" + sanitizedFileName;
+        	    
             	imgName = Constants.IMG_POST_FOLDER_PATH + uniqueName; 
             	isUploaded = true;
             }

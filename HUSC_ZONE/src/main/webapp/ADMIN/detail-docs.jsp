@@ -58,6 +58,10 @@
                         <div class="col-md-12">
                           <form method="post" action="../admin/edit">
                             <input type="hidden" name="docID" value="<%= docs.getDocumentID() %>">
+                            <a href="<%= request.getContextPath() %><%= docs.getFilePath() %>" class="btn btn-success btn-sm ms-2" >
+                              <i class="bi bi-download"></i> Tải xuống
+                            </a>
+                            
                             <button type="submit" name="btnUpdateDoc" value="update" class="btn btn-warning btn-sm ms-2" title="Sửa">
                               <i class="bi bi-pencil"></i> Sửa
                             </button>

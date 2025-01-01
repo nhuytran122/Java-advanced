@@ -1,5 +1,6 @@
 package CommonModal;
 
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,4 +42,14 @@ public class MethodCommon {
         }
         return pageCount;
     }
+	
+	public static String normalizeFileName(String fileName) {
+	    // Loại bỏ dấu tiếng Việt
+	    String normalizedFileName = Normalizer.normalize(fileName, Normalizer.Form.NFD)
+	    										.replaceAll("\\p{M}", "");
+	    normalizedFileName = normalizedFileName.replaceAll("đ", "d").replaceAll("Đ", "D");
+	    // Thay khoảng trắng -> dấu dấu gạch dưới
+	    normalizedFileName = normalizedFileName.replaceAll("\\s+", "_");
+	    return normalizedFileName;
+	}
 }
