@@ -69,7 +69,7 @@
                 	<div class="form-container">
                             <h3 class="title text-center">Chỉnh sửa bài viết</h3>
                             <form action="../edit-post" method="post" class="form-horizontal" enctype="multipart/form-data">
-                            <input type="hidden" name="sttID" value="<%= stt.getPostID()%>">
+                            <input type="hidden" name="postID" value="<%= stt.getPostID()%>">
                                     <div class="mb-3 form-group">
                                         <label>Nội dung</label> <span class="text-danger">*</span>
                                         <input class="form-control mt-2" type="text" 

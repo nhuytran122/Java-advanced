@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
 import CommonModal.ControllerUtils;
-import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
 
@@ -27,7 +26,7 @@ public class ChangePasswordController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			if (!MethodCommon.ensureUserLogin(session, response, request)) {
+			if (!ControllerUtils.ensureUserLogin(session, response, request)) {
     	        return;
     	    }
 			User currentUser = (User) session.getAttribute("user");

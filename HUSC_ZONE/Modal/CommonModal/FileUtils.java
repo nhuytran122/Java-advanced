@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.fileupload.FileItem;
 
 public class FileUtils {
@@ -45,7 +44,6 @@ public class FileUtils {
 	    }
 	    return null;
 	}
-
 
     // Xóa file cũ nếu có
     public static void deleteOldFile(String oldFilePath) {

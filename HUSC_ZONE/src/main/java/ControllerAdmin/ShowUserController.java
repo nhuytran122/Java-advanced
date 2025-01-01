@@ -3,7 +3,6 @@ package ControllerAdmin;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
+import CommonModal.ControllerUtils;
 import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
-import V_DetailsPostModal.DetailsPost;
-import V_DetailsPostModal.DetailsPostBo;
 
 @WebServlet("/admin/users")
 public class ShowUserController extends HttpServlet {
@@ -29,37 +27,24 @@ public class ShowUserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             HttpSession session = request.getSession();
-            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+            if (!ControllerUtils.checkLoginAndAdminAccess(session, response, request)) {
                 return; 
             }
             
-            int page = 1;
-            int pageSize = 9;
-            String searchValue = "";
+            int page = ControllerUtils.getPage(request);
+            String searchValue = ControllerUtils.getSearchValue(request);
             int rowCount = 0;
-            
-
-            if (request.getParameter("page") != null) {
-                page = Integer.parseInt(request.getParameter("page"));
-            }
-
-            if (request.getParameter("txtSearch") != null) {
-                searchValue = request.getParameter("txtSearch");
-            }
             
             UserBo userBo = new UserBo();
             
             ArrayList<User> dsUsers = null;
-            dsUsers = userBo.getListUserByCondition(page, pageSize, searchValue);
+            dsUsers = userBo.getListUserByCondition(page, Constants.PAGE_SIZE, searchValue);
             rowCount = userBo.countUsersByCondition(searchValue);
-            int pageCount = MethodCommon.calculatePageCount(rowCount, pageSize);
+            int pageCount = MethodCommon.calculatePageCount(rowCount, Constants.PAGE_SIZE);
             
             request.setAttribute("dsUsers", dsUsers);
-            request.setAttribute("pageCount", pageCount);
-            request.setAttribute("currentPage", page);
-
-            RequestDispatcher rd = request.getRequestDispatcher("/Admin/show-users.jsp");
-            rd.forward(request, response);
+            ControllerUtils.setPaginationAttributes(request, page, pageCount);
+            ControllerUtils.forwardRequest(request, response, "/Admin/show-users.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }

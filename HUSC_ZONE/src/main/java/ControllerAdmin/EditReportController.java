@@ -2,7 +2,6 @@ package ControllerAdmin;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,11 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
-import CommonModal.MethodCommon;
+import CommonModal.ControllerUtils;
 import NotificationModal.NotificationBo;
 import ReportModal.ReportBo;
 import StatusPostModal.StatusPostBo;
-import V_DetailsReportModal.DetailsReportBo;
 
 @WebServlet("/admin/edit-report")
 public class EditReportController extends HttpServlet {
@@ -29,7 +27,7 @@ public class EditReportController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
         	HttpSession session = request.getSession();
-            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+            if (!ControllerUtils.checkLoginAndAdminAccess(session, response, request)) {
                 return; 
             }
         	Long reportID = null;
@@ -50,7 +48,6 @@ public class EditReportController extends HttpServlet {
                 handleDeleteReport(reportID, response, rpBo);
                 return; 
             }
-            showReportDetails(reportID, request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,13 +71,6 @@ public class EditReportController extends HttpServlet {
     private void handleDeleteReport(Long reportID, HttpServletResponse response, ReportBo rpBo) throws Exception {
         rpBo.deleteReport(reportID);
         response.sendRedirect("reports"); 
-    }
-
-    private void showReportDetails(Long reportID, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        DetailsReportBo detailsReportBo = new DetailsReportBo();
-        request.setAttribute("report", detailsReportBo.getReportByID(reportID));
-        RequestDispatcher rd = request.getRequestDispatcher("/Admin/detail-report.jsp");
-        rd.forward(request, response);
     }
 
     @Override

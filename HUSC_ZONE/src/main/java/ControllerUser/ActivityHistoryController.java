@@ -34,9 +34,9 @@ public class ActivityHistoryController extends HttpServlet {
         try {
             HttpSession session = request.getSession();
 
-            User user = MethodCommon.getUserFromSession(session, response);
+            User user = ControllerUtils.getUserFromSession(session, response);
 
-            if (!MethodCommon.ensureUserLogin(session, response, request)) {
+            if (!ControllerUtils.ensureUserLogin(session, response, request)) {
     	        return;
     	    }
             Long userID = user.getUserID();

@@ -38,7 +38,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title mb-4 text-center">Thêm mới người dùng</h4>
-                  <form class="form-horizontal" action="../admin/save-user" method="post">
+                  <form class="form-horizontal" action="../admin/edit-user" method="post">
 
                     <div class="form-group mb-3">
                       <label class="form-label">Tên người dùng <span class="text-danger">*</span></label>

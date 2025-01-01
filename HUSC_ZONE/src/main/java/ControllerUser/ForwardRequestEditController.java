@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.ControllerUtils;
-import CommonModal.MethodCommon;
 import DocumentModal.DocumentBo;
 import StatusPostModal.StatusPostBo;
 
@@ -25,7 +24,7 @@ public class ForwardRequestEditController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			if (!MethodCommon.ensureUserLogin(session, response, request)) {
+			if (!ControllerUtils.ensureUserLogin(session, response, request)) {
     	        return;
     	    }
 

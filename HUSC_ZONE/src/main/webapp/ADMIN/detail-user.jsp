@@ -55,7 +55,7 @@
 
                       <div class="row">
                         <div class="col-md-12">
-                          <form method="post" action="../admin/edit-user">
+                          <form method="post" action="../admin/edit">
                             <input type="hidden" name="userID" value="<%= user.getUserID() %>">
                             <button type="submit" name="btnUpdateUser" value="update" class="btn btn-warning btn-sm ms-2" title="Sửa">
                               <i class="bi bi-pencil"></i> Sửa

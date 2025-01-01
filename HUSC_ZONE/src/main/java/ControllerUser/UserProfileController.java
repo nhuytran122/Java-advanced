@@ -33,10 +33,10 @@ public class UserProfileController extends HttpServlet {
             throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            if (!MethodCommon.ensureUserLogin(session, response, request)) {
+            if (!ControllerUtils.ensureUserLogin(session, response, request)) {
 				return;
 			}
-            User currentUser = MethodCommon.getUserFromSession(session, response);
+            User currentUser = ControllerUtils.getUserFromSession(session, response);
             
             User user = null;
             Long userID = 0L;

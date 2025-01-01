@@ -48,7 +48,7 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="card-title">Danh sách Ngành học</h4>
-                    <form method="post" action="../admin/edit-category">
+                    <form method="post" action="../admin/edit">
                       <button type="submit" name="btnAddCate" value="add" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-circle"></i> Thêm mới Ngành học
                       </button>
@@ -93,7 +93,7 @@
 							  </td>
 							  <td>
 							    <div class="btn-group" role="group">
-							      <form method="post" action="../admin/edit-category">
+							      <form method="post" action="../admin/edit">
 							        <input type="hidden" name="cateID" value="<%= cateID %>">
 							        <button type="submit" name="btnUpdateCate" value="update" class="btn btn-warning btn-sm" title="Sửa">
 							          <i class="bi bi-pencil"></i>
@@ -124,7 +124,7 @@
 						        </div>
                               </div>
                               <div class="modal-footer">
-                                <form method="post" action="../admin/edit-category">
+                                <form method="post" action="../admin/edit">
                                   <input type="hidden" name="cateID" value="<%= cateID %>">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                                   <button type="submit" name="btnDeleteCate" value="delete" class="btn btn-danger">Xóa</button>

@@ -1,6 +1,5 @@
 package ControllerAdmin;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -10,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import CommonModal.MethodCommon;
+import CommonModal.ActionsCommonUtils;
+import CommonModal.ControllerUtils;
 import StatusPostModal.StatusPostBo;
+import UserModal.User;
 
 @WebServlet("/admin/edit-post")
 public class EditPostController extends HttpServlet {
@@ -23,10 +24,11 @@ public class EditPostController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			HttpSession session = request.getSession();
-            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
-                return; 
-            }
+		  HttpSession session = request.getSession();
+          if (!ControllerUtils.checkLoginAndAdminAccess(session, response, request)) {
+              return; 
+          }
+          User user = ControllerUtils.getUserFromSession(session, response);
 
           StatusPostBo postBo = new StatusPostBo();
           Long postID = 0L;
@@ -34,35 +36,21 @@ public class EditPostController extends HttpServlet {
         	  postID = Long.parseLong(request.getParameter("postID"));
           
           if (request.getParameter("btnDeletePost") != null) {
-        	  handleDeletePost(request, response, postBo, postID);
+        	  ActionsCommonUtils.handleDeletePost(request, response, postBo, postID, "posts");
               return;
           }
+          
+          response.setContentType("text/html; charset=utf-8");
+		  int uploaded = ActionsCommonUtils.addOrUpdatePost(request, postBo, user.getUserID());
+		  if(uploaded != 0) {
+			  response.sendRedirect("posts");
+			  return;
+		  }
+          response.sendRedirect("../admin");
       } catch (Exception e) {
           e.printStackTrace();
       }
   }
-  
-  private void handleDeletePost(HttpServletRequest request, HttpServletResponse response, StatusPostBo postBo, Long postID)
-          throws IOException {
-      try {
-      	String filePath = postBo.getStatusPostByID(postID).getImagePath();
-      	postBo.deleteStatusPost(postID);
-          
-          String appPath = request.getServletContext().getRealPath("") + filePath;
-          File fileDocs = new File(appPath);
-          System.out.println("Path of image: " + fileDocs.getAbsolutePath());
-          if (fileDocs.exists()) {
-              boolean isImageDeleted = fileDocs.delete(); // Xóa file
-              if (!isImageDeleted) {
-                  System.out.println("Không thể xóa file: " + filePath);
-              }
-          }
-          response.sendRedirect("posts");
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

@@ -29,31 +29,31 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title mb-4 text-center">Sửa loại</h4>
-                  <form class="form-horizontal" action="../admin/save-material" method="post">
-				    <input type="hidden" name="mateID" value="<%= material.getMaterialID() %>">
-				    <div class="form-group row">
-				        <label class="control-label col-sm-2">Tên loại</label>
-				        <div class="col-sm-10">
-				            <input type="text" class="form-control" name="txtTenLoai" required
-				                value="<%= material.getMaterialName() %>">
-				        </div>
-				    </div>
-				    
-				    <div class="form-group row">
-				        <label class="control-label col-sm-2">Mô tả</label>
-				        <div class="col-sm-10">
-				            <input type="text" class="form-control" name="txtMoTa"
-				                value="<%= material.getDescription()!= null ? material.getDescription() : "" %>">
-				        </div>
-				    </div>
-				    
+                  <form class="form-horizontal" action="../admin/edit-material" method="post">
+                    <input type="hidden" name="mateID" value="<%= material.getMaterialID() %>">
                     <div class="form-group row">
-                      <div class="col-sm-offset-2 col-sm-10 text-center">
-                      	<a href="../admin/materials" class="btn btn-secondary">Hủy</a>
-                        <button type="submit" name="btnUpdate" value="add" class="btn btn-primary">Lưu</button>
-                      </div>
+                        <label class="control-label col-sm-2">Tên loại</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="txtTenLoai" required
+                                value="<%= material.getMaterialName() %>">
+                        </div>
                     </div>
-				</form>
+                    
+                    <div class="form-group row">
+                        <label class="control-label col-sm-2">Mô tả</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="txtMoTa"
+                                value="<%= material.getDescription()!= null ? material.getDescription() : "" %>">
+                        </div>
+                    </div>
+                    
+                            <div class="form-group row">
+                              <div class="col-sm-offset-2 col-sm-10 text-center">
+                                <a href="../admin/materials" class="btn btn-secondary">Hủy</a>
+                                <button type="submit" name="btnUpdate" value="add" class="btn btn-primary">Lưu</button>
+                              </div>
+                            </div>
+                  </form>
 
                 </div>
               </div>

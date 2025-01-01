@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import CommonModal.ControllerUtils;
-import CommonModal.MethodCommon;
 import ReportModal.ReportBo;
 import UserModal.UserBo;
 import V_DetailsDocModal.DetailsDocBo;
@@ -27,10 +26,9 @@ public class AdminController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             HttpSession session = request.getSession();
-            if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+            if (!ControllerUtils.checkLoginAndAdminAccess(session, response, request)) {
                 return; 
             }
-            
             request.setAttribute("cntDocs", (new DetailsDocBo().getCountDocsByConditions("", 0L, 0L)));
             request.setAttribute("cntUsers", (new UserBo().countUsersByCondition("")));
             request.setAttribute("cntPosts", (new DetailsPostBo().getCountPostsByConditions("")));

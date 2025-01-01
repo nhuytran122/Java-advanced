@@ -45,7 +45,7 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="card-title">Danh sách Loại tài liệu</h4>
-                    <form method="post" action="../admin/edit-material">
+                    <form method="post" action="../admin/edit">
                       <button type="submit" name="btnAddMate" value="btnAddMate" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-circle"></i> Thêm mới loại tài liệu
                       </button>
@@ -79,7 +79,7 @@
 					    <td><%= mate.getDescription() == null ? "" : mate.getDescription()%></td>
 					    <td>
 					      <div class="btn-group" role="group">
-					        <form method="post" action="../admin/edit-material">
+					        <form method="post" action="../admin/edit">
 					          <input type="hidden" name="mateID" value="<%= mate.getMaterialID() %>">
 					          <button type="submit" name="btnUpdateMate" value="update" class="btn btn-warning btn-sm" title="Sửa">
 					            <i class="bi bi-pencil"></i>

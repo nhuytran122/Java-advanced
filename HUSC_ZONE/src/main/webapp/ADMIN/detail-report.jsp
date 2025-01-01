@@ -90,12 +90,10 @@
 
                       <div class="row">
                         <div class="col-md-12">
-                          <form method="post" action="../admin/edit-report">
                             <input type="hidden" name="reportID" value="<%= report.getReportID() %>">
                             <button type="button" class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal<%= report.getReportID() %>" title="Xóa">
                               <i class="bi bi-trash"></i> Xóa
                             </button>
-                          </form>
                         </div>
                       </div>
 

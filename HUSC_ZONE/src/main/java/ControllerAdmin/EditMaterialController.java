@@ -1,9 +1,7 @@
 package ControllerAdmin;
 
-import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import CommonModal.MethodCommon;
-import DocumentModal.DocumentBo;
+import CommonModal.ControllerUtils;
 import MaterialModal.MaterialBo;
-import UserModal.UserBo;
 
 @WebServlet("/admin/edit-material")
 public class EditMaterialController extends HttpServlet {
@@ -27,33 +23,35 @@ public class EditMaterialController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		  HttpSession session = request.getSession();
-          if (!MethodCommon.checkLoginAndAdminAccess(session, response, request)) {
+          if (!ControllerUtils.checkLoginAndAdminAccess(session, response, request)) {
         	  return; 
           }
 
           MaterialBo mateBo = new MaterialBo();
           Long mateID = 0L;
-          if (request.getParameter("mateID") != null)
+          if (request.getParameter("mateID") != null) {
         	  mateID = Long.parseLong(request.getParameter("mateID"));
+	          if (request.getParameter("btnDeleteMate") != null) {
+	        	  mateBo.deleteMaterial(mateID);
+	        	  response.sendRedirect("materials");
+	              return;
+	          }
+          }
           
-          if (request.getParameter("btnAddMate") != null) {
-              RequestDispatcher rd = request.getRequestDispatcher("/Admin/add-material.jsp");
-              rd.forward(request, response);
-              return;
-          }
+          String tenloai = request.getParameter("txtTenLoai");
+          String mota = request.getParameter("txtMoTa");
 
-          if (request.getParameter("btnUpdateMate") != null) {
-              request.setAttribute("material", mateBo.getMaterialByID(mateID));
-              RequestDispatcher rd = request.getRequestDispatcher("/Admin/update-material.jsp");
-              rd.forward(request, response);
-              return;
+          if(request.getParameter("btnAdd") != null) {
+              mateBo.addMaterial(tenloai, mota);
           }
-
-          if (request.getParameter("btnDeleteMate") != null) {
-        	  mateBo.deleteMaterial(mateID);
-        	  response.sendRedirect("materials");
-              return;
+          
+          if(request.getParameter("btnUpdate") != null) {
+          	if(request.getParameter("mateID")  != null) {
+	            mateID = Long.parseLong(request.getParameter("mateID"));
+	            mateBo.updateMaterial(mateID, tenloai, mota);
+            }
           }
+          response.sendRedirect("materials");
       } catch (Exception e) {
           e.printStackTrace();
       }

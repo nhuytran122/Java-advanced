@@ -41,7 +41,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title mb-4 text-center">Thêm tài liệu</h4>
-                  <form class="form-horizontal" action="../admin/save-docs" method="post" enctype="multipart/form-data">
+                  <form class="form-horizontal" action="../admin/edit-docs" method="post" enctype="multipart/form-data">
                     
                     <div class="form-group row">
                       <label class="control-label col-sm-2">Tiêu đề</label>

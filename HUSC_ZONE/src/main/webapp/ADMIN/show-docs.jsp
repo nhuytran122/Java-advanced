@@ -73,7 +73,7 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="card-title">Danh sách Tài liệu</h4>
-                    <form method="post" action="../admin/edit-docs">
+                    <form method="post" action="../admin/edit">
                       <button type="submit" name="btnAddDoc" value="btnAddDoc" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-circle"></i> Thêm mới tài liệu
                       </button>
@@ -120,7 +120,7 @@
                           </td>
                           <td>
                             <div class="btn-group" role="group">
-                              <form method="post" action="../admin/edit-docs">
+                              <form method="post" action="../admin/edit">
                                 <a href="../admin/details?docID=<%= docID %>" class="btn btn-success btn-sm" title="Xem chi tiết">
 									  <i class="bi bi-eye"></i>
 								</a>

@@ -47,7 +47,7 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="card-title">Danh sách Người dùng</h4>
-                    <form method="post" action="../admin/edit-user">
+                    <form method="post" action="../admin/edit">
                       <button type="submit" name="btnAddUser" value="add" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-circle"></i> Thêm mới Người dùng
                       </button>
@@ -104,7 +104,7 @@
 							  <td><%= user.getRoleID() == Constants.ROLE_ADMIN ? "Admin" : "User" %></td>
 							  <td>
 							    <div class="btn-group" role="group">
-							      <form method="post" action="../admin/edit-user">
+							      <form method="post" action="../admin/edit">
 							        <input type="hidden" name="userID" value="<%= userID %>">
 							        <a href="../admin/details?userID=<%= userID %>" class="btn btn-success btn-sm" title="Xem chi tiết">
 									  <i class="bi bi-eye"></i>

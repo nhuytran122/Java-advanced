@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import BookmarkModal.BookmarkBo;
 import CommonModal.Constants;
 import CommonModal.ControllerUtils;
-import CommonModal.MethodCommon;
 import LikeModal.LikeBo;
 import UserModal.User;
 import V_DetailsCommentModal.DetailsCommentBo;
@@ -34,7 +33,7 @@ public class ViewDetailsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            User user = MethodCommon.getUserFromSession(session, response);
+            User user = ControllerUtils.getUserFromSession(session, response);
             
             if (request.getParameter("docsID") != null) {
                 handleDocumentDetails(request, response, user);

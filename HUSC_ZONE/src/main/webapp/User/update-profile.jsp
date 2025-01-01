@@ -119,8 +119,6 @@
                 </div>
             </div>
         </div>
-    
-    
 <%@ include file="layout/script_preview_image.jsp" %>
 </body>
 </html>

@@ -28,7 +28,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title mb-4 text-center">Thêm mới ngành học</h4>
-                  <form class="form-horizontal" action="../admin/save-category" method="post" enctype="multipart/form-data">
+                  <form class="form-horizontal" action="../admin/edit-category" method="post" enctype="multipart/form-data">
 				    <div class="form-group row">
 				        <label class="control-label col-sm-2">Tên loại</label>
 				        <div class="col-sm-10">
@@ -70,23 +70,7 @@
     </div>   
   </div>
 
-<script>
-  // Lấy thẻ input file và thẻ img preview
-  const fileInput = document.getElementById('fileInput');
-  const imagePreview = document.getElementById('imagePreview');
-
-  fileInput.addEventListener('change', function (event) {
-    const file = event.target.files[0]; // Lấy file đầu tiên
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        imagePreview.src = e.target.result; 
-        imagePreview.style.display = 'block';
-      };
-      reader.readAsDataURL(file); 
-    }
-  });
-</script>
+<%@ include file="layout/script_preview_image.jsp" %>
 
 </body>
 </html>

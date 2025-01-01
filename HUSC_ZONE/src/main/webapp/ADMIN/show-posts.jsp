@@ -151,7 +151,7 @@
             
             <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-	                    <form action="../admin/save-post" method="post" enctype="multipart/form-data">
+	                    <form action="../admin/edit-post" method="post" enctype="multipart/form-data">
 	                        <div class="modal-content">
 	                            <div class="modal-header">
 	                                <h5 class="modal-title" id="postModalLabel">Tạo bài đăng mới</h5>

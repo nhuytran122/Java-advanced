@@ -49,7 +49,7 @@
                         	<p class="card-text"><strong>Ngày tham gia:</strong> <%= MethodCommon.convertDateToString(user.getCreatedAt()) %></p>
                         </div>
                       </div>
-					<form action="../admin/edit-profile" method="post">
+					<form action="../admin/edit" method="post">
 					  <div class="row">
 					    <div class="col-md-6 mb-3">
 					      <button type="submit"

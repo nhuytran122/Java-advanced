@@ -17,7 +17,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import CommonModal.Constants;
 import CommonModal.ControllerUtils;
 import CommonModal.FileUtils;
-import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
 
@@ -34,17 +33,17 @@ public class SaveProfileController extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			if (!MethodCommon.ensureUserLogin(session, response, request)) {
+			if (!ControllerUtils.ensureUserLogin(session, response, request)) {
 				return;
 			}
-			User user = MethodCommon.getUserFromSession(session, response);
+			User user = ControllerUtils.getUserFromSession(session, response);
 
 			UserBo userBo = new UserBo();
 
 			response.setContentType("text/html; charset=utf-8");
 			String name = "", phone = "", gender = "", imgName = "",
 					oldImgName = "", uniqueName = "";
-			boolean isUpdate = false, isUploaded = false;
+			boolean isUpdate = false, isUploaded = false, editInAdminPage = false;
 			int done = 0;
 			ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
 			List<FileItem> fileItems = upload.parseRequest(request);
@@ -63,6 +62,9 @@ public class SaveProfileController extends HttpServlet {
 							break;
 						case "txtGioiTinh":
 							gender = fieldValue;
+							break;
+						case "editInAdminPage":
+							editInAdminPage = true;
 							break;
 						case "btn-save-edit-inf":
 							isUpdate = true;
@@ -100,7 +102,7 @@ public class SaveProfileController extends HttpServlet {
 				session.setAttribute("user", currentUser);
 				
 				if(user.getRoleID() == Constants.ROLE_ADMIN) {
-					if(request.getParameter("editInAdminPage")!= null) {
+					if(editInAdminPage) {
 						ControllerUtils.forwardRequest(request, response, "/Admin/my-profile.jsp");
 		                return;
 					}

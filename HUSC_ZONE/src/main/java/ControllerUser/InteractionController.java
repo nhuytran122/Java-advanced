@@ -12,7 +12,6 @@ import BookmarkModal.BookmarkBo;
 import CommentModal.CommentBo;
 import CommonModal.Constants;
 import CommonModal.ControllerUtils;
-import CommonModal.MethodCommon;
 import LikeModal.LikeBo;
 import NotificationModal.NotificationBo;
 import ReportModal.ReportBo;
@@ -31,10 +30,10 @@ public class InteractionController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            if (!MethodCommon.ensureUserLogin(session, response, request)) {
+            if (!ControllerUtils.ensureUserLogin(session, response, request)) {
             	return;
             }
-            User user = MethodCommon.getUserFromSession(session, response);
+            User user = ControllerUtils.getUserFromSession(session, response);
 
             Long userID = user.getUserID();
             if (request.getParameter("docsID") != null) {

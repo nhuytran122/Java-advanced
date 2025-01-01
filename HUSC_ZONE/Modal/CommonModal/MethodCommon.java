@@ -1,21 +1,13 @@
 package CommonModal;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import CategoryModal.Category;
 import CategoryModal.CategoryBo;
 import MaterialModal.Material;
 import MaterialModal.MaterialBo;
-import UserModal.User;
 import V_DetailsNotificationModal.DetailsNotification;
 import V_DetailsNotificationModal.DetailsNotificationBo;
 
@@ -49,48 +41,4 @@ public class MethodCommon {
         }
         return pageCount;
     }
-	
-	public static User getUserFromSession(HttpSession session, HttpServletResponse response) throws IOException {
-        if (session.getAttribute("user") == null) {
-            return null;
-        }
-        return (User) session.getAttribute("user");
-    }
-	
-	public static boolean ensureUserLogin(HttpSession session, HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
-	    if (getUserFromSession(session, response) == null) {
-	        RequestDispatcher rd = request.getRequestDispatcher("/User/login.jsp");
-	        rd.forward(request, response);
-	        return false; 
-	    }
-	    return true;
-	}
-	
-	public static boolean checkAdminAccess(User user, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException, ServletException {
-	    if (user != null) {
-	        if (user.getRoleID() != Constants.ROLE_ADMIN) {
-	            RequestDispatcher rd = request.getRequestDispatcher("/User/access-denied.jsp");
-	            rd.forward(request, response);
-	            return false; 
-	        }
-	    }
-	    return true; 
-	}
-	
-	public static boolean checkLoginAndAdminAccess(HttpSession session, HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
-	    User user = getUserFromSession(session, response);
-	    if (user == null) {
-	        RequestDispatcher rd = request.getRequestDispatcher("/User/login.jsp");
-	        rd.forward(request, response);
-	        return false; 
-	    }
-
-	    if (!checkAdminAccess(user, session, response, request)) {
-	        return false;
-	    }
-
-	    return true;
-	}
-
-
 }

@@ -159,7 +159,7 @@
 							                    </button>
 							                    <ul class="dropdown-menu dropdown-menu-end">
 							                        <li>
-							                        	<a class="dropdown-item" href="../edit?editStt=true&sttID=<%= stt.getPostID() %>">
+							                        	<a class="dropdown-item" href="../edit?editStt=true&postID=<%= stt.getPostID() %>">
 							                        		<i class="bi bi-pencil me-2"></i> Chỉnh sửa bài viết
 							                        	</a>
 							                        </li>
@@ -210,8 +210,8 @@
 			                                Bạn có chắc chắn muốn xóa bài viết này không?
 			                              </div>
 			                              <div class="modal-footer">
-			                                <form method="post" action="../edit-status">
-			                                  <input type="hidden" name="sttID" value="<%= stt.getPostID() %>">
+			                                <form method="post" action="../edit-post">
+			                                  <input type="hidden" name="postID" value="<%= stt.getPostID() %>">
 			                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
 			                                  <button type="submit" name="btnDeleteStt" value="<%= stt.getPostID() %>" class="btn btn-danger">Xóa</button>
 			                                </form>

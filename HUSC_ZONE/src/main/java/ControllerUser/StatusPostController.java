@@ -29,7 +29,7 @@ public class StatusPostController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            if (!MethodCommon.ensureUserLogin(session, response, request)) {
+            if (!ControllerUtils.ensureUserLogin(session, response, request)) {
     	        return;
     	    }
             

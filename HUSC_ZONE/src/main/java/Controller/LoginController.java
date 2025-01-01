@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import CommonModal.Constants;
 import CommonModal.ControllerUtils;
-import CommonModal.MethodCommon;
 import UserModal.User;
 import UserModal.UserBo;
 import nl.captcha.Captcha;
@@ -29,8 +28,8 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
-			if(MethodCommon.getUserFromSession(session, response) != null) {
-            	User user = (User)MethodCommon.getUserFromSession(session, response);
+			if(ControllerUtils.getUserFromSession(session, response) != null) {
+            	User user = ControllerUtils.getUserFromSession(session, response);
             	handleUserRedirection(user, response);
             	return;
             }

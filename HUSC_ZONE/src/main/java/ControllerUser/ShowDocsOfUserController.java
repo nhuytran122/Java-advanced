@@ -29,8 +29,9 @@ public class ShowDocsOfUserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             HttpSession session = request.getSession();
+            ControllerUtils.ensureUserLogin(session, response, request);
             Long posterID = 0L;
-            User currentUser = MethodCommon.getUserFromSession(session, response);
+            User currentUser = ControllerUtils.getUserFromSession(session, response);
             posterID = currentUser.getUserID();
 
             DetailsDocBo dtdocBo = new DetailsDocBo();
