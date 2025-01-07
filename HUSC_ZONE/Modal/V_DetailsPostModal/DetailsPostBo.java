@@ -17,11 +17,19 @@ public class DetailsPostBo {
 		return dtSttDao.getCountPostsByConditions(searchValue);
 	}
 	
+	public int getCountAllPostsByConditions(String searchValue) throws Exception {
+		return dtSttDao.getCountAllPostsByConditions(searchValue);
+	}
+	
 	public ArrayList<DetailsPost> getPostsByUserID(int page, int pageSize, Long userID) throws Exception {
 		return dtSttDao.getPostsByUserID(page, pageSize, userID);
 	}
 	
 	public ArrayList<DetailsPost> getPostsByConditions(int page, int pageSize, String searchValue) throws Exception {
 		return dtSttDao.getPostsByConditions(page, pageSize, searchValue);
+	}
+	
+	public ArrayList<DetailsPost> getAllPostsByConditions(int page, int pageSize, String searchValue) throws Exception {
+		return dtSttDao.getAllPostsByConditions(page, pageSize, searchValue);
 	}
 }

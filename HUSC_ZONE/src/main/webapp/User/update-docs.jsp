@@ -32,7 +32,7 @@
                         <form action="../edit-docs" method="post" enctype="multipart/form-data">
                         	<input type="hidden" name="txtDocID" value="<%= doc.getDocumentID()%>" >
                             <div class="mb-3">
-                                <label class="form-label">Tiêu đề</label> <span class="text-danger">*</span></label>
+                                <label class="form-label">Tiêu đề</label> <span class="text-danger">*</span>
                                 <input type="text" class="form-control" placeholder="Nhập tiêu đề tài liệu" 
 	                                name="txtTenDocs" 
 	                                value="<%= doc.getTitle() %>" required>
@@ -43,7 +43,7 @@
 	                                name="txtMoTa" ><%= doc.getDesription() %></textarea>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Ngành học</label>
+                                <label class="form-label">Ngành học</label> <span class="text-danger">*</span>
                                 <select class="form-select" name = "txtMaNganh" required>
                                     <option value="">-- Chọn ngành học --</option>
 			                          <% for (Category cate : listCates) { 
@@ -57,7 +57,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Loại tài liệu</label>
+                                <label class="form-label">Loại tài liệu</label> <span class="text-danger">*</span>
                                 <select class="form-select" name = "txtMaLoai" required>
                                     <option value="">-- Chọn loại tài liệu --</option>
 			                         <% for (Material mate : listMates) { 

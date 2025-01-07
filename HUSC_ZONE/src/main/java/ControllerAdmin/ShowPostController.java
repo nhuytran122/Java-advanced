@@ -47,8 +47,8 @@ public class ShowPostController extends HttpServlet {
             DetailsPostBo dtPostBo = new DetailsPostBo();
             
             ArrayList<DetailsPost> dsPosts = null;
-            dsPosts = dtPostBo.getPostsByConditions(page, Constants.PAGE_SIZE, searchValue); 
-            rowCount = dtPostBo.getCountPostsByConditions(searchValue);
+            dsPosts = dtPostBo.getAllPostsByConditions(page, Constants.PAGE_SIZE, searchValue); 
+            rowCount = dtPostBo.getCountAllPostsByConditions(searchValue);
             int pageCount = MethodCommon.calculatePageCount(rowCount, Constants.PAGE_SIZE);
             
             request.setAttribute("dsPosts", dsPosts);

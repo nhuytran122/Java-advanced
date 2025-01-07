@@ -159,7 +159,7 @@
 							                    </button>
 							                    <ul class="dropdown-menu dropdown-menu-end">
 							                        <li>
-							                        	<a class="dropdown-item" href="../edit?editStt=true&postID=<%= stt.getPostID() %>">
+							                        	<a class="dropdown-item" href="../edit?editPost=true&postID=<%= stt.getPostID() %>">
 							                        		<i class="bi bi-pencil me-2"></i> Chỉnh sửa bài viết
 							                        	</a>
 							                        </li>

@@ -53,11 +53,11 @@ public class ForwardRequestEditController extends HttpServlet {
             	response.sendRedirect("home");  
             }
             
-            if (request.getParameter("editStt") != null ) {
-            	if (request.getParameter("sttID") != null) {
+            if (request.getParameter("editPost") != null ) {
+            	if (request.getParameter("postID") != null) {
             		StatusPostBo sttBo = new StatusPostBo();
-            		Long sttID = Long.parseLong(request.getParameter("sttID"));
-                	request.setAttribute("stt", sttBo.getStatusPostByID(sttID));
+            		Long postID = Long.parseLong(request.getParameter("postID"));
+                	request.setAttribute("stt", sttBo.getStatusPostByID(postID));
                 	ControllerUtils.forwardRequest(request, response, "User/update-status.jsp");
                     return;
             	}

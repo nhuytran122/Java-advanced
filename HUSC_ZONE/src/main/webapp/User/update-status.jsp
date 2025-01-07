@@ -71,10 +71,10 @@
                             <form action="../edit-post" method="post" class="form-horizontal" enctype="multipart/form-data">
                             <input type="hidden" name="postID" value="<%= stt.getPostID()%>">
                                     <div class="mb-3 form-group">
-                                        <label>Nội dung</label> <span class="text-danger">*</span>
-                                        <input class="form-control mt-2" type="text" 
-                                        	name="txtContent" value="<%= stt.getPostContent() %>" required/>
-                                    </div>
+									    <label>Nội dung</label> <span class="text-danger">*</span>
+									    <textarea class="form-control mt-2" name="txtContent" rows="5" required><%= stt.getPostContent() %></textarea>
+									</div>
+
         
                                     <div class="mb-3 form-group">
                                          <label class="form-label">Ảnh</label>

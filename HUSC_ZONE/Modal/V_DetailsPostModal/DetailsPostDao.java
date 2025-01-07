@@ -58,7 +58,34 @@ public class DetailsPostDao {
 
 		String sql = "SELECT COUNT(*) " +
 				"FROM V_Details_Posts " +
-				"WHERE (PostContent LIKE ? OR Name LIKE ? ) ";
+				"WHERE (PostContent LIKE ? OR Name LIKE ? ) AND PostVisibility = ? ";
+
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, searchValue);
+		cmd.setString(2, searchValue);
+		cmd.setString(3, Constants.POST_PUBLIC);
+
+		ResultSet rs = cmd.executeQuery();
+		if (rs.next()) {
+			count = rs.getInt(1);
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return count;
+	}
+
+	public int getCountAllPostsByConditions(String searchValue) throws Exception {
+		int count = 0;
+		searchValue = "%" + searchValue + "%";
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT COUNT(*) " +
+				"FROM V_Details_Posts " +
+				"WHERE (PostContent LIKE ? OR Name LIKE ? )";
 
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);
 		cmd.setString(1, searchValue);
@@ -75,7 +102,7 @@ public class DetailsPostDao {
 
 		return count;
 	}
-
+	
 	public ArrayList<DetailsPost> getPostsByUserID(int page, int pageSize, Long userID) throws Exception {
 		ArrayList<DetailsPost> ds = new ArrayList<DetailsPost>();
 		KetNoi kn = new KetNoi();
@@ -139,6 +166,37 @@ public class DetailsPostDao {
 		return ds;
 	}
 
+	public ArrayList<DetailsPost> getAllPostsByConditions(int page, int pageSize, String searchValue) throws Exception {
+		ArrayList<DetailsPost> ds = new ArrayList<DetailsPost>();
+		KetNoi kn = new KetNoi();
+		kn.ketnoi();
+
+		String sql = "SELECT * FROM V_Details_Posts " +
+	             "WHERE (PostContent LIKE ? OR Name LIKE ?) " + 
+	             "ORDER BY CreatedAt DESC " +
+	             "OFFSET (? - 1) * ? ROWS " +  
+	             "FETCH NEXT ? ROWS ONLY";
+
+	   searchValue = "%" + searchValue + "%";
+	   PreparedStatement cmd = kn.cn.prepareStatement(sql);
+	   cmd.setString(1, searchValue);
+	   cmd.setString(2, searchValue);
+	   cmd.setInt(3, page);
+	   cmd.setInt(4, pageSize);
+	   cmd.setInt(5, pageSize);
+
+		ResultSet rs = cmd.executeQuery();
+		while (rs.next()) {
+			ds.add(mapDetailsPost(rs));
+		}
+
+		rs.close();
+		cmd.close();
+		kn.cn.close();
+
+		return ds;
+	}
+	
 	private DetailsPost mapDetailsPost(ResultSet rs) throws Exception {
 		Long postID = rs.getLong("PostID");
         String postContent = rs.getString("PostContent");

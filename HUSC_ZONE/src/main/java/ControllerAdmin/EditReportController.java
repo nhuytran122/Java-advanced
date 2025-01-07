@@ -46,8 +46,9 @@ public class EditReportController extends HttpServlet {
                 handleRejectReport(reportID, notiBo);
             } else if (request.getParameter("btnDeleteReport") != null) {
                 handleDeleteReport(reportID, response, rpBo);
-                return; 
             }
+            response.sendRedirect("reports");
+            return; 
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,7 +71,6 @@ public class EditReportController extends HttpServlet {
 
     private void handleDeleteReport(Long reportID, HttpServletResponse response, ReportBo rpBo) throws Exception {
         rpBo.deleteReport(reportID);
-        response.sendRedirect("reports"); 
     }
 
     @Override
