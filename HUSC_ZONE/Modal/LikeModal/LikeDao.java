@@ -83,16 +83,15 @@ public class LikeDao {
 
         return count;
     }
-  //Đã set Cascade
-//    public int deleteLikesByPostID(Long postID) throws Exception {
-//        KetNoi kn = new KetNoi();
-//        kn.ketnoi();
-//        String sql = "DELETE FROM tbl_Likes WHERE PostID = ?";
-//        PreparedStatement cmd = kn.cn.prepareStatement(sql);
-//        cmd.setLong(1, postID);
-//        int result = cmd.executeUpdate();
-//        cmd.close();
-//        kn.cn.close();
-//        return result;
-//    }
+    public int deleteLikesByUserID(Long userID) throws Exception {
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "DELETE FROM tbl_Likes WHERE LikedBy = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, userID);
+        int result = cmd.executeUpdate();
+        cmd.close();
+        kn.cn.close();
+        return result;
+    }
 }

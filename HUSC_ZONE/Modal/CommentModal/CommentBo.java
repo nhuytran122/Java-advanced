@@ -2,6 +2,8 @@ package CommentModal;
 
 import java.util.ArrayList;
 
+import NotificationModal.NotificationBo;
+
 public class CommentBo {
 	CommentDao cmtDao = new CommentDao();
 	
@@ -25,9 +27,18 @@ public class CommentBo {
 		return cmtDao.deleteComment(CommentID);
 	}
     
-	//Đã set Cascade
-//    public int deleteCommentsByPostID(Long postID) throws Exception {
-//        return cmtDao.deleteCommentsByPostID(postID);
-//    }
+	public ArrayList<Long> getCommentIDsByUserID(Long userID) throws Exception {
+		return cmtDao.getCommentIDsByUserID(userID);
+	}
+	
+	public int deleteCommentsByUserID(Long userID) throws Exception {
+	    NotificationBo notiBo = new NotificationBo();
+	    ArrayList<Long> commentIDs = cmtDao.getCommentIDsByUserID(userID);
+	    
+	    for (Long cmtID : commentIDs) {
+	        notiBo.deleteNotificationsByCmtID(cmtID);
+	    }
+	    return cmtDao.deleteCommentsByUserID(userID);
+	}
 
 }

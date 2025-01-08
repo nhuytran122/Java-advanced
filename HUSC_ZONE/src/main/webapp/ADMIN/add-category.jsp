@@ -40,7 +40,7 @@
 				    <div class="form-group row">
 					  <label class="control-label col-sm-2">Ảnh</label>
 					  <div class="col-sm-10">
-					    <input type="file" class="form-control" name="fileAnh" accept="image/*" required id="fileInput">
+					    <input type="file" class="form-control" name="fileAnh" accept="image/*" id="fileInput">
 					  </div>
 					</div>
 					

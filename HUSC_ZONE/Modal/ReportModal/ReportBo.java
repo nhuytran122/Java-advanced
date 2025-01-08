@@ -1,5 +1,7 @@
 package ReportModal;
 
+import java.util.ArrayList;
+
 import NotificationModal.NotificationBo;
 
 public class ReportBo {
@@ -22,5 +24,15 @@ public class ReportBo {
 	
 	public int updateReport(Long reportID, Long statusID) throws Exception {
 		return rpDao.updateReport(reportID, statusID);
+	}
+	
+	public int deleteReportsByUserID(Long userID) throws Exception {
+	    NotificationBo notiBo = new NotificationBo();
+	    ArrayList<Long> reportIDs = rpDao.getReportIDsByUserID(userID);
+	    
+	    for (Long reportID : reportIDs) {
+	        notiBo.deleteNotificationsByReportID(reportID);
+	    }
+	    return rpDao.deleteReportsByUserID(userID);
 	}
 }

@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import BookmarkModal.BookmarkBo;
+import CommentModal.CommentBo;
 import CommonModal.Constants;
+import LikeModal.LikeBo;
+import ReportModal.ReportBo;
 
 public class UserBo {
 
@@ -78,6 +82,10 @@ public class UserBo {
     }
 	
 	public int deleteUser(Long userID) throws Exception {
+		new LikeBo().deleteLikesByUserID(userID);
+		new ReportBo().deleteReportsByUserID(userID);
+		new CommentBo().deleteCommentsByUserID(userID);
+		new BookmarkBo().deleteBookmarksByUserID(userID);
 		return userDao.deleteUser(userID);
 	}
 }

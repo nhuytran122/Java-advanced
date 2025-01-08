@@ -48,7 +48,7 @@
               <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm báo cáo..." name="txtSearch" aria-label="search"
                      value="<%= searchKeyword != null ? searchKeyword : "" %>"
                      style="width: 400px; font-size: 14px; margin-right: 10px;">
-              <button type="submit" class="btn btn-primary btn-sm p-2">
+              <button type="submit" name="btn-search" class="btn btn-primary btn-sm p-2">
                 <i class="bi bi-search"></i>
               </button>
             </form>
@@ -144,7 +144,7 @@
                                 <form method="post" action="../admin/edit-report">
                                   <input type="hidden" name="reportID" value="<%= reportID %>">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                  <button type="submit" name="btnDeletereport" value="delete" class="btn btn-danger">Xóa</button>
+                                  <button type="submit" name="btnDeleteReport" value="delete" class="btn btn-danger">Xóa</button>
                                 </form>
                               </div>
                             </div>

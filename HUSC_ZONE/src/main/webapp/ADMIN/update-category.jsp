@@ -28,7 +28,7 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title mb-4 text-center">Thêm mới ngành học</h4>
+                  <h4 class="card-title mb-4 text-center">Chỉnh sửa ngành học</h4>
                   <form class="form-horizontal" action="../admin/edit-category" method="post" enctype="multipart/form-data">
 				    <input type="hidden" name="cateID" value="<%= category.getCategoryID() %>">
 				    <div class="form-group row">
@@ -49,9 +49,16 @@
 					<div class="form-group row">
 					  <label class="control-label col-sm-2">Preview Ảnh</label>
 					  <div class="col-sm-10">
-					  	<img id="imagePreview" src="<%= category.getImage() != null ? request.getContextPath() + category.getImage() : "" %>" alt="Image Preview" style="max-height: 250px; display: <%= category.getImage() != null ? "block" : "none" %>;"/>
+					    <img 
+					        id="imagePreview" 
+					        src="<%= category.getImage() != null && !category.getImage().isEmpty() 
+					              ? request.getContextPath() + category.getImage() 
+					              : "../images/default-category.jpg" %>" 
+					        alt="Image Preview" 
+					        style="max-height: 250px; display: block;"/>
 					  </div>
 					</div>
+
 
                     <div class="form-group row">
                       <div class="col-sm-offset-2 col-sm-10 text-center">

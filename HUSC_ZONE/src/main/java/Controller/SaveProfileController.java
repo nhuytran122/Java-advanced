@@ -93,7 +93,7 @@ public class SaveProfileController extends HttpServlet {
 				if (isUploaded) {
 	            	String uploadedFileName = FileUtils.handleFileUpload(request, fileItems, imgName);
 	            	// Xóa file cũ có update & có file cũ
-	            	if (isUpdate && !oldImgName.isEmpty()) {
+	            	if (isUpdate && oldImgName!= null && !oldImgName.isEmpty()) {
 	                	String oldFilePath = request.getServletContext().getRealPath("") + oldImgName;
 	                	FileUtils.deleteOldFile(oldFilePath);
 	            	}

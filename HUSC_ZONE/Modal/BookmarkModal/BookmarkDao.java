@@ -60,5 +60,17 @@ public class BookmarkDao {
 
         return isLiked;
     }
+    
+    public int deleteBookmarksByUserID(Long userID) throws Exception {
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "DELETE FROM tbl_Bookmarks WHERE MarkedBy = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, userID);
+        int result = cmd.executeUpdate();
+        cmd.close();
+        kn.cn.close();
+        return result;
+    }
 
 }

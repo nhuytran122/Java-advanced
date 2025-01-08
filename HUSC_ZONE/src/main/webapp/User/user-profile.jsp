@@ -130,7 +130,7 @@
 							                </div>
 							                <form method="post" action="../interact">
 							                	<input type="hidden" name="postID" value="<%= stt.getPostID() %>">
-							                	<input type="hidden" name="reportInUserProfile" value="true">
+							                	<input type="hidden" name="reportInUserProfile" value="<%= stt.getUploadedBy()%>">
 							                	<input type="hidden" name="sttOf" value="<%= stt.getUploadedBy()%>">
 							                    <div class="modal-body">
 							                        <textarea name="txtContentReport" class="form-control" rows="3" placeholder="Mô tả lý do báo cáo bài viết này..." required></textarea>

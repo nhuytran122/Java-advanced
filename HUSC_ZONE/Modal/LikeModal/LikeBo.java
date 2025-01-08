@@ -19,9 +19,8 @@ public class LikeBo {
 		return likeDao.countLikesByPostID(postID);
 	}
 	
-	//Đã set Cascade
-//	public int deleteLikesByPostID(Long postID) throws Exception {
-//	    return likeDao.deleteLikesByPostID(postID);
-//	}
+	public int deleteLikesByUserID(Long userID) throws Exception {
+		return likeDao.deleteLikesByUserID(userID);
+	}
 
 }

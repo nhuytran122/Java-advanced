@@ -67,7 +67,7 @@
                       
                     <div class="form-group text-center">
                       <a href="../admin/details?profile=me" class="btn btn-secondary me-2">Hủy</a>
-                      <button type="submit" class="btn btn-primary">Lưu</button>
+                      <button name="btn-save-edit-inf" type="submit" class="btn btn-primary">Lưu</button>
                     </div>
                   </form>
                 </div>

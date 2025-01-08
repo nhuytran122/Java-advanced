@@ -31,10 +31,10 @@
         <ul class="navbar-nav mr-lg-2 my-4" style="display: flex; justify-content: center; width: 100%;">
           <li class="nav-item nav-search d-none d-lg-block" style="display: flex; align-items: center;">
             <form action="../admin/categories" method="post" class="d-flex" style="width: 100%; justify-content: center; align-items: center;">
-              <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm nguời dùng..." name="txtSearch" aria-label="search"
+              <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm ngành học..." name="txtSearch" aria-label="search"
                      value="<%= searchKeyword != null ? searchKeyword : "" %>"
                      style="width: 400px; font-size: 14px; margin-right: 10px;">
-              <button type="submit" class="btn btn-primary btn-sm p-2">
+              <button type="submit" name="btn-search" class="btn btn-primary btn-sm p-2">
                 <i class="bi bi-search"></i>
               </button>
             </form>
@@ -124,7 +124,7 @@
 						        </div>
                               </div>
                               <div class="modal-footer">
-                                <form method="post" action="../admin/edit">
+                                <form method="post" action="../admin/edit-category">
                                   <input type="hidden" name="cateID" value="<%= cateID %>">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                                   <button type="submit" name="btnDeleteCate" value="delete" class="btn btn-danger">Xóa</button>

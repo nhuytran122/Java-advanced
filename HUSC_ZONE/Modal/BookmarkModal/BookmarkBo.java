@@ -15,4 +15,8 @@ public class BookmarkBo {
 	public boolean hasUserMarkedDocs(Long userID, Long docID) throws Exception {
 		return bDao.hasUserMarkedDocs(userID, docID);
 	}
+	
+	public int deleteBookmarksByUserID(Long userID) throws Exception {
+		return bDao.deleteBookmarksByUserID(userID);
+	}
 }

@@ -92,7 +92,7 @@
                       <label class="control-label col-sm-2">Tải lên tài liệu</label>
                       <div class="col-sm-10">
                         <input type="file" class="form-control" name="fileDocs" 
-                          accept="image/*,application/pdf,.doc,.docx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation">
+                          required accept="image/*,application/pdf,.doc,.docx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation">
                       </div>
                     </div>
                     

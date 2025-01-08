@@ -1,5 +1,6 @@
 package ReportModal;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -112,5 +113,38 @@ public class ReportDao {
         kn.cn.close();
         return kq;
     }
+	
+	public int deleteReportsByUserID(Long userID) throws Exception {
+        KetNoi kn = new KetNoi();
+        kn.ketnoi();
+        String sql = "DELETE FROM tbl_Reports WHERE CreatedBy = ?";
+        PreparedStatement cmd = kn.cn.prepareStatement(sql);
+        cmd.setLong(1, userID);
+        int result = cmd.executeUpdate();
+        cmd.close();
+        kn.cn.close();
+        return result;
+    }
+	
+	public ArrayList<Long> getReportIDsByUserID(Long userID) throws Exception {
+	    ArrayList<Long> reportIDs = new ArrayList<>();
+	    KetNoi kn = new KetNoi();
+	    kn.ketnoi();
+
+	    String sql = "SELECT ReportID FROM tbl_Reports WHERE CreatedBy = ?";
+	    PreparedStatement ps = kn.cn.prepareStatement(sql);
+	    ps.setLong(1, userID);
+	    ResultSet rs = ps.executeQuery();
+
+	    while (rs.next()) {
+	        reportIDs.add(rs.getLong("ReportID"));
+	    }
+
+	    rs.close();
+	    ps.close();
+	    kn.cn.close();
+
+	    return reportIDs;
+	}
 
 }

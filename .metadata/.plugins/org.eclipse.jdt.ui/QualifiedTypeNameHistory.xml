@@ -17,16 +17,12 @@
     <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotificationBo"/>
     <fullyQualifiedTypeName name="V_DetailsNotificationModal.DetailsNotification"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsCommentBo"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="V_DetailsCommentModal.DetailsComment"/>
-    <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
     <fullyQualifiedTypeName name="V_DetailsDocModal.DetailsDoc"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="CommonModal.KetNoi"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="LikeModal.LikeBo"/>
-    <fullyQualifiedTypeName name="CommentModal.CommentBo"/>
     <fullyQualifiedTypeName name="com.jhlabs.image.LightFilter.Material"/>
     <fullyQualifiedTypeName name="MaterialModal.Material"/>
     <fullyQualifiedTypeName name="MaterialModal.MaterialBo"/>
@@ -37,7 +33,6 @@
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPostBo"/>
     <fullyQualifiedTypeName name="UserModal.UserBo"/>
     <fullyQualifiedTypeName name="V_DetailsReportModal.DetailsReportBo"/>
-    <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
     <fullyQualifiedTypeName name="NotificationModal.NotificationBo"/>
     <fullyQualifiedTypeName name="V_DetailsPostModal.DetailsPost"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="CommonModal.Constants"/>
     <fullyQualifiedTypeName name="java.text.Normalizer"/>
     <fullyQualifiedTypeName name="CommonModal.MethodCommon"/>
+    <fullyQualifiedTypeName name="ReportModal.ReportBo"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="CommentModal.CommentBo"/>
+    <fullyQualifiedTypeName name="LikeModal.LikeBo"/>
+    <fullyQualifiedTypeName name="BookmarkModal.BookmarkBo"/>
 </qualifiedTypeNameHistroy>

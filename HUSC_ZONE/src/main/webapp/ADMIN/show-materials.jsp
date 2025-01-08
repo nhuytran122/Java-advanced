@@ -31,7 +31,7 @@
               <input type="text" class="form-control form-control-sm me-2" id="navbar-search-input" placeholder="Tìm kiếm loại tài liệu..." name="txtSearch" aria-label="search"
                      value="<%= searchKeyword != null ? searchKeyword : "" %>"
                      style="width: 400px; font-size: 14px; margin-right: 10px;">
-              <button type="submit" class="btn btn-primary btn-sm p-2">
+              <button type="submit" name="btn-search" class="btn btn-primary btn-sm p-2">
                 <i class="bi bi-search"></i>
               </button>
             </form>

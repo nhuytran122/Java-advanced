@@ -112,8 +112,14 @@ public class InteractionController extends HttpServlet {
         if (!userID.equals(stt.getUploadBy())) {
             notiBo.createNotiRelatedToReportPost(reportID);
         }
-
-        String redirectPage = request.getParameter("reportInDetail") != null ? "details" : "status-post";
+        String redirectPage = "status-post";
+        if(request.getParameter("reportInDetail") != null) {
+        	redirectPage = "details";
+        }
+        else if(request.getParameter("reportInUserProfile") != null) {
+        	request.setAttribute("userId", Long.parseLong(request.getParameter("reportInUserProfile")));
+        	redirectPage = "user-profile";
+        }
         request.setAttribute("postID", postID);
         ControllerUtils.forwardRequest(request, response, redirectPage);
     }
